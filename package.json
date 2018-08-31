@@ -1,0 +1,66 @@
+('node-rest-client');
+('express');
+('cors');
+('body-parser');
+
+{
+  "name": "nodejs",
+  "description": "NodeJS web service / API Rest setter and getter",
+  "keywords": [
+    "web service",
+    "api",
+    "rest",
+    "get",
+    "post",
+    "string",
+    "nodejs",
+    "node-rest-client",
+    "express",
+    "cors",
+    "body-parser"
+  ],
+  "bugs": {
+    "url": "mailto:javier.gonzalezberenguel@iecisa.com",
+    "email": "javier.gonzalezberenguel@iecisa.com"
+  },
+  "config": {
+    "api_port": "3000"
+  },
+  "contributors": [
+    {
+      "name": "Javier González Berenguel (back-end Developer)",
+      "email": "javier.gonzalezberenguel@iecisa.com"
+    
+  ],
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "node-rest-client": "^3.1.0"
+  },
+  "devDependencies": {
+    "@ionic/app-scripts": "3.1.8",
+    "eslint": "^5.1.0",
+    "jscpd": "^0.6.22",
+    "typescript": "2.4.2"
+  },
+  "engines": {
+    "node": ">=8.9.4"
+  },
+  "homepage": "http://localhost:3000",
+  "license": "MIT",
+  "main": "ioApiRest.js",
+  "os": [
+    "win64",
+    "win32",
+    "linux"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jgonzal1/nodejs"
+  },
+  "scripts": {
+    "start": "node ioApiRest.js",
+  },
+  "version": "1.0"
+}
