@@ -1,3 +1,3 @@
 # nodejs
 
-API Rest web service getters and setter
+API Rest web service getter and setter
