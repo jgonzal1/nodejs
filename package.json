@@ -1,8 +1,3 @@
-('node-rest-client');
-('express');
-('cors');
-('body-parser');
-
 {
   "name": "nodejs",
   "description": "NodeJS web service / API Rest setter and getter",
@@ -30,7 +25,7 @@
     {
       "name": "Javier González Berenguel (back-end Developer)",
       "email": "javier.gonzalezberenguel@iecisa.com"
-    
+    }
   ],
   "dependencies": {
     "body-parser": "^1.18.2",
@@ -60,7 +55,7 @@
     "url": "https://github.com/jgonzal1/nodejs"
   },
   "scripts": {
-    "start": "node ioApiRest.js",
+    "start": "node ioApiRest.js"
   },
   "version": "1.0"
 }
