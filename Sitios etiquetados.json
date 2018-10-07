@@ -1,0 +1,236 @@
+{
+  "features" : [ {
+    "geometry" : {
+      "coordinates" : [ 40.4942011, -3.7101309 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "address" : "Calle de la Masó, 14, 28035 Madrid, España",
+      "name" : "Casa"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.496193999999996, -3.7000401 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "address" : "Informática El Corte Inglés, Travesía Costa Brava, 4, 28034 Madrid, España",
+      "name" : "Trabajo"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.422883399999996, -3.6902991999999997 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "name" : "Recoletos Jazz"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.4195894, -3.7079193 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "name" : "Salsa Martes"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.4320636, -3.6547007 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "address" : "Calle de Alcalá, 256, 28027 Madrid, España",
+      "name" : "Piso"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.4547697, -3.7466842 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "name" : "Orilla del Manzanares bajo el Puerta del"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.431415699999995, -3.6501197 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "name" : "Piso Patri"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 37.178409599999995, -3.6039592 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "address" : "Calle Gran Capitán, 13, 18002 Granada, España",
+      "name" : "Piso Prima Carmen"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.490949199999996, -3.7185015999999997 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "name" : "Centro de Salud Mirasierra"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.5711146, -3.9004613 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "address" : "Calle Ebro, 68, 28250 Torrelodones, Madrid, España",
+      "name" : "Casa Carol Y Rosita"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.486011999999995, -3.7092663 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "address" : "Calle Laguna Grande, 2A, 28034 Madrid, España",
+      "name" : "Aparcar"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.4234048, -3.6782434999999998 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "address" : "Calle de Jorge Juan, 62, 28009 Madrid, España",
+      "name" : "Nuevo Teatro Alcalá"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.465601899999996, -3.6915761999999996 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "name" : "Chino"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.5426321, -3.6405068999999997 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "address" : "Calle de León Pérez Bayo, 15, 28100 Alcobendas, Madrid, España",
+      "name" : "Piso Nerea"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.4430273, -3.6688598999999997 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "address" : "Calle Clara del Rey, 30, 28002 Madrid, España",
+      "name" : "BeCool Salsa/Bachata Arsenio Miércoles"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.418804099999996, -3.7050056999999996 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "address" : "Calle Rompelanzas, 28013 Madrid, España",
+      "name" : "Origen ECI"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.4984144, -3.6879922 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "address" : "Calle Afueras a Valverde, 4, 28034 Madrid, España",
+      "name" : "Gestoria Apartamento"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 52.539200199999996, 13.413571 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "name" : "Clases de Swing"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.4210786, -3.7019189999999997 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "address" : "Calle de Valverde, 10, 28004 Madrid, España",
+      "name" : "Dark Hole Gothic Club"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.433299999999996, -3.6447852 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "address" : "Calle de Timoteo Domingo, 17, 28017 Madrid, España",
+      "name" : "Tempest Store"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.455309, -3.676519 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "name" : "Ana Isabel"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.4121929, -3.7054316 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "address" : "Plaza Tirso de Molina, 12, 28012 Madrid, España",
+      "name" : "Piso Javi del Aguila"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.413304, -3.6967803 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "address" : "Calle de las Huertas, 51, 28014 Madrid, España",
+      "name" : "La Lupa Sala Baile"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 40.435409799999995, -3.6959633999999997 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "address" : "Paseo del General Martínez Campos, 17, 28010 Madrid, España",
+      "name" : "Bar de rock con Salsa y Bachata"
+    },
+    "type" : "Feature"
+  } ],
+  "type" : "FeatureCollection"
+}

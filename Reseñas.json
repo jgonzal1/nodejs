@@ -1,0 +1,366 @@
+{
+  "type" : "FeatureCollection",
+  "features" : [ {
+    "geometry" : {
+      "coordinates" : [ -3.7018578, 40.5055399 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=7393489238453584972",
+      "Location" : {
+        "Address" : "Avenida del Santuario de Valverde, 45, 28049 Madrid, España",
+        "Business Name" : "Correos",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.5055399",
+          "Longitude" : "-3.7018578"
+        }
+      },
+      "Published" : "2018-07-24T16:34:47Z",
+      "Review Comment" : "He ido a devolver un paquete de Amazon esta tarde de verano. Había poca gente, por lo que ha sido rápido :) quien me atendía tenía cara enfadada, pero ha hecho du trabajo, que es lo importante",
+      "Star Rating" : 4,
+      "Updated" : "2018-07-24T16:36:55Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7136053, 40.4937045 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=8900246471264729502",
+      "Location" : {
+        "Address" : "Calle Cerro del Castañar, 74, 28034 Madrid, España",
+        "Business Name" : "unide market supermercados",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4937045",
+          "Longitude" : "-3.7136053"
+        }
+      },
+      "Published" : "2018-02-15T08:57:56Z",
+      "Star Rating" : 5,
+      "Updated" : "2018-02-15T08:57:56Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7048279, 40.4968595 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=47826443844611067",
+      "Location" : {
+        "Address" : "Calle de la Masó, 2, 28034 Madrid, España",
+        "Business Name" : "UNIDE MARKET (Hermanos de Marcos Velasco S.L.)",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4968595",
+          "Longitude" : "-3.7048279"
+        }
+      },
+      "Published" : "2018-02-15T08:56:51Z",
+      "Review Comment" : "Lo justo y necesario. No es el más grande y con más variedad del barrio, no obstante",
+      "Star Rating" : 4,
+      "Updated" : "2018-02-15T08:57:29Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6946791, 40.5067437 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=983987853567200537",
+      "Location" : {
+        "Address" : "Avenida del Monasterio de Silos, 69, 28049 Madrid, España",
+        "Business Name" : "Taberna La Felipa",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.5067437",
+          "Longitude" : "-3.6946791"
+        }
+      },
+      "Published" : "2018-02-15T08:55:57Z",
+      "Review Comment" : "Arroz prácticamente inmejorable. Precio alto.",
+      "Star Rating" : 3,
+      "Updated" : "2018-02-15T08:56:18Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.5962290, 37.1727340 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=14194095050613068124",
+      "Location" : {
+        "Address" : "Calle Virgen del Rosario, 10, 18009 Granada, España",
+        "Business Name" : "Taberna Malvasía",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "37.1727340",
+          "Longitude" : "-3.5962290"
+        }
+      },
+      "Published" : "2018-02-15T08:55:39Z",
+      "Star Rating" : 5,
+      "Updated" : "2018-02-15T08:55:39Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7093729, 40.4825672 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=5356042341055418656",
+      "Location" : {
+        "Address" : "Calle de Fermín Caballero, 57, 28034 Madrid, España",
+        "Business Name" : "Generación X Fermín Caballero",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4825672",
+          "Longitude" : "-3.7093729"
+        }
+      },
+      "Published" : "2018-02-15T08:55:30Z",
+      "Star Rating" : 5,
+      "Updated" : "2018-02-15T08:55:30Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7073707, 40.5015316 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=15946484039429238473",
+      "Location" : {
+        "Address" : "Calle del Monasterio de Las Huelgas, 9-13, 28034 Madrid, España",
+        "Business Name" : "Rita Sibarita",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.5015316",
+          "Longitude" : "-3.7073707"
+        }
+      },
+      "Published" : "2018-02-15T08:55:25Z",
+      "Star Rating" : 5,
+      "Updated" : "2018-02-15T08:55:25Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -2.463635, 36.831907 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=3771704906057431901",
+      "Location" : {
+        "Address" : "Playa de las Almadrabillas, 04007 Almería",
+        "Business Name" : "El Cargadero de Mineral, Cable Inglés",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "36.831907",
+          "Longitude" : "-2.463635"
+        }
+      },
+      "Published" : "2018-02-15T08:55:20Z",
+      "Star Rating" : 4,
+      "Updated" : "2018-02-15T08:55:20Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6719823, 40.4238734 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=9389978079153685987",
+      "Location" : {
+        "Address" : "Avenida Felipe II, S/N, 28009 Madrid, España",
+        "Business Name" : "WiZink Center",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4238734",
+          "Longitude" : "-3.6719823"
+        }
+      },
+      "Published" : "2018-02-15T08:54:29Z",
+      "Review Comment" : "Se quedan con tus datos al contar entradas para un concierto y luego te llaman para venderte servicios financieros :S",
+      "Star Rating" : 3,
+      "Updated" : "2018-02-15T08:55:03Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7150118, 40.4811436 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=3543152981660362974",
+      "Location" : {
+        "Address" : "Calle de Fermín Caballero, 75, 28034 Madrid, España",
+        "Business Name" : "La Panza de Sancho",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4811436",
+          "Longitude" : "-3.7150118"
+        }
+      },
+      "Published" : "2018-02-15T08:54:00Z",
+      "Star Rating" : 5,
+      "Updated" : "2018-02-15T08:54:00Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7000401, 40.4961940 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=10582986357361905453",
+      "Location" : {
+        "Address" : "Travesía Costa Brava, 4, 28034 Madrid, España",
+        "Business Name" : "IECISA",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4961940",
+          "Longitude" : "-3.7000401"
+        }
+      },
+      "Published" : "2018-02-15T08:53:51Z",
+      "Star Rating" : 5,
+      "Updated" : "2018-02-15T08:53:51Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7013496, 40.4848641 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=8313446449441228922",
+      "Location" : {
+        "Address" : "Calle Sangenjo, 23, 28034 Madrid, España",
+        "Business Name" : "Peluquería Sangenjo",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4848641",
+          "Longitude" : "-3.7013496"
+        }
+      },
+      "Published" : "2018-02-15T08:53:44Z",
+      "Star Rating" : 4,
+      "Updated" : "2018-02-15T08:53:44Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6952024, 40.4106328 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=9425307189484778345",
+      "Location" : {
+        "Address" : "28012, Calle de Atocha, 107, 28012 Madrid, España",
+        "Business Name" : "Discoteca Azúcar",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4106328",
+          "Longitude" : "-3.6952024"
+        }
+      },
+      "Published" : "2018-02-15T08:53:34Z",
+      "Star Rating" : 4,
+      "Updated" : "2018-02-15T08:53:34Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7087320, 40.4230610 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=18407033767113698533",
+      "Location" : {
+        "Address" : "Plaza de los Mostenses n11, 28015 Madrid, España",
+        "Business Name" : "Tropical House",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4230610",
+          "Longitude" : "-3.7087320"
+        }
+      },
+      "Published" : "2018-02-15T08:53:26Z",
+      "Star Rating" : 5,
+      "Updated" : "2018-02-15T08:53:26Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7036855, 40.4243100 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=16189146551624302791",
+      "Location" : {
+        "Address" : "Calle de la Madera, 37, 28004 Madrid, España",
+        "Business Name" : "Casa Julio",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4243100",
+          "Longitude" : "-3.7036855"
+        }
+      },
+      "Published" : "2018-02-15T08:53:17Z",
+      "Star Rating" : 5,
+      "Updated" : "2018-02-15T08:53:17Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6844995, 40.4152606 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=11415542133959205806",
+      "Location" : {
+        "Address" : "Plaza de la Independencia, 7, 28001 Madrid, España",
+        "Business Name" : "Parque de El Retiro",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4152606",
+          "Longitude" : "-3.6844995"
+        }
+      },
+      "Published" : "2017-10-02T06:00:03Z",
+      "Star Rating" : 5,
+      "Updated" : "2017-10-02T06:00:03Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6590587, 40.4333936 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=9260653548761210246",
+      "Location" : {
+        "Address" : "Calle Virgen del Coro, 17, 28027 Madrid, España",
+        "Business Name" : "Anjo",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4333936",
+          "Longitude" : "-3.6590587"
+        }
+      },
+      "Published" : "2017-07-30T07:25:59Z",
+      "Review Comment" : "Desayuno para 3 : 4 porras, 1 entera y 3 cafés, por 7€en total.",
+      "Star Rating" : 5,
+      "Updated" : "2017-07-30T07:30:14Z"
+    },
+    "type" : "Feature"
+  } ]
+}

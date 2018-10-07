@@ -1,0 +1,1609 @@
+{
+  "type" : "FeatureCollection",
+  "features" : [ {
+    "geometry" : {
+      "coordinates" : [ 13.3992026, 52.5186823 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=11958687786904800522",
+      "Location" : {
+        "Address" : "Am Lustgarten 1, 10178 Berlin, Alemania",
+        "Business Name" : "Lustgarten",
+        "Country Code" : "DE",
+        "Geo Coordinates" : {
+          "Latitude" : "52.5186823",
+          "Longitude" : "13.3992026"
+        }
+      },
+      "Published" : "2018-09-08T20:16:01Z",
+      "Title" : "Lustgarten",
+      "Updated" : "2018-09-08T20:16:01Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 13.4190648, 52.5250333 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=9865739344006186385",
+      "Location" : {
+        "Address" : "Otto-Braun-Straße 69, 10178 Berlin, Alemania",
+        "Business Name" : "Hampton by Hilton Berlin City Centre Alexanderplatz",
+        "Country Code" : "DE",
+        "Geo Coordinates" : {
+          "Latitude" : "52.5250333",
+          "Longitude" : "13.4190648"
+        }
+      },
+      "Published" : "2018-09-08T18:19:46Z",
+      "Title" : "Hampton by Hilton Berlin City Centre Alexanderplatz",
+      "Updated" : "2018-09-08T18:19:46Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -4.4223056, 36.7203062 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=4421066636958046674",
+      "Location" : {
+        "Address" : "7, Plaza de las Flores, 29005 Málaga, España",
+        "Business Name" : "Chiquita Cruz",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "36.7203062",
+          "Longitude" : "-4.4223056"
+        }
+      },
+      "Published" : "2018-08-01T19:41:57Z",
+      "Title" : "Chiquita Cruz",
+      "Updated" : "2018-08-01T19:41:57Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7012580, 40.4143848 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=242823880822286386",
+      "Location" : {
+        "Address" : "Plaza Santa Ana, 13, 28012 Madrid, España",
+        "Business Name" : "Bar Hawaiano Mauna Loa",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4143848",
+          "Longitude" : "-3.7012580"
+        }
+      },
+      "Published" : "2018-07-21T22:31:46Z",
+      "Title" : "Bar Hawaiano Mauna Loa",
+      "Updated" : "2018-07-21T22:31:46Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6907424, 40.4604955 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=3670927182720436481",
+      "Location" : {
+        "Address" : "Paseo de la Castellana, 149, 28046 Madrid, España",
+        "Business Name" : "Faborit Cuzco",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4604955",
+          "Longitude" : "-3.6907424"
+        }
+      },
+      "Published" : "2018-07-21T15:55:56Z",
+      "Title" : "Faborit Cuzco",
+      "Updated" : "2018-07-21T15:55:56Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7025687, 40.4262460 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=16434893675634103009",
+      "Location" : {
+        "Address" : "28015, Calle de la Palma, 14, 28015 Madrid, España",
+        "Business Name" : "El Rey Lagarto",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4262460",
+          "Longitude" : "-3.7025687"
+        }
+      },
+      "Published" : "2018-07-21T11:33:29Z",
+      "Title" : "El Rey Lagarto",
+      "Updated" : "2018-07-21T11:33:29Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7091226, 40.4196695 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=9619302663755846786",
+      "Location" : {
+        "Address" : "Cuesta Santo Domingo, 14, 28013 Madrid, España",
+        "Business Name" : "Restaurante xiaoman-小满餐厅",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4196695",
+          "Longitude" : "-3.7091226"
+        }
+      },
+      "Published" : "2018-07-07T22:35:28Z",
+      "Title" : "Restaurante xiaoman-小满餐厅",
+      "Updated" : "2018-07-07T22:35:28Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7040130, 40.4194583 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=5489795955453033616",
+      "Location" : {
+        "Address" : "Calle de Chinchilla, 3, 28013 Madrid, España",
+        "Business Name" : "MU! El Placer de la Carne",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4194583",
+          "Longitude" : "-3.7040130"
+        }
+      },
+      "Published" : "2018-07-06T21:30:00Z",
+      "Title" : "MU! El Placer de la Carne",
+      "Updated" : "2018-07-06T21:30:00Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6952024, 40.4106328 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=9425307189484778345",
+      "Location" : {
+        "Address" : "28012, Calle de Atocha, 107, 28012 Madrid, España",
+        "Business Name" : "Discoteca Azúcar",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4106328",
+          "Longitude" : "-3.6952024"
+        }
+      },
+      "Published" : "2018-07-03T06:50:37Z",
+      "Title" : "Discoteca Azúcar",
+      "Updated" : "2018-07-03T06:50:37Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7039560, 40.4255326 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=35042041390295940",
+      "Location" : {
+        "Address" : "Calle de San Andrés, 1, 28004 Madrid, España",
+        "Business Name" : "Ojalá",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4255326",
+          "Longitude" : "-3.7039560"
+        }
+      },
+      "Published" : "2018-06-30T21:22:50Z",
+      "Title" : "Ojalá",
+      "Updated" : "2018-06-30T21:22:50Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -9.1842986, 38.7615241 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=255030989749077271",
+      "Location" : {
+        "Address" : "Largo da Luz, 1600-587 Lisboa, Portugal",
+        "Business Name" : "Jardim da Luz",
+        "Country Code" : "PT",
+        "Geo Coordinates" : {
+          "Latitude" : "38.7615241",
+          "Longitude" : "-9.1842986"
+        }
+      },
+      "Published" : "2018-06-27T14:03:46Z",
+      "Title" : "Jardim da Luz",
+      "Updated" : "2018-06-27T14:03:46Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6978312, 40.4248241 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=5788053304524627079",
+      "Location" : {
+        "Address" : "Calle de Hortaleza, 100, 28004 Madrid, España",
+        "Business Name" : "Honest Greens",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4248241",
+          "Longitude" : "-3.6978312"
+        }
+      },
+      "Published" : "2018-06-24T15:39:09Z",
+      "Title" : "Honest Greens",
+      "Updated" : "2018-06-24T15:39:09Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7025476, 40.4221676 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=16249970219666254974",
+      "Location" : {
+        "Address" : "Calle de la Puebla, 8, 28004 Madrid, España",
+        "Business Name" : "Café de la Luz",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4221676",
+          "Longitude" : "-3.7025476"
+        }
+      },
+      "Published" : "2018-06-10T21:36:01Z",
+      "Title" : "Café de la Luz",
+      "Updated" : "2018-06-10T21:36:01Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7064950, 40.4242310 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=4500053299138944749",
+      "Location" : {
+        "Address" : "Calle del Pez, 36, 28004 Madrid, España",
+        "Business Name" : "Pez Tortilla",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4242310",
+          "Longitude" : "-3.7064950"
+        }
+      },
+      "Published" : "2018-06-10T13:30:22Z",
+      "Title" : "Pez Tortilla",
+      "Updated" : "2018-06-10T13:30:22Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6902578, 40.4350396 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=4660793759551915844",
+      "Location" : {
+        "Address" : "Calle de Fortuny, 53, 28010 Madrid, España",
+        "Business Name" : "Casa Corona Madrid",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4350396",
+          "Longitude" : "-3.6902578"
+        }
+      },
+      "Published" : "2018-05-21T21:15:48Z",
+      "Title" : "Casa Corona",
+      "Updated" : "2018-05-21T21:15:48Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.732719, 40.418928 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?q=Lago+de+la+Casa+de+Campo,+28011+Madrid&ftid=0xd42280f1301ea9b:0xa23ef0ad9eadd814",
+      "Location" : {
+        "Latitude" : "40.418928",
+        "Longitude" : "-3.732719"
+      },
+      "Published" : "2018-05-20T09:17:13Z",
+      "Title" : "Lago de la Casa de Campo, 28011 Madrid",
+      "Updated" : "2018-05-20T09:17:13Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.690299, 40.422883 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?q=40.42288336696131,-3.6902991682291026",
+      "Location" : {
+        "Latitude" : "40.422883",
+        "Longitude" : "-3.690299"
+      },
+      "Published" : "2018-05-16T21:19:27Z",
+      "Title" : "40.42288336696131,-3.6902991682291026",
+      "Updated" : "2018-05-16T21:19:27Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6844995, 40.4152606 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=11415542133959205806",
+      "Location" : {
+        "Address" : "Plaza de la Independencia, 7, 28001 Madrid, España",
+        "Business Name" : "Parque de El Retiro",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4152606",
+          "Longitude" : "-3.6844995"
+        }
+      },
+      "Published" : "2018-05-06T12:09:55Z",
+      "Title" : "Parque de El Retiro",
+      "Updated" : "2018-05-06T12:09:55Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7020380, 40.4019710 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=6957430128164759806",
+      "Location" : {
+        "Address" : "Calle de Ercilla, 29, 28005 Madrid, España",
+        "Business Name" : "Escuela de Teatro PLOT POINT - Escuela, obras de teatro y alquiler salas",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4019710",
+          "Longitude" : "-3.7020380"
+        }
+      },
+      "Published" : "2018-05-01T21:54:50Z",
+      "Title" : "PLOT POINT - Sala de teatro - Escuela de teatro",
+      "Updated" : "2018-05-01T21:54:50Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7064151, 40.3865856 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=11713944079037424172",
+      "Location" : {
+        "Address" : "Calle Nicolás Sánchez, 7, 28026 Madrid, España",
+        "Business Name" : "Supermercado Asia",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.3865856",
+          "Longitude" : "-3.7064151"
+        }
+      },
+      "Published" : "2018-04-28T19:05:35Z",
+      "Title" : "Supermercado Asia",
+      "Updated" : "2018-04-28T19:05:35Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7061441, 40.3850927 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=8563885313511183502",
+      "Location" : {
+        "Address" : "35, Calle Nicolás Sánchez, 28026 Madrid, España",
+        "Business Name" : "Restaurante Lao Tou",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.3850927",
+          "Longitude" : "-3.7061441"
+        }
+      },
+      "Published" : "2018-04-28T17:22:37Z",
+      "Title" : "Restaurante Lao Tou",
+      "Updated" : "2018-04-28T17:22:37Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6623793, 40.4574514 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=10747050592871563758",
+      "Location" : {
+        "Address" : "2ª Planta, Edificio Anexo, Calle Pedro Salinas, 11, 28033 Madrid, España",
+        "Business Name" : "Fundación Universidad-Empresa",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4574514",
+          "Longitude" : "-3.6623793"
+        }
+      },
+      "Published" : "2018-03-23T14:42:30Z",
+      "Title" : "Fundacion Universidad Empresa",
+      "Updated" : "2018-03-23T14:42:30Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7027922, 40.4337343 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=1435309179390808257",
+      "Location" : {
+        "Address" : "Calle Eloy Gonzalo, 10, 28010 Madrid, España",
+        "Business Name" : "Perrachica",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4337343",
+          "Longitude" : "-3.7027922"
+        }
+      },
+      "Published" : "2018-02-02T23:08:37Z",
+      "Title" : "Perrachica",
+      "Updated" : "2018-02-02T23:08:37Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6867095, 40.4376673 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=11821195749901427233",
+      "Location" : {
+        "Address" : "Calle de María de Molina, 20, 28006 Madrid, España",
+        "Business Name" : "Goiko Grill",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4376673",
+          "Longitude" : "-3.6867095"
+        }
+      },
+      "Published" : "2018-01-13T14:17:34Z",
+      "Title" : "Goiko Grill",
+      "Updated" : "2018-01-13T14:17:34Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6939700, 40.4546910 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=12420308446171827669",
+      "Location" : {
+        "Address" : "Avenida de Brasil, 7, 28020 Madrid, España",
+        "Business Name" : "The Irish Rover",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4546910",
+          "Longitude" : "-3.6939700"
+        }
+      },
+      "Published" : "2018-01-13T14:16:34Z",
+      "Title" : "The Irish Rover",
+      "Updated" : "2018-01-13T14:16:34Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6974300, 40.3923033 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=9788010038816440136",
+      "Location" : {
+        "Address" : "Paseo de la Chopera, 14, 28045 Madrid, España",
+        "Business Name" : "Matadero Madrid",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.3923033",
+          "Longitude" : "-3.6974300"
+        }
+      },
+      "Published" : "2018-01-13T14:14:05Z",
+      "Title" : "Matadero Madrid",
+      "Updated" : "2018-01-13T14:14:05Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7074662, 40.4086579 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=9531376301725632699",
+      "Location" : {
+        "Address" : "Calle de la Ribera de Curtidores, 28005 Madrid, España",
+        "Business Name" : "El Rastro",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4086579",
+          "Longitude" : "-3.7074662"
+        }
+      },
+      "Published" : "2018-01-13T14:13:44Z",
+      "Title" : "El Rastro",
+      "Updated" : "2018-01-13T14:13:44Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7010843, 40.4097973 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=14169323668987311339",
+      "Location" : {
+        "Address" : "Calle del Ave María, 44, 28012 Madrid, España",
+        "Business Name" : "Melo's",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4097973",
+          "Longitude" : "-3.7010843"
+        }
+      },
+      "Published" : "2018-01-13T14:12:19Z",
+      "Title" : "Melo's",
+      "Updated" : "2018-01-13T14:12:19Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7015820, 40.4166320 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=5435561169352366452",
+      "Location" : {
+        "Address" : "Carrera de San Jerónimo, 6, 28014 Madrid, España",
+        "Business Name" : "Museo del Jamón",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4166320",
+          "Longitude" : "-3.7015820"
+        }
+      },
+      "Published" : "2018-01-13T14:11:16Z",
+      "Title" : "Museo del Jamón",
+      "Updated" : "2018-01-13T14:11:16Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7028659, 40.4192584 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=17057920457556540125",
+      "Location" : {
+        "Address" : "Calle de las Tres Cruces, 4, 28013 Madrid, España",
+        "Business Name" : "Restaurante Vegetariano Artemisa Sol - Gran Vía",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4192584",
+          "Longitude" : "-3.7028659"
+        }
+      },
+      "Published" : "2018-01-13T14:10:58Z",
+      "Title" : "Restaurante Vegetariano Artemisa Sol - Gran Vía",
+      "Updated" : "2018-01-13T14:10:58Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6940867, 40.4946365 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=2616459663057092281",
+      "Location" : {
+        "Address" : "Calle de Molins de Rey, 3, 28034 Madrid, España",
+        "Business Name" : "Restaurante Pollo y Carbón",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4946365",
+          "Longitude" : "-3.6940867"
+        }
+      },
+      "Published" : "2018-01-13T14:04:36Z",
+      "Title" : "Pollo y Carbón",
+      "Updated" : "2018-01-13T14:04:36Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7071543, 40.5026032 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=2555875402369435120",
+      "Location" : {
+        "Address" : "Calle del Monasterio de Las Huelgas, 17, 28049 Madrid, España",
+        "Business Name" : "Mercadona",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.5026032",
+          "Longitude" : "-3.7071543"
+        }
+      },
+      "Published" : "2018-01-13T14:03:21Z",
+      "Title" : "Mercadona",
+      "Updated" : "2018-01-13T14:03:21Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7073707, 40.5015316 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=15946484039429238473",
+      "Location" : {
+        "Address" : "Calle del Monasterio de Las Huelgas, 9-13, 28034 Madrid, España",
+        "Business Name" : "Rita Sibarita",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.5015316",
+          "Longitude" : "-3.7073707"
+        }
+      },
+      "Published" : "2018-01-13T14:03:10Z",
+      "Title" : "Rita Sibarita",
+      "Updated" : "2018-01-13T14:03:10Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.753666, 40.421432 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?q=Casa+de+Campo,+Madrid&ftid=0xd4187f6d7b76ea7:0x1136998d578ee2fc",
+      "Location" : {
+        "Latitude" : "40.421432",
+        "Longitude" : "-3.753666"
+      },
+      "Published" : "2018-01-13T13:58:52Z",
+      "Title" : "Casa de Campo, Madrid",
+      "Updated" : "2018-01-13T13:58:52Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.685551, 40.468697 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?q=Calle+N%C3%BA%C3%B1ez+Morgado,+11,+28036+Madrid&ftid=0xd4229168f6bcc11:0x9891ff7a8c6e4f79",
+      "Location" : {
+        "Latitude" : "40.468697",
+        "Longitude" : "-3.685551"
+      },
+      "Published" : "2018-01-13T13:56:25Z",
+      "Title" : "Calle Núñez Morgado, 11, 28036 Madrid",
+      "Updated" : "2018-01-13T13:56:25Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6923488, 40.4638940 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=7994199585347842644",
+      "Location" : {
+        "Address" : "Calle del Poeta Joan Maragall, 55, 28020 Madrid, España",
+        "Business Name" : "Restaurante Chi-Zhi-Ju",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4638940",
+          "Longitude" : "-3.6923488"
+        }
+      },
+      "Published" : "2018-01-13T13:56:13Z",
+      "Title" : "Restaurante Chi-Zhi-Ju",
+      "Updated" : "2018-01-13T13:56:13Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7151706, 40.4778834 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=9137135715367972085",
+      "Location" : {
+        "Address" : "Avenida de Monforte de Lemos, 164, 28029 Madrid, España",
+        "Business Name" : "Escuela de Música y Danza Al Compás de la Vaguada S.L",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4778834",
+          "Longitude" : "-3.7151706"
+        }
+      },
+      "Published" : "2018-01-13T13:55:27Z",
+      "Title" : "Escuela de Música y Danza Al Compás de la Vaguada S.L",
+      "Updated" : "2018-01-13T13:55:27Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.691894, 40.425479 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?q=40.42547884031266,-3.691894412040711",
+      "Location" : {
+        "Latitude" : "40.425479",
+        "Longitude" : "-3.691894"
+      },
+      "Published" : "2018-01-06T17:36:19Z",
+      "Title" : "40.42547884031266,-3.691894412040711",
+      "Updated" : "2018-01-06T17:36:19Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7045930, 40.4171724 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=17281916736630592849",
+      "Location" : {
+        "Address" : "Calle de Tetuán, 12, 28013 Madrid, España",
+        "Business Name" : "Casa Labra",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4171724",
+          "Longitude" : "-3.7045930"
+        }
+      },
+      "Published" : "2018-01-05T21:13:50Z",
+      "Title" : "Casa Labra",
+      "Updated" : "2018-01-05T21:13:50Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6946791, 40.5067437 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=983987853567200537",
+      "Location" : {
+        "Address" : "Avenida del Monasterio de Silos, 69, 28049 Madrid, España",
+        "Business Name" : "Taberna La Felipa",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.5067437",
+          "Longitude" : "-3.6946791"
+        }
+      },
+      "Published" : "2018-01-03T17:28:31Z",
+      "Title" : "Taberna La Felipa",
+      "Updated" : "2018-01-03T17:28:31Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6970398, 40.4278171 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=12637898950455606167",
+      "Location" : {
+        "Address" : "Calle de Sagasta, 30, 28004 Madrid, España",
+        "Business Name" : "Tierra Burrito Bar",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4278171",
+          "Longitude" : "-3.6970398"
+        }
+      },
+      "Published" : "2018-01-02T15:29:21Z",
+      "Title" : "Tierra Burrito Bar",
+      "Updated" : "2018-01-02T15:29:21Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.5968138, 37.1785703 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=653923763515808775",
+      "Location" : {
+        "Address" : "Calle Álamo del Marqués, 5, 18010 Granada, España",
+        "Business Name" : "Abaco Té",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "37.1785703",
+          "Longitude" : "-3.5968138"
+        }
+      },
+      "Published" : "2017-12-30T14:55:12Z",
+      "Title" : "Abaco Té",
+      "Updated" : "2017-12-30T14:55:12Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.603959, 37.178410 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?q=Calle+Gran+Capit%C3%A1n,+13,+18002+Granada&ftid=0xd71fcead4448d0f:0x4330ff4ccc1fc52f",
+      "Location" : {
+        "Latitude" : "37.178410",
+        "Longitude" : "-3.603959"
+      },
+      "Published" : "2017-12-28T21:34:23Z",
+      "Title" : "Calle Gran Capitán, 13, 18002 Granada",
+      "Updated" : "2017-12-28T21:34:23Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.640507, 40.542632 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?q=Calle+de+Le%C3%B3n+P%C3%A9rez+Bayo,+15,+28100+Alcobendas,+Madrid&ftid=0xd422cf368a54fa7:0x6d084fd36cc46a40",
+      "Location" : {
+        "Latitude" : "40.542632",
+        "Longitude" : "-3.640507"
+      },
+      "Published" : "2017-10-31T18:14:53Z",
+      "Title" : "Calle de León Pérez Bayo, 15, 28100 Alcobendas, Madrid",
+      "Updated" : "2017-10-31T18:14:53Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -8.906007, 42.222160 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?q=42.22215979177498,-8.906006813049316",
+      "Location" : {
+        "Latitude" : "42.222160",
+        "Longitude" : "-8.906007"
+      },
+      "Published" : "2017-10-26T20:08:34Z",
+      "Title" : "42.22215979177498,-8.906006813049316",
+      "Updated" : "2017-10-26T20:08:34Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 11.5853895, 50.9303930 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=444329461007391494",
+      "Location" : {
+        "Address" : "Fürstengraben 26, 07743 Jena, Alemania",
+        "Business Name" : "Jardín Botánico de Jena",
+        "Country Code" : "DE",
+        "Geo Coordinates" : {
+          "Latitude" : "50.9303930",
+          "Longitude" : "11.5853895"
+        }
+      },
+      "Published" : "2017-10-26T20:02:44Z",
+      "Title" : "Jardín Botánico de Jena",
+      "Updated" : "2017-10-26T20:02:44Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 6.1801770, 46.1691140 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=2958923655007611216",
+      "Location" : {
+        "Address" : "Route de Veyrier 243, 1255 Veyrier, Suiza",
+        "Business Name" : "Catholic Institute La Salésienne",
+        "Country Code" : "CH",
+        "Geo Coordinates" : {
+          "Latitude" : "46.1691140",
+          "Longitude" : "6.1801770"
+        }
+      },
+      "Published" : "2017-10-26T20:00:08Z",
+      "Title" : "Catholic Institute La Salésienne",
+      "Updated" : "2017-10-26T20:00:08Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 6.088792, 46.147494 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?q=Stade+des+Burgondes,+Rue+Jean+Verne,+74160+Saint-Julien-en-Genevois,+Francia&ftid=0x478c7b8bf5541645:0xf3ce41bd32481681",
+      "Location" : {
+        "Latitude" : "46.147494",
+        "Longitude" : "6.088792"
+      },
+      "Published" : "2017-10-26T19:57:17Z",
+      "Title" : "Stade des Burgondes, Rue Jean Verne, 74160 Saint-Julien-en-Genevois, Francia",
+      "Updated" : "2017-10-26T19:57:17Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ 23.312820, 42.700088 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?q=ul.+%22Otets+Paisiy%22+43,+1303+Sofia+Center,+Sofia,+Bulgaria&ftid=0x40aa854254029cab:0x81e98e23aa4df7c6",
+      "Location" : {
+        "Latitude" : "42.700088",
+        "Longitude" : "23.312820"
+      },
+      "Published" : "2017-10-26T19:54:24Z",
+      "Title" : "ul. \"Otets Paisiy\" 43, 1303 Sofia, Bulgaria",
+      "Updated" : "2017-10-26T19:54:24Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -16.544033, 28.408864 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?q=28.408864347631344,-16.544032506644726",
+      "Location" : {
+        "Latitude" : "28.408864",
+        "Longitude" : "-16.544033"
+      },
+      "Published" : "2017-10-26T19:51:00Z",
+      "Title" : "28.408864347631344,-16.544032506644726",
+      "Updated" : "2017-10-26T19:51:00Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -21.919760, 64.144799 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?q=64.14479902067679,-21.919759735465053",
+      "Location" : {
+        "Latitude" : "64.144799",
+        "Longitude" : "-21.919760"
+      },
+      "Published" : "2017-10-26T19:48:59Z",
+      "Title" : "64.14479902067679,-21.919759735465053",
+      "Updated" : "2017-10-26T19:48:59Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -14.0374253, 65.0773597 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=12338118534482411758",
+      "Location" : {
+        "Address" : "Dalbraut 3a, 735 Eskifjorður, Islandia",
+        "Business Name" : "Sundlaug Eskifjarðar",
+        "Country Code" : "IS",
+        "Geo Coordinates" : {
+          "Latitude" : "65.0773597",
+          "Longitude" : "-14.0374253"
+        }
+      },
+      "Published" : "2017-10-26T19:47:01Z",
+      "Title" : "Sundlaug Eskifjarðar",
+      "Updated" : "2017-10-26T19:47:01Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -13.6785793, 65.1475127 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=12263269343406349914",
+      "Location" : {
+        "Address" : "Nesgata, Neskaupstadur, Islandia",
+        "Business Name" : "Nesskóli",
+        "Country Code" : "IS",
+        "Geo Coordinates" : {
+          "Latitude" : "65.1475127",
+          "Longitude" : "-13.6785793"
+        }
+      },
+      "Published" : "2017-10-26T19:45:30Z",
+      "Title" : "Nesskóli",
+      "Updated" : "2017-10-26T19:45:30Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -0.8467492, 38.6316717 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=17039269055771091395",
+      "Location" : {
+        "Address" : "Calle a-W, 3, 03400 Villena, Alicante, España",
+        "Business Name" : "Leyendas Del Rock",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "38.6316717",
+          "Longitude" : "-0.8467492"
+        }
+      },
+      "Published" : "2017-10-26T19:42:44Z",
+      "Title" : "Leyendas Del Rock",
+      "Updated" : "2017-10-26T19:42:44Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7093729, 40.4825672 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=5356042341055418656",
+      "Location" : {
+        "Address" : "Calle de Fermín Caballero, 57, 28034 Madrid, España",
+        "Business Name" : "Generación X Fermín Caballero",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4825672",
+          "Longitude" : "-3.7093729"
+        }
+      },
+      "Published" : "2017-10-26T19:30:04Z",
+      "Title" : "Generación X Fermín Caballero",
+      "Updated" : "2017-10-26T19:30:04Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7221514, 40.4129999 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=137366782038799025",
+      "Location" : {
+        "Address" : "Paseo Bajo de la Virgen del Puerto, s/n, 28005 Madrid, España",
+        "Business Name" : "Sala Riviera",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4129999",
+          "Longitude" : "-3.7221514"
+        }
+      },
+      "Published" : "2017-09-05T16:56:16Z",
+      "Title" : "Sala Riviera",
+      "Updated" : "2017-09-05T16:56:16Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.718502, 40.490949 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?q=40.49094915711426,-3.718501590192318",
+      "Location" : {
+        "Latitude" : "40.490949",
+        "Longitude" : "-3.718502"
+      },
+      "Published" : "2017-08-16T18:18:04Z",
+      "Title" : "40.49094915711426,-3.718501590192318",
+      "Updated" : "2017-08-16T18:18:04Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -0.8651006, 38.6344479 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=3773500697122291497",
+      "Location" : {
+        "Address" : "Av de la Constitución, 56, 03400 Villena, España",
+        "Business Name" : "Viajes El Corte Ingles S.A.",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "38.6344479",
+          "Longitude" : "-0.8651006"
+        }
+      },
+      "Published" : "2017-08-10T11:52:27Z",
+      "Title" : "Viajes El Corte Ingles S.A.",
+      "Updated" : "2017-08-10T11:52:27Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7048426, 40.4966989 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=2938705215494374332",
+      "Location" : {
+        "Address" : "Calle de la Masó, 2, 28034 Madrid, España",
+        "Business Name" : "Farmacia Menchen Herreros",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4966989",
+          "Longitude" : "-3.7048426"
+        }
+      },
+      "Published" : "2017-07-28T13:05:38Z",
+      "Title" : "Farmacia Menchen Herreros",
+      "Updated" : "2017-07-28T13:05:38Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7048279, 40.4968595 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=47826443844611067",
+      "Location" : {
+        "Address" : "Calle de la Masó, 2, 28034 Madrid, España",
+        "Business Name" : "UNIDE MARKET (Hermanos de Marcos Velasco S.L.)",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4968595",
+          "Longitude" : "-3.7048279"
+        }
+      },
+      "Published" : "2017-07-28T13:02:31Z",
+      "Title" : "UNIDE MARKET (Hermanos de Marcos Velasco S.L.)",
+      "Updated" : "2017-07-28T13:02:31Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6907981, 40.4658154 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=5345767482018130523",
+      "Location" : {
+        "Address" : "Calle de Bravo Murillo, 377, 28015 Madrid, España",
+        "Business Name" : "The Good Burger",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4658154",
+          "Longitude" : "-3.6907981"
+        }
+      },
+      "Published" : "2017-07-27T19:26:21Z",
+      "Title" : "TGB - The Good Burger",
+      "Updated" : "2017-07-27T19:26:21Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6120358, 40.5459196 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=4593991404347507055",
+      "Location" : {
+        "Address" : "Plaza del Comercio, 1, 28700 San Sebastián de los Reyes, Madrid, España",
+        "Business Name" : "IKEA",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.5459196",
+          "Longitude" : "-3.6120358"
+        }
+      },
+      "Published" : "2017-07-27T18:39:03Z",
+      "Title" : "IKEA San Sebastián de los Reyes Tienda Muebles",
+      "Updated" : "2017-07-27T18:39:03Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.670050, 40.425717 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=13102943513063332353",
+      "Location" : {
+        "Latitude" : "40.425717",
+        "Longitude" : "-3.670050"
+      },
+      "Published" : "2017-07-20T22:02:03Z",
+      "Title" : "El Corte Inglés S.A.",
+      "Updated" : "2017-07-20T22:02:03Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.670050, 40.425717 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=13102943513063332353",
+      "Location" : {
+        "Latitude" : "40.425717",
+        "Longitude" : "-3.670050"
+      },
+      "Published" : "2017-07-20T22:02:03Z",
+      "Title" : "El Corte Inglés S.A.",
+      "Updated" : "2017-07-20T22:02:03Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7136053, 40.4937045 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=8900246471264729502",
+      "Location" : {
+        "Address" : "Calle Cerro del Castañar, 74, 28034 Madrid, España",
+        "Business Name" : "unide market supermercados",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4937045",
+          "Longitude" : "-3.7136053"
+        }
+      },
+      "Published" : "2017-07-17T21:40:53Z",
+      "Title" : "Supermercado UNIDE MARKET",
+      "Updated" : "2017-07-19T22:00:48Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6787354, 40.4391356 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=3118612288090291564",
+      "Location" : {
+        "Address" : "Calle del Príncipe de Vergara, 108, 28002 Madrid, España",
+        "Business Name" : "BABEL Sistemas de Información",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4391356",
+          "Longitude" : "-3.6787354"
+        }
+      },
+      "Published" : "2017-07-19T21:58:33Z",
+      "Title" : "BABEL Sistemas de Información",
+      "Updated" : "2017-07-19T21:58:33Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6792009, 40.4395239 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=3318877618820483019",
+      "Location" : {
+        "Address" : "Calle del Príncipe de Vergara, 109, 28006 Madrid, España",
+        "Business Name" : "Panaria",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4395239",
+          "Longitude" : "-3.6792009"
+        }
+      },
+      "Published" : "2017-07-19T21:58:27Z",
+      "Title" : "Panaria",
+      "Updated" : "2017-07-19T21:58:27Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6676969, 40.4443568 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=8743002274216162309",
+      "Location" : {
+        "Address" : "Calle de Santa Hortensia, 27, 28002 Madrid, España",
+        "Business Name" : "Bar Chacin",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4443568",
+          "Longitude" : "-3.6676969"
+        }
+      },
+      "Published" : "2017-07-19T21:57:33Z",
+      "Title" : "Bar Chacin",
+      "Updated" : "2017-07-19T21:57:33Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6660523, 40.4438213 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=6083378941248727814",
+      "Location" : {
+        "Address" : "Calle de Santa Hortensia, 26, 28002 Madrid, España",
+        "Business Name" : "IBM",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4438213",
+          "Longitude" : "-3.6660523"
+        }
+      },
+      "Published" : "2017-07-19T21:57:28Z",
+      "Title" : "IBM",
+      "Updated" : "2017-07-19T21:57:28Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6707037, 40.4285453 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=10316896041573026325",
+      "Location" : {
+        "Address" : "Calle de Don Ramón de la Cruz, 109, 28001 Madrid, España",
+        "Business Name" : "Entre Cáceres y Badajoz",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4285453",
+          "Longitude" : "-3.6707037"
+        }
+      },
+      "Published" : "2017-07-19T21:57:00Z",
+      "Title" : "Entre Cáceres y Badajoz",
+      "Updated" : "2017-07-19T21:57:00Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6380492, 40.4386730 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=9944179933913733395",
+      "Location" : {
+        "Address" : "Calle de Arturo Soria, 6, 28027 Madrid, España",
+        "Business Name" : "The Irish Corner",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4386730",
+          "Longitude" : "-3.6380492"
+        }
+      },
+      "Published" : "2017-07-19T21:56:27Z",
+      "Title" : "The Irish Corner",
+      "Updated" : "2017-07-19T21:56:27Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6484372, 40.4332346 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=11578007950239391910",
+      "Location" : {
+        "Address" : "Calle de Alcalá, 337, 28027 Madrid, España",
+        "Business Name" : "Sushiwakka Express",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4332346",
+          "Longitude" : "-3.6484372"
+        }
+      },
+      "Published" : "2017-07-19T21:56:17Z",
+      "Title" : "Sushiwakka Express",
+      "Updated" : "2017-07-19T21:56:17Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7068004, 40.4861389 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=10735376735756220005",
+      "Location" : {
+        "Address" : "Calle Alfredo Marquerie, 14, 28034 Madrid, España",
+        "Business Name" : "Mercadona",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4861389",
+          "Longitude" : "-3.7068004"
+        }
+      },
+      "Published" : "2017-07-13T21:10:50Z",
+      "Title" : "Mercadona",
+      "Updated" : "2017-07-13T21:10:50Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.7074780, 40.4799938 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=14766907732397452734",
+      "Location" : {
+        "Address" : "Avenida de Monforte de Lemos, 36, 28029 Madrid, España",
+        "Business Name" : "Centro Comercial La Vaguada",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4799938",
+          "Longitude" : "-3.7074780"
+        }
+      },
+      "Published" : "2017-07-08T11:53:13Z",
+      "Title" : "Centro Comercial La Vaguada",
+      "Updated" : "2017-07-08T11:53:13Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6639196, 40.4302642 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=6053295970930360254",
+      "Location" : {
+        "Address" : "Calle de Alcalá, 200, 28028 Madrid, España",
+        "Business Name" : "Ginos",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4302642",
+          "Longitude" : "-3.6639196"
+        }
+      },
+      "Published" : "2017-07-08T11:22:31Z",
+      "Title" : "Ginos Alcalá 200",
+      "Updated" : "2017-07-08T11:22:31Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6637761, 40.4303567 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=9213944094130346926",
+      "Location" : {
+        "Address" : "Calle de Alcalá, 200, 28028 Madrid, España",
+        "Business Name" : "Shukran City",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4303567",
+          "Longitude" : "-3.6637761"
+        }
+      },
+      "Published" : "2017-07-08T11:22:16Z",
+      "Title" : "Shukran City",
+      "Updated" : "2017-07-08T11:22:16Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6548050, 40.4357435 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=10223308015385101892",
+      "Location" : {
+        "Address" : "Calle Virgen del Portillo, 7, 28027 Madrid, España",
+        "Business Name" : "Los Nachos de Oro",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4357435",
+          "Longitude" : "-3.6548050"
+        }
+      },
+      "Published" : "2017-07-08T11:20:14Z",
+      "Title" : "Los Nachos de Oro",
+      "Updated" : "2017-07-08T11:20:14Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6777427, 40.4124509 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=11233211962257167114",
+      "Location" : {
+        "Address" : "Paseo Uruguay, 5, 28009 Madrid, España",
+        "Business Name" : "Pabellón de los Jardines de Cecilio Rodríguez",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4124509",
+          "Longitude" : "-3.6777427"
+        }
+      },
+      "Published" : "1970-01-01T00:00:00Z",
+      "Title" : "Pabellón de los Jardines de Cecilio Rodríguez",
+      "Updated" : "1970-01-01T00:00:00Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6006569, 40.4546671 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=16396564719822248897",
+      "Location" : {
+        "Address" : "Paseo de la Alameda de Osuna, 25, 28042 Madrid, España",
+        "Business Name" : "Parque El Capricho",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4546671",
+          "Longitude" : "-3.6006569"
+        }
+      },
+      "Published" : "1970-01-01T00:00:00Z",
+      "Title" : "Parque El Capricho",
+      "Updated" : "1970-01-01T00:00:00Z"
+    },
+    "type" : "Feature"
+  }, {
+    "geometry" : {
+      "coordinates" : [ -3.6610617, 40.4235870 ],
+      "type" : "Point"
+    },
+    "properties" : {
+      "Google Maps URL" : "http://maps.google.com/?cid=324225078564787260",
+      "Location" : {
+        "Address" : "España",
+        "Business Name" : "Quinta de la Fuente del Berro",
+        "Country Code" : "ES",
+        "Geo Coordinates" : {
+          "Latitude" : "40.4235870",
+          "Longitude" : "-3.6610617"
+        }
+      },
+      "Published" : "1970-01-01T00:00:00Z",
+      "Title" : "Quinta de la Fuente del Berro",
+      "Updated" : "1970-01-01T00:00:00Z"
+    },
+    "type" : "Feature"
+  } ]
+}
