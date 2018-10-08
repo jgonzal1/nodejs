@@ -8,7 +8,60 @@
         <link rel="stylesheet" href="style/style.css">
     </head>
     <body>
+        <!-- Three columns -->
+        <div class="row">
+            <div class="column" onclick="openTab('music');" style="background:#90cc90;">
+                Music
+            </div>
+            <div class="column" onclick="openTab('b2');" style="background:#cfc999;">
+                Box 2
+            </div>
+            <div class="column" onclick="openTab('b3');" style="background:#90cc90;">
+                Box 3
+            </div>
+        </div>
+        
+        <!-- Full-width columns: (hidden by default) -->
+        <div id="music" class="containerTab" style="display:none;background:#90cc90">
+            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+            <div class="row">
+                    <div class="column" onclick="openTab('music');" style="background:#90cc90;">
+                        <h2>Music</h2>
+                        <iframe src="https://open.spotify.com/embed/user/foilism/playlist/0xzpsVjnE6OSjdBC4iIzqe" width="auto" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>                
+                    </div>
+                    <div class="column">
+                        Box 12
+                    </div>
+                    <div class="column">
+                        Box 13
+                    </div>
+            </div>
+        </div>
+        
+        <div id="b2" class="containerTab" style="display:none;background:#cfc999">
+            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+            <h2>Box 2</h2>
+            <p>Lorem ipsum dolor sit amet, te quo doctus abhorreant, et pri deleniti intellegat, te sanctus inermis ullamcorper nam. Ius error diceret deseruisse ad</p>
+        </div>
+        
+        <div id="b3" class="containerTab" style="display:none;background:#90cc90">
+            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+            <h2>Box 3</h2>
+            <p>Lorem ipsum dolor sit amet, te quo doctus abhorreant, et pri deleniti intellegat, te sanctus inermis ullamcorper nam. Ius error diceret deseruisse ad</p>
+        </div>
+
         <div id="map"></div>
         <script src="bundle.js"></script>
+        <script>
+        // Hide all elements with class="containerTab", except for the one that matches the clickable grid column
+        function openTab(tabName) {
+            var i, x;
+            x = document.getElementsByClassName("containerTab");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
+        </script>
     </body>
 </html>
