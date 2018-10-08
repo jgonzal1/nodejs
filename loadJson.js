@@ -18,38 +18,16 @@ function jsonFileKeyRecogniser(jsonFile,requiredKey) {
  * @async /!\ syncronicity in NodeJS, may cause large files
  * to be loaded after following functions.
  * @param {string} fileName 
- * @returns {JSON} textoJson[0]
+ * @returns {JSON} textoJson
  */
 function jsonLoader(fileName) {
-  const json = fs.readFileSync(fileName);
-  const textoJson = JSON.parse(json);
-  // for (let k = 0; k < textoJson.length; k++) { textoJson[k]==1; }
-  /*console.log(
-    `${JSON
-      .stringify(textoJson)
-      .substring(
-        0, // from start of the JSON ...
-        JSON
-          .stringify(textoJson)
-          .indexOf(" ")
-        // ... to first space
-      )
-    } ...` //then add suspension points
-  );*/
+  const buffer = fs.readFileSync(fileName);
+  const textoJson = JSON.parse(buffer);
   return textoJson;
 }
 
 if (require.main === module) {
-  if (process.argv[3]) {
-    //quiere sacar una key
-    jsonFileKeyRecogniser(process.argv[2], process.argv[3]);
-  } else if (process.argv[2]) {
-    //quiere leer un json
     jsonLoader(process.argv[2]);
-  } else {
-    //quiere ver si tira con la configuración estándar
-    jsonLoader('./database_handlers/cosmosdbConfig.json');
-  }
 }
 
 module.exports = jsonLoader;
