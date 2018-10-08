@@ -1,3 +1,8 @@
+# Private Data
+reviewedSites.json
+savedSites.json
+taggedSites.json
+
 # Logs
 logs
 *.log
