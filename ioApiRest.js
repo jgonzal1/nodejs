@@ -39,9 +39,8 @@ function setIOEndpoint(input, output) {
   });
 }
 
-
-
 if (require.main === module) {
+  setApiPort(4000);
   setIOEndpoint(process.argv[2], process.argv[3]);
 }
 
