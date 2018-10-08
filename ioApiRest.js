@@ -1,8 +1,23 @@
+/**
+ * USAGE
+ * setApiPort(webServicePort: number)
+ * setIOEndpoint(input: string, output: string)
+ */
 var express = require("express");
 var bodyParser = require("body-parser");
 
 var app = express();
-var webServicePort = 3000;
+
+/**
+ * @param {number} webServicePort
+ * @returns running express app
+ */
+function setApiPort(webServicePort) {
+  this.webServicePort = (webServicePort || 3000);
+  app.listen(webServicePort, function () {
+    console.log(`Node server running on http://localhost:${webServicePort}/`);
+  });
+}
 
 /**
  * @param {string} input 
@@ -24,12 +39,11 @@ function setIOEndpoint(input, output) {
   });
 }
 
-app.listen(webServicePort, function () {
-  console.log(`Node server running on http://localhost:${webServicePort}/`);
-});
+
 
 if (require.main === module) {
   setIOEndpoint(process.argv[2], process.argv[3]);
 }
 
-module.exports = setIOEndpoint;
+module.exports.setApiPort = setApiPort;
+module.exports.setIOEndpoint = setIOEndpoint;
