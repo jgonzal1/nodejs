@@ -60,17 +60,54 @@ let pinkIcon   = L.icon(createIcon('style/marker-pink.png'));
 let greenIcon  = L.icon(createIcon('style/marker-green.png'));
 let blueIcon   = L.icon(createIcon('style/marker-blue.png'));
 let playerIcon = L.icon(createIcon('style/ratkid-shaded.png'));
+let bloodyeyeIcon = L.icon(createIcon('sprites/enemies/bloodyeye.png'));
+let deathIcon = L.icon(createIcon('sprites/enemies/death.png'));
+let mummyIcon = L.icon(createIcon('sprites/enemies/mummy.png'));
+let owlIcon = L.icon(createIcon('sprites/enemies/owl.png'));
+let phantomIcon = L.icon(createIcon('sprites/enemies/phantom.png'));
+let pirateskullIcon = L.icon(createIcon('sprites/enemies/pirateskull.png'));
+let skeletonIcon = L.icon(createIcon('sprites/enemies/skeleton.png'));
+let spiderIcon = L.icon(createIcon('sprites/enemies/spider.png'));
+let undeadhandIcon = L.icon(createIcon('sprites/enemies/undeadhand.png'));
+let vampireIcon = L.icon(createIcon('sprites/enemies/vampire.png'));
 let player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
 );
-let target 		= L.marker([lat+(Math.random()-0.5)/10000, long+(Math.random()-0.5)/1000], {icon: blueIcon}).bindPopup(
-	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
+let bloodyeye 	= L.marker([lat+(Math.random()-0.5)/30, long+(Math.random()-0.5)/30], {icon: bloodyeyeIcon}).bindPopup(
+	'<color="red"><b>Enemigo</b></color>'
+);
+let death 		= L.marker([lat+(Math.random()-0.5)/30, long+(Math.random()-0.5)/30], {icon: deathIcon 	}).bindPopup(
+'<color="red"><b>Enemigo</b></color>'
+);
+let mummy 		= L.marker([lat+(Math.random()-0.5)/30, long+(Math.random()-0.5)/30], {icon: mummyIcon 	}).bindPopup(
+'<color="red"><b>Enemigo</b></color>'
+);
+let owl 		= L.marker([lat+(Math.random()-0.5)/30, long+(Math.random()-0.5)/30], {icon: owlIcon 	}).bindPopup(
+'<color="red"><b>Enemigo</b></color>'
+);
+let phantom 	= L.marker([lat+(Math.random()-0.5)/30, long+(Math.random()-0.5)/30], {icon: phantomIcon }).bindPopup(
+'<color="red"><b>Enemigo</b></color>'
+);
+let pirateskull = L.marker([lat+(Math.random()-0.5)/30, long+(Math.random()-0.5)/30], {icon: pirateskullIcon}).bindPopup(
+'<color="red"><b>Enemigo</b></color>'
+);
+let skeleton 	= L.marker([lat+(Math.random()-0.5)/30, long+(Math.random()-0.5)/30], {icon: skeletonIcon }).bindPopup(
+'<color="red"><b>Enemigo skeleton</b></color>'
+);
+let spider 		= L.marker([lat+(Math.random()-0.5)/30, long+(Math.random()-0.5)/30], {icon: spiderIcon 	}).bindPopup(
+'<color="red"><b>Enemigo spider</b></color>'
+);
+let undeadhand 	= L.marker([lat+(Math.random()-0.5)/30, long+(Math.random()-0.5)/30], {icon: undeadhandIcon }).bindPopup(
+'<color="red"><b>Enemigo undeadhand</b></color>'
+);
+let vampire 	= L.marker([lat+(Math.random()-0.5)/30, long+(Math.random()-0.5)/30], {icon: vampireIcon }).bindPopup(
+'<color="red"><b>Enemigo vampire</b></color>'
 );
 /*let markers = [];
 markers.push(player);
 for(let i in sites) {
     markers.push(L.marker([sites[i][1], sites[i][2]], {icon: pinkIcon}).bindPopup('<b>'+sites[i][0]+'</b>'))
-}*/
+}
 let	klagenfurt 	= L.marker([46.623997, 14.307812], {icon: pinkIcon	}).bindPopup('<b>Klagenfurt, Kärnten</b>'),
 	graz 		= L.marker([47.070762, 15.438698], {icon: pinkIcon	}).bindPopup('<b>Graz, Steiermark</b>'),
 	salzburg 	= L.marker([47.805109, 13.041151], {icon: pinkIcon	}).bindPopup('<b>Salzburg, Salzburg</b>'),
@@ -78,13 +115,15 @@ let	klagenfurt 	= L.marker([46.623997, 14.307812], {icon: pinkIcon	}).bindPopup(
 	wien 		= L.marker([48.208539, 16.372505], {icon: greenIcon	}).bindPopup('<b>Wien, Wien</b>'),
 	stpoelten 	= L.marker([48.203828, 15.630877], {icon: greenIcon	}).bindPopup('<b>St. Pölten, Niederösterreich</b>'),
 	linz 		= L.marker([48.307025, 14.284829], {icon: blueIcon	}).bindPopup('<b>Linz, Oberösterreich</b>')//,
- // innsbruck	= L.marker([47.268896, 11.401791], {icon: blueIcon	}).bindPopup('<b>Innsbruck, Tirol</b>'),
- // bregenz		= L.marker([47.500929,  9.740660], {icon: blueIcon	}).bindPopup('<b>Bregenz, Vorarlberg</b>')
-;
+    innsbruck	= L.marker([47.268896, 11.401791], {icon: blueIcon	}).bindPopup('<b>Innsbruck, Tirol</b>'),
+    bregenz		= L.marker([47.500929,  9.740660], {icon: blueIcon	}).bindPopup('<b>Bregenz, Vorarlberg</b>')
+;*/
 let layers = L
 	.layerGroup([
 		//markers
-		player, target, klagenfurt, graz, eisenstadt, salzburg, wien, stpoelten, linz
+		player,
+		bloodyeye, death, mummy, owl, phantom, pirateskull, skeleton, spider, undeadhand, vampire
+		// target, klagenfurt, graz, eisenstadt, salzburg, wien, stpoelten, linz
 	]) // ^ , innsbruck, bregenz
 	.addTo(map);
 
@@ -92,16 +131,17 @@ let layers = L
 function keyListener(milliseconds) {
 	let moveDaemonizer = setInterval(function() {
 		const spawnNewPoint = Math.random();
-		if (spawnNewPoint > 0.9) {
-			const latDiff = player.getLatLng().lat - target.getLatLng().lat;
-			const lngDiff = player.getLatLng().lng - target.getLatLng().lng;
-			let forcedDirection;
-			if (Math.abs(latDiff) > Math.abs(lngDiff)) {
-				if (latDiff>0) {forcedDirection='d'} else {forcedDirection='a'}
-			} else {
-				if (lngDiff>0) {forcedDirection='w'} else {forcedDirection='s'}
-			}
-			moveCharacter(target, forcedDirection);
+		if (spawnNewPoint > 0.5) {
+			goToPlayer(bloodyeye);
+			goToPlayer(death);
+			goToPlayer(mummy);
+			goToPlayer(owl);
+			goToPlayer(phantom);
+			goToPlayer(pirateskull);
+			goToPlayer(skeleton);
+			goToPlayer(spider);
+			goToPlayer(undeadhand);
+			goToPlayer(vampire);
 		}
 		moveCharacter(player);
 		//counter++;
@@ -117,9 +157,9 @@ function fleeFromPlayer(target) {
 	const lngDiff = player.getLatLng().lng - target.getLatLng().lng;
 	let forcedDirection;
 	if (Math.abs(latDiff) > Math.abs(lngDiff)) {
-		if (latDiff>0) {forcedDirection='a'} else {forcedDirection='d'}
+		if (latDiff>0) {forcedDirection='s'} else {forcedDirection='w'}
 	} else {
-		if (lngDiff>0) {forcedDirection='s'} else {forcedDirection='w'}
+		if (lngDiff>0) {forcedDirection='a'} else {forcedDirection='d'}
 	}
 	moveCharacter(target, forcedDirection);
 }
@@ -129,9 +169,9 @@ function goToPlayer(target) {
 	const lngDiff = player.getLatLng().lng - target.getLatLng().lng;
 	let forcedDirection;
 	if (Math.abs(latDiff) > Math.abs(lngDiff)) {
-		if (latDiff>0) {forcedDirection='d'} else {forcedDirection='a'}
+		if (latDiff>0) {forcedDirection='w'} else {forcedDirection='s'}
 	} else {
-		if (lngDiff>0) {forcedDirection='w'} else {forcedDirection='s'}
+		if (lngDiff>0) {forcedDirection='d'} else {forcedDirection='a'}
 	}
 	moveCharacter(target, forcedDirection);
 }
