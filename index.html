@@ -23,10 +23,10 @@
             <div class="column" onclick="openTab('music');" style="color:#444444;background:#90cc90;">
                 Música
             </div>   
-            <div class="column" style="color:#444444">
+            <div class="column" style="color:#444444;background:#cfc999;">
                 <div id="logs"></div>
             </div>
-            <div class="column" style="color:#cfc999">
+            <div class="column" style="color:#dddddd">
                 <div id="hiddenlogs"></div>
             </div>         
         </div>
@@ -75,9 +75,10 @@
                     event.preventDefault();
                 }
                 buttonsPushed++;
-                document.getElementById("hiddenlogs").innerHTML =
-                    " Handler for .keypress() called " + buttonsPushed + " time(s)." +
-                    " Last key was " + event.key; //<p> works but is unhidden
+                document.getElementById("hiddenlogs").innerHTML = event.key;
+                    // " " + buttonsPushed + "t," + // Times called .keypress() handler
+                    // " " + event.key + " key"; // Last pushed key in keyboard
+                    // <p> works but is unhidden
             }
         );
         //*/
