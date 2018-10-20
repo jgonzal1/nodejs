@@ -4,6 +4,8 @@ const getPwds = require('./dev.private.js');
 const pwd = getPwds();
 const austria = require('./data/austria');
 const states = austria();
+const getSites = require('./data/sites');
+const sites = getSites();
 let L = require('leaflet');
 
 //#region Create Base Layers
@@ -60,8 +62,16 @@ let blueIcon   = L.icon(createIcon('style/marker-blue.png'));
 let playerIcon = L.icon(createIcon('style/ratkid-shaded.png'));
 let player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
-),
-	klagenfurt 	= L.marker([46.623997, 14.307812], {icon: pinkIcon	}).bindPopup('<b>Klagenfurt, Kärnten</b>'),
+);
+let target 		= L.marker([lat+(Math.random()-0.5)/10000, long+(Math.random()-0.5)/1000], {icon: blueIcon}).bindPopup(
+	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
+);
+/*let markers = [];
+markers.push(player);
+for(let i in sites) {
+    markers.push(L.marker([sites[i][1], sites[i][2]], {icon: pinkIcon}).bindPopup('<b>'+sites[i][0]+'</b>'))
+}*/
+let	klagenfurt 	= L.marker([46.623997, 14.307812], {icon: pinkIcon	}).bindPopup('<b>Klagenfurt, Kärnten</b>'),
 	graz 		= L.marker([47.070762, 15.438698], {icon: pinkIcon	}).bindPopup('<b>Graz, Steiermark</b>'),
 	salzburg 	= L.marker([47.805109, 13.041151], {icon: pinkIcon	}).bindPopup('<b>Salzburg, Salzburg</b>'),
 	eisenstadt 	= L.marker([47.845993, 16.527337], {icon: greenIcon	}).bindPopup('<b>Eisenstadt, Burgenland</b>'),
@@ -73,13 +83,26 @@ let player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 ;
 let layers = L
 	.layerGroup([
-		player, klagenfurt, graz, eisenstadt, salzburg, wien, stpoelten, linz
+		//markers
+		player, target, klagenfurt, graz, eisenstadt, salzburg, wien, stpoelten, linz
 	]) // ^ , innsbruck, bregenz
 	.addTo(map);
 
 //let counter = 1;
 function keyListener(milliseconds) {
 	let moveDaemonizer = setInterval(function() {
+		const spawnNewPoint = Math.random();
+		if (spawnNewPoint > 0.9) {
+			const latDiff = player.getLatLng().lat - target.getLatLng().lat;
+			const lngDiff = player.getLatLng().lng - target.getLatLng().lng;
+			let forcedDirection;
+			if (Math.abs(latDiff) > Math.abs(lngDiff)) {
+				if (latDiff>0) {forcedDirection='d'} else {forcedDirection='a'}
+			} else {
+				if (lngDiff>0) {forcedDirection='w'} else {forcedDirection='s'}
+			}
+			moveCharacter(target, forcedDirection);
+		}
 		moveCharacter(player);
 		//counter++;
 	}, milliseconds);
@@ -89,13 +112,40 @@ keyListener(33); //30+ fps
 //#endregion
 
 //#region Move handlers
-function moveCharacter(character, movemap, forceDirection) { // 80km/h | 12x
+function fleeFromPlayer(target) {
+	const latDiff = player.getLatLng().lat - target.getLatLng().lat;
+	const lngDiff = player.getLatLng().lng - target.getLatLng().lng;
+	let forcedDirection;
+	if (Math.abs(latDiff) > Math.abs(lngDiff)) {
+		if (latDiff>0) {forcedDirection='a'} else {forcedDirection='d'}
+	} else {
+		if (lngDiff>0) {forcedDirection='s'} else {forcedDirection='w'}
+	}
+	moveCharacter(target, forcedDirection);
+}
+
+function goToPlayer(target) {
+	const latDiff = player.getLatLng().lat - target.getLatLng().lat;
+	const lngDiff = player.getLatLng().lng - target.getLatLng().lng;
+	let forcedDirection;
+	if (Math.abs(latDiff) > Math.abs(lngDiff)) {
+		if (latDiff>0) {forcedDirection='d'} else {forcedDirection='a'}
+	} else {
+		if (lngDiff>0) {forcedDirection='w'} else {forcedDirection='s'}
+	}
+	moveCharacter(target, forcedDirection);
+}
+
+function getRandomInt(max) {
+	return Math.floor(Math.random() * Math.floor(max));
+}
+
+function moveCharacter(character, forceDirection, movemap) { // 80km/h | 12x
 	character = ( character || player );
 	movemap = (movemap || ['w', 'a', 's', 'd'] );
-	forceDirection = (forceDirection || 'w')
-	const direction = L.DomUtil.get(hiddenlogs).innerHTML
+	const direction = (forceDirection || L.DomUtil.get(hiddenlogs).innerHTML)
 	switch (direction) { //forceDirection
-	case 'w': //movemap[0]
+	case movemap[0]:
 		character.setLatLng(L.latLng(character.getLatLng().lat+0.00001,character.getLatLng().lng));
 		break;
 	case movemap[1]:
