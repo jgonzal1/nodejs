@@ -1,5 +1,7 @@
 const createIcon = require('./style/createIcon');
 const geoJsonStylers = require('./style/geoJsonStylers');
+const getPwds = require('./dev.private.js');
+const pwd = getPwds();
 const austria = require('./data/austria');
 const states = austria();
 let L = require('leaflet');
@@ -7,30 +9,47 @@ let L = require('leaflet');
 //#region Create Base Layers
 let map = L.map('map', { /*scrollWheelZoom: false*/ } );
 let coords, lat, long, zoom;
-   coords = [40.4942011, -3.7101309, 16] // MADRID
+   coords = [40.4942011, -3.7101309, 15] // MADRID
 // coords = [ 6.509594	, 3.370337 , 15] // PLAYER @ Laos, Nigeria
 // coords = [47.70     , 14.74     , 8 ] // AUSTRIA
 // coords = [48.303360 , 14.301875 , 17] // PLAYER @ Linz, Oberösterreich
 lat  = coords[0]; // y
 long = coords[1]; // x
 zoom = coords[2]; // z
+// L.circle([lat, long], {radius: 200, color: "black"}).addTo(map);
 map.setView([lat, long], zoom);
 let artisticMap = L.tileLayer(
     'http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
-    { maxZoom: 17 }
+    { minZoom: 2, maxZoom: 17 }
 ).addTo(map);
-/*let artisticMapAtNight = L.tileLayer.grayscale(
-	'http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
-	{ maxZoom: 14, minZoom: 2 }
+/*let tonerMap = L.tileLayer.Grayscale(
+    'http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
+    { maxZoom: 17 }
 )*/
-let osmMapnik = L.tileLayer(
-	'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    { maxZoom: 19 }
+
+let hellMap = L.tileLayer(
+	'https://tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png?apikey='+pwd['thunderforestKey']
 )
+
+let osmMap = L.tileLayer(
+	'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    { minZoom: 2, maxZoom: 19 }
+)
+
+let satelliteMap = L.tileLayer(
+	'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+	{
+	attribution:
+		'Tiles &copy; Esri &mdash; Source:' +
+		'Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+	}
+);
+
 let baseLayers = {
-	"Mapa Acuarela": artisticMap,	
-	//"Mapa Acuarela Night Mode": artisticMapAtNight,
-	"Mapa completo OSM": osmMapnik,
+	"Mapa juego": artisticMap,
+	"Mapa nocturno": hellMap,	
+	"Mapa descriptivo": osmMap,
+	"Mapa satélite": satelliteMap,
 };
 //#endregion
 
