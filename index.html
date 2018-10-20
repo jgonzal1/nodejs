@@ -10,10 +10,7 @@
         <script src="https://api.jquery.com/resources/events.js"></script>
     </head>
     <body>
-        <div id="map"></div>
-
-        <!-- Instance columns -->
-        <div class="row" width="100%">
+        <div class="row" width="100%"><!-- Instances columns -->
             <div class="column" onclick="openTab('b2');" style="color:#444444;background:#90cc90;">
                 Guardar
             </div>
@@ -45,16 +42,25 @@
             <div class="row">
                     <div class="column" onclick="openTab('music');">
                         <p>Música predefinida</p>
-                        <iframe src="https://open.spotify.com/embed/user/foilism/playlist/0xzpsVjnE6OSjdBC4iIzqe" width="auto" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>                
-                    </div>
+                        <!--
+                        <iframe
+                            src="https://open.spotify.com/embed/user/foilism/playlist/0xzpsVjnE6OSjdBC4iIzqe"
+                            width="auto" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media">
+                        </iframe>
+                        -->
+                        <iframe
+                            src="https://www.youtube.com/embed/LQmi1GaQH2o"
+                            width="auto" height="200" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                        </iframe>                    </div>
                     <div class="column">
-                        <p>Género:</p>(lo-fi, instrumental)
+                        <p>Género:</p>(chiptune) <!--lo-fi, instrumental-->
                     </div>
                     <div class="column">
                         <p>Artistas:</p>(aleatorio)
                     </div>
             </div>
         </div>
+        <div id="map"></div>
 
         <script src="bundle.js"></script>
         <script>
