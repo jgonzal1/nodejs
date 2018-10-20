@@ -9,45 +9,45 @@
     </head>
     <body>
         <!-- Three columns -->
-        <div class="row">
+        <div class="row" width="100%">
+            <div class="column" onclick="openTab('b2');" style="background:#90cc90;">
+                Guardar
+            </div>
+            <div class="column" onclick="openTab('b3');" style="background:#cfc999;">
+                Opciones
+            </div>
             <div class="column" onclick="openTab('music');" style="background:#90cc90;">
-                Music
-            </div>
-            <div class="column" onclick="openTab('b2');" style="background:#cfc999;">
-                Box 2
-            </div>
-            <div class="column" onclick="openTab('b3');" style="background:#90cc90;">
-                Box 3
-            </div>
+                Música
+            </div>            
         </div>
         
         <!-- Full-width columns: (hidden by default) -->
+        <div id="b2" class="containerTab" style="display:none;background:#90cc90">
+            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+            <p>¡Los cambios en tiempo real se guardan automáticamente!</p>
+            <p>Generando savegame.JSON ... aparecerá un pop-up cuando el guardado se complete.</p>
+        </div>
+        
+        <div id="b3" class="containerTab" style="display:none;background:#cfc999">
+            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+            <h2>Cargar JSON</h2>
+            <p>indev</p>
+        </div>
         <div id="music" class="containerTab" style="display:none;background:#90cc90">
             <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
             <div class="row">
-                    <div class="column" onclick="openTab('music');" style="background:#90cc90;">
-                        <h2>Music</h2>
+
+                    <div class="column" onclick="openTab('music');">
+                        <p>Música predefinida</p>
                         <iframe src="https://open.spotify.com/embed/user/foilism/playlist/0xzpsVjnE6OSjdBC4iIzqe" width="auto" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>                
                     </div>
                     <div class="column">
-                        Box 12
+                        <p>Género:</p>(lo-fi, instrumental)
                     </div>
                     <div class="column">
-                        Box 13
+                        <p>Artistas:</p>(aleatorio)
                     </div>
             </div>
-        </div>
-        
-        <div id="b2" class="containerTab" style="display:none;background:#cfc999">
-            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-            <h2>Box 2</h2>
-            <p>Lorem ipsum dolor sit amet, te quo doctus abhorreant, et pri deleniti intellegat, te sanctus inermis ullamcorper nam. Ius error diceret deseruisse ad</p>
-        </div>
-        
-        <div id="b3" class="containerTab" style="display:none;background:#90cc90">
-            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-            <h2>Box 3</h2>
-            <p>Lorem ipsum dolor sit amet, te quo doctus abhorreant, et pri deleniti intellegat, te sanctus inermis ullamcorper nam. Ius error diceret deseruisse ad</p>
         </div>
 
         <div id="map"></div>
