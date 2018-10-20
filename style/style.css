@@ -1,3 +1,7 @@
+body {
+    background-color: #dddddd;
+}
+
 #map
 {
     width: auto;
@@ -7,7 +11,7 @@
 /* The grid: Three equal columns that floats next to each other */
 .column {
     float: left;
-    width: 31.9%;
+    /*width: 31.9%;*/
     padding: 5px;
     text-align: center;
     font-size: 25px;
@@ -20,6 +24,9 @@
     color: white;
 }
 
+.row{
+    width: 100%;
+}
 /* Clear floats after the columns */
 .row:after {
     content: "";

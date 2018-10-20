@@ -1,6 +1,5 @@
 const austria = require('./data/austria')
 const states = austria();
-const fs = require('fs');
 let L = require('leaflet');
 
 //#region Create Base Layers
@@ -9,8 +8,9 @@ var map = L.map('map', {
 });
 
 // Set the position and zoom level of the map
-// map.setView([40.4942011, -3.7101309], 13);
-map.setView([47.70, 14.74], 8);
+// map.setView([40.4942011, -3.7101309], 13); // MADRID
+// map.setView([47.70, 14.74], 8); // AUSTRIA
+map.setView([48.303360, 14.301875], 17); // PLAYER
 
 // Initialize the base layers
 var artistic_map = L.tileLayer(
@@ -53,7 +53,14 @@ var blueIcon = L.icon({
     iconAnchor: [18, 39],
     popupAnchor: [10, -35]
 });
-var klagenfurt = L.marker([46.623997, 14.307812], {icon: pinkIcon}).bindPopup('<b>Klagenfurt, Kärnten</b>'),
+var playerIcon = L.icon({
+    iconUrl: 'style/ratkid_shaded.png',
+    iconSize: [39, 39],
+    iconAnchor: [18, 39],
+    popupAnchor: [10, -35]
+});
+var player = L.marker([48.303360, 14.301875], {icon: playerIcon}).bindPopup('<b>Tú (Ratkids rookie, lvl. 1)</b>'),
+klagenfurt = L.marker([46.623997, 14.307812], {icon: pinkIcon}).bindPopup('<b>Klagenfurt, Kärnten</b>'),
 graz = L.marker([47.070762, 15.438698], {icon: pinkIcon}).bindPopup('<b>Graz, Steiermark</b>'),
 salzburg = L.marker([47.805109, 13.041151], {icon: pinkIcon}).bindPopup('<b>Salzburg, Salzburg</b>'),
 eisenstadt = L.marker([47.845993, 16.527337], {icon: greenIcon}).bindPopup('<b>Eisenstadt, Burgenland</b>'),
@@ -65,7 +72,8 @@ linz = L.marker([48.307025, 14.284829], {icon: blueIcon}).bindPopup('<b>Linz, Ob
 ;
 var capitals = L.layerGroup(
     [
-        klagenfurt, graz, eisenstadt,
+		player,
+		klagenfurt, graz, eisenstadt,
         salzburg, wien, stpoelten,
         linz//, innsbruck, bregenz
     ]
@@ -186,4 +194,11 @@ legend.onAdd = function (map) {
 };
 
 legend.addTo(map);//*/
+//#endregion
+
+//#region add webm //
+/*var videoUrl = 'https://www.mapbox.com/bites/00188/patricia_nasa.webm',
+    videoBounds = [[ 32, -130], [ 13, -100]];
+L.videoOverlay(videoUrl, videoBounds ).addTo(map);
+*/
 //#endregion
