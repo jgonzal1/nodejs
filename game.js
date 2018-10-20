@@ -8,8 +8,8 @@ let L = require('leaflet');
 let map = L.map('map', { /*scrollWheelZoom: false*/ } );
 let coords, lat, long, zoom;
 // coords = [40.4942011, -3.7101309, 13] // MADRID
-// coords = [47.70     , 14.74     , 8 ] // AUSTRIA
-   coords = [48.303360 , 14.301875 , 17] // PLAYER @ Linz, Oberösterreich
+   coords = [47.70     , 14.74     , 8 ] // AUSTRIA
+// coords = [48.303360 , 14.301875 , 17] // PLAYER @ Linz, Oberösterreich
 lat  = coords[0]; // y
 long = coords[1]; // x
 zoom = coords[2]; // z
@@ -33,7 +33,9 @@ let pinkIcon   = L.icon(createIcon('style/marker-pink.png'));
 let greenIcon  = L.icon(createIcon('style/marker-green.png'));
 let blueIcon   = L.icon(createIcon('style/marker-blue.png'));
 let playerIcon = L.icon(createIcon('style/ratkid-shaded.png'));
-let player 		= L.marker([48.303360, 14.301875], {icon: playerIcon}).bindPopup('<b>Tú (Ratkids rookie, lvl. 1)</b>'),
+let player 		= L.marker([48.303360, 14.301875], {icon: playerIcon}).bindPopup(
+	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
+),
 	klagenfurt 	= L.marker([46.623997, 14.307812], {icon: pinkIcon	}).bindPopup('<b>Klagenfurt, Kärnten</b>'),
 	graz 		= L.marker([47.070762, 15.438698], {icon: pinkIcon	}).bindPopup('<b>Graz, Steiermark</b>'),
 	salzburg 	= L.marker([47.805109, 13.041151], {icon: pinkIcon	}).bindPopup('<b>Salzburg, Salzburg</b>'),
@@ -73,8 +75,9 @@ info.onAdd = function(map) {
 info.update = function(props) {
 	this._div.innerHTML = '<p><b>Population Density</b></p>' + (props ?
 		'<b>' + props.name + '</b><br/>' + props.density + ' people / km<sup>2</sup>' :
-		'Hover over a state'
-	);
+		'Hover over a state') +
+		'<p>' + L.DomUtil.get(hiddenlogs).innerHTML + '</p>'
+	;
 };
 info.addTo(map);
 //#endregion
@@ -126,8 +129,9 @@ legend.onAdd = function(map) {
 		to = grades[i + 1];
 
 		labels.push(
-			'<i style="background:' + geoJsonStylers.getColor(from + 1) + '"><font color=' + geoJsonStylers.getColor(from + 1) + '>__</font></i> ' +
-			from + (to ? '&ndash;' + to : '+'));
+			'<i style="background:' + geoJsonStylers.getColor(from + 1) + '">' +
+				'<font color=' + geoJsonStylers.getColor(from + 1) + '>__</font>' +
+			'</i> ' + from + (to ? '&ndash;' + to : '+'));
 	}
 
 	div.innerHTML = labels.join('<br>');

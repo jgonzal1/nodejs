@@ -6,28 +6,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
         <link rel="stylesheet" href="style/style.css">
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="https://api.jquery.com/resources/events.js"></script>
     </head>
     <body>
-        <!-- Three columns -->
+        <div id="map"></div>
+
+        <!-- Instance columns -->
         <div class="row" width="100%">
-            <div class="column" onclick="openTab('b2');" style="background:#90cc90;">
+            <div class="column" onclick="openTab('b2');" style="color:#444444;background:#90cc90;">
                 Guardar
             </div>
-            <div class="column" onclick="openTab('b3');" style="background:#cfc999;">
+            <div class="column" onclick="openTab('b3');" style="color:#444444;background:#cfc999;">
                 Opciones
             </div>
-            <div class="column" onclick="openTab('music');" style="background:#90cc90;">
+            <div class="column" onclick="openTab('music');" style="color:#444444;background:#90cc90;">
                 Música
-            </div>            
+            </div>   
+            <div class="column" style="color:#444444">
+                <div id="logs"></div>
+            </div>
+            <div class="column" style="color:#cfc999">
+                <div id="hiddenlogs"></div>
+            </div>         
         </div>
-        
-        <!-- Full-width columns: (hidden by default) -->
         <div id="b2" class="containerTab" style="display:none;background:#90cc90">
             <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
             <p>¡Los cambios en tiempo real se guardan automáticamente!</p>
             <p>Generando savegame.JSON ... aparecerá un pop-up cuando el guardado se complete.</p>
         </div>
-        
         <div id="b3" class="containerTab" style="display:none;background:#cfc999">
             <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
             <h2>Cargar JSON</h2>
@@ -36,7 +43,6 @@
         <div id="music" class="containerTab" style="display:none;background:#90cc90">
             <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
             <div class="row">
-
                     <div class="column" onclick="openTab('music');">
                         <p>Música predefinida</p>
                         <iframe src="https://open.spotify.com/embed/user/foilism/playlist/0xzpsVjnE6OSjdBC4iIzqe" width="auto" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>                
@@ -50,7 +56,6 @@
             </div>
         </div>
 
-        <div id="map"></div>
         <script src="bundle.js"></script>
         <script>
         // Hide all elements with class="containerTab", except for the one that matches the clickable grid column
@@ -62,6 +67,20 @@
             }
             document.getElementById(tabName).style.display = "block";
         }
+        // keyListener
+        let buttonsPushed = 0;
+        $("#map").keypress(
+            function(event) {
+                if(event.which===13) {
+                    event.preventDefault();
+                }
+                buttonsPushed++;
+                document.getElementById("hiddenlogs").innerHTML =
+                    " Handler for .keypress() called " + buttonsPushed + " time(s)." +
+                    " Last key was " + event.key; //<p> works but is unhidden
+            }
+        );
+        //*/
         </script>
     </body>
 </html>
