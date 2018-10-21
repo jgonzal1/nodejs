@@ -25,6 +25,18 @@ var sites = [
     ["Orilla del Manzanares", 40.4547697, -3.7466842]
 ]
 
+var austrianCapitals = [
+    [46.623997, 14.307812, 'pinkIcon', '<b>Klagenfurt, Kärnten</b>'],
+	[47.070762, 15.438698, 'pinkIcon', '<b>Graz, Steiermark</b>'],
+	[47.805109, 13.041151, 'pinkIcon', '<b>Salzburg, Salzburg</b>'],
+	[47.845993, 16.527337, 'greenIcon', '<b>Eisenstadt, Burgenland</b>'],
+	[48.208539, 16.372505, 'greenIcon', '<b>Wien, Wien</b>'],
+	[48.203828, 15.630877, 'greenIcon', '<b>St. Pölten, Niederösterreich</b>'],
+	[48.307025, 14.284829, 'blueIcon', '<b>Linz, Oberösterreich</b>'],
+    [47.268896, 11.401791, 'blueIcon', '<b>Innsbruck, Tirol</b>'],
+    [47.500929,  9.740660, 'blueIcon', '<b>Bregenz, Vorarlberg</b>']
+]
+
 function getSites() {
     return sites
 }
