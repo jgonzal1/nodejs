@@ -1,6 +1,7 @@
 # Private Data
 data/*.json
 dev.private.js
+*.txt
 
 # Logs
 logs
