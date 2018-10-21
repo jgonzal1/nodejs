@@ -1,0 +1,54 @@
+{
+    "env": {
+        "browser": true,
+        "es6": false
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 8
+    },
+    "rules": {
+        "arrow-parens": 0,
+        "camelcase": "error",
+        "curly": 2,
+        "indent": [
+            "off",
+            2
+        ],
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
+        "new-parens": 2,
+        "no-await-in-loop": "warn",
+        "no-bitwise": 2,
+        "no-console": "warn",
+        "no-constant-condition": 2,
+        "no-control-regex": 2,
+        "no-debugger": 2,
+        "no-duplicate-case": 2,
+        "no-empty": 0,
+        "no-eval": 1,
+        "no-invalid-regexp": 2,
+        "no-invalid-this": 1,
+        "no-regex-spaces": 2,
+        "no-sparse-arrays": 2,
+        "no-undef": "warn",
+        "no-unused-vars": "warn",
+        "no-useless-escape": "warn",
+        "prefer-const": 2,
+        "quotes": [
+            "off",
+            "single"
+        ],        
+        "radix": 0,
+        "require-await":"warn",
+        "require-yield":"off",
+        "semi": [
+            "error",
+            "always"
+        ],
+        "use-isnan": 2,
+        "valid-typeof": 2
+    }
+}

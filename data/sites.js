@@ -23,7 +23,7 @@ var sites = [
     ["Salsa Martes", 40.4195894, -3.7079193],
     ["Piso", 40.4320636, -3.6547007],
     ["Orilla del Manzanares", 40.4547697, -3.7466842]
-]
+];
 
 var austrianCapitals = [
     [46.623997, 14.307812, 'pinkIcon', '<b>Klagenfurt, Kärnten</b>'],
@@ -35,10 +35,15 @@ var austrianCapitals = [
 	[48.307025, 14.284829, 'blueIcon', '<b>Linz, Oberösterreich</b>'],
     [47.268896, 11.401791, 'blueIcon', '<b>Innsbruck, Tirol</b>'],
     [47.500929,  9.740660, 'blueIcon', '<b>Bregenz, Vorarlberg</b>']
-]
+];
+
+// initialCoords = [ 6.509594 ,  3.37033 , 15] // PLAYER @ Laos, Nigeria
+// initialCoords = [47.70     , 14.74    , 8 ] // AUSTRIA
+// initialCoords = [48.303360 , 14.30187 , 17] // PLAYER @ Linz, Oberösterreich
+// initialCoords = [40.4942011, -3.71013 , 15] // MADRID
 
 function getSites() {
-    return sites
+    return sites;
 }
 
 module.exports = getSites;
