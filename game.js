@@ -1,4 +1,6 @@
 //#region Imports
+// TODO mobile compatibility
+// Leverage mixture ImperioDeLosMares/RimWorld/CataclysmDDA/CryptNecroDancer
 const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
 const createIcon = require('./style/createIcon');
 const geoJsonStylers = require('./style/geoJsonStylers');
@@ -12,9 +14,10 @@ const L = require('leaflet');
 //#endregion
 
 //#region Create Base Layers
-// TODO take out characters from places view & sites dependance for basemap
+// TODO ##### take out characters from places view & sites dependance for basemap
 const map = L.map('map', { /*scrollWheelZoom: false*/ } );
-const coords = [40.4942011, -3.7101309, 15]; // MADRID
+const coords = [36.836223, -2.466880, 15]; // Presen
+// [40.4942011, -3.7101309, 15]; // MADRID
 const lat  = coords[0]; // y
 const long = coords[1]; // x
 const zoom = coords[2]; // z
@@ -23,13 +26,24 @@ const artisticMap = L.tileLayer(
 	'http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
 	{ minZoom: 2, maxZoom: 17 }
 ).addTo(map);
+/* TODO Colores Tileset
+Blanco: para enemigos y algunas personas: detectarlo en tileset permite mover 1x; si no, reducir multiplicador de velocidad y:
+ Menos opacidad (fantasmas) o
+ Spawnear círculo azul ahí durante el refreshtime (GPS)
+Verde: multiplicador velocidad no tan bajo como blanco
+- No se puede entrar fuera del Blanco o verde excepto lugares*
+*Lugares -> puerta para permitir cambio color y salida del mismo
+@ tileset artístico zoom 15+*/
 const baseLayers = createBaseLayerAndAddMore(artisticMap, L);
 //#endregion
 
 //#region Create Characters and Places
-// TODO >>>>> let layers = createCharactersAndPlaces(L, lat, long); /*
-// TODO diferentes probabilidades de moverse según el random, o velocidades
+//TODO Personalizar carácter personaje
+//TODO >>>>> let layers = createCharactersAndPlaces(L, lat, long); /*
+//TODO >>>>> diferentes probabilidades de moverse según el random, o velocidades
+//TODO Medios transporte (1/2)
 const playerIcon		= L.icon(createIcon('style/ratkid-shaded.png'));
+//TODO playerIcon "duplicado": personalizado con imagemagick
 const bloodyeyeIcon	= L.icon(createIcon('sprites/enemies/bloodyeye.png'));
 const deathIcon		= L.icon(createIcon('sprites/enemies/death.png'));
 const mummyIcon		= L.icon(createIcon('sprites/enemies/mummy.png'));
@@ -86,12 +100,12 @@ const layers = L
 	.addTo(map);
 //#endregion
 
-//#region Moves daemonizer
+//#region Daemonizers
 //let counter = 1;
 function keyListener(milliseconds) {
 	const moveDaemonizer = setInterval(function() {
-		const spawnNewPoint = Math.random();
-		if (spawnNewPoint > 0.5) {
+		const p = Math.random();
+		if (p > 0.5) {
 			goToPlayer(bloodyeye);
 			goToPlayer(death);
 			goToPlayer(mummy);
@@ -104,22 +118,36 @@ function keyListener(milliseconds) {
 			goToPlayer(vampire);
 		}
 		moveCharacter(player);
+		// TODO Daemonizer en legend on add: timeLegend();
+
 		//counter++;
 	}, milliseconds);
 	// clearInterval(moveDaemonizer);
 }
 keyListener(33); //30+ fps
+
+//TODO Daemonizar freq.2 - música por lugar según regiones
+
+//#endregion
+
+//#region Keys interface
+//TODO >>>>> add pause
+//TODO Esc para X
+//TODO Tab para siguiente en menú
 //#endregion
 
 //#region Move handlers
-//TODO >>>>> add pause
-//TODO add that sth happens when colide/near : capa de combate o algo en grande
+//TODO > add that sth happens when colide/near : capa de combate o algo en grande
 //TODO >>>>> añadir series taylor; correcciones angulares
 // (x - (x^3 / 6 )) aproxs sin(x) max 7% err
 // (1 - x^2 / 2) aproxs cos(x) hasta 60ª
 // (1 - x^2 / 2 + x^4 / 24) aproxs cos(x) de 60 a 85º
 // 0 aproxs cos(x) from 85 to 90º
-//TODO poder hacer click para ir, carreteras preferidas
+//TODO > poder hacer click para ir, carreteras preferidas
+//TODO Detectar dos botones a la vez (ej. W+A)
+//TODO Batallas, con efectos de sonido, y en popup del de BDiA-showcase
+//TODO Medios transporte (2/2)
+//TODO > Modo bajo refreshtime para pseudo Crypt NecroDancer, click opción para establecer tempo refresh y beat.
 function goToPlayer(target) {
 	const latDiff = player.getLatLng().lat - target.getLatLng().lat;
 	const lngDiff = player.getLatLng().lng - target.getLatLng().lng;
@@ -236,6 +264,7 @@ function onEachFeature(feature, layer) {
 //#endregion
 
 //#region Legend
+//TODO >>>>> leyenda dependiente de vista de regiones
 const legend = L.control({position: 'bottomright'});
 legend.onAdd = function() {
 	const div = L.DomUtil.create('div', 'info legend'),
@@ -255,5 +284,12 @@ legend.onAdd = function() {
 	div.innerHTML = labels.join('<br>');
 	return div;
 };
-legend.addTo(map);//*/
+function timeLegend(){
+	labels.push(); // TODO Tiempo y dependencias en legend?
+}
+legend.addTo(map);
+// TODO Asistente virtual en ayuda / cómo jugar
+// Asistente sens/virt UAL
+// Lo añadiré a la lista de cosas que me importan una mierda/pendientes
+//*/
 //#endregion
