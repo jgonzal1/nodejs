@@ -6,8 +6,8 @@ const createIcon = require('./style/createIcon');
 const geoJsonStylers = require('./style/geoJsonStylers');
 const austria = require('./data/austria');
 const states = austria();
-// TODO >>>>> add new sites: const getSites = require('./data/sites'); const sites = getSites();
-// TODO >>>>> const createCharactersAndPlaces = require('./createCharactersAndPlaces');
+const getSites = require('./data/sites'); const sites = getSites();
+// TODO >>>OUTDATED const createCharactersAndPlaces = require('./createCharactersAndPlaces');
 // const getPwds = require('./dev.private.js'); still unused here
 // TODO enhance response time with this: const mh = require('./moveHandlers'); // ver si mandando player va mejor;
 const L = require('leaflet');
@@ -40,22 +40,30 @@ const baseLayers = createBaseLayerAndAddMore(artisticMap, L);
 
 //#region Create Characters and Places
 // TODO Personalizar carácter personaje
-// TODO >>>>> let layers = createCharactersAndPlaces(L, lat, long); /*
-// TODO >>>>> diferentes probabilidades de moverse según el random, o velocidades
-// TODO Medios transporte (1/2)
+// TODO >>>OUTDATED let layers = createCharactersAndPlaces(L, lat, long); /*
 const playerIcon		= L.icon(createIcon('style/ratkid-shaded.png'));
 // TODO playerIcon "duplicado": personalizado con imagemagick
-const bloodyeyeIcon	= L.icon(createIcon('sprites/enemies/bloodyeye.png'));
-const deathIcon		= L.icon(createIcon('sprites/enemies/death.png'));
-const mummyIcon		= L.icon(createIcon('sprites/enemies/mummy.png'));
+const bikeIcon = L.icon(createIcon('style/bike.png'));
+const baloonIcon = L.icon(createIcon('style/baloon.png'));
+const busIcon = L.icon(createIcon('style/bus.png'));
+const planeIcon = L.icon(createIcon('style/plane.png'));
+const truckIcon = L.icon(createIcon('style/truck.png'));
+const trainIcon = L.icon(createIcon('style/train.png'));
+const carIcon = L.icon(createIcon('style/car.png'));
+const taxiIcon = L.icon(createIcon('style/taxi.png'));
+const motoIcon = L.icon(createIcon('style/moto.png'));
+const greenIcon			= L.icon(createIcon('style/marker-green.png'));
+const bloodyeyeIcon		= L.icon(createIcon('sprites/enemies/bloodyeye.png'));
+const deathIcon			= L.icon(createIcon('sprites/enemies/death.png'));
+const mummyIcon			= L.icon(createIcon('sprites/enemies/mummy.png'));
 const owlIcon			= L.icon(createIcon('sprites/enemies/owl.png'));
 const phantomIcon		= L.icon(createIcon('sprites/enemies/phantom.png'));
 const pirateskullIcon	= L.icon(createIcon('sprites/enemies/pirateskull.png'));
-const skeletonIcon	= L.icon(createIcon('sprites/enemies/skeleton.png'));
+const skeletonIcon		= L.icon(createIcon('sprites/enemies/skeleton.png'));
 const spiderIcon		= L.icon(createIcon('sprites/enemies/spider.png'));
 const undeadhandIcon	= L.icon(createIcon('sprites/enemies/undeadhand.png'));
 const vampireIcon		= L.icon(createIcon('sprites/enemies/vampire.png'));
-const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
+const player 			= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
 );
 function spawnEnemy(enemyIcon) {
@@ -74,49 +82,40 @@ const spider		= spawnEnemy(spiderIcon);
 const undeadhand	= spawnEnemy(undeadhandIcon);
 const vampire		= spawnEnemy(vampireIcon);//*/
 
-// TODO >>>>> iterative markers creation (1/2)
-// let markers = [];
-// markers.push(player);
-// for(let i in sites) {
-//     markers.push(
-// 		L.marker(
-// 			[
-// 				sites[i][1],
-// 				sites[i][2]
-// 			],
-// 			{icon: pinkIcon}
-// 		).bindPopup(
-// 			'<b>' + sites[i][0] + '</b>'
-// 		)
-// 	)
-// }
-
-const layers = L
-	.layerGroup([
-		//TODO iterative markers creation (2/2) add markers to layergoup simply as (markers)
-		player,
-		bloodyeye, death, mummy, owl, phantom, pirateskull, skeleton, spider, undeadhand, vampire
-	])//*/
-//layers
-	.addTo(map);
+var markers = [];
+markers.push(player, bloodyeye, death, mummy, owl, phantom, pirateskull, skeleton, spider, undeadhand, vampire);
+for (var i in sites) {
+    markers.push(
+		L.marker(
+			[
+				sites[i][1],
+				sites[i][2]
+			],
+			{icon: greenIcon}
+		).bindPopup(
+			'<b>' + sites[i][0] + '</b>'
+		)
+	);
+}
+const layers = L.layerGroup(markers).addTo(map);
 //#endregion
 
 //#region Daemonizers
 //let counter = 1;
 function keyListener(milliseconds) {
 	const moveDaemonizer = setInterval(function() {
-		const p = Math.random();
-		if (p > 0.5) {
-			goToPlayer(bloodyeye);
-			goToPlayer(death);
-			goToPlayer(mummy);
-			goToPlayer(owl);
-			goToPlayer(phantom);
-			goToPlayer(pirateskull);
-			goToPlayer(skeleton);
-			goToPlayer(spider);
-			goToPlayer(undeadhand);
-			goToPlayer(vampire);
+		//const p = Math.random();
+		if (L.DomUtil.get(hiddenlogs).innerHTML != 'p') {
+			goToPlayer(bloodyeye,0.7);
+			goToPlayer(death,0.9);
+			goToPlayer(mummy,0.7);
+			goToPlayer(owl,0.5);
+			goToPlayer(phantom,0.7);
+			goToPlayer(pirateskull,0.8);
+			goToPlayer(skeleton,0.7);
+			goToPlayer(spider,0.5);
+			goToPlayer(undeadhand,0.6);
+			goToPlayer(vampire,0.5);
 		}
 		moveCharacter(player);
 		// TODO Daemonizer en legend on add: timeLegend();
@@ -132,7 +131,6 @@ keyListener(33); //30+ fps
 //#endregion
 
 //#region Keys interface
-//TODO >>>>> add pause
 //TODO Esc para X
 //TODO Tab para siguiente en menú
 //#endregion
@@ -149,7 +147,8 @@ keyListener(33); //30+ fps
 // TODO Batallas, con efectos de sonido, y en popup del de BDiA-showcase
 // TODO Medios transporte (2/2)
 // TODO > Modo bajo refreshtime para pseudo Crypt NecroDancer, click opción para establecer tempo refresh y beat.
-function goToPlayer(target) {
+function goToPlayer(target, velocity) {
+	velocity = ( velocity || 1 );
 	const latDiff = player.getLatLng().lat - target.getLatLng().lat;
 	const lngDiff = player.getLatLng().lng - target.getLatLng().lng;
 	let forcedDirection;
@@ -158,25 +157,28 @@ function goToPlayer(target) {
 	} else {
 		if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
 	}
-	moveCharacter(target, forcedDirection);
+	moveCharacter(target, forcedDirection, velocity);
 }
 
-function moveCharacter(character, forceDirection, movemap) { // 80km/h | 12x
+function moveCharacter(character, forceDirection, velocity, movemap) { // 80km/h | 12x
 	character = ( character || player );
-	movemap = (movemap || ['w', 'a', 's', 'd'] );
+	velocity = ( velocity || 1 );
+	movemap = (movemap || ['w', 'a', 's', 'd', ' '] );
 	const direction = (forceDirection || L.DomUtil.get(hiddenlogs).innerHTML);
 	switch (direction) { //forceDirection
 	case movemap[0]:
-		character.setLatLng(L.latLng(character.getLatLng().lat+0.00001,character.getLatLng().lng));
+		character.setLatLng(L.latLng(character.getLatLng().lat+0.00001*velocity,character.getLatLng().lng));
 		break;
 	case movemap[1]:
-		character.setLatLng(L.latLng(character.getLatLng().lat,character.getLatLng().lng-0.00001));
+		character.setLatLng(L.latLng(character.getLatLng().lat,character.getLatLng().lng-0.00001*velocity));
 		break;
 	case movemap[2]:
-		character.setLatLng(L.latLng(character.getLatLng().lat-0.00001,character.getLatLng().lng));
+		character.setLatLng(L.latLng(character.getLatLng().lat-0.00001*velocity,character.getLatLng().lng));
 		break;
 	case movemap[3]:
-		character.setLatLng(L.latLng(character.getLatLng().lat,character.getLatLng().lng+0.00001));
+		character.setLatLng(L.latLng(character.getLatLng().lat,character.getLatLng().lng+0.00001*velocity));
+		break;
+	case movemap[4]:
 		break;
 	}
 }
