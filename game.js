@@ -16,6 +16,7 @@ const L = require('leaflet');
 //#region Create Base Layers
 // TODO ##### take out characters from places view & sites dependance for basemap
 const map = L.map('map', { /*scrollWheelZoom: false*/ } );
+// TODO que empiece en ubicación usuario
 const coords = [36.836223, -2.466880, 15]; // Presen
 // [40.4942011, -3.7101309, 15]; // MADRID
 const lat  = coords[0]; // y
@@ -38,12 +39,12 @@ const baseLayers = createBaseLayerAndAddMore(artisticMap, L);
 //#endregion
 
 //#region Create Characters and Places
-//TODO Personalizar carácter personaje
-//TODO >>>>> let layers = createCharactersAndPlaces(L, lat, long); /*
-//TODO >>>>> diferentes probabilidades de moverse según el random, o velocidades
-//TODO Medios transporte (1/2)
+// TODO Personalizar carácter personaje
+// TODO >>>>> let layers = createCharactersAndPlaces(L, lat, long); /*
+// TODO >>>>> diferentes probabilidades de moverse según el random, o velocidades
+// TODO Medios transporte (1/2)
 const playerIcon		= L.icon(createIcon('style/ratkid-shaded.png'));
-//TODO playerIcon "duplicado": personalizado con imagemagick
+// TODO playerIcon "duplicado": personalizado con imagemagick
 const bloodyeyeIcon	= L.icon(createIcon('sprites/enemies/bloodyeye.png'));
 const deathIcon		= L.icon(createIcon('sprites/enemies/death.png'));
 const mummyIcon		= L.icon(createIcon('sprites/enemies/mummy.png'));
@@ -73,8 +74,8 @@ const spider		= spawnEnemy(spiderIcon);
 const undeadhand	= spawnEnemy(undeadhandIcon);
 const vampire		= spawnEnemy(vampireIcon);//*/
 
-//TODO >>>>> iterative markers creation (1/2)
-//let markers = [];
+// TODO >>>>> iterative markers creation (1/2)
+// let markers = [];
 // markers.push(player);
 // for(let i in sites) {
 //     markers.push(
@@ -137,17 +138,17 @@ keyListener(33); //30+ fps
 //#endregion
 
 //#region Move handlers
-//TODO > add that sth happens when colide/near : capa de combate o algo en grande
-//TODO >>>>> añadir series taylor; correcciones angulares
+// TODO > add that sth happens when colide/near : capa de combate o algo en grande
+// TODO >>>>> añadir series taylor; correcciones angulares
 // (x - (x^3 / 6 )) aproxs sin(x) max 7% err
 // (1 - x^2 / 2) aproxs cos(x) hasta 60ª
 // (1 - x^2 / 2 + x^4 / 24) aproxs cos(x) de 60 a 85º
 // 0 aproxs cos(x) from 85 to 90º
-//TODO > poder hacer click para ir, carreteras preferidas
-//TODO Detectar dos botones a la vez (ej. W+A)
-//TODO Batallas, con efectos de sonido, y en popup del de BDiA-showcase
-//TODO Medios transporte (2/2)
-//TODO > Modo bajo refreshtime para pseudo Crypt NecroDancer, click opción para establecer tempo refresh y beat.
+// TODO > poder hacer click para ir, carreteras preferidas
+// TODO Detectar dos botones a la vez (ej. W+A)
+// TODO Batallas, con efectos de sonido, y en popup del de BDiA-showcase
+// TODO Medios transporte (2/2)
+// TODO > Modo bajo refreshtime para pseudo Crypt NecroDancer, click opción para establecer tempo refresh y beat.
 function goToPlayer(target) {
 	const latDiff = player.getLatLng().lat - target.getLatLng().lat;
 	const lngDiff = player.getLatLng().lng - target.getLatLng().lng;
@@ -264,7 +265,7 @@ function onEachFeature(feature, layer) {
 //#endregion
 
 //#region Legend
-//TODO >>>>> leyenda dependiente de vista de regiones
+// TODO >>>>> leyenda dependiente de vista de regiones
 const legend = L.control({position: 'bottomright'});
 legend.onAdd = function() {
 	const div = L.DomUtil.create('div', 'info legend'),
