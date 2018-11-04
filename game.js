@@ -8,7 +8,7 @@ const austria = require('./data/austria');
 const states = austria();
 const getSites = require('./data/sites'); const sites = getSites();
 // const cL = require('./data/charactersList'); const enemies = cL.getEnemies(); const transports = cL.getTransports();
-const e = require('./spawnEnemies');
+const spawnEnemies = require('./spawnEnemies');
 // const getPwds = require('./dev.private.js'); still unused here
 // TODO enhance response time with this: const mh = require('./moveHandlers'); // ver si mandando player va mejor;
 const L = require('leaflet');
@@ -46,8 +46,7 @@ const playerIcon	= L.icon(createIcon('style/ratkid-shaded.png'));
 // TODO playerIcon "duplicado": personalizado con imagemagick
 const greenIcon		= L.icon(createIcon('style/marker-green.png'));
 
-//var bloodyeye, death, mummy, owl, phantom, pirateskull, skeleton, spider, undeadhand, vampire;
-e(L, lat, long);//.spawnAll//*/
+spawnEnemies(L, lat, long);
 const player 			= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
 );

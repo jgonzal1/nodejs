@@ -1,6 +1,6 @@
 const createIcon = require('./style/createIcon');
 
-function spawnAll() {
+function spawnEnemies() {
 	const bloodyeyeIcon		= L.icon(createIcon('sprites/enemies/bloodyeye.png'));
 	const deathIcon			= L.icon(createIcon('sprites/enemies/death.png'));
 	const mummyIcon			= L.icon(createIcon('sprites/enemies/mummy.png'));
@@ -33,4 +33,4 @@ function spawnAll() {
 	global.vampire		= spawnEnemy(vampireIcon);
 }
 
-module.exports = spawnAll;
+module.exports = spawnEnemies;
