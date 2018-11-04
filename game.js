@@ -6,22 +6,23 @@ const createIcon = require('./style/createIcon');
 const geoJsonStylers = require('./style/geoJsonStylers');
 const austria = require('./data/austria');
 const states = austria();
-// const cL = require('./data/charactersList'); const enemies = cL.getEnemies(); const transports = cL.getTransports();
 const getSites = require('./data/sites'); const sites = getSites();
-// TODO >>>OUTDATED const enemy = require('./spawnEnemies');
+// const cL = require('./data/charactersList'); const enemies = cL.getEnemies(); const transports = cL.getTransports();
+const e = require('./spawnEnemies');
 // const getPwds = require('./dev.private.js'); still unused here
 // TODO enhance response time with this: const mh = require('./moveHandlers'); // ver si mandando player va mejor;
 const L = require('leaflet');
+global.L = L;
 //#endregion
 
 //#region Create Base Layers
 // TODO ##### take out characters from places view & sites dependance for basemap
-const map = L.map('map', { scrollWheelZoom: false } );
+const map = L.map('map', { scrollWheelZoom: true } );
 // TODO que empiece en ubicación usuario
-const coords = [36.836223, -2.466880, 15]; // Presen
-// [40.4942011, -3.7101309, 15]; // MADRID
-const lat  = coords[0]; // y
-const long = coords[1]; // x
+const coords = [40.4942011, -3.7101309, 15]; // MADRID
+// [36.836223, -2.466880, 15]; // Presen
+const lat  = coords[0]; global.lat = lat; // y
+const long = coords[1]; global.long = long; // x
 const zoom = coords[2]; // z
 map.setView([lat, long], zoom);
 const artisticMap = L.tileLayer(
@@ -41,60 +42,29 @@ const baseLayers = createBaseLayerAndAddMore(artisticMap, L);
 
 //#region Create Characters and Places
 // TODO Personalizar carácter personaje
-// TODO >>>OUTDATED let layers = createCharactersAndPlaces(L, lat, long); /*
 const playerIcon	= L.icon(createIcon('style/ratkid-shaded.png'));
 // TODO playerIcon "duplicado": personalizado con imagemagick
-/*for (let k = 0; k < length(enemies); k++) {
-	eval("var "+enemies[k]+"Icon = L.icon(createIcon('sprites/enemies/"+enemies[k]+".png'))");
-}
-for (let k = 0; k < length(transports); k++) {
-	eval("var "+transports[k]+"Icon = L.icon(createIcon('style/"+transports[k]+".png'))");
-}*/
 const greenIcon		= L.icon(createIcon('style/marker-green.png'));
 
-// spawnAll(L, lat, long);
-const bloodyeyeIcon		= L.icon(createIcon('sprites/enemies/bloodyeye.png'));
-const deathIcon			= L.icon(createIcon('sprites/enemies/death.png'));
-const mummyIcon			= L.icon(createIcon('sprites/enemies/mummy.png'));
-const owlIcon			= L.icon(createIcon('sprites/enemies/owl.png'));
-const phantomIcon		= L.icon(createIcon('sprites/enemies/phantom.png'));
-const pirateskullIcon	= L.icon(createIcon('sprites/enemies/pirateskull.png'));
-const skeletonIcon		= L.icon(createIcon('sprites/enemies/skeleton.png'));
-const spiderIcon		= L.icon(createIcon('sprites/enemies/spider.png'));
-const undeadhandIcon	= L.icon(createIcon('sprites/enemies/undeadhand.png'));
-const vampireIcon		= L.icon(createIcon('sprites/enemies/vampire.png'));//*/
+//var bloodyeye, death, mummy, owl, phantom, pirateskull, skeleton, spider, undeadhand, vampire;
+e(L, lat, long);//.spawnAll//*/
 const player 			= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
 );
-function spawnEnemy(enemyIcon) {
-	return L.marker([lat+(Math.random()-0.5)/30, long+(Math.random()-0.5)/30], {icon: enemyIcon}).bindPopup(
-		'<color="red"><b>Enemigo</b></color>'
-	);
-}
-const bloodyeye	= spawnEnemy(bloodyeyeIcon);
-const death		= spawnEnemy(deathIcon);
-const mummy		= spawnEnemy(mummyIcon);
-const owl			= spawnEnemy(owlIcon);
-const phantom		= spawnEnemy(phantomIcon);
-const pirateskull = spawnEnemy(pirateskullIcon);
-const skeleton	= spawnEnemy(skeletonIcon);
-const spider		= spawnEnemy(spiderIcon);
-const undeadhand	= spawnEnemy(undeadhandIcon);
-const vampire		= spawnEnemy(vampireIcon);//*/
 
 var markers = [];
 markers.push(
 	player,
-	bloodyeye,
-	death,
-	mummy,
-	owl,
-	phantom,
-	pirateskull,
-	skeleton,
-	spider,
-	undeadhand,
-	vampire
+	global.bloodyeye,
+	global.death,
+	global.mummy,
+	global.owl,
+	global.phantom,
+	global.pirateskull,
+	global.skeleton,
+	global.spider,
+	global.undeadhand,
+	global.vampire
 );
 for (var i in sites) {
     markers.push(
