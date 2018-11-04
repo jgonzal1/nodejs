@@ -7,9 +7,8 @@ const geoJsonStylers = require('./style/geoJsonStylers');
 const austria = require('./data/austria');
 const states = austria();
 const getSites = require('./data/sites'); const sites = getSites();
-// const cL = require('./data/charactersList'); const enemies = cL.getEnemies(); const transports = cL.getTransports();
+// const cL = require('./data/charactersList'); const transports = cL.getTransports();
 const spawnEnemies = require('./spawnEnemies');
-// const getPwds = require('./dev.private.js'); still unused here
 // TODO enhance response time with this: const mh = require('./moveHandlers'); // ver si mandando player va mejor;
 const L = require('leaflet');
 global.L = L;

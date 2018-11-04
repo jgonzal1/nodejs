@@ -1,15 +1,3 @@
-const enemies = [
-    bloodyeye,
-    death,
-    mummy,
-    owl,
-    phantom,
-    pirateskull,
-    skeleton,
-    spider,
-    undeadhand,
-    vampire
-];
 const transports = [
     bike,
     baloon,
@@ -22,12 +10,29 @@ const transports = [
     moto	
 ];
 
-function getEnemies() {
-    return enemies;
-}
 function getTransports() {
     return transports;
 }
 
-module.exports.getEnemies = getEnemies;
-module.exports.getTransports = getTransports;
+//#region Enemies
+/*const enemies = [
+    bloodyeye,
+    death,
+    mummy,
+    owl,
+    phantom,
+    pirateskull,
+    skeleton,
+    spider,
+    undeadhand,
+    vampire
+];
+
+function getEnemies() {
+    return enemies;
+}
+
+module.exports.getEnemies = getEnemies;*/
+//#endregion
+
+module.exports/*.getTransports*/ = getTransports;
