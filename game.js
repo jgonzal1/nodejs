@@ -183,12 +183,9 @@ const geojson = L.geoJSON(
 const overlays = {
     'Regiones': geojson,
 	'Puntos de interés': layers,
-/*};
-const charList = {*/
 	'Personajes': characters
 };
 L.control.layers(baseLayers, overlays).addTo(map);
-//L.control.layers(baseLayers, charList).addTo(map); //characters
 function addGeoJson(jsonPolygonFeature) {
 	geojson.addData(jsonPolygonFeature);
 }
