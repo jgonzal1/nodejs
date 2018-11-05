@@ -24,9 +24,8 @@ const defaultMovementLength = refreshRate * velocity;
 //#endregion
 
 //#region Create Base Layers
-// TODO ##### take out characters from places view & sites dependance for basemap
 const map = L.map('map', { scrollWheelZoom: true } );
-// TODO que empiece en ubicación usuario
+// TODO > que empiece en ubicación usuario
 const coords = [40.4942011, -3.7101309, 15]; // MADRID
 // [36.836223, -2.466880, 15]; // Presen
 const lat  = coords[0]; global.lat = lat; // y
@@ -112,7 +111,7 @@ function keyListener(milliseconds, m) {
 			goToPlayer(vampire,0.5*m);
 		}
 		moveCharacter(player,1*m);
-		// TODO Daemonizer en legend para tiempo del día; on add: timeLegend();
+		// TODO > Daemonizer en legend para tiempo del día; on add: timeLegend();
 
 		//counter++;
 	}, milliseconds);
@@ -122,22 +121,21 @@ keyListener(refreshRate,defaultMovementLength);
 //#endregion
 
 //#region Keys interface
-//TODO >>>>> Esc para X
+//TODO > Esc para X
 //TODO Tab para siguiente en menú
 //#endregion
 
 //#region Move handlers
-// TODO > add that sth happens when colide/near : capa de combate o algo en grande
+// TODO >>>>> when colide/near : capa de combate o comercio, con efectos de sonido, y en popup del de BDiA-showcase
 // TODO >>>>> añadir series taylor; correcciones angulares
 // (x - (x^3 / 6 )) aproxs sin(x) max 7% err
 // (1 - x^2 / 2) aproxs cos(x) hasta 60ª
 // (1 - x^2 / 2 + x^4 / 24) aproxs cos(x) de 60 a 85º
 // 0 aproxs cos(x) from 85 to 90º
 // TODO > poder hacer click para ir, carreteras preferidas
-// TODO Detectar dos botones a la vez (ej. W+A)
-// TODO Batallas, con efectos de sonido, y en popup del de BDiA-showcase
+// TODO >>>>> Detectar dos botones a la vez (ej. W+A)
 // TODO Medios transporte (2/2)
-// TODO > Modo bajo refreshtime para pseudo Crypt NecroDancer, click opción para establecer tempo refresh y beat.
+// TODO >>>>> botón que cambie booleano Crypt NecroDancer
 function goToPlayer(target, velocity) {
 	velocity = ( velocity || 1 );
 	const latDiff = player.getLatLng().lat - target.getLatLng().lat;
