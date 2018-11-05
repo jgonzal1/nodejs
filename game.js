@@ -60,7 +60,7 @@ const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 
 var mCharacters = [];
 var markers = [];
-markers.push( //mCharacters
+mCharacters.push(
 	player,
 	global.bloodyeye,
 	global.death,
