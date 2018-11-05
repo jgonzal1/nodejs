@@ -1,17 +1,26 @@
 //#region Imports
-// TODO mobile compatibility
-// Leverage mixture ImperioDeLosMares/RimWorld/CataclysmDDA/CryptNecroDancer
+// TODO > mobile compatibility
+// TODO leverage mixture ImperioDeLosMares/RimWorld/CataclysmDDA
 const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
 const createIcon = require('./style/createIcon');
 const geoJsonStylers = require('./style/geoJsonStylers');
 const austria = require('./data/austria');
 const states = austria();
 const getSites = require('./data/sites'); const sites = getSites();
-// const cL = require('./data/charactersList'); const transports = cL.getTransports();
+// TODO transportes y demás: const cL = require('./data/charactersList'); const transports = cL.getTransports();
 const spawnEnemies = require('./spawnEnemies');
 // TODO enhance response time with this: const mh = require('./moveHandlers'); // ver si mandando player va mejor;
 const L = require('leaflet');
 global.L = L;
+const cryptOfTheNecromancerMode = false;
+let refreshRate;
+if (cryptOfTheNecromancerMode === true) {
+	refreshRate = 500; // w/ 120 BPM music
+} else {
+	refreshRate = 33; // 30+ FPS
+}
+const velocity = 1/33; // Dµº / ms
+const defaultMovementLength = refreshRate * velocity;
 //#endregion
 
 //#region Create Base Layers
@@ -40,16 +49,16 @@ const baseLayers = createBaseLayerAndAddMore(artisticMap, L);
 //#endregion
 
 //#region Create Characters and Places
-// TODO Personalizar carácter personaje
+// TODO Personalizar carácter personaje + playerIcon "duplicado": personalizado con imagemagick
 const playerIcon	= L.icon(createIcon('style/ratkid-shaded.png'));
-// TODO playerIcon "duplicado": personalizado con imagemagick
 const greenIcon		= L.icon(createIcon('style/marker-green.png'));
 
 spawnEnemies(L, lat, long);
-const player 			= L.marker([lat, long], {icon: playerIcon}).bindPopup(
+const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
 );
 
+var characters = [];
 var markers = [];
 markers.push(
 	player,
@@ -82,36 +91,37 @@ const layers = L.layerGroup(markers).addTo(map);
 
 //#region Daemonizers
 //let counter = 1;
-function keyListener(milliseconds) {
+/**
+ * @param {number} milliseconds
+ * @param {number} m movement multiplier that should be inverse to milliseconds
+ */
+function keyListener(milliseconds, m) {
 	const moveDaemonizer = setInterval(function() {
 		//const p = Math.random();
 		if (L.DomUtil.get(hiddenlogs).innerHTML != 'p') {
-			goToPlayer(bloodyeye,0.7);
-			goToPlayer(death,0.9);
-			goToPlayer(mummy,0.7);
-			goToPlayer(owl,0.5);
-			goToPlayer(phantom,0.7);
-			goToPlayer(pirateskull,0.8);
-			goToPlayer(skeleton,0.7);
-			goToPlayer(spider,0.5);
-			goToPlayer(undeadhand,0.6);
-			goToPlayer(vampire,0.5);
+			goToPlayer(bloodyeye,0.7*m);
+			goToPlayer(death,0.9*m);
+			goToPlayer(mummy,0.7*m);
+			goToPlayer(owl,0.5*m);
+			goToPlayer(phantom,0.7*m);
+			goToPlayer(pirateskull,0.8*m);
+			goToPlayer(skeleton,0.7*m);
+			goToPlayer(spider,0.5*m);
+			goToPlayer(undeadhand,0.6*m);
+			goToPlayer(vampire,0.5*m);
 		}
-		moveCharacter(player);
-		// TODO Daemonizer en legend on add: timeLegend();
+		moveCharacter(player,1*m);
+		// TODO Daemonizer en legend para tiempo del día; on add: timeLegend();
 
 		//counter++;
 	}, milliseconds);
 	// clearInterval(moveDaemonizer);
 }
-keyListener(33); //30+ fps
-
-//TODO Daemonizar freq.2 - música por lugar según regiones
-
+keyListener(refreshRate,defaultMovementLength);
 //#endregion
 
 //#region Keys interface
-//TODO Esc para X
+//TODO >>>>> Esc para X
 //TODO Tab para siguiente en menú
 //#endregion
 
@@ -137,10 +147,10 @@ function goToPlayer(target, velocity) {
 	} else {
 		if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
 	}
-	moveCharacter(target, forcedDirection, velocity);
+	moveCharacter(target, velocity, forcedDirection);
 }
 
-function moveCharacter(character, forceDirection, velocity, movemap) { // 80km/h | 12x
+function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h | 12x
 	character = ( character || player );
 	velocity = ( velocity || 1 );
 	movemap = (movemap || ['w', 'a', 's', 'd', ' '] );
