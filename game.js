@@ -58,9 +58,9 @@ const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
 );
 
-var characters = [];
+var mCharacters = [];
 var markers = [];
-markers.push(
+markers.push( //mCharacters
 	player,
 	global.bloodyeye,
 	global.death,
@@ -86,6 +86,7 @@ for (var i in sites) {
 		)
 	);
 }
+const characters = L.layerGroup(mCharacters).addTo(map);
 const layers = L.layerGroup(markers).addTo(map);
 //#endregion
 
@@ -174,16 +175,20 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 }
 //#endregion
 
-//#region geoJson Overlayers
+//#region geoJson Overlays
 const geojson = L.geoJSON(
 	states,
 	{ style: geoJsonStylers.style, onEachFeature: onEachFeature }
 );//.addTo(map); //not showing it at start
 const overlays = {
     'Regiones': geojson,
-    'Puntos de interés': layers
+	'Puntos de interés': layers,
+/*};
+const charList = {*/
+	'Personajes': characters
 };
 L.control.layers(baseLayers, overlays).addTo(map);
+//L.control.layers(baseLayers, charList).addTo(map); //characters
 function addGeoJson(jsonPolygonFeature) {
 	geojson.addData(jsonPolygonFeature);
 }
