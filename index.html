@@ -20,10 +20,6 @@
             <div class="column" onclick="openTab('music');" style="color:#444444;background:#90cc90;">
                 Música
             </div>
-            <button onclick="moveup()">UP</button>
-            <button onclick="movedown()">DOWN</button>
-            <button onclick="moveleft()">LEFT</button>
-            <button onclick="moveright()">RIGHT</button>
             <div class="column" style="color:#444444;background:#cfc999;">
                 <div id="logs"></div>
             </div>
@@ -49,7 +45,7 @@
                         <!-- 120BPM -->
                         <iframe
                         width="560" height="315"
-                        src="https://www.youtube.com/embed/videoseries?list=PLHeTSqyMs2Xbsn_LFYNFUZNDQf3ZalUpz"
+                        src="https://www.youtube.com/embed/videoseries?list=PLHeTSqyMs2Xbsn_LFYNFUZNDQf3ZalUpz&autoplay=1"
                         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
                         </iframe>
                         <!-- Lista Lo-Fi
@@ -99,41 +95,6 @@
             }
         );
         //*/
-        /*function component(width, height, color, x, y) {
-            this.width = width;
-            this.height = height;
-            this.speedX = 0;
-            this.speedY = 0;
-            this.x = x;
-            this.y = y; 
-            this.update = function() {
-                ctx = myGameArea.context;
-                ctx.fillStyle = color;
-                ctx.fillRect(this.x, this.y, this.width, this.height);
-            }
-            this.newPos = function() {
-                this.x += this.speedX;
-                this.y += this.speedY; 
-            } 
-        }
-        function updateGameArea() {
-            myGameArea.clear();
-            myGamePiece.newPos();
-            myGamePiece.update();
-        }*/
-        function moveup() {
-            simulateKeyPress("w");
-        }
-        function movedown() {
-            simulateKeyPress("s"); 
-        }
-        function moveleft() {
-            jQuery.event.trigger({ type: 'keypress', which: 65 });
-        }
-        function moveright() {
-            simulateKeyPress("d");
-        }
-
         function simulateKeyPress(character) {
             jQuery.event//('input[type=submit][name=btnK]')
                 .trigger({
@@ -141,15 +102,6 @@
                     which: character.charCodeAt(65)
                 });
         }
-
-        /*$(function() {
-            $('body').keypress(function(e) {
-                alert(e.which);
-            });
-
-            simulateKeyPress("a");
-        });*/
-
         </script>
     </body>
 </html>
