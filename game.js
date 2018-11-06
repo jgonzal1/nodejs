@@ -1,5 +1,4 @@
 //#region Imports
-// TODO > mobile compatibility
 // TODO leverage mixture ImperioDeLosMares/RimWorld/CataclysmDDA
 const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
 const createIcon = require('./style/createIcon');
@@ -12,7 +11,8 @@ const spawnEnemies = require('./spawnEnemies');
 // TODO enhance response time with this: const mh = require('./moveHandlers'); // ver si mandando player va mejor;
 const L = require('leaflet');
 global.L = L;
-const cryptOfTheNecromancerMode = false;
+const cryptOfTheNecromancerMode = true;
+var mouseMoved; // = false;
 let refreshRate;
 if (cryptOfTheNecromancerMode === true) {
 	refreshRate = 500; // w/ 120 BPM music
@@ -25,7 +25,7 @@ const defaultMovementLength = refreshRate * velocity;
 
 //#region Create Base Layers
 const map = L.map('map', { scrollWheelZoom: true } );
-// TODO > que empiece en ubicación usuario
+// TODO >>>>> que empiece en ubicación usuario
 const coords = [40.4942011, -3.7101309, 15]; // MADRID
 // [36.836223, -2.466880, 15]; // Presen
 const lat  = coords[0]; global.lat = lat; // y
@@ -91,13 +91,20 @@ const layers = L.layerGroup(markers).addTo(map);
 
 //#region Daemonizers
 //let counter = 1;
+if (navigator.userAgent.match('Android|X11') !== null){ //X11 es mi redmi note 3
+	alert('¡Bienvenido a DarksGeim! Haz tap para moverte.\n' +
+	'No podrás volver a moverte hasta llegar a tu destino, así que...\n' +
+	'¡Piensa poco a poco tu jugada!');
+	map.on('click', onMapClick);
+} else {
+	alert('Bienvenido a DarksGeim. Utiliza el teclado para moverte');
+}
 /**
  * @param {number} milliseconds
  * @param {number} m movement multiplier that should be inverse to milliseconds
  */
 function keyListener(milliseconds, m) {
 	const moveDaemonizer = setInterval(function() {
-		//const p = Math.random();
 		if (L.DomUtil.get(hiddenlogs).innerHTML != 'p') {
 			goToPlayer(bloodyeye,0.7*m);
 			goToPlayer(death,0.9*m);
@@ -110,12 +117,11 @@ function keyListener(milliseconds, m) {
 			goToPlayer(undeadhand,0.6*m);
 			goToPlayer(vampire,0.5*m);
 		}
-		moveCharacter(player,1*m);
+		moveCharacter(player,m);
 		// TODO > Daemonizer en legend para tiempo del día; on add: timeLegend();
 
 		//counter++;
 	}, milliseconds);
-	// clearInterval(moveDaemonizer);
 }
 keyListener(refreshRate,defaultMovementLength);
 //#endregion
@@ -127,12 +133,12 @@ keyListener(refreshRate,defaultMovementLength);
 
 //#region Move handlers
 // TODO >>>>> when colide/near : capa de combate o comercio, con efectos de sonido, y en popup del de BDiA-showcase
-// TODO >>>>> añadir series taylor; correcciones angulares
+// TODO >>>>> añadir series taylor; correcciones angulares al habilitar ratón
 // (x - (x^3 / 6 )) aproxs sin(x) max 7% err
 // (1 - x^2 / 2) aproxs cos(x) hasta 60ª
 // (1 - x^2 / 2 + x^4 / 24) aproxs cos(x) de 60 a 85º
 // 0 aproxs cos(x) from 85 to 90º
-// TODO > poder hacer click para ir, carreteras preferidas
+// TODO > carreteras preferidas
 // TODO >>>>> Detectar dos botones a la vez (ej. W+A)
 // TODO Medios transporte (2/2)
 // TODO >>>>> botón que cambie booleano Crypt NecroDancer
@@ -148,6 +154,31 @@ function goToPlayer(target, velocity) {
 	}
 	moveCharacter(target, velocity, forcedDirection);
 }
+function onMapClick(e) {
+	if (mouseMoved !== true) {
+		const mouseClickDaemonizer = setInterval(function() {
+			mouseMoved = true;
+			vel = defaultMovementLength;
+			const latDiff = e.latlng.lat - player.getLatLng().lat;
+			const lngDiff = e.latlng.lng - player.getLatLng().lng;
+			let forcedDirection;
+			const latDiffAbs = Math.abs(latDiff);
+			const lngDiffAbs = Math.abs(lngDiff);
+			if (latDiffAbs > lngDiffAbs) {
+				if (latDiff>0) {forcedDirection='w';} else {forcedDirection='s';}
+			} else {
+				if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
+			}
+			moveCharacter(player, vel, forcedDirection);
+			//alert(vars + "strings"); works
+			if (defaultMovementLength/50000 > Math.max(latDiffAbs, lngDiffAbs)) {
+				clearInterval(mouseClickDaemonizer);
+				mouseMoved = false;
+			}
+		}, refreshRate);
+	}
+}
+// TODO imnhabilitar para su uso el right-click = contextmenu; left-click = click
 
 function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h | 12x
 	character = ( character || player );
