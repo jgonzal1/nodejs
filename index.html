@@ -24,18 +24,18 @@
                 <div id="logs"></div>
             </div>
             <div class="column" style="color:#dddddd">
-                <div id="hiddenlogs"></div>
+                <div id="hiddenHandlerKeys"></div>
+                <div id="hiddenHandlerModeCotND"></div>
             </div>         
         </div>
         <div id="b2" class="containerTab" style="display:none;background:#90cc90">
             <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-            <p>¡Los cambios en tiempo real se guardan automáticamente!</p>
-            <p>Generando savegame.JSON ... aparecerá un pop-up cuando el guardado se complete.</p>
+            <p>¡Los cambios se pueden guardan aún!</p>
         </div>
         <div id="b3" class="containerTab" style="display:none;background:#cfc999">
             <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-            <h2>Cargar JSON</h2>
-            <p>indev</p>
+            <input type="checkbox" id="checkModeCotND" onclick="modeCotND()"> Modo 30FPS
+            <!--<p id="text" style="display:none">Checkbox is CHECKED!</p>-->
         </div>
         <div id="music" class="containerTab" style="display:none;background:#90cc90">
             <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
@@ -71,6 +71,17 @@
 
         <script src="bundle.js"></script>
         <script>
+        function modeCotND() {
+            var checkBox = document.getElementById("checkModeCotND");
+            // var text = document.getElementById("text");
+            if (checkBox.checked == true){
+                document.getElementById("hiddenHandlerModeCotND").innerHTML = "false";
+                // text.style.display = "block";
+            } else {
+                document.getElementById("hiddenHandlerModeCotND").innerHTML = "true";
+                text.style.display = "none";
+            }
+        }
         // Hide all elements with class="containerTab", except for the one that matches the clickable grid column
         function openTab(tabName) {
             var i, x;
@@ -88,7 +99,7 @@
                     event.preventDefault();
                 }
                 buttonsPushed++;
-                document.getElementById("hiddenlogs").innerHTML = event.key;
+                document.getElementById("hiddenHandlerKeys").innerHTML = event.key;
                     // " " + buttonsPushed + "t," + // Times called .keypress() handler
                     // " " + event.key + " key"; // Last pushed key in keyboard
                     // <p> works but is unhidden

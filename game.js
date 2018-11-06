@@ -11,16 +11,17 @@ const spawnEnemies = require('./spawnEnemies');
 // TODO enhance response time with this: const mh = require('./moveHandlers'); // ver si mandando player va mejor;
 const L = require('leaflet');
 global.L = L;
-const cryptOfTheNecromancerMode = true;
-var mouseMoved; // = false;
-let refreshRate;
-if (cryptOfTheNecromancerMode === true) {
+var cryptOfTheNecromancerMode =  'true';
+const velocity = 1/33; // Dµº / ms
+var refreshRate, defaultMovementLength;
+if (cryptOfTheNecromancerMode === "true") {
 	refreshRate = 500; // w/ 120 BPM music
 } else {
 	refreshRate = 33; // 30+ FPS
 }
-const velocity = 1/33; // Dµº / ms
-const defaultMovementLength = refreshRate * velocity;
+defaultMovementLength = refreshRate * velocity;
+var mouseMoved; // = false;
+
 //#endregion
 
 //#region Create Base Layers
@@ -97,15 +98,29 @@ if (navigator.userAgent.match('Android|X11') !== null){ //X11 es mi redmi note 3
 	'¡Piensa poco a poco tu jugada!');
 	map.on('click', onMapClick);
 } else {
-	alert('Bienvenido a DarksGeim. Utiliza el teclado para moverte');
+	alert('Bienvenido a DarksGeim. Utiliza WASD para moverte,\n'+
+	'P para pausar, la rueda del ratón para elk zoom,\n'+
+	'y ←↑↓→ para mover el mapa');
 }
+setInterval(function() {
+	if (cryptOfTheNecromancerMode !== L.DomUtil.get(hiddenHandlerModeCotND).innerHTML) {
+		cryptOfTheNecromancerMode = L.DomUtil.get(hiddenHandlerModeCotND).innerHTML;
+		clearInterval(moveDaemonizer);
+		if (cryptOfTheNecromancerMode === "true") {
+			refreshRate = 500; // w/ 120 BPM music
+		} else {
+			refreshRate = 33; // 30+ FPS
+		}
+		defaultMovementLength = refreshRate * velocity;
+	}
+}, 3000); //globalEventsDaemonizer*/
 /**
  * @param {number} milliseconds
  * @param {number} m movement multiplier that should be inverse to milliseconds
  */
 function keyListener(milliseconds, m) {
 	const moveDaemonizer = setInterval(function() {
-		if (L.DomUtil.get(hiddenlogs).innerHTML != 'p') {
+		if (L.DomUtil.get(hiddenHandlerKeys).innerHTML != 'p') {
 			goToPlayer(bloodyeye,0.7*m);
 			goToPlayer(death,0.9*m);
 			goToPlayer(mummy,0.7*m);
@@ -184,7 +199,7 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 	character = ( character || player );
 	velocity = ( velocity || 1 );
 	movemap = (movemap || ['w', 'a', 's', 'd', ' '] );
-	const direction = (forceDirection || L.DomUtil.get(hiddenlogs).innerHTML);
+	const direction = (forceDirection || L.DomUtil.get(hiddenHandlerKeys).innerHTML);
 	switch (direction) { //forceDirection
 	case movemap[0]:
 		character.setLatLng(L.latLng(character.getLatLng().lat+0.00001*velocity,character.getLatLng().lng));
@@ -230,7 +245,7 @@ info.onAdd = function() {
 info.update = function(props) {
 	this._div.innerHTML = '<p><b>Population Density</b></p>' + (props ?
 		'<b>' + props.name + '</b><br/>' + props.density + ' people / km<sup>2</sup>' :
-		'Hover over a state') // + '<p>' + L.DomUtil.get(hiddenlogs).innerHTML + '</p>'
+		'Hover over a state') // + '<p>' + L.DomUtil.get(hiddenHandlerKeys).innerHTML + '</p>'
 	;
 };
 // let infoUpdaterCounter = 1;
@@ -241,7 +256,7 @@ function backgroundInfoUpdater(milliseconds) {
 		info.update = function() {
 			this._div.innerHTML = // +=
 				'<div class="backendlogs">' +
-				'<p><b>Key' + L.DomUtil.get(hiddenlogs).innerHTML + '</b></p>';
+				'<p><b>Key' + L.DomUtil.get(hiddenHandlerKeys).innerHTML + '</b></p>';
 				'<b>' + boolChecker + '<br/>' + '</b>';
 				// infoUpdaterCounter.toString()
 				'</div>'

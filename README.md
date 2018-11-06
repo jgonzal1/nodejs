@@ -1,30 +1,19 @@
-1.
-From file:///e%3A/nodejs/game.js#2
+1_From file:///e%3A/nodejs/game.js#2
 ----------------------------------
-TODO mobile compatibility
-
-2.
-From file:///e%3A/nodejs/game.js#10
+TODO > mobile compatibility
+2_From file:///e%3A/nodejs/game.js#3
 ----------------------------------
-TODO >>>OUTDATED const createCharactersAndPlaces = require('./createCharactersAndPlaces');
-
-3.
-From file:///e%3A/nodejs/game.js#12
+TODO leverage mixture ImperioDeLosMares/RimWorld/CataclysmDDA
+3_From file:///e%3A/nodejs/game.js#10
+----------------------------------
+TODO transportes y demás: const cL = require('./data/charactersList'); const transports = cL.getTransports();
+4_From file:///e%3A/nodejs/game.js#12
 ----------------------------------
 TODO enhance response time with this: const mh = require('./moveHandlers'); // ver si mandando player va mejor;
-
-4.
-From file:///e%3A/nodejs/game.js#17
+5_From file:///e%3A/nodejs/game.js#28
 ----------------------------------
-TODO ##### take out characters from places view & sites dependance for basemap
-
-5.
-From file:///e%3A/nodejs/game.js#19
-----------------------------------
-TODO que empiece en ubicación usuario
-
-6.
-From file:///e%3A/nodejs/game.js#30
+TODO > que empiece en ubicación usuario
+6_From file:///e%3A/nodejs/game.js#39
 ----------------------------------
 TODO Colores Tileset
 Blanco: para enemigos y algunas personas: detectarlo en tileset permite mover 1x; si no, reducir multiplicador de velocidad y:
@@ -34,92 +23,44 @@ Verde: multiplicador velocidad no tan bajo como blanco
 - No se puede entrar fuera del Blanco o verde excepto lugares*
 *Lugares -> puerta para permitir cambio color y salida del mismo
 @ tileset artístico zoom 15+
-
-7.
-From file:///e%3A/nodejs/game.js#42
+7_From file:///e%3A/nodejs/game.js#51
 ----------------------------------
-TODO Personalizar carácter personaje
-
-8.
-From file:///e%3A/nodejs/game.js#43
+TODO Personalizar carácter personaje + playerIcon "duplicado": personalizado con imagemagick
+8_From file:///e%3A/nodejs/game.js#114
 ----------------------------------
-TODO >>>OUTDATED let layers = createCharactersAndPlaces(L, lat, long); /*
-
-9.
-From file:///e%3A/nodejs/game.js#45
+TODO > Daemonizer en legend para tiempo del día; on add: timeLegend();
+9_From file:///e%3A/nodejs/game.js#124
 ----------------------------------
-TODO playerIcon "duplicado": personalizado con imagemagick
-
-10.
-From file:///e%3A/nodejs/game.js#121
-----------------------------------
-TODO Daemonizer en legend on add: timeLegend();
-
-11.
-From file:///e%3A/nodejs/game.js#129
-----------------------------------
-TODO Daemonizar freq.2 - música por lugar según regiones
-
-12.
-From file:///e%3A/nodejs/game.js#134
-----------------------------------
-TODO Esc para X
-
-13.
-From file:///e%3A/nodejs/game.js#135
+TODO > Esc para X
+10_From file:///e%3A/nodejs/game.js#125
 ----------------------------------
 TODO Tab para siguiente en menú
-
-14.
-From file:///e%3A/nodejs/game.js#139
+11_From file:///e%3A/nodejs/game.js#129
 ----------------------------------
-TODO > add that sth happens when colide/near : capa de combate o algo en grande
-
-15.
-From file:///e%3A/nodejs/game.js#140
+TODO >>>>> when colide/near : capa de combate o comercio, con efectos de sonido, y en popup del de BDiA-showcase
+12_From file:///e%3A/nodejs/game.js#130
 ----------------------------------
 TODO >>>>> añadir series taylor; correcciones angulares
-
-16.
-From file:///e%3A/nodejs/game.js#145
+13_From file:///e%3A/nodejs/game.js#135
 ----------------------------------
 TODO > poder hacer click para ir, carreteras preferidas
-
-17.
-From file:///e%3A/nodejs/game.js#146
+14_From file:///e%3A/nodejs/game.js#136
 ----------------------------------
-TODO Detectar dos botones a la vez (ej. W+A)
-
-18.
-From file:///e%3A/nodejs/game.js#147
-----------------------------------
-TODO Batallas, con efectos de sonido, y en popup del de BDiA-showcase
-
-19.
-From file:///e%3A/nodejs/game.js#148
+TODO >>>>> Detectar dos botones a la vez (ej. W+A)
+15_From file:///e%3A/nodejs/game.js#137
 ----------------------------------
 TODO Medios transporte (2/2)
-
-20.
-From file:///e%3A/nodejs/game.js#149
+16_From file:///e%3A/nodejs/game.js#138
 ----------------------------------
-TODO > Modo bajo refreshtime para pseudo Crypt NecroDancer, click opción para establecer tempo refresh y beat.
-
-21.
-From file:///e%3A/nodejs/game.js#270
+TODO >>>>> botón que cambie booleano Crypt NecroDancer
+17_From file:///e%3A/nodejs/game.js#260
 ----------------------------------
 TODO >>>>> leyenda dependiente de vista de regiones
-
-22.
-From file:///e%3A/nodejs/game.js#291
+18_From file:///e%3A/nodejs/game.js#281
 ----------------------------------
 TODO Tiempo y dependencias en legend?
-
-23.
-From file:///e%3A/nodejs/game.js#294
+19_From file:///e%3A/nodejs/game.js#284
 ----------------------------------
 TODO Asistente virtual en ayuda / cómo jugar
-
 ==================================
-Found 23 TODOs.
-
+Found 19 TODOs.
