@@ -1,12 +1,12 @@
 //#region Imports
-// TODO leverage mixture ImperioDeLosMares/RimWorld/CataclysmDDA
+// TODO Leverage mixture ImperioDeLosMares/RimWorld/CataclysmDDA
 const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
 const createIcon = require('./style/createIcon');
 const geoJsonStylers = require('./style/geoJsonStylers');
 const austria = require('./data/austria');
 const states = austria();
 const getSites = require('./data/sites'); const sites = getSites();
-// TODO transportes y demás: const cL = require('./data/charactersList'); const transports = cL.getTransports();
+// TODO Transportes y demás: const cL = require('./data/charactersList'); const transports = cL.getTransports();
 const spawnEnemies = require('./spawnEnemies');
 const mH = require('./moveHandlers');
 const L = require('leaflet');
@@ -21,13 +21,13 @@ if (cryptOfTheNecromancerMode === "true") {
 }
 defaultMovementLength = refreshRate * velocity;
 var mouseMoved; // = false;
+var gameTimeStamp = new Date(1262304000000);
 //#endregion
 
 //#region Create Base Layers
 const map = L.map('map', { scrollWheelZoom: true } );
-// TODO >>>>> que empiece en ubicación usuario
+// TODO Que empiece en ubicación usuario L.DomUtil.get(hiddenHandlerPos).innerHTML.split(",")[0]/[1]
 const coords = [40.4942011, -3.7101309, 15]; // MADRID
-// [36.836223, -2.466880, 15]; // Presen
 const lat  = coords[0]; global.lat = lat; // y
 const long = coords[1]; global.long = long; // x
 const zoom = coords[2]; // z
@@ -48,14 +48,15 @@ const baseLayers = createBaseLayerAndAddMore(artisticMap, L);
 //#endregion
 
 //#region Create Characters and Places
-// TODO Personalizar carácter personaje + playerIcon "duplicado": personalizado con imagemagick
+// TODO > Personalizar carácter personaje + playerIcon "duplicado": personalizado con imagemagick
 const playerIcon	= L.icon(createIcon('style/ratkid-shaded.png'));
 const greenIcon		= L.icon(createIcon('style/marker-green.png'));
 
 spawnEnemies(L, lat, long);
-global.player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
+const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
 );
+global.player = player;
 
 var mCharacters = [];
 var markers = [];
@@ -97,65 +98,64 @@ if (navigator.userAgent.match('Android|X11') !== null){ //X11 es mi redmi note 3
 	'¡Piensa poco a poco tu jugada!');
 	map.on('click', onMapClick);
 } else {
-	alert('Bienvenido a DarksGeim. Utiliza WASD para moverte,\n'+
+	/*alert('Bienvenido a DarksGeim. Utiliza WASD para moverte,\n'+
 	'P para pausar, la rueda del ratón para elk zoom,\n'+
-	'y ←↑↓→ para mover el mapa');
+	'y ←↑↓→ para mover el mapa');*/
 }
+// let moveDaemonizer;
 setInterval(function() {
-	if (cryptOfTheNecromancerMode !== L.DomUtil.get(hiddenHandlerModeCotND).innerHTML) {
+	// TODO > Daemonizer en legend para tiempo del día; on add: timeLegend();
+	gameTimeStamp += 36000;
+	timeLegend();
+	/*if (cryptOfTheNecromancerMode !== L.DomUtil.get(hiddenHandlerModeCotND).innerHTML) {
 		cryptOfTheNecromancerMode = L.DomUtil.get(hiddenHandlerModeCotND).innerHTML;
-		clearInterval(moveDaemonizer);
+		//if (typeof(cryptOfTheNecromancerMode) === 'string') {clearInterval(moveDaemonizer);}
 		if (cryptOfTheNecromancerMode === "true") {
 			refreshRate = 500; // w/ 120 BPM music
 		} else {
 			refreshRate = 33; // 30+ FPS
 		}
 		defaultMovementLength = refreshRate * velocity;
-	}
+	}*/
 }, 3000); //globalEventsDaemonizer*/
-/**
- * @param {number} milliseconds
- * @param {number} m movement multiplier that should be inverse to milliseconds
- */
-function keyListener(milliseconds, m) {
-	const moveDaemonizer = setInterval(function() {
+
+function keyListener(refreshRate,defaultMovementLength) { //milliseconds, m
+	global.moveDaemonizer = setInterval(function() {
 		if (L.DomUtil.get(hiddenHandlerKeys).innerHTML != 'p') {
-			mH.goToPlayer(bloodyeye,0.7*m);
-			mH.goToPlayer(death,0.9*m);
-			mH.goToPlayer(mummy,0.7*m);
-			mH.goToPlayer(owl,0.5*m);
-			mH.goToPlayer(phantom,0.7*m);
-			mH.goToPlayer(pirateskull,0.8*m);
-			mH.goToPlayer(skeleton,0.7*m);
-			mH.goToPlayer(spider,0.5*m);
-			mH.goToPlayer(undeadhand,0.6*m);
-			mH.goToPlayer(vampire,0.5*m);
+			mH.goToPlayer(bloodyeye,0.7*defaultMovementLength);
+			mH.goToPlayer(death,0.9*defaultMovementLength);
+			mH.goToPlayer(mummy,0.7*defaultMovementLength);
+			mH.goToPlayer(owl,0.5*defaultMovementLength);
+			mH.goToPlayer(phantom,0.7*defaultMovementLength);
+			mH.goToPlayer(pirateskull,0.8*defaultMovementLength);
+			mH.goToPlayer(skeleton,0.7*defaultMovementLength);
+			mH.goToPlayer(spider,0.5*defaultMovementLength);
+			mH.goToPlayer(undeadhand,0.6*defaultMovementLength);
+			mH.goToPlayer(vampire,0.5*defaultMovementLength);
 		}
-		mH.moveCharacter(global.player,m);
-		// TODO > Daemonizer en legend para tiempo del día; on add: timeLegend();
+		mH.moveCharacter(global.player,defaultMovementLength);
 
 		//counter++;
-	}, milliseconds);
+	}, refreshRate);
 }
-keyListener(refreshRate,defaultMovementLength);
+keyListener(refreshRate,defaultMovementLength);//refreshRate,defaultMovementLength
 //#endregion
 
 //#region Keys interface
-//TODO > Esc para X
+//TODO Esc para X
 //TODO Tab para siguiente en menú
 //#endregion
 
 //#region Move handlers
-// TODO >>>>> when colide/near : capa de combate o comercio, con efectos de sonido, y en popup del de BDiA-showcase
-// TODO >>>>> añadir series taylor; correcciones angulares al habilitar ratón
+// TODO >>>>> When colide/near : capa de combate o comercio, con efectos de sonido, y en popup del de BDiA-showcase
+// TODO Añadir series taylor; correcciones angulares al habilitar ratón
 // (x - (x^3 / 6 )) aproxs sin(x) max 7% err
 // (1 - x^2 / 2) aproxs cos(x) hasta 60ª
 // (1 - x^2 / 2 + x^4 / 24) aproxs cos(x) de 60 a 85º
 // 0 aproxs cos(x) from 85 to 90º
-// TODO > carreteras preferidas
-// TODO >>>>> Detectar dos botones a la vez (ej. W+A)
-// TODO Medios transporte (2/2)
-// TODO >>>>> botón que cambie booleano Crypt NecroDancer
+// TODO Detectar dos botones a la vez (ej. W+A)
+// TODO > Botón que cambie booleano Crypt NecroDancer
+// TODO > Migrar onMapClick
 function onMapClick(e) {
 	if (mouseMoved !== true) {
 		const mouseClickDaemonizer = setInterval(function() {
@@ -180,7 +180,7 @@ function onMapClick(e) {
 		}, refreshRate);
 	}
 }
-// TODO imnhabilitar para su uso el right-click = contextmenu; left-click = click
+// TODO Inhabilitar para su uso el right-click = contextmenu; left-click = click
 //#endregion
 
 //#region geoJson Overlays
@@ -207,9 +207,9 @@ info.onAdd = function() {
 	return this._div;
 };
 info.update = function(props) {
-	this._div.innerHTML = '<p><b>Population Density</b></p>' + (props ?
-		'<b>' + props.name + '</b><br/>' + props.density + ' people / km<sup>2</sup>' :
-		'Hover over a state') // + '<p>' + L.DomUtil.get(hiddenHandlerKeys).innerHTML + '</p>'
+	this._div.innerHTML = '' + (props ?
+		'<p><b>Population Density</b></p>' + '<b>' + props.name + '</b><br/>' + props.density + ' people / km<sup>2</sup>' :
+		'') // 'Hover over a state' + '<p>' + L.DomUtil.get(hiddenHandlerKeys).innerHTML + '</p>'
 	;
 };
 // let infoUpdaterCounter = 1;
@@ -267,10 +267,10 @@ function onEachFeature(feature, layer) {
 //#endregion
 
 //#region Legend
-// TODO >>>>> leyenda dependiente de vista de regiones
+// TODO Leyenda dependiente de vista de regiones
 const legend = L.control({position: 'bottomright'});
 legend.onAdd = function() {
-	const div = L.DomUtil.create('div', 'info legend'),
+	const div = L.DomUtil.create('div', 'info legend');/*,
 		grades = [1, 70, 80, 100, 130, 1000],
 		labels = ["personas/km²"];
 	let from, to;
@@ -282,13 +282,27 @@ legend.onAdd = function() {
 			'<i style="background:' + geoJsonStylers.getColor(from + 1) + '">' +
 				'<font color=' + geoJsonStylers.getColor(from + 1) + '>__</font>' +
 			'</i> ' + from + (to ? '&ndash;' + to : '+'));
-	}
-
-	div.innerHTML = labels.join('<br>');
+	}*/
+	div.innerHTML = [formatDate(gameTimeStamp)]; //labels.join('<br>');
 	return div;
 };
+function formatDate(date) {
+	var monthNames = [
+		"E", "F", "Mz",
+		"Ab", "My", "Jn",
+		"Jl", "Ag", "S",
+		"O", "N", "D"
+	];
+	var year = date.getFullYear()%2000;
+	var monthIndex = date.getMonth();
+	var day = date.getDate();
+	var hours = date.getHours();
+	var mins = date.getMinutes();
+
+	return year + '/' + monthNames[monthIndex] + '/' + day + ' ' + hours + ':' + mins;
+}
 function timeLegend(){
-	labels.push(); // TODO Tiempo y dependencias en legend?
+	labels = [formatDate(gameTimeStamp)]; // TODO Tiempo y dependencias en legend?
 }
 legend.addTo(map);
 // TODO Asistente virtual en ayuda / cómo jugar
