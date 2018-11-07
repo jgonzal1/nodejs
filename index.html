@@ -24,8 +24,9 @@
                 <div id="logs"></div>
             </div>
             <div class="column" style="color:#dddddd">
-                <div id="hiddenHandlerKeys"></div>
-                <div id="hiddenHandlerModeCotND"></div>
+                <div id="hiddenHandlerKeys" style="display: none"></div>
+                <div id="hiddenHandlerModeCotND" style="display: none"></div>
+                <div id="hiddenHandlerPos" style="display: none"></div>
             </div>         
         </div>
         <div id="b2" class="containerTab" style="display:none;background:#90cc90">
@@ -47,6 +48,7 @@
                         width="560" height="315"
                         src="https://www.youtube.com/embed/videoseries?list=PLHeTSqyMs2Xbsn_LFYNFUZNDQf3ZalUpz&autoplay=1"
                         frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                        <!-- embed/0IT9A9GvjWo" -->
                         </iframe>
                         <!-- Lista Lo-Fi
                         <iframe
@@ -71,6 +73,7 @@
 
         <script src="bundle.js"></script>
         <script>
+        getLocation()
         function modeCotND() {
             var checkBox = document.getElementById("checkModeCotND");
             // var text = document.getElementById("text");
@@ -81,6 +84,17 @@
                 document.getElementById("hiddenHandlerModeCotND").innerHTML = "true";
                 text.style.display = "none";
             }
+        }
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+                document.getElementById("hiddenHandlerPos").innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+        function showPosition(position) {
+            document.getElementById("hiddenHandlerPos").innerHTML = position.coords.latitude + 
+            "," + position.coords.longitude;
         }
         // Hide all elements with class="containerTab", except for the one that matches the clickable grid column
         function openTab(tabName) {
