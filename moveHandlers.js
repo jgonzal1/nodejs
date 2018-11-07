@@ -24,9 +24,9 @@ const lngCorrection = [ // Corrección calculada de la distorsión angular de la
     0.031546624,0.011362056,0
 ]; // De momento tomo la de 40º porque estamos en Madrid
 
-function targetFleeFromPlayer(target, player) {
-	const latDiff = player.getLatLng().lat - target.getLatLng().lat;
-	const lngDiff = player.getLatLng().lng - target.getLatLng().lng;
+function targetFleeFromPlayer(target) {
+	const latDiff = global.player.getLatLng().lat - target.getLatLng().lat;
+	const lngDiff = global.player.getLatLng().lng - target.getLatLng().lng;
 	let forcedDirection;
 	if (Math.abs(latDiff) > Math.abs(lngDiff)) {
 		if (latDiff>0) {forcedDirection='s';} else {forcedDirection='w';}
@@ -36,9 +36,9 @@ function targetFleeFromPlayer(target, player) {
 	moveCharacter(target, forcedDirection);
 }
 
-function targetGoToPlayer(target, player) {
-	const latDiff = player.getLatLng().lat - target.getLatLng().lat;
-	const lngDiff = player.getLatLng().lng - target.getLatLng().lng;
+function targetGoToPlayer(target) {
+	const latDiff = global.player.getLatLng().lat - target.getLatLng().lat;
+	const lngDiff = global.player.getLatLng().lng - target.getLatLng().lng;
 	let forcedDirection;
 	if (Math.abs(latDiff) > Math.abs(lngDiff)) {
 		if (latDiff>0) {forcedDirection='w';} else {forcedDirection='s';}
@@ -48,20 +48,38 @@ function targetGoToPlayer(target, player) {
 	moveCharacter(target, forcedDirection);
 }
 
-function moveCharacter(character, direction, movemap, L) { // 80km/h | 12x
-	movemap = (movemap || ['w', 'a', 's', 'd'] );
+function goToPlayer(target, velocity) {
+	velocity = ( velocity || 1 );
+	const latDiff = global.player.getLatLng().lat - target.getLatLng().lat;
+	const lngDiff = global.player.getLatLng().lng - target.getLatLng().lng;
+	let forcedDirection;
+	if (Math.abs(latDiff) > Math.abs(lngDiff)) {
+		if (latDiff>0) {forcedDirection='w';} else {forcedDirection='s';}
+	} else {
+		if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
+	}
+	moveCharacter(target, velocity, forcedDirection);
+}
+
+function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h | 12x
+	character = ( character || global.player );
+	velocity = ( velocity || 1 );
+	movemap = (movemap || ['w', 'a', 's', 'd', ' '] );
+	const direction = (forceDirection || L.DomUtil.get(hiddenHandlerKeys).innerHTML);
 	switch (direction) { //forceDirection
 	case movemap[0]:
-		character.setLatLng(L.latLng(character.getLatLng().lat+0.00001,character.getLatLng().lng));
+		character.setLatLng(L.latLng(character.getLatLng().lat+0.00001*velocity,character.getLatLng().lng));
 		break;
 	case movemap[1]:
-		character.setLatLng(L.latLng(character.getLatLng().lat,character.getLatLng().lng-0.00001));
+		character.setLatLng(L.latLng(character.getLatLng().lat,character.getLatLng().lng-0.00001*velocity));
 		break;
 	case movemap[2]:
-		character.setLatLng(L.latLng(character.getLatLng().lat-0.00001,character.getLatLng().lng));
+		character.setLatLng(L.latLng(character.getLatLng().lat-0.00001*velocity,character.getLatLng().lng));
 		break;
 	case movemap[3]:
-		character.setLatLng(L.latLng(character.getLatLng().lat,character.getLatLng().lng+0.00001));
+		character.setLatLng(L.latLng(character.getLatLng().lat,character.getLatLng().lng+0.00001*velocity));
+		break;
+	case movemap[4]:
 		break;
 	}
 }
@@ -72,4 +90,5 @@ function getRandomInt(max) {
 
 module.exports.targetFleeFromPlayer = targetFleeFromPlayer;
 module.exports.targetGoToPlayer = targetGoToPlayer;
+module.exports.goToPlayer = goToPlayer;
 module.exports.moveCharacter = moveCharacter;

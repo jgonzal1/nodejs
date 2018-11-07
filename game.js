@@ -8,20 +8,19 @@ const states = austria();
 const getSites = require('./data/sites'); const sites = getSites();
 // TODO transportes y demás: const cL = require('./data/charactersList'); const transports = cL.getTransports();
 const spawnEnemies = require('./spawnEnemies');
-// TODO enhance response time with this: const mh = require('./moveHandlers'); // ver si mandando player va mejor;
+const mH = require('./moveHandlers');
 const L = require('leaflet');
 global.L = L;
 var cryptOfTheNecromancerMode =  'true';
 const velocity = 1/33; // Dµº / ms
 var refreshRate, defaultMovementLength;
 if (cryptOfTheNecromancerMode === "true") {
-	refreshRate = 500; // w/ 120 BPM music
+	refreshRate = 500; // asume <5ms delays! // 500 w/ 120 BPM music
 } else {
 	refreshRate = 33; // 30+ FPS
 }
 defaultMovementLength = refreshRate * velocity;
 var mouseMoved; // = false;
-
 //#endregion
 
 //#region Create Base Layers
@@ -54,14 +53,14 @@ const playerIcon	= L.icon(createIcon('style/ratkid-shaded.png'));
 const greenIcon		= L.icon(createIcon('style/marker-green.png'));
 
 spawnEnemies(L, lat, long);
-const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
+global.player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
 );
 
 var mCharacters = [];
 var markers = [];
 mCharacters.push(
-	player,
+	global.player,
 	global.bloodyeye,
 	global.death,
 	global.mummy,
@@ -121,18 +120,18 @@ setInterval(function() {
 function keyListener(milliseconds, m) {
 	const moveDaemonizer = setInterval(function() {
 		if (L.DomUtil.get(hiddenHandlerKeys).innerHTML != 'p') {
-			goToPlayer(bloodyeye,0.7*m);
-			goToPlayer(death,0.9*m);
-			goToPlayer(mummy,0.7*m);
-			goToPlayer(owl,0.5*m);
-			goToPlayer(phantom,0.7*m);
-			goToPlayer(pirateskull,0.8*m);
-			goToPlayer(skeleton,0.7*m);
-			goToPlayer(spider,0.5*m);
-			goToPlayer(undeadhand,0.6*m);
-			goToPlayer(vampire,0.5*m);
+			mH.goToPlayer(bloodyeye,0.7*m);
+			mH.goToPlayer(death,0.9*m);
+			mH.goToPlayer(mummy,0.7*m);
+			mH.goToPlayer(owl,0.5*m);
+			mH.goToPlayer(phantom,0.7*m);
+			mH.goToPlayer(pirateskull,0.8*m);
+			mH.goToPlayer(skeleton,0.7*m);
+			mH.goToPlayer(spider,0.5*m);
+			mH.goToPlayer(undeadhand,0.6*m);
+			mH.goToPlayer(vampire,0.5*m);
 		}
-		moveCharacter(player,m);
+		mH.moveCharacter(global.player,m);
 		// TODO > Daemonizer en legend para tiempo del día; on add: timeLegend();
 
 		//counter++;
@@ -157,25 +156,13 @@ keyListener(refreshRate,defaultMovementLength);
 // TODO >>>>> Detectar dos botones a la vez (ej. W+A)
 // TODO Medios transporte (2/2)
 // TODO >>>>> botón que cambie booleano Crypt NecroDancer
-function goToPlayer(target, velocity) {
-	velocity = ( velocity || 1 );
-	const latDiff = player.getLatLng().lat - target.getLatLng().lat;
-	const lngDiff = player.getLatLng().lng - target.getLatLng().lng;
-	let forcedDirection;
-	if (Math.abs(latDiff) > Math.abs(lngDiff)) {
-		if (latDiff>0) {forcedDirection='w';} else {forcedDirection='s';}
-	} else {
-		if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
-	}
-	moveCharacter(target, velocity, forcedDirection);
-}
 function onMapClick(e) {
 	if (mouseMoved !== true) {
 		const mouseClickDaemonizer = setInterval(function() {
 			mouseMoved = true;
 			vel = defaultMovementLength;
-			const latDiff = e.latlng.lat - player.getLatLng().lat;
-			const lngDiff = e.latlng.lng - player.getLatLng().lng;
+			const latDiff = e.latlng.lat - global.player.getLatLng().lat;
+			const lngDiff = e.latlng.lng - global.player.getLatLng().lng;
 			let forcedDirection;
 			const latDiffAbs = Math.abs(latDiff);
 			const lngDiffAbs = Math.abs(lngDiff);
@@ -184,7 +171,7 @@ function onMapClick(e) {
 			} else {
 				if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
 			}
-			moveCharacter(player, vel, forcedDirection);
+			mH.moveCharacter(global.player, vel, forcedDirection);
 			//alert(vars + "strings"); works
 			if (defaultMovementLength/50000 > Math.max(latDiffAbs, lngDiffAbs)) {
 				clearInterval(mouseClickDaemonizer);
@@ -194,29 +181,6 @@ function onMapClick(e) {
 	}
 }
 // TODO imnhabilitar para su uso el right-click = contextmenu; left-click = click
-
-function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h | 12x
-	character = ( character || player );
-	velocity = ( velocity || 1 );
-	movemap = (movemap || ['w', 'a', 's', 'd', ' '] );
-	const direction = (forceDirection || L.DomUtil.get(hiddenHandlerKeys).innerHTML);
-	switch (direction) { //forceDirection
-	case movemap[0]:
-		character.setLatLng(L.latLng(character.getLatLng().lat+0.00001*velocity,character.getLatLng().lng));
-		break;
-	case movemap[1]:
-		character.setLatLng(L.latLng(character.getLatLng().lat,character.getLatLng().lng-0.00001*velocity));
-		break;
-	case movemap[2]:
-		character.setLatLng(L.latLng(character.getLatLng().lat-0.00001*velocity,character.getLatLng().lng));
-		break;
-	case movemap[3]:
-		character.setLatLng(L.latLng(character.getLatLng().lat,character.getLatLng().lng+0.00001*velocity));
-		break;
-	case movemap[4]:
-		break;
-	}
-}
 //#endregion
 
 //#region geoJson Overlays
