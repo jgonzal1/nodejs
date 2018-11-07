@@ -41,6 +41,7 @@ var austrianCapitals = [
 // initialCoords = [47.70     , 14.74    , 8 ] // AUSTRIA
 // initialCoords = [48.303360 , 14.30187 , 17] // PLAYER @ Linz, Oberösterreich
 // initialCoords = [40.4942011, -3.71013 , 15] // MADRID
+// initialCoords = [36.836223 , -2.466880, 15] // PRESEN
 
 function getSites() {
     return sites;
