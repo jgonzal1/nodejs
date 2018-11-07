@@ -24,28 +24,29 @@ const lngCorrection = [ // Corrección calculada de la distorsión angular de la
     0.031546624,0.011362056,0
 ]; // De momento tomo la de 40º porque estamos en Madrid
 
-function targetFleeFromPlayer(target) {
-	const latDiff = global.player.getLatLng().lat - target.getLatLng().lat;
-	const lngDiff = global.player.getLatLng().lng - target.getLatLng().lng;
+function targetFleeFromPlayer(target, velocity, player) {
+	const latDiff = player.getLatLng().lat - target.getLatLng().lat;
+	const lngDiff = player.getLatLng().lng - target.getLatLng().lng;
 	let forcedDirection;
 	if (Math.abs(latDiff) > Math.abs(lngDiff)) {
 		if (latDiff>0) {forcedDirection='s';} else {forcedDirection='w';}
 	} else {
 		if (lngDiff>0) {forcedDirection='a';} else {forcedDirection='d';}
 	}
-	moveCharacter(target, forcedDirection);
+	moveCharacter(target, velocity, forcedDirection);
 }
 
-function targetGoToPlayer(target) {
-	const latDiff = global.player.getLatLng().lat - target.getLatLng().lat;
-	const lngDiff = global.player.getLatLng().lng - target.getLatLng().lng;
+function targetGoToPlayer(target, velocity, player) {
+	velocity = ( velocity || 1 );
+	const latDiff = player.getLatLng().lat - target.getLatLng().lat;
+	const lngDiff = player.getLatLng().lng - target.getLatLng().lng;
 	let forcedDirection;
 	if (Math.abs(latDiff) > Math.abs(lngDiff)) {
 		if (latDiff>0) {forcedDirection='w';} else {forcedDirection='s';}
 	} else {
 		if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
 	}
-	moveCharacter(target, forcedDirection);
+	moveCharacter(target, velocity, forcedDirection);
 }
 
 function goToPlayer(target, velocity) {
@@ -84,6 +85,32 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 	}
 }
 
+// unused
+function onMapClick(e) {
+	if (mouseMoved !== true) {
+		const mouseClickDaemonizer = setInterval(function() {
+			mouseMoved = true;
+			vel = defaultMovementLength;
+			const latDiff = e.latlng.lat - global.player.getLatLng().lat;
+			const lngDiff = e.latlng.lng - global.player.getLatLng().lng;
+			let forcedDirection;
+			const latDiffAbs = Math.abs(latDiff);
+			const lngDiffAbs = Math.abs(lngDiff);
+			if (latDiffAbs > lngDiffAbs) {
+				if (latDiff>0) {forcedDirection='w';} else {forcedDirection='s';}
+			} else {
+				if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
+			}
+			mH.moveCharacter(global.player, vel, forcedDirection);
+			//alert(vars + "strings"); works
+			if (defaultMovementLength/50000 > Math.max(latDiffAbs, lngDiffAbs)) {
+				clearInterval(mouseClickDaemonizer);
+				mouseMoved = false;
+			}
+		}, refreshRate);
+	}
+}
+
 function getRandomInt(max) {
 	return Math.floor(Math.random() * Math.floor(max));
 }
@@ -92,3 +119,4 @@ module.exports.targetFleeFromPlayer = targetFleeFromPlayer;
 module.exports.targetGoToPlayer = targetGoToPlayer;
 module.exports.goToPlayer = goToPlayer;
 module.exports.moveCharacter = moveCharacter;
+module.exports.onMapClick = onMapClick;
