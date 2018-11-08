@@ -60,6 +60,9 @@ function goToPlayer(target, velocity) {
 		if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
 	}
 	moveCharacter(target, velocity, forcedDirection);
+	if (0.00004 > Math.max(Math.abs(latDiff), Math.abs(lngDiff))) {
+		alert('game over');
+	}
 }
 
 function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h | 12x
@@ -67,6 +70,7 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 	velocity = ( velocity || 1 );
 	movemap = (movemap || ['w', 'a', 's', 'd', ' '] );
 	const direction = (forceDirection || L.DomUtil.get(hiddenHandlerKeys).innerHTML);
+	let nearestObjetive;
 	switch (direction) { //forceDirection
 	case movemap[0]:
 		character.setLatLng(L.latLng(character.getLatLng().lat+0.00001*velocity,character.getLatLng().lng));
@@ -81,8 +85,37 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 		character.setLatLng(L.latLng(character.getLatLng().lat,character.getLatLng().lng+0.00001*velocity));
 		break;
 	case movemap[4]:
+		nearestObjetive = Math.min(
+			fcalcDist(global.biscuit),
+			fcalcDist(global.burger),
+			fcalcDist(global.chococookie),
+			fcalcDist(global.chocolate),
+			fcalcDist(global.cupcake),
+			fcalcDist(global.donut),
+			fcalcDist(global.fries),
+			fcalcDist(global.icecream),
+			fcalcDist(global.pizza),
+			fcalcDist(global.popcorn),
+			fcalcDist(global.potatoes),
+			fcalcDist(global.poti),
+			fcalcDist(global.taco)
+		);
+		if (nearestObjetive < 0.00004) {
+			alert('¡Has conseguido 1 punto!');
+		}
 		break;
 	}
+}
+/** @typedef L.marker @type {object} @type {L.marker} */
+/**@param {L.marker} m1 
+ * @param {L.marker} m2 defaults player
+ * @returns {number} a fast calculation distance number
+ */
+function fcalcDist(m1, m2) {
+	m2 = (m2 || global.player);
+	const latDiff = m1.getLatLng().lat - m2.getLatLng().lat;
+	const lngDiff = m1.getLatLng().lng - m2.getLatLng().lng;
+	return Math.abs(latDiff)+Math.abs(lngDiff);
 }
 
 // unused

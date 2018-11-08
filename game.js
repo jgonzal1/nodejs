@@ -8,6 +8,7 @@ const states = austria();
 const getSites = require('./data/sites'); const sites = getSites();
 // TODO Transportes y demás: const cL = require('./data/charactersList'); const transports = cL.getTransports();
 const spawnEnemies = require('./spawnEnemies');
+const spawnObjectives = require('./spawnObjectives');
 const mH = require('./moveHandlers');
 const L = require('leaflet');
 global.L = L;
@@ -53,15 +54,18 @@ const playerIcon	= L.icon(createIcon('style/ratkid-shaded.png'));
 const greenIcon		= L.icon(createIcon('style/marker-green.png'));
 
 spawnEnemies(L, lat, long);
+spawnObjectives(L, lat, long);
 const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
 );
+// TODO Multiplayer MongoDB
 global.player = player;
 
 var mCharacters = [];
 var markers = [];
 mCharacters.push(
 	global.player,
+	
 	global.bloodyeye,
 	global.death,
 	global.mummy,
@@ -71,7 +75,21 @@ mCharacters.push(
 	global.skeleton,
 	global.spider,
 	global.undeadhand,
-	global.vampire
+	global.vampire,
+
+	global.biscuit,
+	global.burger,
+	global.chococookie,
+	global.chocolate,
+	global.cupcake,
+	global.donut,
+	global.fries,
+	global.icecream,
+	global.pizza,
+	global.popcorn,
+	global.potatoes,
+	global.poti,
+	global.taco
 );
 for (var i in sites) {
     markers.push(
