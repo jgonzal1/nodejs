@@ -1,3 +1,9 @@
+/*const cL = require('./data/charactersList');
+const objectives = cL.getObjectives();
+const spawnSites = require('./data/sites');
+const sites = spawnSites.getSites();
+const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasiera"];*/
+
 const lngCorrection = [ // Corrección calculada de la distorsión angular de la longitud con respecto a su latiitud
     1.00858,    1.006355176,1.003926264,1.001293264,
     0.998456176,0.9954150,  0.992169736,0.988720384,
@@ -60,7 +66,7 @@ function goToPlayer(target, velocity) {
 		if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
 	}
 	moveCharacter(target, velocity, forcedDirection);
-	if (0.00004 > Math.max(Math.abs(latDiff), Math.abs(lngDiff))) {
+	if (0.0002 > Math.max(Math.abs(latDiff), Math.abs(lngDiff))) {
 		alert('game over');
 	}
 }
@@ -70,7 +76,7 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 	velocity = ( velocity || 1 );
 	movemap = (movemap || ['w', 'a', 's', 'd', ' '] );
 	const direction = (forceDirection || L.DomUtil.get(hiddenHandlerKeys).innerHTML);
-	let nearestObjetive;
+	let nearestObjetive, distancesArray, nearestObjetiveIndex;
 	switch (direction) { //forceDirection
 	case movemap[0]:
 		character.setLatLng(L.latLng(character.getLatLng().lat+0.00001*velocity,character.getLatLng().lng));
@@ -85,7 +91,23 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 		character.setLatLng(L.latLng(character.getLatLng().lat,character.getLatLng().lng+0.00001*velocity));
 		break;
 	case movemap[4]:
-		nearestObjetive = Math.min(
+		//alert('Calculando distancia...');
+		/*distancesArray = [
+			fcalcDist(global.biscuit),
+			fcalcDist(global.burger),
+			fcalcDist(global.chococookie),
+			fcalcDist(global.chocolate),
+			fcalcDist(global.cupcake),
+			fcalcDist(global.donut),
+			fcalcDist(global.fries),
+			fcalcDist(global.icecream),
+			fcalcDist(global.pizza),
+			fcalcDist(global.popcorn),
+			fcalcDist(global.potatoes),
+			fcalcDist(global.poti),
+			fcalcDist(global.taco)
+		];*/
+		nearestObjetive = Math.min( // TODO Duplicated because of async
 			fcalcDist(global.biscuit),
 			fcalcDist(global.burger),
 			fcalcDist(global.chococookie),
@@ -100,8 +122,11 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 			fcalcDist(global.poti),
 			fcalcDist(global.taco)
 		);
-		if (nearestObjetive < 0.00004) {
-			alert('¡Has conseguido 1 punto!');
+		//nearestObjetiveIndex = distancesArray.indexOf(Math.max(...distancesArray));
+		if (nearestObjetive < 0.0002) {
+			alert('¡Has conseguido 1 punto al conseguir un ');// + objectives[nearestObjetiveIndex-1] +'!');
+		} else {
+			alert('¡Tu objetivo más cercano aún está a ' + Math.round(5000*nearestObjetive) + ' pasos!');
 		}
 		break;
 	}
