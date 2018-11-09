@@ -34,6 +34,7 @@ if (cryptOfTheNecromancerMode === "true") {
 defaultMovementLength = refreshRate * velocity;
 var mouseMoved; // = false;
 global.layerToRemove = undefined;
+global.points = 0;
 
 var gameTimeStamp = new Date(1262304000000);
 //#endregion

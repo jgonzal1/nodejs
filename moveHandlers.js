@@ -135,7 +135,8 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 		nearestObjetiveIndex = distancesArray.indexOf(Math.min(...distancesArray));
 		if (nearestObjetive < 0.0002) {
 			alert('¡Has conseguido 1 punto al conseguir un ' + objectives[nearestObjetiveIndex] +'!');
-			global.layerToRemove = objectives[nearestObjetiveIndex];			
+			global.layerToRemove = objectives[nearestObjetiveIndex];
+			global.points += 1;			
 		} else {
 			alert(
 				'¡Tu objetivo más cercano aún está a ' + Math.round(5000*nearestObjetive) + ' pasos y\n' +

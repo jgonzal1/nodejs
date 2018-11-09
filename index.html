@@ -11,10 +11,10 @@
     </head>
     <body>
         <div class="row" width="100%"><!-- Instances columns -->
-            <div class="column" onclick="openTab('b2');" style="color:#444444;background:#90cc90;">
-                Guardar
+            <div class="column" onclick="openTab('info');" style="color:#444444;background:#90cc90;">
+                Info
             </div>
-            <div class="column" onclick="openTab('b3');" style="color:#444444;background:#cfc999;">
+            <div class="column" onclick="openTab('options');" style="color:#444444;background:#cfc999;">
                 Opciones
             </div>
             <div class="column" onclick="openTab('music');" style="color:#444444;background:#90cc90;">
@@ -29,11 +29,12 @@
                 <div id="hiddenHandlerPos" style="display: none"></div>
             </div>         
         </div>
-        <div id="b2" class="containerTab" style="display:none;background:#90cc90">
+        <div id="info" class="containerTab" style="display:none;background:#90cc90">
             <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-            <p>¡Los cambios se pueden guardan aún!</p>
+            <input type="checkbox" id="checkInfoDiv" onclick="showInfo()">
+            <div id="infoDiv"></div>
         </div>
-        <div id="b3" class="containerTab" style="display:none;background:#cfc999">
+        <div id="options" class="containerTab" style="display:none;background:#cfc999">
             <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
             <input type="checkbox" id="checkModeCotND" onclick="modeCotND()"> Modo 30FPS
             <!--<p id="text" style="display:none">Checkbox is CHECKED!</p>-->
@@ -74,6 +75,9 @@
         <script src="bundle.js"></script>
         <script>
         getLocation()
+        function showInfo() {
+            document.getElementById("infoDiv").innerHTML = global.points
+        }
         function modeCotND() {
             var checkBox = document.getElementById("checkModeCotND");
             // var text = document.getElementById("text");
