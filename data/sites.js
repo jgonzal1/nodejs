@@ -15,7 +15,8 @@ var initialCoords = {
     "Austria.SanktGallen.Altenmarkt":   [47.70     , 14.74    ,  8],
     "España.Almería.Pescadería":        [36.836223 , -2.466880, 15],
     "España.Madrid.Mirasiera":          [40.4942011, -3.71013 , 16],
-    "Nigeria.Laos":                     [6.509594  ,  3.37033 , 15]
+    "Nigeria.Laos":                     [ 6.509594 ,  3.37033 , 15],
+    "Noruega.Svalbard.Longyearbyen":    [78.223331 , 15.646849, 16],
 };
 
 var sites = [

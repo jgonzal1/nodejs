@@ -1,7 +1,7 @@
 const cL = require('./data/charactersList');
 const objectives = cL.getObjectives();
 
-const lngCorrection = [ // Corrección calculada de la distorsión angular de la longitud con respecto a su latiitud
+const lngCorrectionArr = [ // Corrección calculada de la distorsión angular de la longitud con respecto a su latiitud
     1.00858,    1.006355176,1.003926264,1.001293264,
     0.998456176,0.9954150,  0.992169736,0.988720384,
     0.985066944,0.981209416,0.9771478,  0.972882096,
@@ -71,21 +71,34 @@ function goToPlayer(target, velocity) {
 function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h | 12x
 	character = ( character || global.player );
 	velocity = ( velocity || 1 );
-	movemap = (movemap || ['w', 'a', 's', 'd', ' '] );
+	velLng = velocity*lngCorrectionArr[Math.round(global.lat)];
+	movemap = (movemap || ['w', 'a', 's', 'd', ' ', 'e'] );
 	const direction = (forceDirection || L.DomUtil.get(hiddenHandlerKeys).innerHTML);
 	let nearestObjetive, distancesArray, nearestObjetiveIndex;
 	switch (direction) { //forceDirection
 	case movemap[0]:
-		character.setLatLng(L.latLng(character.getLatLng().lat+0.00001*velocity,character.getLatLng().lng));
+		character.setLatLng(
+			L.latLng(character.getLatLng().lat+0.00001*velLng,
+			character.getLatLng().lng)
+		);
 		break;
 	case movemap[1]:
-		character.setLatLng(L.latLng(character.getLatLng().lat,character.getLatLng().lng-0.00001*velocity));
+		character.setLatLng(
+			L.latLng(character.getLatLng().lat,
+			character.getLatLng().lng-0.00001*velocity)
+		);
 		break;
 	case movemap[2]:
-		character.setLatLng(L.latLng(character.getLatLng().lat-0.00001*velocity,character.getLatLng().lng));
+		character.setLatLng(
+			L.latLng(character.getLatLng().lat-0.00001*velLng,
+			character.getLatLng().lng)
+		);
 		break;
 	case movemap[3]:
-		character.setLatLng(L.latLng(character.getLatLng().lat,character.getLatLng().lng+0.00001*velocity));
+		character.setLatLng(
+			L.latLng(character.getLatLng().lat,
+			character.getLatLng().lng+0.00001*velocity)
+		);
 		break;
 	case movemap[4]:
 		//alert('Calculando distancia...');
@@ -125,8 +138,16 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 		} else {
 			alert(
 				'¡Tu objetivo más cercano aún está a ' + Math.round(5000*nearestObjetive) + ' pasos y\n' +
-				'este es el array de distancias: ' + objectives[nearestObjetiveIndex-1] + '!');
+				'este es el array de distancias: ' + objectives[nearestObjetiveIndex] + '!'
+			);			
+			global[objectives[nearestObjetiveIndex-1]] = L.circleMarker(
+				[0,0], {radius: 1, fillColor: "#000", color: "#000", weight: 1, opacity: 0.5, fillOpacity: 0.5}
+			);
+			global.map.removeLayer( global[objectives[nearestObjetiveIndex-1]] );
 		}
+		break;
+	case movemap[5]:
+		alert(lngCorrectionArr[Math.round(global.lat)]);
 		break;
 	}
 }

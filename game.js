@@ -8,7 +8,7 @@ const regionsAustria = spawnRegionsAustria();
 // TODO charlist: const cL = require('./data/charactersList');
 const spawnSites = require('./data/sites');
 const sites = spawnSites.getSites();
-const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasiera"];
+const initialCoords = spawnSites.getInitialCoords()["Noruega.Svalbard.Longyearbyen"];
 // TODO Que empiece en ubicación usuario L.DomUtil.get(hiddenHandlerPos).innerHTML.split(",")[0]/[1]
 const spawnEnemies = require('./spawnEnemies');
 const spawnObjectives = require('./spawnObjectives');
@@ -39,15 +39,16 @@ var gameTimeStamp = new Date(1262304000000);
 //#endregion
 
 //#region Create Base Layers
-const map = L.map('map', { scrollWheelZoom: true } );
+// const map = L.map('map', { scrollWheelZoom: true } );
+global.map = L.map('map', { scrollWheelZoom: true } );
 const lat  = initialCoords[0]; global.lat = lat; // y
 const long = initialCoords[1]; global.long = long; // x
 const zoom = initialCoords[2]; // z
-map.setView([lat, long], zoom);
+global.map.setView([lat, long], zoom);
 const artisticMap = L.tileLayer(
 	'http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
 	{ minZoom: 2, maxZoom: 17 }
-).addTo(map);
+).addTo(global.map);
 const baseLayers = createBaseLayerAndAddMore(artisticMap, L);
 /* TODO Colores Tileset
 Blanco: detectarlo en tileset permite mover 1x;
@@ -111,7 +112,7 @@ mCharacters.push(
 	global.train,
 	global.truck
 );
-const characters = L.layerGroup(mCharacters).addTo(map);
+const characters = L.layerGroup(mCharacters).addTo(global.map);
 
 const greenIcon = L.icon(createIcon('style/marker-green.png'));
 var markers = [];
@@ -128,7 +129,7 @@ for (var i in sites) {
 		)
 	);
 }
-const layers = L.layerGroup(markers).addTo(map);
+const layers = L.layerGroup(markers).addTo(global.map);
 //#endregion
 
 //#region TODO >>>>> Daemonizers
@@ -137,7 +138,7 @@ if (navigator.userAgent.match('Android|X11') !== null){ // X11 es mi redmi note 
 	alert('¡Bienvenido a DarksGeim! Haz tap para moverte.\n' +
 	'No podrás volver a moverte hasta llegar a tu destino, así que...\n' +
 	'¡Piensa poco a poco tu jugada!');
-	map.on('click', onMapClick);
+	global.map.on('click', onMapClick);
 } else {
 	/*alert('Bienvenido a DarksGeim. Utiliza WASD para moverte,\n'+
 	'P para pausar, la rueda del ratón para elk zoom,\n'+
@@ -225,13 +226,13 @@ function onMapClick(e) {
 const geojson = L.geoJSON(
 	regionsAustria,
 	{ style: geoJsonStylers.style, onEachFeature: onEachFeature }
-);//.addTo(map); // Not showing it at start
+);//.addTo(global.map); // Not showing it at start
 const overlays = {
     'Regiones': geojson,
 	'Puntos de interés': layers,
 	'Personajes': characters
 };
-L.control.layers(baseLayers, overlays).addTo(map);
+L.control.layers(baseLayers, overlays).addTo(global.map);
 function addGeoJson(jsonPolygonFeature) {
 	geojson.addData(jsonPolygonFeature);
 }
@@ -268,7 +269,7 @@ function backgroundInfoUpdater(milliseconds) {
 	}, milliseconds);
 }
 // BackgroundInfoUpdater(3000);
-info.addTo(map);
+info.addTo(global.map);
 //#endregion
 
 //#region geoJson Hovering Visual effects
@@ -293,7 +294,7 @@ function resetHighlight(e) {
 	info.update();
 }
 function zoomToFeature(e) {
-	map.fitBounds(e.target.getBounds());
+	global.map.fitBounds(e.target.getBounds());
 }
 function onEachFeature(feature, layer) {
 	layer.on({
@@ -341,7 +342,7 @@ function formatDate(date) {
 function timeLegend(){
 	labels = [formatDate(gameTimeStamp)]; // TODO Tiempo y dependencias de regiones en legend?
 }
-legend.addTo(map);
+legend.addTo(global.map);
 // TODO Asistente virtual en ayuda / cómo jugar
 // Asistente sens/virt UAL
 // Lo añadiré a la lista de cosas que me importan una mierda/pendientes
