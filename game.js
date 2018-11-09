@@ -1,21 +1,32 @@
 //#region Imports
-// TODO Leverage mixture ImperioDeLosMares/Risk/RimWorld/CataclysmDDA/CotND/FFnn
 const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
 const createIcon = require('./style/createIcon');
 const geoJsonStylers = require('./style/geoJsonStylers');
-const austria = require('./data/austria');
-const states = austria();
-const getSites = require('./data/sites'); const sites = getSites();
+const spawnRegionsAustria = require('./data/regionsAustria');
+const regionsAustria = spawnRegionsAustria();
+// TODO #Risk
 // TODO charlist: const cL = require('./data/charactersList');
+const spawnSites = require('./data/sites');
+const sites = spawnSites.getSites();
+const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasiera"];
+// TODO Que empiece en ubicación usuario L.DomUtil.get(hiddenHandlerPos).innerHTML.split(",")[0]/[1]
 const spawnEnemies = require('./spawnEnemies');
 const spawnObjectives = require('./spawnObjectives');
+// TODO >>>>> #Patrician When colide: capa de comercio, pausa, y en modal BDiA-showcase
+// TODO #CataclysmDDA
 const spawnTransports = require('./spawnTransports');
 const mH = require('./moveHandlers');
+// TODO >>>>> #FFnn When near: capa de combate, con efectos de sonido, y modal
+// TODO #RimWorld
+// TODO #CotND
+
 const L = require('leaflet');
 global.L = L;
+
 var cryptOfTheNecromancerMode =  'true';
 const velocity = 1/33; // Dµº / ms
 var refreshRate, defaultMovementLength;
+// TODO > Botón que cambie booleano #CotND
 if (cryptOfTheNecromancerMode === "true") {
 	refreshRate = 500; // asume <5ms delays! // 500 w/ 120 BPM music
 } else {
@@ -23,48 +34,45 @@ if (cryptOfTheNecromancerMode === "true") {
 }
 defaultMovementLength = refreshRate * velocity;
 var mouseMoved; // = false;
+
 var gameTimeStamp = new Date(1262304000000);
 //#endregion
 
 //#region Create Base Layers
 const map = L.map('map', { scrollWheelZoom: true } );
-// TODO Que empiece en ubicación usuario L.DomUtil.get(hiddenHandlerPos).innerHTML.split(",")[0]/[1]
-const coords = [40.4942011, -3.7101309, 15]; // MADRID
-const lat  = coords[0]; global.lat = lat; // y
-const long = coords[1]; global.long = long; // x
-const zoom = coords[2]; // z
+const lat  = initialCoords[0]; global.lat = lat; // y
+const long = initialCoords[1]; global.long = long; // x
+const zoom = initialCoords[2]; // z
 map.setView([lat, long], zoom);
 const artisticMap = L.tileLayer(
 	'http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
 	{ minZoom: 2, maxZoom: 17 }
 ).addTo(map);
+const baseLayers = createBaseLayerAndAddMore(artisticMap, L);
 /* TODO Colores Tileset
-Blanco: para enemigos y algunas personas: detectarlo en tileset permite mover 1x; si no, reducir multiplicador de velocidad y:
+Blanco: detectarlo en tileset permite mover 1x;
+si no, reducir multiplicador de velocidad y:
  Menos opacidad (fantasmas) o
  Spawnear círculo azul ahí durante el refreshtime (GPS)
 Verde: multiplicador velocidad no tan bajo como blanco
 - No se puede entrar fuera del Blanco o verde excepto lugares*
 *Lugares -> puerta para permitir cambio color y salida del mismo
 @ tileset artístico zoom 15+*/
-const baseLayers = createBaseLayerAndAddMore(artisticMap, L);
 //#endregion
 
-//#region Create Characters and Places
-// TODO > Personalizar carácter personaje + playerIcon "duplicado": personalizado con imagemagick
+//#region Create Characters and sitesMarkersLayers
+// TODO > Personalizar carácter personaje #CataclysmDDA + playerIcon "duplicado": personalizado con imagemagick
 const playerIcon	= L.icon(createIcon('style/ratkid-shaded.png'));
-const greenIcon		= L.icon(createIcon('style/marker-green.png'));
+const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
+	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
+);
+global.player = player;
+// TODO Multiplayer MongoDB
 
 spawnEnemies(L, lat, long);
 spawnObjectives(L, lat, long);
 spawnTransports(L, lat, long);
-const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
-	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
-);
-// TODO Multiplayer MongoDB
-global.player = player;
-
 var mCharacters = [];
-var markers = [];
 mCharacters.push(
 	global.player,
 	
@@ -103,6 +111,10 @@ mCharacters.push(
 	global.train,
 	global.truck
 );
+const characters = L.layerGroup(mCharacters).addTo(map);
+
+const greenIcon = L.icon(createIcon('style/marker-green.png'));
+var markers = [];
 for (var i in sites) {
     markers.push(
 		L.marker(
@@ -116,11 +128,10 @@ for (var i in sites) {
 		)
 	);
 }
-const characters = L.layerGroup(mCharacters).addTo(map);
 const layers = L.layerGroup(markers).addTo(map);
 //#endregion
 
-//#region Daemonizers
+//#region TODO >>>>> Daemonizers
 //let counter = 1;
 if (navigator.userAgent.match('Android|X11') !== null){ //X11 es mi redmi note 3
 	alert('¡Bienvenido a DarksGeim! Haz tap para moverte.\n' +
@@ -164,11 +175,10 @@ function keyListener(refreshRate,defaultMovementLength) { //milliseconds, m
 			mH.goToPlayer(vampire,0.5*defaultMovementLength);
 		}
 		mH.moveCharacter(global.player,defaultMovementLength);
-
 		//counter++;
 	}, refreshRate);
 }
-keyListener(refreshRate,defaultMovementLength);//refreshRate,defaultMovementLength
+keyListener(refreshRate,defaultMovementLength); // private params
 //#endregion
 
 //#region Keys interface
@@ -177,14 +187,12 @@ keyListener(refreshRate,defaultMovementLength);//refreshRate,defaultMovementLeng
 //#endregion
 
 //#region Move handlers
-// TODO >>>>> When colide/near : capa de combate o comercio, con efectos de sonido, y en popup del de BDiA-showcase
 // TODO Añadir series taylor; correcciones angulares al habilitar ratón
 // (x - (x^3 / 6 )) aproxs sin(x) max 7% err
 // (1 - x^2 / 2) aproxs cos(x) hasta 60ª
 // (1 - x^2 / 2 + x^4 / 24) aproxs cos(x) de 60 a 85º
 // 0 aproxs cos(x) from 85 to 90º
 // TODO Detectar dos botones a la vez (ej. W+A)
-// TODO > Botón que cambie booleano Crypt NecroDancer
 // TODO > Migrar onMapClick
 function onMapClick(e) {
 	if (mouseMoved !== true) {
@@ -215,7 +223,7 @@ function onMapClick(e) {
 
 //#region geoJson Overlays
 const geojson = L.geoJSON(
-	states,
+	regionsAustria,
 	{ style: geoJsonStylers.style, onEachFeature: onEachFeature }
 );//.addTo(map); //not showing it at start
 const overlays = {
@@ -297,7 +305,6 @@ function onEachFeature(feature, layer) {
 //#endregion
 
 //#region Legend
-// TODO Leyenda dependiente de vista de regiones
 const legend = L.control({position: 'bottomright'});
 legend.onAdd = function() {
 	const div = L.DomUtil.create('div', 'info legend');/*,
@@ -332,7 +339,7 @@ function formatDate(date) {
 	return year + '/' + monthNames[monthIndex] + '/' + day + ' ' + hours + ':' + mins;
 }
 function timeLegend(){
-	labels = [formatDate(gameTimeStamp)]; // TODO Tiempo y dependencias en legend?
+	labels = [formatDate(gameTimeStamp)]; // TODO Tiempo y dependencias de regiones en legend?
 }
 legend.addTo(map);
 // TODO Asistente virtual en ayuda / cómo jugar

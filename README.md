@@ -1,66 +1,52 @@
-1_From file:///e%3A/nodejs/game.js#2
-----------------------------------
-TODO > mobile compatibility
-2_From file:///e%3A/nodejs/game.js#3
-----------------------------------
-TODO leverage mixture ImperioDeLosMares/RimWorld/CataclysmDDA
-3_From file:///e%3A/nodejs/game.js#10
-----------------------------------
-TODO transportes y demás: const cL = require('./data/charactersList'); const transports = cL.getTransports();
-4_From file:///e%3A/nodejs/game.js#12
-----------------------------------
-TODO enhance response time with this: const mh = require('./moveHandlers'); // ver si mandando player va mejor;
-5_From file:///e%3A/nodejs/game.js#28
-----------------------------------
-TODO > que empiece en ubicación usuario
-6_From file:///e%3A/nodejs/game.js#39
-----------------------------------
-TODO Colores Tileset
-Blanco: para enemigos y algunas personas: detectarlo en tileset permite mover 1x; si no, reducir multiplicador de velocidad y:
+1. From file:///e%3A/nodejs/game.js#7 : TODO #Risk
+
+2. From file:///e%3A/nodejs/game.js#8 : TODO charlist: const cL = require('./data/charactersList');
+
+3. From file:///e%3A/nodejs/game.js#12 : TODO Que empiece en ubicación usuario L.DomUtil.get(hiddenHandlerPos).innerHTML.split(",")[0]/[1]
+
+4. From file:///e%3A/nodejs/game.js#15 : TODO >>>>> #Patrician When colide: capa de comercio, pausa, y en modal BDiA-showcase
+
+5. From file:///e%3A/nodejs/game.js#16 : TODO #CataclysmDDA
+
+6. From file:///e%3A/nodejs/game.js#19 : TODO >>>>> #FFnn When near: capa de combate, con efectos de sonido, y modal
+
+7. From file:///e%3A/nodejs/game.js#20 : TODO #RimWorld
+
+8. From file:///e%3A/nodejs/game.js#21 : TODO #CotND
+
+9. From file:///e%3A/nodejs/game.js#29 : TODO > Botón que cambie booleano #CotND
+
+10. From file:///e%3A/nodejs/game.js#52 : TODO Colores Tileset
+Blanco: detectarlo en tileset permite mover 1x;
+si no, reducir multiplicador de velocidad y:
 Menos opacidad (fantasmas) o
 Spawnear círculo azul ahí durante el refreshtime (GPS)
 Verde: multiplicador velocidad no tan bajo como blanco
 - No se puede entrar fuera del Blanco o verde excepto lugares*
 *Lugares -> puerta para permitir cambio color y salida del mismo
 @ tileset artístico zoom 15+
-7_From file:///e%3A/nodejs/game.js#51
-----------------------------------
-TODO Personalizar carácter personaje + playerIcon "duplicado": personalizado con imagemagick
-8_From file:///e%3A/nodejs/game.js#114
-----------------------------------
-TODO > Daemonizer en legend para tiempo del día; on add: timeLegend();
-9_From file:///e%3A/nodejs/game.js#124
-----------------------------------
-TODO > Esc para X
-10_From file:///e%3A/nodejs/game.js#125
-----------------------------------
-TODO Tab para siguiente en menú
-11_From file:///e%3A/nodejs/game.js#129
-----------------------------------
-TODO >>>>> when colide/near : capa de combate o comercio, con efectos de sonido, y en popup del de BDiA-showcase
-12_From file:///e%3A/nodejs/game.js#130
-----------------------------------
-TODO >>>>> añadir series taylor; correcciones angulares
-13_From file:///e%3A/nodejs/game.js#135
-----------------------------------
-TODO > poder hacer click para ir, carreteras preferidas
-14_From file:///e%3A/nodejs/game.js#136
-----------------------------------
-TODO >>>>> Detectar dos botones a la vez (ej. W+A)
-15_From file:///e%3A/nodejs/game.js#137
-----------------------------------
-TODO Medios transporte (2/2)
-16_From file:///e%3A/nodejs/game.js#138
-----------------------------------
-TODO >>>>> botón que cambie booleano Crypt NecroDancer
-17_From file:///e%3A/nodejs/game.js#260
-----------------------------------
-TODO >>>>> leyenda dependiente de vista de regiones
-18_From file:///e%3A/nodejs/game.js#281
-----------------------------------
-TODO Tiempo y dependencias en legend?
-19_From file:///e%3A/nodejs/game.js#284
-----------------------------------
-TODO Asistente virtual en ayuda / cómo jugar
+
+11. From file:///e%3A/nodejs/game.js#64 : TODO > Personalizar carácter personaje #CataclysmDDA + playerIcon "duplicado": personalizado con imagemagick
+
+12. From file:///e%3A/nodejs/game.js#70 : TODO Multiplayer MongoDB
+
+13. From file:///e%3A/nodejs/game.js#148 : TODO > Daemonizer en legend para tiempo del día; on add: timeLegend();
+
+14. From file:///e%3A/nodejs/game.js#185 : TODO Esc para X
+
+15. From file:///e%3A/nodejs/game.js#186 : TODO Tab para siguiente en menú
+
+16. From file:///e%3A/nodejs/game.js#190 : TODO Añadir series taylor; correcciones angulares al habilitar ratón
+
+17. From file:///e%3A/nodejs/game.js#195 : TODO Detectar dos botones a la vez (ej. W+A)
+
+18. From file:///e%3A/nodejs/game.js#196 : TODO > Migrar onMapClick
+
+19. From file:///e%3A/nodejs/game.js#221 : TODO Inhabilitar para su uso el right-click = contextmenu; left-click = click
+
+20. From file:///e%3A/nodejs/game.js#342 : TODO Tiempo y dependencias de regiones en legend?
+
+21. From file:///e%3A/nodejs/game.js#345 : TODO Asistente virtual en ayuda / cómo jugar
+
 ==================================
-Found 19 TODOs.
+Found 21 TODOs. 

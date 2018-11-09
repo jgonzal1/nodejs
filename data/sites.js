@@ -1,3 +1,23 @@
+var austrianCapitals = [
+    [46.623997, 14.307812, 'pinkIcon', '<b>Klagenfurt, Kärnten</b>'],
+	[47.070762, 15.438698, 'pinkIcon', '<b>Graz, Steiermark</b>'],
+	[47.805109, 13.041151, 'pinkIcon', '<b>Salzburg, Salzburg</b>'],
+	[47.845993, 16.527337, 'greenIcon', '<b>Eisenstadt, Burgenland</b>'],
+	[48.208539, 16.372505, 'greenIcon', '<b>Wien, Wien</b>'],
+	[48.203828, 15.630877, 'greenIcon', '<b>St. Pölten, Niederösterreich</b>'],
+	[48.307025, 14.284829, 'blueIcon', '<b>Linz, Oberösterreich</b>'],
+    [47.268896, 11.401791, 'blueIcon', '<b>Innsbruck, Tirol</b>'],
+    [47.500929,  9.740660, 'blueIcon', '<b>Bregenz, Vorarlberg</b>']
+];
+
+var initialCoords = {
+    "Austria.Oberösterreich.Linz":      [48.303360 , 14.30187 , 17],
+    "Austria.SanktGallen.Altenmarkt":   [47.70     , 14.74    , 8],
+    "España.Almería.Pescadería":        [36.836223 , -2.466880, 15],
+    "España.Madrid.Mirasiera":          [40.4942011, -3.71013 , 15],
+    "Nigeria.Laos":                     [6.509594 ,  3.37033 , 15]
+};
+
 var sites = [
     ["Casa Julio", 40.42, -3.7],
     ["Correos", 40.51, -3.7],
@@ -25,26 +45,16 @@ var sites = [
     ["Orilla del Manzanares", 40.4547697, -3.7466842]
 ];
 
-var austrianCapitals = [
-    [46.623997, 14.307812, 'pinkIcon', '<b>Klagenfurt, Kärnten</b>'],
-	[47.070762, 15.438698, 'pinkIcon', '<b>Graz, Steiermark</b>'],
-	[47.805109, 13.041151, 'pinkIcon', '<b>Salzburg, Salzburg</b>'],
-	[47.845993, 16.527337, 'greenIcon', '<b>Eisenstadt, Burgenland</b>'],
-	[48.208539, 16.372505, 'greenIcon', '<b>Wien, Wien</b>'],
-	[48.203828, 15.630877, 'greenIcon', '<b>St. Pölten, Niederösterreich</b>'],
-	[48.307025, 14.284829, 'blueIcon', '<b>Linz, Oberösterreich</b>'],
-    [47.268896, 11.401791, 'blueIcon', '<b>Innsbruck, Tirol</b>'],
-    [47.500929,  9.740660, 'blueIcon', '<b>Bregenz, Vorarlberg</b>']
-];
-
-// initialCoords = [ 6.509594 ,  3.37033 , 15] // PLAYER @ Laos, Nigeria
-// initialCoords = [47.70     , 14.74    , 8 ] // AUSTRIA
-// initialCoords = [48.303360 , 14.30187 , 17] // PLAYER @ Linz, Oberösterreich
-// initialCoords = [40.4942011, -3.71013 , 15] // MADRID
-// initialCoords = [36.836223 , -2.466880, 15] // PRESEN
-
+function getAustrianCapitals() {
+    return austrianCapitals;
+}
+function getInitialCoords() {
+    return initialCoords;
+}
 function getSites() {
     return sites;
 }
 
-module.exports = getSites;
+module.exports.getAustrianCapitals  = getAustrianCapitals;
+module.exports.getInitialCoords     = getInitialCoords;
+module.exports.getSites             = getSites;
