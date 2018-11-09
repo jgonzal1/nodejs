@@ -5,14 +5,13 @@ const geoJsonStylers = require('./style/geoJsonStylers');
 const spawnRegionsAustria = require('./data/regionsAustria');
 const regionsAustria = spawnRegionsAustria();
 // TODO #Risk
-// TODO charlist: const cL = require('./data/charactersList');
 const spawnSites = require('./data/sites');
 const sites = spawnSites.getSites();
-const initialCoords = spawnSites.getInitialCoords()["Noruega.Svalbard.Longyearbyen"];
+const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasiera"];
 // TODO Que empiece en ubicación usuario L.DomUtil.get(hiddenHandlerPos).innerHTML.split(",")[0]/[1]
 const spawnEnemies = require('./spawnEnemies');
 const spawnObjectives = require('./spawnObjectives');
-// TODO >>>>> #Patrician When colide: capa de comercio, pausa, y en modal BDiA-showcase
+// TODO >>>>> #Patrician When collide: capa de comercio, pausa, y en modal BDiA-showcase
 // TODO #CataclysmDDA
 const spawnTransports = require('./spawnTransports');
 const mH = require('./moveHandlers');
@@ -34,6 +33,7 @@ if (cryptOfTheNecromancerMode === "true") {
 }
 defaultMovementLength = refreshRate * velocity;
 var mouseMoved; // = false;
+global.layerToRemove = undefined;
 
 var gameTimeStamp = new Date(1262304000000);
 //#endregion
@@ -176,6 +176,10 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 			mH.goToPlayer(vampire,0.5*defaultMovementLength);
 		}
 		mH.moveCharacter(global.player,defaultMovementLength);
+		if (global.layerToRemove != undefined) {
+			global.map.removeLayer( global[layerToRemove] );
+			global.layerToRemove = undefined;
+		}
 		// counter++;
 	}, refreshRate);
 }

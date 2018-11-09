@@ -135,19 +135,16 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 		nearestObjetiveIndex = distancesArray.indexOf(Math.min(...distancesArray));
 		if (nearestObjetive < 0.0002) {
 			alert('¡Has conseguido 1 punto al conseguir un ' + objectives[nearestObjetiveIndex] +'!');
+			global.layerToRemove = objectives[nearestObjetiveIndex];			
 		} else {
 			alert(
 				'¡Tu objetivo más cercano aún está a ' + Math.round(5000*nearestObjetive) + ' pasos y\n' +
 				'este es el array de distancias: ' + objectives[nearestObjetiveIndex] + '!'
 			);			
-			global[objectives[nearestObjetiveIndex-1]] = L.circleMarker(
-				[0,0], {radius: 1, fillColor: "#000", color: "#000", weight: 1, opacity: 0.5, fillOpacity: 0.5}
-			);
-			global.map.removeLayer( global[objectives[nearestObjetiveIndex-1]] );
 		}
 		break;
 	case movemap[5]:
-		alert(lngCorrectionArr[Math.round(global.lat)]);
+		alert(global.layerToRemove);
 		break;
 	}
 }

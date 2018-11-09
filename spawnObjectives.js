@@ -1,5 +1,5 @@
 const createIcon = require('./style/createIcon');
-const cercania = 40; // 100 para tests
+const cercania = 40; // 600 para tests, 40 normal
 
 function spawnObjectives() {
 	const biscuitIcon = L.icon(createIcon('style/biscuit.png'));
