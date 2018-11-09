@@ -14,7 +14,10 @@ function spawnEnemies() {
 	const vampireIcon		= L.icon(createIcon('sprites/enemies/vampire.png'));
 
 	function spawnEnemy(enemyIcon) {
-		return L.marker([lat+(Math.random()-0.5)/cercania, long+(Math.random()-0.5)/cercania], {icon: enemyIcon}).bindPopup(
+		return L.marker(
+			[lat+(Math.random()-0.5)/cercania, long+(Math.random()-0.5)/cercania],
+			{icon: enemyIcon}
+		).bindPopup(
 			'<color="red"><b>Enemigo</b></color>'
 		);
 	}

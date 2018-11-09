@@ -16,7 +16,10 @@ function spawnTransports() {
 	}*/
 
 	function spawnTransport(transportIcon) {
-		return L.marker([lat+(Math.random()-0.5)/cercania, long+(Math.random()-0.5)/cercania], {icon: transportIcon}).bindPopup(
+		return L.marker(
+			[lat+(Math.random()-0.5)/cercania, long+(Math.random()-0.5)/cercania],
+			{icon: transportIcon}
+		).bindPopup(
 			'<color="gray"><b>Transport</b></color>'
 		);
 	}

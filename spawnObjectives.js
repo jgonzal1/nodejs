@@ -17,24 +17,13 @@ function spawnObjectives() {
 	const tacoIcon = L.icon(createIcon('style/taco.png'));
 
 	function spawnObjective(enemyIcon) {
-		return L.marker([lat+(Math.random()-0.5)/cercania, long+(Math.random()-0.5)/cercania], {icon: enemyIcon}).bindPopup( 
+		return L.marker(
+			[lat+(Math.random()-0.5)/cercania, long+(Math.random()-0.5)/cercania],
+			{icon: enemyIcon}
+		).bindPopup( 
 			'<color="green"><b>Objetivo</b></color>'
 		);
 	}
-
-	/*biscuit
-	burger
-	chococookie
-	chocolate
-	cupcake
-	donut
-	fries
-	icecream
-	pizza
-	popcorn
-	potatoes
-	poti
-	taco*/
 
 	global.biscuit	= spawnObjective(biscuitIcon);
 	global.burger	= spawnObjective(burgerIcon);
