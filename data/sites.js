@@ -12,10 +12,10 @@ var austrianCapitals = [
 
 var initialCoords = {
     "Austria.Oberösterreich.Linz":      [48.303360 , 14.30187 , 17],
-    "Austria.SanktGallen.Altenmarkt":   [47.70     , 14.74    , 8],
+    "Austria.SanktGallen.Altenmarkt":   [47.70     , 14.74    ,  8],
     "España.Almería.Pescadería":        [36.836223 , -2.466880, 15],
-    "España.Madrid.Mirasiera":          [40.4942011, -3.71013 , 15],
-    "Nigeria.Laos":                     [6.509594 ,  3.37033 , 15]
+    "España.Madrid.Mirasiera":          [40.4942011, -3.71013 , 16],
+    "Nigeria.Laos":                     [6.509594  ,  3.37033 , 15]
 };
 
 var sites = [

@@ -104,10 +104,10 @@ mCharacters.push(
 	global.baloon,
 	global.bike,
 	global.bus,
-	//global.car, 
-	//global.moto,
+	// global.car, 
+	// global.moto,
 	global.plane,
-	//global.taxi,
+	// global.taxi,
 	global.train,
 	global.truck
 );
@@ -132,8 +132,8 @@ const layers = L.layerGroup(markers).addTo(map);
 //#endregion
 
 //#region TODO >>>>> Daemonizers
-//let counter = 1;
-if (navigator.userAgent.match('Android|X11') !== null){ //X11 es mi redmi note 3
+// let counter = 1;
+if (navigator.userAgent.match('Android|X11') !== null){ // X11 es mi redmi note 3
 	alert('¡Bienvenido a DarksGeim! Haz tap para moverte.\n' +
 	'No podrás volver a moverte hasta llegar a tu destino, así que...\n' +
 	'¡Piensa poco a poco tu jugada!');
@@ -150,7 +150,7 @@ setInterval(function() {
 	timeLegend();
 	/*if (cryptOfTheNecromancerMode !== L.DomUtil.get(hiddenHandlerModeCotND).innerHTML) {
 		cryptOfTheNecromancerMode = L.DomUtil.get(hiddenHandlerModeCotND).innerHTML;
-		//if (typeof(cryptOfTheNecromancerMode) === 'string') {clearInterval(moveDaemonizer);}
+		// if (typeof(cryptOfTheNecromancerMode) === 'string') {clearInterval(moveDaemonizer);}
 		if (cryptOfTheNecromancerMode === "true") {
 			refreshRate = 500; // w/ 120 BPM music
 		} else {
@@ -158,9 +158,9 @@ setInterval(function() {
 		}
 		defaultMovementLength = refreshRate * velocity;
 	}*/
-}, 3000); //globalEventsDaemonizer*/
+}, 3000); // globalEventsDaemonizer*/
 
-function keyListener(refreshRate,defaultMovementLength) { //milliseconds, m
+function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 	global.moveDaemonizer = setInterval(function() {
 		if (L.DomUtil.get(hiddenHandlerKeys).innerHTML != 'p') {
 			mH.goToPlayer(bloodyeye,0.7*defaultMovementLength);
@@ -175,15 +175,15 @@ function keyListener(refreshRate,defaultMovementLength) { //milliseconds, m
 			mH.goToPlayer(vampire,0.5*defaultMovementLength);
 		}
 		mH.moveCharacter(global.player,defaultMovementLength);
-		//counter++;
+		// counter++;
 	}, refreshRate);
 }
 keyListener(refreshRate,defaultMovementLength); // private params
 //#endregion
 
 //#region Keys interface
-//TODO Esc para X
-//TODO Tab para siguiente en menú
+// TODO Esc para X
+// TODO Tab para siguiente en menú
 //#endregion
 
 //#region Move handlers
@@ -210,7 +210,7 @@ function onMapClick(e) {
 				if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
 			}
 			mH.moveCharacter(global.player, vel, forcedDirection);
-			//alert(vars + "strings"); works
+			// alert(vars + "strings"); works
 			if (defaultMovementLength/50000 > Math.max(latDiffAbs, lngDiffAbs)) {
 				clearInterval(mouseClickDaemonizer);
 				mouseMoved = false;
@@ -225,7 +225,7 @@ function onMapClick(e) {
 const geojson = L.geoJSON(
 	regionsAustria,
 	{ style: geoJsonStylers.style, onEachFeature: onEachFeature }
-);//.addTo(map); //not showing it at start
+);//.addTo(map); // Not showing it at start
 const overlays = {
     'Regiones': geojson,
 	'Puntos de interés': layers,
@@ -267,7 +267,7 @@ function backgroundInfoUpdater(milliseconds) {
 		// infoUpdaterCounter++;
 	}, milliseconds);
 }
-//backgroundInfoUpdater(3000);
+// BackgroundInfoUpdater(3000);
 info.addTo(map);
 //#endregion
 
@@ -320,7 +320,7 @@ legend.onAdd = function() {
 				'<font color=' + geoJsonStylers.getColor(from + 1) + '>__</font>' +
 			'</i> ' + from + (to ? '&ndash;' + to : '+'));
 	}*/
-	div.innerHTML = [formatDate(gameTimeStamp)]; //labels.join('<br>');
+	div.innerHTML = [formatDate(gameTimeStamp)]; // labels.join('<br>');
 	return div;
 };
 function formatDate(date) {
@@ -345,5 +345,4 @@ legend.addTo(map);
 // TODO Asistente virtual en ayuda / cómo jugar
 // Asistente sens/virt UAL
 // Lo añadiré a la lista de cosas que me importan una mierda/pendientes
-//*/
 //#endregion
