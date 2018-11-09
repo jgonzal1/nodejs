@@ -101,7 +101,7 @@ mCharacters.push(
 	global.poti,
 	global.taco,
 
-	global.baloon,
+	global.balloon,
 	global.bike,
 	global.bus,
 	// global.car, 
