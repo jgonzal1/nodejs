@@ -1,4 +1,4 @@
-const enemies = [
+var enemies = [
     bloodyeye,
     death,
     mummy,
@@ -11,7 +11,7 @@ const enemies = [
     vampire
 ];
 
-const objectives = [
+var objectives = [
     biscuit,
 	burger,
 	chococookie,
@@ -27,7 +27,7 @@ const objectives = [
 	taco,
 ];
 
-const transports = [
+var transports = [
     baloon,
     bike,
     bus,
