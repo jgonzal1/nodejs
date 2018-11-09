@@ -1,4 +1,5 @@
 const createIcon = require('./style/createIcon');
+const cercania = 40; // 100 para tests
 
 function spawnObjectives() {
 	const biscuitIcon = L.icon(createIcon('style/biscuit.png'));
@@ -16,7 +17,7 @@ function spawnObjectives() {
 	const tacoIcon = L.icon(createIcon('style/taco.png'));
 
 	function spawnObjective(enemyIcon) {
-		return L.marker([lat+(Math.random()-0.5)/10, long+(Math.random()-0.5)/10], {icon: enemyIcon}).bindPopup(
+		return L.marker([lat+(Math.random()-0.5)/cercania, long+(Math.random()-0.5)/cercania], {icon: enemyIcon}).bindPopup( 
 			'<color="green"><b>Objetivo</b></color>'
 		);
 	}

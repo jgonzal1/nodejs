@@ -1,4 +1,5 @@
 const createIcon = require('./style/createIcon');
+const cercania = 60;
 
 function spawnEnemies() {
 	const bloodyeyeIcon		= L.icon(createIcon('sprites/enemies/bloodyeye.png'));
@@ -13,7 +14,7 @@ function spawnEnemies() {
 	const vampireIcon		= L.icon(createIcon('sprites/enemies/vampire.png'));
 
 	function spawnEnemy(enemyIcon) {
-		return L.marker([lat+(Math.random()-0.5)/30, long+(Math.random()-0.5)/30], {icon: enemyIcon}).bindPopup(
+		return L.marker([lat+(Math.random()-0.5)/cercania, long+(Math.random()-0.5)/cercania], {icon: enemyIcon}).bindPopup(
 			'<color="red"><b>Enemigo</b></color>'
 		);
 	}
