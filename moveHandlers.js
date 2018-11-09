@@ -1,8 +1,5 @@
-/*const cL = require('./data/charactersList');
+const cL = require('./data/charactersList');
 const objectives = cL.getObjectives();
-const spawnSites = require('./data/sites');
-const sites = spawnSites.getSites();
-const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasiera"];*/
 
 const lngCorrection = [ // Corrección calculada de la distorsión angular de la longitud con respecto a su latiitud
     1.00858,    1.006355176,1.003926264,1.001293264,
@@ -92,7 +89,7 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 		break;
 	case movemap[4]:
 		//alert('Calculando distancia...');
-		/*distancesArray = [
+		distancesArray = [
 			fcalcDist(global.biscuit),
 			fcalcDist(global.burger),
 			fcalcDist(global.chococookie),
@@ -106,7 +103,7 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 			fcalcDist(global.potatoes),
 			fcalcDist(global.poti),
 			fcalcDist(global.taco)
-		];*/
+		];
 		nearestObjetive = Math.min( // TODO Duplicated because of async
 			fcalcDist(global.biscuit),
 			fcalcDist(global.burger),
@@ -122,11 +119,13 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 			fcalcDist(global.poti),
 			fcalcDist(global.taco)
 		);
-		//nearestObjetiveIndex = distancesArray.indexOf(Math.max(...distancesArray));
+		nearestObjetiveIndex = distancesArray.indexOf(Math.min(...distancesArray));
 		if (nearestObjetive < 0.0002) {
-			alert('¡Has conseguido 1 punto al conseguir un ');// + objectives[nearestObjetiveIndex-1] +'!');
+			alert('¡Has conseguido 1 punto al conseguir un ' + objectives[nearestObjetiveIndex] +'!');
 		} else {
-			alert('¡Tu objetivo más cercano aún está a ' + Math.round(5000*nearestObjetive) + ' pasos!');
+			alert(
+				'¡Tu objetivo más cercano aún está a ' + Math.round(5000*nearestObjetive) + ' pasos y\n' +
+				'este es el array de distancias: ' + objectives[nearestObjetiveIndex-1] + '!');
 		}
 		break;
 	}
