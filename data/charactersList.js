@@ -1,21 +1,4 @@
-const transports = [
-    bike,
-    baloon,
-    bus,
-    plane,
-    truck,
-    train,
-    car,
-    taxi,
-    moto	
-];
-
-function getTransports() {
-    return transports;
-}
-
-//#region Enemies
-/*const enemies = [
+const enemies = [
     bloodyeye,
     death,
     mummy,
@@ -28,11 +11,44 @@ function getTransports() {
     vampire
 ];
 
+const objectives = [
+    biscuit,
+	burger,
+	chococookie,
+	chocolate,
+	cupcake,
+	donut,
+	fries,
+	icecream,
+	pizza,
+	popcorn,
+	potatoes,
+	poti,
+	taco,
+];
+
+const transports = [
+    baloon,
+    bike,
+    bus,
+    //car, 
+    //moto,
+    plane,
+    //taxi,
+    train,
+    truck
+];
+
 function getEnemies() {
     return enemies;
 }
+function getObjectives() {
+    return objectives;
+}
+function getTransports() {
+    return transports;
+}
 
-module.exports.getEnemies = getEnemies;*/
-//#endregion
-
-module.exports/*.getTransports*/ = getTransports;
+module.exports.getEnemies    = getEnemies;
+module.exports.getObjectives = getObjectives;
+module.exports.getTransports = getTransports;

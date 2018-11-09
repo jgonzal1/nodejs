@@ -1,14 +1,15 @@
 //#region Imports
-// TODO Leverage mixture ImperioDeLosMares/RimWorld/CataclysmDDA
+// TODO Leverage mixture ImperioDeLosMares/Risk/RimWorld/CataclysmDDA/CotND/FFnn
 const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
 const createIcon = require('./style/createIcon');
 const geoJsonStylers = require('./style/geoJsonStylers');
 const austria = require('./data/austria');
 const states = austria();
 const getSites = require('./data/sites'); const sites = getSites();
-// TODO Transportes y demás: const cL = require('./data/charactersList'); const transports = cL.getTransports();
+// TODO charlist: const cL = require('./data/charactersList');
 const spawnEnemies = require('./spawnEnemies');
 const spawnObjectives = require('./spawnObjectives');
+const spawnTransports = require('./spawnTransports');
 const mH = require('./moveHandlers');
 const L = require('leaflet');
 global.L = L;
@@ -55,6 +56,7 @@ const greenIcon		= L.icon(createIcon('style/marker-green.png'));
 
 spawnEnemies(L, lat, long);
 spawnObjectives(L, lat, long);
+spawnTransports(L, lat, long);
 const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
 );
@@ -89,7 +91,17 @@ mCharacters.push(
 	global.popcorn,
 	global.potatoes,
 	global.poti,
-	global.taco
+	global.taco,
+
+	global.baloon,
+	global.bike,
+	global.bus,
+	//global.car, 
+	//global.moto,
+	global.plane,
+	//global.taxi,
+	global.train,
+	global.truck
 );
 for (var i in sites) {
     markers.push(
