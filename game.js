@@ -41,7 +41,7 @@ var gameTimeStamp = new Date(1262304000000);
 
 //#region Create Base Layers
 // const map = L.map('map', { scrollWheelZoom: true } );
-global.map = L.map('map', { scrollWheelZoom: true } );
+global.map = L.map('map', { inertia: true, inertiaMaxSpeed: 1000, scrollWheelZoom: true } );
 const lat  = initialCoords[0]; global.lat = lat; // y
 const long = initialCoords[1]; global.long = long; // x
 const zoom = initialCoords[2]; // z
@@ -51,6 +51,7 @@ const artisticMap = L.tileLayer(
 	{ minZoom: 2, maxZoom: 17 }
 ).addTo(global.map);
 const baseLayers = createBaseLayerAndAddMore(artisticMap, L);
+L.control.scale({imperial:false}).addTo(map);
 /* TODO Colores Tileset
 Blanco: detectarlo en tileset permite mover 1x;
 si no, reducir multiplicador de velocidad y:
@@ -193,6 +194,7 @@ keyListener(refreshRate,defaultMovementLength); // private params
 //#endregion
 
 //#region Move handlers
+// TODO Own music
 // TODO Añadir series taylor; correcciones angulares al habilitar ratón
 // (x - (x^3 / 6 )) aproxs sin(x) max 7% err
 // (1 - x^2 / 2) aproxs cos(x) hasta 60ª
