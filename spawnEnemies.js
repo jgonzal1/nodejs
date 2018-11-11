@@ -1,5 +1,5 @@
 const createIcon = require('./style/createIcon');
-const cercania = 60;
+const cercania = 70;
 
 function spawnEnemies() {
 	const bloodyeyeIcon		= L.icon(createIcon('sprites/enemies/bloodyeye.png'));
@@ -29,15 +29,15 @@ function spawnEnemies() {
 		);
 	}
 
-	global.bloodyeye	= spawnEnemy(bloodyeyeIcon);
+	//global.bloodyeye	= spawnEnemy(bloodyeyeIcon);
 	global.death		= spawnEnemy(deathIcon);
 	global.mummy		= spawnEnemy(mummyIcon);
-	global.owl			= spawnEnemy(owlIcon);
+	//global.owl			= spawnEnemy(owlIcon);
 	global.phantom		= spawnEnemy(phantomIcon);
-	global.pirateskull 	= spawnEnemy(pirateskullIcon);
-	global.skeleton		= spawnEnemy(skeletonIcon);
+	//global.pirateskull 	= spawnEnemy(pirateskullIcon);
+	//global.skeleton		= spawnEnemy(skeletonIcon);
 	global.spider		= spawnEnemy(spiderIcon);
-	global.undeadhand	= spawnEnemy(undeadhandIcon);
+	//global.undeadhand	= spawnEnemy(undeadhandIcon);
 	global.vampire		= spawnEnemy(vampireIcon);
 }
 

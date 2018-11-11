@@ -79,15 +79,15 @@ var mCharacters = [];
 mCharacters.push(
 	global.player,
 	
-	global.bloodyeye,
+	//global.bloodyeye,
 	global.death,
 	global.mummy,
-	global.owl,
+	//global.owl,
 	global.phantom,
-	global.pirateskull,
-	global.skeleton,
+	//global.pirateskull,
+	//global.skeleton,
 	global.spider,
-	global.undeadhand,
+	//global.undeadhand,
 	global.vampire,
 
 	global.biscuit,
@@ -163,15 +163,15 @@ setInterval(function() {
 function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 	global.moveDaemonizer = setInterval(function() {
 		if (L.DomUtil.get(hiddenHandlerKeys).innerHTML != 'p') {
-			mH.goToPlayer(bloodyeye,0.7*defaultMovementLength);
+			//mH.goToPlayer(bloodyeye,0.7*defaultMovementLength);
 			mH.goToPlayer(death,0.9*defaultMovementLength);
 			mH.goToPlayer(mummy,0.7*defaultMovementLength);
-			mH.goToPlayer(owl,0.5*defaultMovementLength);
+			//mH.goToPlayer(owl,0.5*defaultMovementLength);
 			mH.goToPlayer(phantom,0.7*defaultMovementLength);
-			mH.goToPlayer(pirateskull,0.8*defaultMovementLength);
-			mH.goToPlayer(skeleton,0.7*defaultMovementLength);
+			//mH.goToPlayer(pirateskull,0.8*defaultMovementLength);
+			//mH.goToPlayer(skeleton,0.7*defaultMovementLength);
 			mH.goToPlayer(spider,0.5*defaultMovementLength);
-			mH.goToPlayer(undeadhand,0.6*defaultMovementLength);
+			//mH.goToPlayer(undeadhand,0.6*defaultMovementLength);
 			mH.goToPlayer(vampire,0.5*defaultMovementLength);
 		}
 		mH.moveCharacter(global.player,defaultMovementLength);
