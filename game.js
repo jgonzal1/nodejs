@@ -105,7 +105,7 @@ mCharacters.push(
 	global.taco,
 
 	global.balloon,
-	global.bike,
+	global.boat,
 	global.bus,
 	global.furgo,	
 	global.plane,

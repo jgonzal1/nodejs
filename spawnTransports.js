@@ -3,7 +3,7 @@ const cercania = 2;
 
 function spawnTransports() {
 	const balloonIcon		= L.icon(createIcon('sprites/transports/balloon.png'));
-	const bikeIcon			= L.icon(createIcon('sprites/transports/bike.png'));
+	const boatIcon			= L.icon(createIcon('sprites/transports/boat.png'));
 	const busIcon			= L.icon(createIcon('sprites/transports/bus.png'));
 	const furgoIcon			= L.icon(createIcon('sprites/transports/furgo.png'));
 	const planeIcon			= L.icon(createIcon('sprites/transports/plane.png'));
@@ -22,7 +22,7 @@ function spawnTransports() {
 	}
 
 	global.balloon		= spawnTransport(balloonIcon);
-	global.bike			= spawnTransport(bikeIcon);
+	global.boat			= spawnTransport(boatIcon);
 	global.bus			= spawnTransport(busIcon);
 	global.furgo		= spawnTransport(furgoIcon);
 	global.plane 		= spawnTransport(planeIcon);

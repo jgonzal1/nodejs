@@ -1,4 +1,4 @@
-const bikeIcon = L.icon(createIcon('style/bike.png'));
+const boatIcon = L.icon(createIcon('style/boat.png'));
 const baloonIcon = L.icon(createIcon('style/baloon.png'));
 const busIcon = L.icon(createIcon('style/bus.png'));
 const planeIcon = L.icon(createIcon('style/plane.png'));

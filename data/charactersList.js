@@ -29,7 +29,7 @@ var objectives = [
 
 var transports = [
     "balloon",
-    "bike",
+    "boat",
     "bus",
     //"car", 
     //"moto",
