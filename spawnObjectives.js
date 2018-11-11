@@ -25,19 +25,19 @@ function spawnObjectives() {
 		);
 	}
 
-	global.backpack	= spawnObjective(backpackIcon);
-	global.burger	= spawnObjective(burgerIcon);
-	global.banana	= spawnObjective(bananaIcon);
-	global.blackberry	= spawnObjective(blackberryIcon);
-	global.boots	= spawnObjective(bootsIcon);
-	global.chicken	= spawnObjective(chickenIcon);
-	global.greenflask	= spawnObjective(greenflaskIcon);
-	global.knife	= spawnObjective(knifeIcon);
-	global.pizza	= spawnObjective(pizzaIcon);
-	global.rice	= spawnObjective(riceIcon);
-	global.steelaxe	= spawnObjective(steelaxeIcon);
-	global.sword	= spawnObjective(swordIcon);
-	global.water	= spawnObjective(waterIcon);
+	global.backpack		= spawnObjective(backpackIcon); // 4L / allows items storage (8L)
+	global.burger		= spawnObjective(burgerIcon); // 600ml / restores 8 HP / hs hunger
+	global.banana		= spawnObjective(bananaIcon); // 200ml / restores 2 HP / hs hunger
+	global.blackberry	= spawnObjective(blackberryIcon); // 400ml / restores 4 HP / hs hunger
+	global.boots		= spawnObjective(bootsIcon); // 800ml 2nd pair / velocity multiplier x 1.5
+	global.chicken		= spawnObjective(chickenIcon); // 500ml / restores 5 HP / hs hunger
+	global.greenflask	= spawnObjective(greenflaskIcon); // 500ml / restores 10 HP / hs thirst
+	global.knife		= spawnObjective(knifeIcon); // 200ml / + 4 atk 
+	global.pizza		= spawnObjective(pizzaIcon); // 800ml / restores 10 HP / hs thirst
+	global.rice			= spawnObjective(riceIcon); // 300ml / restores 3 HP / hs thirst
+	global.steelaxe		= spawnObjective(steelaxeIcon); // 1L / + 6 atk
+	global.sword		= spawnObjective(swordIcon); // occupied hand / +10 atk
+	global.water		= spawnObjective(waterIcon); // 1L / restores 2 HP / 12 hs thirst
 }
 
 module.exports = spawnObjectives;
