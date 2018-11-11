@@ -103,34 +103,34 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 	case movemap[4]:
 		//alert('Calculando distancia...');
 		distancesArray = [
-			fcalcDist(global.biscuit),
+			fcalcDist(global.backpack),
 			fcalcDist(global.burger),
-			fcalcDist(global.chococookie),
-			fcalcDist(global.chocolate),
-			fcalcDist(global.cupcake),
-			fcalcDist(global.donut),
-			fcalcDist(global.fries),
-			fcalcDist(global.icecream),
+			fcalcDist(global.banana),
+			fcalcDist(global.blackberry),
+			fcalcDist(global.boots),
+			fcalcDist(global.chicken),
+			fcalcDist(global.greenflask),
+			fcalcDist(global.knife),
 			fcalcDist(global.pizza),
-			fcalcDist(global.popcorn),
-			fcalcDist(global.potatoes),
-			fcalcDist(global.poti),
-			fcalcDist(global.taco)
+			fcalcDist(global.rice),
+			fcalcDist(global.steelaxe),
+			fcalcDist(global.sword),
+			fcalcDist(global.water)
 		];
 		nearestObjetive = Math.min( // TODO Duplicated because of async
-			fcalcDist(global.biscuit),
+			fcalcDist(global.backpack),
 			fcalcDist(global.burger),
-			fcalcDist(global.chococookie),
-			fcalcDist(global.chocolate),
-			fcalcDist(global.cupcake),
-			fcalcDist(global.donut),
-			fcalcDist(global.fries),
-			fcalcDist(global.icecream),
+			fcalcDist(global.banana),
+			fcalcDist(global.blackberry),
+			fcalcDist(global.boots),
+			fcalcDist(global.chicken),
+			fcalcDist(global.greenflask),
+			fcalcDist(global.knife),
 			fcalcDist(global.pizza),
-			fcalcDist(global.popcorn),
-			fcalcDist(global.potatoes),
-			fcalcDist(global.poti),
-			fcalcDist(global.taco)
+			fcalcDist(global.rice),
+			fcalcDist(global.steelaxe),
+			fcalcDist(global.sword),
+			fcalcDist(global.water)
 		);
 		nearestObjetiveIndex = distancesArray.indexOf(Math.min(...distancesArray));
 		if (nearestObjetive < 0.0002) {

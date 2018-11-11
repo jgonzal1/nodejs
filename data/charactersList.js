@@ -12,19 +12,19 @@ var enemies = [
 ];
 
 var objectives = [
-    "biscuit",
+    "backpack",
 	"burger",
-	"chococookie",
-	"chocolate",
-	"cupcake",
-	"donut",
-	"fries",
-	"icecream",
+	"banana",
+	"blackberry",
+	"boots",
+	"chicken",
+	"greenflask",
+	"knife",
 	"pizza",
-	"popcorn",
-	"potatoes",
-	"poti",
-	"taco"
+	"rice",
+	"steelaxe",
+	"sword",
+	"water"
 ];
 
 var transports = [

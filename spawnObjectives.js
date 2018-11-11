@@ -2,19 +2,19 @@ const createIcon = require('./style/createIcon');
 const cercania = 40; // 600 para tests, 40 normal
 
 function spawnObjectives() {
-	const biscuitIcon = L.icon(createIcon('style/biscuit.png'));
-	const burgerIcon = L.icon(createIcon('style/burger.png'));
-	const chococookieIcon = L.icon(createIcon('style/chococookie.png'));
-	const chocolateIcon = L.icon(createIcon('style/chocolate.png'));
-	const cupcakeIcon = L.icon(createIcon('style/cupcake.png'));
-	const donutIcon = L.icon(createIcon('style/donut.png'));
-	const friesIcon = L.icon(createIcon('style/fries.png'));
-	const icecreamIcon = L.icon(createIcon('style/icecream.png'));
-	const pizzaIcon = L.icon(createIcon('style/pizza.png'));
-	const popcornIcon = L.icon(createIcon('style/popcorn.png'));
-	const potatoesIcon = L.icon(createIcon('style/potatoes.png'));
-	const potiIcon = L.icon(createIcon('style/poti.png'));
-	const tacoIcon = L.icon(createIcon('style/taco.png'));
+	const backpackIcon = L.icon(createIcon('style/objectives/backpack.png'));
+	const burgerIcon = L.icon(createIcon('style/objectives/burger.png'));
+	const bananaIcon = L.icon(createIcon('style/objectives/banana.png'));
+	const blackberryIcon = L.icon(createIcon('style/objectives/blackberry.png'));
+	const bootsIcon = L.icon(createIcon('style/objectives/boots.png'));
+	const chickenIcon = L.icon(createIcon('style/objectives/chicken.png'));
+	const greenflaskIcon = L.icon(createIcon('style/objectives/greenflask.png'));
+	const knifeIcon = L.icon(createIcon('style/objectives/knife.png'));
+	const pizzaIcon = L.icon(createIcon('style/objectives/pizza.png'));
+	const riceIcon = L.icon(createIcon('style/objectives/rice.png'));
+	const steelaxeIcon = L.icon(createIcon('style/objectives/steelaxe.png'));
+	const swordIcon = L.icon(createIcon('style/objectives/sword.png'));
+	const waterIcon = L.icon(createIcon('style/objectives/water.png'));
 
 	function spawnObjective(enemyIcon) {
 		return L.marker(
@@ -25,19 +25,19 @@ function spawnObjectives() {
 		);
 	}
 
-	global.biscuit	= spawnObjective(biscuitIcon);
+	global.backpack	= spawnObjective(backpackIcon);
 	global.burger	= spawnObjective(burgerIcon);
-	global.chococookie	= spawnObjective(chococookieIcon);
-	global.chocolate	= spawnObjective(chocolateIcon);
-	global.cupcake	= spawnObjective(cupcakeIcon);
-	global.donut	= spawnObjective(donutIcon);
-	global.fries	= spawnObjective(friesIcon);
-	global.icecream	= spawnObjective(icecreamIcon);
+	global.banana	= spawnObjective(bananaIcon);
+	global.blackberry	= spawnObjective(blackberryIcon);
+	global.boots	= spawnObjective(bootsIcon);
+	global.chicken	= spawnObjective(chickenIcon);
+	global.greenflask	= spawnObjective(greenflaskIcon);
+	global.knife	= spawnObjective(knifeIcon);
 	global.pizza	= spawnObjective(pizzaIcon);
-	global.popcorn	= spawnObjective(popcornIcon);
-	global.potatoes	= spawnObjective(potatoesIcon);
-	global.poti	= spawnObjective(potiIcon);
-	global.taco	= spawnObjective(tacoIcon);
+	global.rice	= spawnObjective(riceIcon);
+	global.steelaxe	= spawnObjective(steelaxeIcon);
+	global.sword	= spawnObjective(swordIcon);
+	global.water	= spawnObjective(waterIcon);
 }
 
 module.exports = spawnObjectives;
