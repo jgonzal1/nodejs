@@ -51,7 +51,7 @@ const artisticMap = L.tileLayer(
 	{ minZoom: 2, maxZoom: 17 }
 ).addTo(global.map);
 const baseLayers = createBaseLayerAndAddMore(artisticMap, L);
-L.control.scale({imperial:false}).addTo(map);
+L.control.scale({imperial:false}).addTo(global.map);
 /* TODO Colores Tileset
 Blanco: detectarlo en tileset permite mover 1x;
 si no, reducir multiplicador de velocidad y:
@@ -160,19 +160,20 @@ setInterval(function() {
 	}*/
 }, 3000); // globalEventsDaemonizer*/
 
+let vel;
 function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 	global.moveDaemonizer = setInterval(function() {
 		if (L.DomUtil.get(hiddenHandlerKeys).innerHTML != 'p') {
-			//mH.goToPlayer(bloodyeye,0.7*defaultMovementLength);
-			mH.goToPlayer(death,0.9*defaultMovementLength);
-			mH.goToPlayer(mummy,0.7*defaultMovementLength);
-			//mH.goToPlayer(owl,0.5*defaultMovementLength);
-			mH.goToPlayer(phantom,0.7*defaultMovementLength);
-			//mH.goToPlayer(pirateskull,0.8*defaultMovementLength);
-			//mH.goToPlayer(skeleton,0.7*defaultMovementLength);
-			mH.goToPlayer(spider,0.5*defaultMovementLength);
-			//mH.goToPlayer(undeadhand,0.6*defaultMovementLength);
-			mH.goToPlayer(vampire,0.5*defaultMovementLength);
+			//mH.goToPlayer(global.bloodyeye,0.7*defaultMovementLength);
+			mH.goToPlayer(global.death,0.9*defaultMovementLength);
+			mH.goToPlayer(global.mummy,0.7*defaultMovementLength);
+			//mH.goToPlayer(global.owl,0.5*defaultMovementLength);
+			mH.goToPlayer(global.phantom,0.7*defaultMovementLength);
+			//mH.goToPlayer(global.pirateskull,0.8*defaultMovementLength);
+			//mH.goToPlayer(global.skeleton,0.7*defaultMovementLength);
+			mH.goToPlayer(global.spider,0.5*defaultMovementLength);
+			//mH.goToPlayer(global.undeadhand,0.6*defaultMovementLength);
+			mH.goToPlayer(global.vampire,0.5*defaultMovementLength);
 		}
 		mH.moveCharacter(global.player,defaultMovementLength);
 		if (global.layerToRemove != undefined) {
@@ -344,7 +345,7 @@ function formatDate(date) {
 	return year + '/' + monthNames[monthIndex] + '/' + day + ' ' + hours + ':' + mins;
 }
 function timeLegend(){
-	labels = [formatDate(gameTimeStamp)]; // TODO Tiempo y dependencias de regiones en legend?
+	const labels = [formatDate(gameTimeStamp)]; // TODO Tiempo y dependencias de regiones en legend?
 }
 legend.addTo(global.map);
 // TODO Asistente virtual en ayuda / cómo jugar
