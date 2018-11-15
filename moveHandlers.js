@@ -100,7 +100,7 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 			character.getLatLng().lng+0.00001*velocity)
 		);
 		break;
-	case movemap[4]:
+	case movemap[4]: // [ ]
 		//alert('Calculando distancia...');
 		distancesArray = [
 			fcalcDist(global.backpack),
@@ -140,12 +140,15 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 		} else {
 			alert(
 				'¡Tu objetivo más cercano aún está a ' + Math.round(5000*nearestObjetive) + ' pasos y\n' +
-				'este es el array de distancias: ' + objectives[nearestObjetiveIndex] + '!'
+				'es: ' + objectives[nearestObjetiveIndex] + '!'
 			);			
 		}
 		break;
-	case movemap[5]:
-		alert(global.layerToRemove);
+	case movemap[5]: // 'E'
+		// Creating window object
+		var win =  L.control.window(map,{title:'Hello world!',content:'This is my first control window.'})
+		.show();
+		//alert(global.layerToRemove);
 		break;
 	}
 }

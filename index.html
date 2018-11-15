@@ -1,23 +1,53 @@
 <!doctype html>
 <html>
     <head>
-        <title>Game</title>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel='icon', sizes='16x16 32x32 48x48 64x64', href='data:image/png;base64,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'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="theme-color" content="#000000">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>DarksGeim</title>
+    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
+        <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css">
+        <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css">
+        <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.css">
+        <link rel="stylesheet" href="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.css">
+        <link rel="stylesheet" href="assets/css/app.css">
         <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
         <link rel="stylesheet" href="style/style.css">
+    
+        <link rel="apple-touch-icon" sizes="64x64" href="style/main_icon/favicon_64.png">
+        <link rel="apple-touch-icon" sizes="128x128" href="style/main_icon/favicon_128.png">
+        <link rel="apple-touch-icon" sizes="256x256" href="style/main_icon/favicon.png">
+        <link rel="icon" sizes="128x128" href="style/main_icon/favicon_128.png">
+        <link rel="icon" type="image/x-icon" href="style/main_icon/favicon.ico">
+
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="https://api.jquery.com/resources/events.js"></script>
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.5/typeahead.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+        <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
+        <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js"></script>
+        <!--<script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
+        <script src="assets/js/app.js"></script>-->
     </head>
     <body>
         <div class="row" width="100%"><!-- Instances columns -->
-            <div class="column" onclick="openTab('info');" style="color:#444444;background:#90cc90;">
+            <!--<div class="column" onclick="openTab('info');" style="color:#444444;background:#90cc90;">
                 Info
-            </div>
-            <div class="column" onclick="openTab('music');" style="color:#444444;background:#cfc999;">
-                Música
-            </div>
+            </div>-->
             <div class="column" style="color:#444444;background:#90cc90;">
                 <div id="logs"></div>
             </div>
@@ -27,45 +57,300 @@
                 <div id="hiddenHandlerPos" style="display: none"></div>
             </div>         
         </div>
-        <div id="info" class="containerTab" style="display:none;background:#90cc90">
-            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-            <input type="checkbox" id="checkInfoDiv" onclick="showInfo()">
-            <div id="infoDiv"></div>
-            <input type="checkbox" id="checkModeCotND" onclick="modeCotND()"> Modo 30FPS
-            <!--<p id="text" style="display:none">Checkbox is CHECKED!</p>-->
+
+
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <div class="navbar-icon-container">
+                    <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
+                    <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a>
+                </div>
+                <a class="navbar-brand" href="#">Darks Game</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('info');"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp;Info <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <div id="info" class="containerTab" style="display:none;background:#90cc90">
+                                    <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+                                    <input type="checkbox" id="checkInfoDiv" onclick="showInfo()">
+                                    <div id="infoDiv"></div>
+                                    <input type="checkbox" id="checkModeCotND" onclick="modeCotND()"> Modo 30FPS
+                                    <!--<p id="text" style="display:none">Checkbox is CHECKED!</p>-->
+                            </div> 
+                        </ul>
+                    
+                    <li class="dropdown">
+                        <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('music');"><i class="fa fa-music white"></i>&nbsp;&nbsp;Música <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <div id="music" class="containerTab" style="display:none;background:#cfc999">
+                                    <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+                                    <div class="row">
+                                        <div class="column" onclick="openTab('music');">
+                                            <p>Música predefinida</p>
+                                            <!-- 120BPM -->
+                                            <iframe
+                                            width="560" height="315"
+                                            src="https://www.youtube.com/embed/videoseries?list=PLHeTSqyMs2Xbsn_LFYNFUZNDQf3ZalUpz&autoplay=1"
+                                            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                                            <!-- autoplay; embed/0IT9A9GvjWo" -->
+                                            </iframe>
+                                            <!-- Lista Lo-Fi
+                                            <iframe
+                                                src="https://open.spotify.com/embed/user/foilism/playlist/0xzpsVjnE6OSjdBC4iIzqe"
+                                                width="auto" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media">
+                                            </iframe>
+                                            -->
+                                            <!-- Lista 8Bit
+                                            <iframe
+                                                src="https://www.youtube.com/embed/LQmi1GaQH2o"
+                                                width="auto" height="200" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                                            </iframe> -->                   </div>
+                                        <div class="column">
+                                            <p>Género:</p>(aleatorio, 120 BPM) <!-- chiptune, lo-fi, instrumental-->
+                                        </div>
+                                        <div class="column">
+                                            <p>Artistas:</p>(aleatorio)
+                                        </div>
+                                    </div>
+                                </div>
+                        </ul>
+
+                    <li class="dropdown">
+                        <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe white"></i>&nbsp;&nbsp;Misiones <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Pantalla completa (indev)</a></li>
+                            <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="legend-btn"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Mostrar modal (indev)</a></li>
+                            <li class="divider hidden-xs"></li>
+                            <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="login-btn"><i class="fa fa-user"></i>&nbsp;&nbsp;Personaje (indev)</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" id="downloadDrop" href="#" role="button" data-toggle="dropdown"><i class="fa fa-cloud-download white"></i>&nbsp;&nbsp;Guardar (indev) <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        <li><a href="data/boroughs.geojson" download="boroughs.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Test1</a></li>
+                        </ul>
+                    </li>
+                    <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;Recursos</a></li>
+                </ul>
+                </div>
+            </div>
+            </div>
+        
+            <div id="container">
+            <div id="sidebar">
+                <div class="sidebar-wrapper">
+                <div class="panel panel-default" id="features">
+                    <div class="panel-heading">
+                    <h3 class="panel-title">Recursos (indev)
+                    <button type="button" class="btn btn-xs btn-default pull-right" id="sidebar-hide-btn"><i class="fa fa-chevron-left"></i></button></h3>
+                    </div>
+                    <div class="panel-body">
+                    <div class="row">
+                    </div>
+                    </div>
+                    <div class="sidebar-table">
+                    <table class="table table-hover" id="feature-list">
+                        <thead class="hidden">
+                        <tr>
+                            <th>Icon</th>
+                        <tr>
+                        <tr>
+                            <th>Name</th>
+                        <tr>
+                        <tr>
+                            <th>Chevron</th>
+                        <tr>
+                        </thead>
+                        <tbody class="list"></tbody>
+                    </table>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div id="map"></div>
         </div>
-        <div id="music" class="containerTab" style="display:none;background:#cfc999">
-            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-            <div class="row">
-                    <div class="column" onclick="openTab('music');">
-                        <p>Música predefinida</p>
-                        <!-- 120BPM -->
-                        <iframe
-                        width="560" height="315"
-                        src="https://www.youtube.com/embed/videoseries?list=PLHeTSqyMs2Xbsn_LFYNFUZNDQf3ZalUpz&autoplay=1"
-                        frameborder="0" allow="encrypted-media" allowfullscreen>
-                        <!-- autoplay; embed/0IT9A9GvjWo" -->
-                        </iframe>
-                        <!-- Lista Lo-Fi
-                        <iframe
-                            src="https://open.spotify.com/embed/user/foilism/playlist/0xzpsVjnE6OSjdBC4iIzqe"
-                            width="auto" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media">
-                        </iframe>
-                        -->
-                        <!-- Lista 8Bit
-                        <iframe
-                            src="https://www.youtube.com/embed/LQmi1GaQH2o"
-                            width="auto" height="200" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-                        </iframe> -->                   </div>
-                    <div class="column">
-                        <p>Género:</p>(aleatorio, 120 BPM) <!-- chiptune, lo-fi, instrumental-->
-                    </div>
-                    <div class="column">
-                        <p>Artistas:</p>(aleatorio)
-                    </div>
+        <!--<div id="map"></div>
+	
+        <div id="loading">
+        <div class="loading-indicator">
+            <div class="progress progress-striped active">
+            <div class="progress-bar progress-bar-info progress-bar-full"></div>
             </div>
         </div>
-        <div id="map"></div>
+        </div>-->
+
+        <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Welcome to the BootLeaf template!</h4>
+                </div>
+                <div class="modal-body">
+                <ul class="nav nav-tabs nav-justified" id="aboutTabs">
+                    <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;About the project</a></li>
+                    <li><a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i>&nbsp;Contact us</a></li>
+                    <li><a href="#disclaimer" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>&nbsp;Disclaimer</a></li>
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i>&nbsp;Metadata <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#boroughs-tab" data-toggle="tab">Boroughs</a></li>
+                        <li><a href="#subway-lines-tab" data-toggle="tab">Subway Lines</a></li>
+                        <li><a href="#theaters-tab" data-toggle="tab">Theaters</a></li>
+                        <li><a href="#museums-tab" data-toggle="tab">Museums</a></li>
+                    </ul>
+                    </li>
+                </ul>
+                <div class="tab-content" id="aboutTabsContent">
+                    <div class="tab-pane fade active in" id="about">
+                    <p>A simple, responsive template for building web mapping applications with <a href="http://getbootstrap.com/">Bootstrap 3</a>, <a href="http://leafletjs.com/" target="_blank">Leaflet</a>, and <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a>. Open source, MIT licensed, and available on <a href="https://github.com/bmcbride/bootleaf" target="_blank">GitHub</a>.</p>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Features</div>
+                        <ul class="list-group">
+                        <li class="list-group-item">Fullscreen mobile-friendly map template with responsive navbar and modal placeholders</li>
+                        <li class="list-group-item">jQuery loading of external GeoJSON files</li>
+                        <li class="list-group-item">Logical multiple layer marker clustering via the <a href="https://github.com/Leaflet/Leaflet.markercluster" target="_blank">leaflet marker cluster plugin</a></li>
+                        <li class="list-group-item">Elegant client-side multi-layer feature search with autocomplete using <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a></li>
+                        <li class="list-group-item">Responsive sidebar feature list synced with map bounds, which includes sorting and filtering via <a href="http://listjs.com/" target="_blank">list.js</a></li>
+                        <li class="list-group-item">Marker icons included in grouped layer control via the <a href="https://github.com/ismyrnow/Leaflet.groupedlayercontrol" target="_blank">grouped layer control plugin</a></li>
+                        </ul>
+                    </div>
+                    </div>
+                    <div id="disclaimer" class="tab-pane fade text-danger">
+                    <p>The data provided on this site is for informational and planning purposes only.</p>
+                    <p>Absolutely no accuracy or completeness guarantee is implied or intended. All information on this map is subject to such variations and corrections as might result from a complete title search and/or accurate field survey.</p>
+                    </div>
+                    <div class="tab-pane fade" id="contact">
+                    <form id="contact-form">
+                        <div class="well well-sm">
+                        <div class="row">
+                            <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="first-name">First Name:</label>
+                                <input type="text" class="form-control" id="first-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name:</label>
+                                <input type="text" class="form-control" id="last-email">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="text" class="form-control" id="email">
+                            </div>
+                            </div>
+                            <div class="col-md-8">
+                            <label for="message">Message:</label>
+                            <textarea class="form-control" rows="8" id="message"></textarea>
+                            </div>
+                            <div class="col-md-12">
+                            <p>
+                                <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Submit</button>
+                            </p>
+                            </div>
+                        </div>
+                        </div>
+                    </form>
+                    </div>
+                    <div class="tab-pane fade" id="boroughs-tab">
+                    <p>Borough data courtesy of <a href="http://www.nyc.gov/html/dcp/pdf/bytes/nybbwi_metadata.pdf" target="_blank">New York City Department of City Planning</a></p>
+                    </div>
+                    <div class="tab-pane fade" id="subway-lines-tab">
+                    <p><a href="http://spatialityblog.com/2010/07/08/mta-gis-data-update/#datalinks" target="_blank">MTA Subway data</a> courtesy of the <a href="http://www.urbanresearch.org/about/cur-components/cuny-mapping-service" target="_blank">CUNY Mapping Service at the Center for Urban Research</a></p>
+                    </div>
+                    <div class="tab-pane fade" id="theaters-tab">
+                    <p>Theater data courtesy of <a href="https://data.cityofnewyork.us/Recreation/Theaters/kdu2-865w" target="_blank">NYC Department of Information & Telecommunications (DoITT)</a></p>
+                    </div>
+                    <div class="tab-pane fade" id="museums-tab">
+                    <p>Museum data courtesy of <a href="https://data.cityofnewyork.us/Recreation/Museums-and-Galleries/sat5-adpb" target="_blank">NYC Department of Information & Telecommunications (DoITT)</a></p>
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    
+        <div class="modal fade" id="legendModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Map Legend</h4>
+                </div>
+                <div class="modal-body">
+                <p>Map Legend goes here...</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Login</h4>
+                </div>
+                <div class="modal-body">
+                <form id="contact-form">
+                    <fieldset>
+                    <div class="form-group">
+                        <label for="name">Username:</label>
+                        <input type="text" class="form-control" id="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Password:</label>
+                        <input type="password" class="form-control" id="password">
+                    </div>
+                    </fieldset>
+                </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary" data-dismiss="modal">Login</button>
+                </div>
+            </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    
+        <div class="modal fade" id="featureModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title text-primary" id="feature-title"></h4>
+                </div>
+                <div class="modal-body" id="feature-info"></div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    
+        <div class="modal fade" id="attributionModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">
+                    Developed by <a href='http://bryanmcbride.com'>bryanmcbride.com</a>
+                </h4>
+                </div>
+                <div class="modal-body">
+                <div id="attribution"></div>
+                </div>
+            </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
         <script src="bundle.js"></script>
         <script>

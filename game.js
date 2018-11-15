@@ -326,7 +326,7 @@ legend.onAdd = function() {
 				'<font color=' + geoJsonStylers.getColor(from + 1) + '>__</font>' +
 			'</i> ' + from + (to ? '&ndash;' + to : '+'));
 	}*/
-	div.innerHTML = [formatDate(gameTimeStamp)]; // labels.join('<br>');
+	//div.innerHTML = [formatDate(gameTimeStamp)]; // labels.join('<br>');
 	return div;
 };
 function formatDate(date) {
