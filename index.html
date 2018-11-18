@@ -179,7 +179,7 @@
                   <tr>
                     <td><img src="style/interface/health.png" style="width:16px;height:16px;"></td>
                     <td>Vida</td>
-                    <td align="right">
+                    <td align="right"><span id="health" style="display: none">3</span>
                       <canvas id="healthCanvas" width="80" height="16" style="border:1px solid #d3d3d3;">
                       Your browser does not support the HTML5 canvas tag.</canvas>
                     </td>
@@ -195,9 +195,19 @@
                     <td align="right"><span id="def">0</span> <img src="style/interface/def-point.gif"></td>
                   </tr>
                   <tr>
+                      <td><img src="style/interface/run.png" style="width:16px;height:16px;"></td>
+                      <td>Velocidad (indev)</td>
+                      <td align="right"><span id="vel">1</span> <img src="style/interface/velocity.png"></td>
+                  </tr>
+                  <tr>
                     <td><img src="style/interface/batcoin.png" style="width:16px;height:16px;"></td>
                     <td>BatCoins</td>
                     <td align="right"><span id="btc">0</span> <img src="style/interface/coin-point.png"></td>
+                  </tr>
+                  <tr id="backpack" style="display:none;">
+                    <td><img src="style/interface/equipment.png" style="width:32px;height:32px;"></td>
+                    <td>Mochila</td>
+                    <td align="right"><span id="room">0</span>L <img src="style/interface/space.gif"></td>
                   </tr>
                   <tr>
                     <td></td>
@@ -390,17 +400,20 @@
     <script src="bundle.js"></script>
 
     <script>
-    function healthCanvas() {
+    /**
+     * @param {Number} hp
+     */
+    function healthCanvas(hp) {
         var c = document.getElementById("healthCanvas");
         var ctx = c.getContext("2d");
         var fh = document.getElementById("fh");
         // var hh = document.getElementById("hh");
         var lh = document.getElementById("lh");
-        ctx.drawImage(fh,0,0);
-        ctx.drawImage(fh,16,0);
-        ctx.drawImage(fh,32,0);
-        ctx.drawImage(lh,48,0);
-        ctx.drawImage(lh,64,0);
+        ctx.drawImage(hp<1?lh:fh,0,0);
+        ctx.drawImage(hp<2?lh:fh,16,0);
+        ctx.drawImage(hp<3?lh:fh,32,0);
+        ctx.drawImage(hp<4?lh:fh,48,0);
+        ctx.drawImage(hp<5?lh:fh,64,0);
     }
     function showInfo() {
         document.getElementById("infoDiv").innerHTML = global.points
@@ -437,7 +450,7 @@
         document.getElementById(tabName).style.display = "block";
     }
 
-    healthCanvas();
+    healthCanvas(parseFloat(document.getElementById('health').innerHTML));
     // getLocation();
 
     // keyListener

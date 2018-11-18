@@ -28,7 +28,7 @@ function spawnEnemies() {
 
 		return L.marker(
 			[lat+latRnd, long+longRnd],
-			{title: name + ' (Enemigo)', icon: enemyIcon}
+			{title: name + ' (Enemigo)', attribution: name, icon: enemyIcon}
 		)
 		//.bindPopup('<color="red"><b>Enemigo</b></color>')
 		;

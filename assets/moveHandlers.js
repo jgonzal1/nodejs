@@ -1,4 +1,6 @@
 const cL = require('../data/charactersList');
+const objectiveStatsHandler = require('./objectiveStatsHandler');
+const enemyStatsHandler = require('./enemyStatsHandler');
 const objectives = cL.getObjectives();
 
 const lngCorrectionArr = [ // Corrección calculada de la distorsión angular de la longitud con respecto a su latiitud
@@ -64,7 +66,8 @@ function goToPlayer(target, velocity) {
 	}
 	moveCharacter(target, velocity, forcedDirection);
 	if (0.0002 > Math.max(Math.abs(latDiff), Math.abs(lngDiff))) {
-		alert('game over');
+		enemyStatsHandler(target.getAttribution());
+		// alert('Game Over');
 	}
 }
 
@@ -74,7 +77,7 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 	velLng = velocity*lngCorrectionArr[Math.round(global.lat)];
 	movemap = (movemap || ['w', 'a', 's', 'd', ' ', 'e'] );
 	const direction = (forceDirection || L.DomUtil.get(hiddenHandlerKeys).innerHTML);
-	let nearestObjetive, distancesArray, nearestObjetiveIndex;
+	let nearestObjetive, distancesArray, nearestObjetiveIndex, itemDescription;
 	switch (direction) { //forceDirection
 	case movemap[0]:
 		character.setLatLng(
@@ -134,7 +137,8 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 		);
 		nearestObjetiveIndex = distancesArray.indexOf(Math.min(...distancesArray));
 		if (nearestObjetive < 0.0002) {
-			alert('¡Has conseguido 1 punto al conseguir un ' + objectives[nearestObjetiveIndex] +'!');
+			itemDescription = objectiveStatsHandler(objectives[nearestObjetiveIndex]);
+			alert('¡Has conseguido ' + itemDescription + ' al conseguir un ' + objectives[nearestObjetiveIndex] +'!');
 			global.layerToRemove = objectives[nearestObjetiveIndex];
 			global.points += 1;			
 		} else {
