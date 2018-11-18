@@ -5,6 +5,7 @@ function objectiveStatsHandler(objective) {
     health = parseFloat(document.getElementById('health').innerHTML);
     atk = parseFloat(document.getElementById('atk').innerHTML);
     def = parseFloat(document.getElementById('def').innerHTML);
+    vel = parseFloat(document.getElementById('vel').innerHTML);
     btc = parseFloat(document.getElementById('btc').innerHTML);
     room = parseFloat(document.getElementById('room').innerHTML);
     switch (objective) {
