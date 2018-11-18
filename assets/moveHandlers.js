@@ -59,7 +59,7 @@ function goToPlayer(target, velocity) {
 	velocity = ( velocity || 1 );
 	const latDiff = global.player.getLatLng().lat - target.getLatLng().lat;
 	const lngDiff = global.player.getLatLng().lng - target.getLatLng().lng;
-	let forcedDirection;
+	let forcedDirection, btc;
 	if (Math.abs(latDiff) > Math.abs(lngDiff)) {
 		if (latDiff>0) {forcedDirection='w';} else {forcedDirection='s';}
 	} else {
@@ -72,7 +72,15 @@ function goToPlayer(target, velocity) {
 			L.DomUtil.get(hiddenHandlerKeys).innerHTML === 'e' &&
 			parseFloat(document.getElementById('atk').innerHTML) > 0
 		) {
-			global.layerToRemove = target.getAttribution();
+			// global.layerToRemove = target.getAttribution();
+			btc = parseFloat(document.getElementById('btc').innerHTML);
+			btc += 1;
+			document.getElementById('btc').innerHTML = btc; 
+			alert(target.getLatLng());
+			target.setLatLng(L.latLng(
+				target.getLatLng().lat+(Math.random()-0.5)/20,
+				target.getLatLng().lng+(Math.random()-0.5)/20
+			));
 		}
 		// alert('Game Over');
 	}
