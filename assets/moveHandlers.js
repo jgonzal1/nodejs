@@ -28,6 +28,7 @@ const lngCorrectionArr = [ // Corrección calculada de la distorsión angular de
     0.110244016,0.0908758,  0.071303496,0.051527104,
     0.031546624,0.011362056,0
 ]; // De momento tomo la de 40º porque estamos en Madrid
+let displayAttackPositionAlert = true;
 
 function targetFleeFromPlayer(target, velocity, player) {
 	const latDiff = player.getLatLng().lat - target.getLatLng().lat;
@@ -67,6 +68,12 @@ function goToPlayer(target, velocity) {
 	moveCharacter(target, velocity, forcedDirection);
 	if (0.0002 > Math.max(Math.abs(latDiff), Math.abs(lngDiff))) {
 		enemyStatsHandler(target.getAttribution());
+		if (
+			L.DomUtil.get(hiddenHandlerKeys).innerHTML === 'e' &&
+			parseFloat(document.getElementById('atk').innerHTML) > 0
+		) {
+			global.layerToRemove = target.getAttribution();
+		}
 		// alert('Game Over');
 	}
 }
@@ -77,7 +84,7 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 	velLng = velocity*lngCorrectionArr[Math.round(global.lat)];
 	movemap = (movemap || ['w', 'a', 's', 'd', ' ', 'e'] );
 	const direction = (forceDirection || L.DomUtil.get(hiddenHandlerKeys).innerHTML);
-	let nearestObjetive, distancesArray, nearestObjetiveIndex, itemDescription;
+	let nearestObjetive, distancesArray, nearestObjetiveIndex, itemDescription, atk;
 	switch (direction) { //forceDirection
 	case movemap[0]:
 		character.setLatLng(
@@ -138,21 +145,29 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 		nearestObjetiveIndex = distancesArray.indexOf(Math.min(...distancesArray));
 		if (nearestObjetive < 0.0002) {
 			itemDescription = objectiveStatsHandler(objectives[nearestObjetiveIndex]);
-			alert('¡Has conseguido ' + itemDescription + ' al conseguir un ' + objectives[nearestObjetiveIndex] +'!');
+			alert('¡Has conseguido ' + itemDescription + ', al recoger ' + objectives[nearestObjetiveIndex] +'!');
 			global.layerToRemove = objectives[nearestObjetiveIndex];
 			global.points += 1;			
 		} else {
 			alert(
 				'¡Tu objetivo más cercano aún está a ' + Math.round(5000*nearestObjetive) + ' pasos y\n' +
 				'es: ' + objectives[nearestObjetiveIndex] + '!'
-			);			
+			);
+		}
+		if (displayAttackPositionAlert === false) { // TODO for all player attack position disruption cases
+			displayAttackPositionAlert = true;
 		}
 		break;
 	case movemap[5]: // 'E'
-		/* Creating window object
-		var win =  L.control.window(map,{title:'Hello world!',content:'This is my first control window.'})
-		.show();*/
-		//alert(global.layerToRemove);
+		atk = parseFloat(document.getElementById('atk').innerHTML);
+		if (atk === 0) {
+			alert('¡Necesitas un arma para activar la posición de ataque!');		
+		} else {
+			if (displayAttackPositionAlert === true) {
+				alert('¡Activando posición de ataque!');
+				displayAttackPositionAlert = false;
+			}
+		}
 		break;
 	}
 }
