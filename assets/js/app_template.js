@@ -117,12 +117,9 @@ function syncSidebar() {
 }
 
 /* Basemap Layers */
-// map.setView([40.4942011, -3.71013], 16);
-var cartoLight = L.tileLayer(
-  'http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
-  , {
+var cartoLight = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
   maxZoom: 19,
-  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; Map data by under ODbL by @stamen.'
+  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
 });
 var usgsImagery = L.layerGroup([L.tileLayer("http://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}", {
   maxZoom: 15,
@@ -310,8 +307,8 @@ $.getJSON("data/DOITT_MUSEUM_01_13SEPT2010.geojson", function (data) {
 });
 
 map = L.map("map", {
-  zoom: 16, // 10
-  center: [40.4942011, -3.71013], // [40.702222, -73.979378],
+  zoom: 10,
+  center: [40.702222, -73.979378],
   layers: [cartoLight, boroughs, markerClusters, highlight],
   zoomControl: false,
   attributionControl: false

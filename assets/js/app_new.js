@@ -117,23 +117,51 @@ function syncSidebar() {
 }
 
 /* Basemap Layers */
-// map.setView([40.4942011, -3.71013], 16);
-var cartoLight = L.tileLayer(
-  'http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
-  , {
-  maxZoom: 19,
-  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; Map data by under ODbL by @stamen.'
-});
-var usgsImagery = L.layerGroup([L.tileLayer("http://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}", {
-  maxZoom: 15,
-}), L.tileLayer.wms("http://raster.nationalmap.gov/arcgis/services/Orthoimagery/USGS_EROS_Ortho_SCALE/ImageServer/WMSServer?", {
-  minZoom: 16,
-  maxZoom: 19,
-  layers: "0",
-  format: 'image/jpeg',
-  transparent: true,
-  attribution: "Aerial Imagery courtesy USGS"
-})]);
+global.map = L.map('map', { inertia: true, inertiaMaxSpeed: 1000, scrollWheelZoom: true } );
+const lat  = initialCoords[0]; global.lat = lat; // y
+const long = initialCoords[1]; global.long = long; // x
+const zoom = initialCoords[2]; // z
+global.map.setView([lat, long], zoom);
+const artisticMap = L.tileLayer(
+	'http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
+	{ minZoom: 2, maxZoom: 17 }
+).addTo(global.map);
+const baseLayers = createBaseLayerAndAddMore(artisticMap, L);
+L.control.scale({imperial:false}).addTo(global.map);
+/*var cartoLight = L.tileLayer(
+  //"https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+  "http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg",
+  {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
+  }
+);
+/*var usgsImagery = //L.layerGroup(
+  //[
+    L.tileLayer(
+      //"http://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}",
+      "http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg",
+      {
+        maxZoom: 15,
+      }
+    )/*, L.tileLayer
+    (
+      //"http://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}",
+      "http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg",
+      {
+        maxZoom: 15,
+      }
+    )
+    /*.wms("http://raster.nationalmap.gov/arcgis/services/Orthoimagery/USGS_EROS_Ortho_SCALE/ImageServer/WMSServer?", {
+      minZoom: 16,
+      maxZoom: 19,
+      layers: "0",
+      format: 'image/jpeg',
+      transparent: true,
+      attribution: "Aerial Imagery courtesy USGS"
+    })
+  ]
+);*/
 
 /* Overlay Layers */
 var highlight = L.geoJson(null);
@@ -309,13 +337,14 @@ $.getJSON("data/DOITT_MUSEUM_01_13SEPT2010.geojson", function (data) {
   museums.addData(data);
 });
 
-map = L.map("map", {
-  zoom: 16, // 10
-  center: [40.4942011, -3.71013], // [40.702222, -73.979378],
+L.control.layers(baseLayers, overlays).addTo(global.map);
+/*map = L.map("map", {
+  zoom: 10,
+  center: [40.702222, -73.979378],
   layers: [cartoLight, boroughs, markerClusters, highlight],
   zoomControl: false,
   attributionControl: false
-});
+});*/
 
 /* Layer control listeners that allow for a single markerClusters layer */
 map.on("overlayadd", function(e) {
@@ -415,8 +444,8 @@ if (document.body.clientWidth <= 767) {
 }
 
 var baseLayers = {
-  "Street Map": cartoLight,
-  "Aerial Imagery": usgsImagery
+  "Street Map": cartoLight/*,
+  "Aerial Imagery": usgsImagery*/
 };
 
 var groupedOverlays = {
