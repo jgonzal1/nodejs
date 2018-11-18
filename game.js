@@ -15,8 +15,7 @@ const spawnObjectives = require('./assets/spawnObjectives');
 // TODO #CataclysmDDA
 const spawnTransports = require('./assets/spawnTransports');
 const mH = require('./assets/moveHandlers');
-// TODO >>>>> #FFnn When near: capa de combate, con efectos de sonido, y modal
-// TODO attack with E?
+// TODO >>>>> #FFnn When near: efectos de sonido, y partículas
 // TODO #RimWorld
 // TODO #CotND
 
@@ -162,9 +161,13 @@ setInterval(function() {
 }, 3000); // globalEventsDaemonizer*/
 
 let vel;
+// const pauseSound = new Sound("../sounds/pause.mp3",100,true);
 function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 	global.moveDaemonizer = setInterval(function() {
+
 		if (L.DomUtil.get(hiddenHandlerKeys).innerHTML != 'p') {
+			// pauseSound.start();
+			// pauseSound.stop();
 			// TODO enemies properties
 			// TODO only 1 healthHandler (not big in html!)
 			//mH.goToPlayer(global.bloodyeye,0.7*defaultMovementLength);
@@ -177,8 +180,10 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 			mH.goToPlayer(global.spider,0.5*defaultMovementLength);
 			//mH.goToPlayer(global.undeadhand,0.6*defaultMovementLength);
 			mH.goToPlayer(global.vampire,0.5*defaultMovementLength);
+		} else {
+			// pauseSound.start();
 		}
-		mH.moveCharacter(global.player,defaultMovementLength);
+		mH.movePlayer(global.player,defaultMovementLength);
 		if (global.layerToRemove != undefined) {
 			global.map.removeLayer( global[layerToRemove] );
 			global.layerToRemove = undefined;
@@ -220,7 +225,7 @@ function onMapClick(e) {
 			} else {
 				if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
 			}
-			mH.moveCharacter(global.player, vel, forcedDirection);
+			mH.movePlayer(global.player, vel, forcedDirection);
 			// alert(vars + "strings"); works
 			if (defaultMovementLength/50000 > Math.max(latDiffAbs, lngDiffAbs)) {
 				clearInterval(mouseClickDaemonizer);

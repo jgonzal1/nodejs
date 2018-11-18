@@ -28,6 +28,9 @@ const lngCorrectionArr = [ // Corrección calculada de la distorsión angular de
     0.110244016,0.0908758,  0.071303496,0.051527104,
     0.031546624,0.011362056,0
 ]; // De momento tomo la de 40º porque estamos en Madrid
+const nStepSounds = 2, nAttackSounds = 2;
+let stepSound, attackSound;
+
 let displayAttackPositionAlert = true;
 
 function targetFleeFromPlayer(target, velocity, player) {
@@ -82,18 +85,14 @@ function goToPlayer(target, velocity) {
 				target.getLatLng().lng+(Math.random()-0.5)/20
 			));
 		}
-		// alert('Game Over');
 	}
 }
 
 function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h | 12x
-	character = ( character || global.player );
 	velocity = ( velocity || 1 );
 	velLng = velocity*lngCorrectionArr[Math.round(global.lat)];
-	movemap = (movemap || ['w', 'a', 's', 'd', ' ', 'e'] );
-	const direction = (forceDirection || L.DomUtil.get(hiddenHandlerKeys).innerHTML);
-	let nearestObjetive, distancesArray, nearestObjetiveIndex, itemDescription, atk;
-	switch (direction) { //forceDirection
+	movemap = (movemap || ['w', 'a', 's', 'd'] );
+	switch (forceDirection) { //forceDirection
 	case movemap[0]:
 		character.setLatLng(
 			L.latLng(character.getLatLng().lat+0.00001*velLng,
@@ -117,6 +116,25 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 			L.latLng(character.getLatLng().lat,
 			character.getLatLng().lng+0.00001*velocity)
 		);
+		break;
+	}
+}
+
+function movePlayer(character, velocity, forceDirection, movemap) { // 80km/h | 12x
+	character = ( character || global.player );
+	velocity = ( velocity || 1 );
+	velLng = velocity*lngCorrectionArr[Math.round(global.lat)];
+	movemap = (movemap || ['w', 'a', 's', 'd', ' ', 'e'] );
+	const direction = (forceDirection || L.DomUtil.get(hiddenHandlerKeys).innerHTML);
+	let nearestObjetive, distancesArray, nearestObjetiveIndex, itemDescription, atk;
+	switch (direction) { //forceDirection
+	case movemap[0]:
+	case movemap[1]:
+	case movemap[2]:
+	case movemap[3]:
+		stepSound = new Audio("../sounds/step"+Math.ceil(nStepSounds*Math.random())+".wav");
+		stepSound.play();
+		moveCharacter(character, velocity, direction, movemap);
 		break;
 	case movemap[4]: // [ ]
 		//alert('Calculando distancia...');
@@ -171,6 +189,8 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 		if (atk === 0) {
 			alert('¡Necesitas un arma para activar la posición de ataque!');		
 		} else {
+			attackSound = new Audio("../sounds/attack"+Math.ceil(nAttackSounds*Math.random())+".wav");
+			attackSound.play();
 			if (displayAttackPositionAlert === true) {
 				alert('¡Activando posición de ataque!');
 				displayAttackPositionAlert = false;
@@ -179,6 +199,7 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 		break;
 	}
 }
+
 /** @typedef L.marker @type {object} @type {L.marker} */
 /**@param {L.marker} m1 
  * @param {L.marker} m2 defaults player
@@ -207,7 +228,7 @@ function onMapClick(e) {
 			} else {
 				if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
 			}
-			mH.moveCharacter(global.player, vel, forcedDirection);
+			mH.movePlayer(global.player, vel, forcedDirection);
 			//alert(vars + "strings"); works
 			if (defaultMovementLength/50000 > Math.max(latDiffAbs, lngDiffAbs)) {
 				clearInterval(mouseClickDaemonizer);
@@ -225,4 +246,5 @@ module.exports.targetFleeFromPlayer = targetFleeFromPlayer;
 module.exports.targetGoToPlayer = targetGoToPlayer;
 module.exports.goToPlayer = goToPlayer;
 module.exports.moveCharacter = moveCharacter;
+module.exports.movePlayer = movePlayer;
 module.exports.onMapClick = onMapClick;

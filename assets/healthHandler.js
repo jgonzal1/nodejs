@@ -1,5 +1,10 @@
+const nDeathSounds = 6;
+let deathSound;
+
 function checkPlayerDeath(health) {
     if (health<1) {
+        deathSound = new Audio("../sounds/death"+Math.ceil(nDeathSounds*Math.random())+".wav");
+        deathSound.play();
         alert('Game Over');
     }
 }
