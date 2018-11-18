@@ -5,43 +5,43 @@ function enemyStatsHandler(objective) {
     health = parseFloat(document.getElementById('health').innerHTML);
     vel = parseFloat(document.getElementById('vel').innerHTML);
     switch (objective) {
-    case "Ojo sangriento":
+    case "bloodyeye":
         health -= 1;
         healthHandler(health);
         break;
-    case "Reaper":
+    case "death":
         health -= 2;
         healthHandler(health);
         break;
-    case "Momia": // ralentiza
+    case "mummy": // ralentiza
         health -= 1;
         healthHandler(health);
         break;
-    case "Búho": // invierte movimiento
+    case "owl": // invierte movimiento
         health -= 1;
         healthHandler(health);
         break;
-    case "Fantasma": // randomiza movimiento
+    case "phantom": // randomiza movimiento
         health -= 1;
         healthHandler(health);
         break;
-    case "Esqueleto pirata":
+    case "pirateskull":
         health -= 2;
         healthHandler(health);
         break;
-    case "Esqueleto":
+    case "skeleton":
         health -= 2;
         healthHandler(health);
         break;
-    case "Araña": // ralentiza
+    case "spider": // ralentiza
         health -= 1;
         healthHandler(health);
         break;
-    case "Mano cercenada":
+    case "undeadhand":
         health -= 1;
         healthHandler(health);
         break;
-    case "Murciélago": // chupa % vida
+    case "vampire": // chupa % vida
         health -= 1;
         healthHandler(health);
         break;

@@ -34,16 +34,16 @@ function spawnEnemies() {
 		;
 	}
 
-	//global.bloodyeye	= spawnEnemy('Ojo sangriento', bloodyeyeIcon);
-	global.death		= spawnEnemy('Reaper', deathIcon);
-	global.mummy		= spawnEnemy('Momia', mummyIcon);
-	//global.owl			= spawnEnemy('Búho', owlIcon);
-	global.phantom		= spawnEnemy('Fantasma', phantomIcon);
-	//global.pirateskull 	= spawnEnemy('Esqueleto pirata', pirateskullIcon);
-	//global.skeleton		= spawnEnemy('Esqueleto', skeletonIcon);
-	global.spider		= spawnEnemy('Araña', spiderIcon);
-	//global.undeadhand	= spawnEnemy('Mano cercenada', undeadhandIcon);
-	global.vampire		= spawnEnemy('Murciélago', vampireIcon);
+	//global.bloodyeye	= spawnEnemy('bloodyeye', bloodyeyeIcon); // 'Ojo sangriento'
+	global.death		= spawnEnemy('death', deathIcon); // 'Reaper'
+	global.mummy		= spawnEnemy('mummy', mummyIcon); // 'Momia'
+	//global.owl		= spawnEnemy('owl', owlIcon); // 'Búho'
+	global.phantom		= spawnEnemy('phantom', phantomIcon); // 'Fantasma'
+	//global.pirateskull= spawnEnemy('pirateskull', pirateskullIcon); // 'Esqueleto pirata'
+	//global.skeleton	= spawnEnemy('skeleton', skeletonIcon); // 'Esqueleto'
+	global.spider		= spawnEnemy('spider', spider); // 'Araña'
+	//global.undeadhand	= spawnEnemy('undeadhand', undeadhandIcon); // 'Mano cercenada'
+	global.vampire		= spawnEnemy('vampire', vampireIcon); // 'Murciélago'
 }
 
 module.exports = spawnEnemies;
