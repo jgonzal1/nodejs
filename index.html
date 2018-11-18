@@ -45,6 +45,7 @@
     <!--<script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
     <script src="assets/js/app.js"></script>-->
   </head>
+
   <body>
     <div class="row" width="100%"><!-- Instances columns -->
         <div class="column" style="color:#444444;background:#90cc90;">
@@ -56,7 +57,6 @@
             <div id="hiddenHandlerPos" style="display: none"></div>
         </div>         
     </div>
-
 
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
@@ -167,14 +167,16 @@
                   </thead>
                   <tbody class="list">
                     <tr>
+                      <img id="fh" src="style/interface/full-health.png" style="display:none;">
+                      <!--<img id="hh" src="style/interface/half-health.png" style="width:16px;height:16px">-->
+                      <img id="lh" src="style/interface/lost-health.png" style="display:none;">
+                    </tr>
+                    <tr>
                       <td><img src="style/interface/health.png" style="width:16px;height:16px;"></td>
                       <td>Vida</td>
                       <td>
-                        <img src="style/interface/health.png" style="width:16px;height:16px;">
-                        <img src="style/interface/health.png" style="width:16px;height:16px;">
-                        <img src="style/interface/half-health.png" style="width:16px;height:16px;">
-                        <img src="style/interface/lost-health.png" style="width:16px;height:16px;">
-                        <img src="style/interface/lost-health.png" style="width:16px;height:16px;">
+                        <canvas id="healthCanvas" width="80" height="16" style="border:1px solid #d3d3d3;">
+                        Your browser does not support the HTML5 canvas tag.</canvas>
                       </td>
                     </tr>
                     <tr>
@@ -194,7 +196,7 @@
             </div>
         </div>
         <div id="map"></div>
-</div>
+    </div>
 	
     <!--<div id="loading">
       <div class="loading-indicator">
@@ -296,7 +298,6 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
     <div class="modal fade" id="legendModal" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -313,7 +314,6 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -342,7 +342,6 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
     <div class="modal fade" id="featureModal" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -357,7 +356,6 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
     <div class="modal fade" id="attributionModal" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -375,8 +373,20 @@
     </div><!-- /.modal -->
 
     <script src="bundle.js"></script>
+
     <script>
-    getLocation()
+    function healthCanvas() {
+        var c = document.getElementById("healthCanvas");
+        var ctx = c.getContext("2d");
+        var fh = document.getElementById("fh");
+        // var hh = document.getElementById("hh");
+        var lh = document.getElementById("lh");
+        ctx.drawImage(fh,0,0);
+        ctx.drawImage(fh,16,0);
+        ctx.drawImage(fh,32,0);
+        ctx.drawImage(lh,48,0);
+        ctx.drawImage(lh,64,0);
+    }
     function showInfo() {
         document.getElementById("infoDiv").innerHTML = global.points
     }
@@ -411,6 +421,10 @@
         }
         document.getElementById(tabName).style.display = "block";
     }
+
+    healthCanvas();
+    // getLocation();
+
     // keyListener
     let buttonsPushed = 0;
     $("#map").keypress(
@@ -434,6 +448,7 @@
             });
     }
     </script>
+
     <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
     <script src="assets/js/bootstrapFunctions.js"></script>
   </body>
