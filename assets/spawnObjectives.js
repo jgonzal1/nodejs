@@ -1,6 +1,7 @@
 const createIcon = require('../style/createIcon');
-const cercania = 40; // 600 para tests, 40 normal
+const cercania = 600; // 600 para tests, 40 normal
 
+/** @typedef L.icon @type {object} @type {L.icon} */
 function spawnObjectives() {
 	const backpackIcon = L.icon(createIcon('style/objectives/backpack.png'));
 	const burgerIcon = L.icon(createIcon('style/objectives/burger.png'));
@@ -16,28 +17,32 @@ function spawnObjectives() {
 	const swordIcon = L.icon(createIcon('style/objectives/sword.png'));
 	const waterIcon = L.icon(createIcon('style/objectives/water.png'));
 
-	function spawnObjective(enemyIcon) {
+	/**
+	 * @param {string} name 
+	 * @param {L.icon} enemyIcon 
+	 */
+	function spawnObjective(name, enemyIcon) {
 		return L.marker(
 			[lat+(Math.random()-0.5)/cercania, long+(Math.random()-0.5)/cercania],
-			{icon: enemyIcon}
-		).bindPopup( 
-			'<color="green"><b>Objetivo</b></color>'
-		);
+			{title: name + ' (Objetivo)', icon: enemyIcon}
+		)
+		//.bindPopup( '<color="green"><b>Objetivo</b></color>')
+		;
 	}
 
-	global.backpack		= spawnObjective(backpackIcon); // 4L / allows items storage (8L)
-	global.burger		= spawnObjective(burgerIcon); // 600ml / restores 8 HP / hs hunger
-	global.banana		= spawnObjective(bananaIcon); // 200ml / restores 2 HP / hs hunger
-	global.blackberry	= spawnObjective(blackberryIcon); // 400ml / restores 4 HP / hs hunger
-	global.boots		= spawnObjective(bootsIcon); // 800ml 2nd pair / velocity multiplier x 1.5
-	global.chicken		= spawnObjective(chickenIcon); // 500ml / restores 5 HP / hs hunger
-	global.healthpotion	= spawnObjective(healthpotionIcon); // 500ml / restores 10 HP / hs thirst
-	global.knife		= spawnObjective(knifeIcon); // 200ml / + 4 atk 
-	global.pizza		= spawnObjective(pizzaIcon); // 800ml / restores 10 HP / hs thirst
-	global.rice			= spawnObjective(riceIcon); // 300ml / restores 3 HP / hs thirst
-	global.steelaxe		= spawnObjective(steelaxeIcon); // 1L / + 6 atk
-	global.sword		= spawnObjective(swordIcon); // occupied hand / +10 atk
-	global.water		= spawnObjective(waterIcon); // 1L / restores 2 HP / 12 hs thirst
+	global.backpack		= spawnObjective('Mochila', backpackIcon);
+	global.burger		= spawnObjective('Hamburguesa', burgerIcon);
+	global.banana		= spawnObjective('Plátano', bananaIcon);
+	global.blackberry	= spawnObjective('Mora', blackberryIcon);
+	global.boots		= spawnObjective('Zapatos', bootsIcon);
+	global.chicken		= spawnObjective('Pollo frito', chickenIcon);
+	global.healthpotion	= spawnObjective('Poción de salud', healthpotionIcon);
+	global.knife		= spawnObjective('Cuchilo', knifeIcon);
+	global.pizza		= spawnObjective('Pizza', pizzaIcon);
+	global.rice			= spawnObjective('Arroz', riceIcon);
+	global.steelaxe		= spawnObjective('Hacha de acero', steelaxeIcon);
+	global.sword		= spawnObjective('Espada', swordIcon);
+	global.water		= spawnObjective('Agua', waterIcon);
 }
 
 module.exports = spawnObjectives;

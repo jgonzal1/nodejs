@@ -1,6 +1,7 @@
 const createIcon = require('../style/createIcon');
 const cercania = 70;
 
+/** @typedef L.icon @type {object} @type {L.icon} */
 function spawnEnemies() {
 	const bloodyeyeIcon		= L.icon(createIcon('sprites/enemies/bloodyeye.png'));
 	const deathIcon			= L.icon(createIcon('sprites/enemies/death.png'));
@@ -13,7 +14,11 @@ function spawnEnemies() {
 	const undeadhandIcon	= L.icon(createIcon('sprites/enemies/undeadhand.png'));
 	const vampireIcon		= L.icon(createIcon('sprites/enemies/vampire.png'));
 
-	function spawnEnemy(enemyIcon) {
+	/**
+	 * @param {string} name 
+	 * @param {L.icon} enemyIcon 
+	 */
+	function spawnEnemy(name, enemyIcon) {
 		do {
 			latRnd = (Math.random()-0.5)/cercania;
 		} while (Math.abs(latRnd) < 0.0004);
@@ -23,22 +28,22 @@ function spawnEnemies() {
 
 		return L.marker(
 			[lat+latRnd, long+longRnd],
-			{icon: enemyIcon}
-		).bindPopup(
-			'<color="red"><b>Enemigo</b></color>'
-		);
+			{title: name + ' (Enemigo)', icon: enemyIcon}
+		)
+		//.bindPopup('<color="red"><b>Enemigo</b></color>')
+		;
 	}
 
-	//global.bloodyeye	= spawnEnemy(bloodyeyeIcon);
-	global.death		= spawnEnemy(deathIcon);
-	global.mummy		= spawnEnemy(mummyIcon);
-	//global.owl			= spawnEnemy(owlIcon);
-	global.phantom		= spawnEnemy(phantomIcon);
-	//global.pirateskull 	= spawnEnemy(pirateskullIcon);
-	//global.skeleton		= spawnEnemy(skeletonIcon);
-	global.spider		= spawnEnemy(spiderIcon);
-	//global.undeadhand	= spawnEnemy(undeadhandIcon);
-	global.vampire		= spawnEnemy(vampireIcon);
+	//global.bloodyeye	= spawnEnemy('Ojo sangriento', bloodyeyeIcon);
+	global.death		= spawnEnemy('Reaper', deathIcon);
+	global.mummy		= spawnEnemy('Momia', mummyIcon);
+	//global.owl			= spawnEnemy('Búho', owlIcon);
+	global.phantom		= spawnEnemy('Fantasma', phantomIcon);
+	//global.pirateskull 	= spawnEnemy('Esqueleto pirata', pirateskullIcon);
+	//global.skeleton		= spawnEnemy('Esqueleto', skeletonIcon);
+	global.spider		= spawnEnemy('Araña', spiderIcon);
+	//global.undeadhand	= spawnEnemy('Mano cercenada', undeadhandIcon);
+	global.vampire		= spawnEnemy('Murciélago', vampireIcon);
 }
 
 module.exports = spawnEnemies;
