@@ -145,9 +145,9 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 		}
 		break;
 	case movemap[5]: // 'E'
-		// Creating window object
+		/* Creating window object
 		var win =  L.control.window(map,{title:'Hello world!',content:'This is my first control window.'})
-		.show();
+		.show();*/
 		//alert(global.layerToRemove);
 		break;
 	}

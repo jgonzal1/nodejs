@@ -24,6 +24,10 @@ body {
     color: white;
 }
 
+img.tt {
+    vertical-align: text-top;
+}
+
 .row{
     width: 100%;
 }
