@@ -186,11 +186,6 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 keyListener(refreshRate,defaultMovementLength); // private params
 //#endregion
 
-//#region Keys interface
-// TODO Esc para X
-// TODO Tab para siguiente en menú
-//#endregion
-
 //#region Move handlers
 // TODO Own music
 // TODO Añadir series taylor; correcciones angulares al habilitar ratón
@@ -308,6 +303,40 @@ function onEachFeature(feature, layer) {
 		click: zoomToFeature
 	});
 }
+//#endregion
+
+//#region geolocation control to follow the user's location
+const locateControl = L.control.locate({
+	position: "bottomright",
+	drawCircle: true,
+	follow: true,
+	setView: true,
+	keepCurrentZoomLevel: true,
+	markerStyle: {
+		weight: 1,
+		opacity: 0.8,
+		fillOpacity: 0.8
+	},
+	circleStyle: {
+		weight: 1,
+		clickable: false
+	},
+	icon: "fa fa-location-arrow",
+	metric: false,
+	strings: {
+		title: "My location",
+		popup: "You are within {distance} {unit} from this point",
+		outsideMapBoundsMsg: "You seem located outside the boundaries of the map"
+	},
+	locateOptions: {
+		maxZoom: 18,
+		watch: true,
+		enableHighAccuracy: true,
+		maximumAge: 10000,
+		timeout: 10000
+	}
+}).addTo(global.map);
+locateControl.start();
 //#endregion
 
 //#region Legend
