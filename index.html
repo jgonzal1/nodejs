@@ -47,9 +47,6 @@
   </head>
   <body>
     <div class="row" width="100%"><!-- Instances columns -->
-        <!--<div class="column" onclick="openTab('info');" style="color:#444444;background:#90cc90;">
-            Info
-        </div>-->
         <div class="column" style="color:#444444;background:#90cc90;">
             <div id="logs"></div>
         </div>
@@ -77,10 +74,10 @@
                     <ul class="dropdown-menu">
                         <div id="info" class="containerTab" style="display:none;background:#90cc90">
                                 <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-                                <input type="checkbox" id="checkInfoDiv" onclick="showInfo()">
+                                <!--<input type="checkbox" id="checkInfoDiv" onclick="showInfo()">-->
                                 <div id="infoDiv"></div>
-                                <input type="checkbox" id="checkModeCotND" onclick="modeCotND()"> Modo 30FPS
-                                <!--<p id="text" style="display:none">Checkbox is CHECKED!</p>-->
+                                <!--<input type="checkbox" id="checkModeCotND" onclick="modeCotND()"> Modo 30FPS
+                                <p id="text" style="display:none">Checkbox is CHECKED!</p>-->
                         </div> 
                     </ul>
                 
@@ -96,8 +93,8 @@
                                         <iframe
                                         width="560" height="315"
                                         src="https://www.youtube.com/embed/videoseries?list=PLHeTSqyMs2Xbsn_LFYNFUZNDQf3ZalUpz&autoplay=1"
-                                        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-                                        <!-- autoplay; embed/0IT9A9GvjWo" -->
+                                        frameborder="0" allow="encrypted-media" allowfullscreen>
+                                        <!-- allow="autoplay;   embed/0IT9A9GvjWo" -->
                                         </iframe>
                                         <!-- Lista Lo-Fi
                                         <iframe
@@ -151,22 +148,46 @@
                 </div>
                 <div class="panel-body">
                 <div class="row">
+                  <div class="col-xs-8 col-md-8">
+                    <input type="text" class="form-control search" placeholder="Filter" />
+                  </div>
+                  <div class="col-xs-4 col-md-4">
+                    <button type="button" class="btn btn-primary pull-right sort" data-sort="feature-name" id="sort-btn"><i class="fa fa-sort"></i>&nbsp;&nbsp;Sort</button>
+                  </div>
                 </div>
                 </div>
                 <div class="sidebar-table">
                 <table class="table table-hover" id="feature-list">
-                    <thead class="hidden">
+                  <thead><!--<class="hidden">-->
                     <tr>
-                        <th>Icon</th>
+                      <th>Icon</th>
+                      <th>Resource</th>
+                      <th>Quantity</th>
+                    </tr>
+                  </thead>
+                  <tbody class="list">
                     <tr>
+                      <td><img src="style/interface/health.png" style="width:16px;height:16px;"></td>
+                      <td>Vida</td>
+                      <td>
+                        <img src="style/interface/health.png" style="width:16px;height:16px;">
+                        <img src="style/interface/health.png" style="width:16px;height:16px;">
+                        <img src="style/interface/half-health.png" style="width:16px;height:16px;">
+                        <img src="style/interface/lost-health.png" style="width:16px;height:16px;">
+                        <img src="style/interface/lost-health.png" style="width:16px;height:16px;">
+                      </td>
+                    </tr>
                     <tr>
-                        <th>Name</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
                     <tr>
-                    <tr>
-                        <th>Chevron</th>
-                    <tr>
-                    </thead>
-                    <tbody class="list"></tbody>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
                 </table>
                 </div>
             </div>
@@ -414,6 +435,6 @@
     }
     </script>
     <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="assets/js/bootstrapFunctions.js"></script>
   </body>
 </html>
