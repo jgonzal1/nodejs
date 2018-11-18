@@ -12,55 +12,55 @@ function objectiveStatsHandler(objective) {
         // room += 8;
         // document.getElementById('room').innerHTML = room;
         document.getElementById('backpack').style = "";
-        return "¡Conseguiste 8L de almacenamiento de un objeto de 4L!";
+        return "8L de almacenamiento de un objeto de 4L";
     case "burger":
         health += 4;
         healthHandler(health);
-        return "¡Conseguiste 4 HP / h sin hambre de un objeto de 600ml!";
+        return "4 HP / h sin hambre de un objeto de 600ml";
     case "banana":
         health += 1;
         healthHandler(health);
-        return "¡Conseguiste 1 HP / h sin hambre de un objeto de 200ml!";
+        return "1 HP / h sin hambre de un objeto de 200ml";
     case "blackberry":
         health += 2;
         healthHandler(health);
-        return "¡Conseguiste 2 HP / h sin hambre de un objeto de 400ml!";
+        return "2 HP / h sin hambre de un objeto de 400ml";
     case "boots":
         vel *= 1.5;
         document.getElementById('vel').innerHTML = vel; 
-        return "¡Conseguiste un multiplicador de x1.5 de velocidad de un objeto que ocupa 800ml sin equipar!";
+        return "un multiplicador de x1.5 de velocidad de un objeto que ocupa 800ml sin equipar";
     case "chicken":
         health += 3;
         healthHandler(health);
-        return "¡Conseguiste 3 HP / h sin hambre de un objeto que ocupa 500ml!";
+        return "3 HP / h sin hambre de un objeto que ocupa 500ml";
     case "healthpotion":
         health += 4;
         healthHandler(health);
-        return "¡Conseguiste 4 HP / h sin hambre y sed de un objeto que ocupa 500ml!";
+        return "4 HP / h sin hambre y sed de un objeto que ocupa 500ml";
     case "knife":
         atk += 1;
         document.getElementById('atk').innerHTML = atk; 
-        return "¡Conseguiste +1 atk de un objeto de 200ml!";
+        return "+1 atk de un objeto de 200ml";
     case "pizza":
         health += 4;
         healthHandler(health);
-        return "¡Conseguiste 4 HP / h sin hambre de un objeto que ocupa 800ml!";
+        return "4 HP / h sin hambre de un objeto que ocupa 800ml";
     case "rice":
         health += 2;
         healthHandler(health);
-        return "¡Conseguiste 2 HP / h sin hambre de un objeto que ocupa 300ml!";
+        return "2 HP / h sin hambre de un objeto que ocupa 300ml";
     case "steelaxe":
         atk += 2;
         document.getElementById('atk').innerHTML = atk; 
-        return "¡Conseguiste +2 atk de un objeto de 1L!";
+        return "+2 atk de un objeto de 1L";
     case "sword":
         atk += 3;
         document.getElementById('atk').innerHTML = atk; 
-        return "¡Conseguiste +3 atk de un objeto que te ocupa ambas manos!";
+        return "+3 atk de un objeto que te ocupa ambas manos";
     case "water":
         health += 1;
         healthHandler(health);
-        return "¡Conseguiste 1 HP / 12 h sin sed de un objeto que ocupa 1L!";
+        return "1 HP / 12 h sin sed de un objeto que ocupa 1L";
     }
 }
 
