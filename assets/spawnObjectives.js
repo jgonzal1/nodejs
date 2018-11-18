@@ -1,4 +1,4 @@
-const createIcon = require('./style/createIcon');
+const createIcon = require('../style/createIcon');
 const cercania = 40; // 600 para tests, 40 normal
 
 function spawnObjectives() {

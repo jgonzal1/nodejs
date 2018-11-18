@@ -9,12 +9,12 @@ const spawnSites = require('./data/sites');
 const sites = spawnSites.getSites();
 const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasiera"];
 // TODO Que empiece en ubicación usuario L.DomUtil.get(hiddenHandlerPos).innerHTML.split(",")[0]/[1]
-const spawnEnemies = require('./spawnEnemies');
-const spawnObjectives = require('./spawnObjectives');
+const spawnEnemies = require('./assets/spawnEnemies');
+const spawnObjectives = require('./assets/spawnObjectives');
 // TODO >>>>> #Patrician When collide: capa de comercio, pausa, y en modal BDiA-showcase
 // TODO #CataclysmDDA
-const spawnTransports = require('./spawnTransports');
-const mH = require('./moveHandlers');
+const spawnTransports = require('./assets/spawnTransports');
+const mH = require('./assets/moveHandlers');
 // TODO >>>>> #FFnn When near: capa de combate, con efectos de sonido, y modal
 // TODO #RimWorld
 // TODO #CotND

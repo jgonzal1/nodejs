@@ -1,4 +1,4 @@
-const cL = require('./data/charactersList');
+const cL = require('../data/charactersList');
 const objectives = cL.getObjectives();
 
 const lngCorrectionArr = [ // Corrección calculada de la distorsión angular de la longitud con respecto a su latiitud

@@ -1,4 +1,4 @@
-const createIcon = require('./style/createIcon');
+const createIcon = require('../style/createIcon');
 const cercania = 2;
 
 function spawnTransports() {
