@@ -16,6 +16,7 @@ const spawnObjectives = require('./assets/spawnObjectives');
 const spawnTransports = require('./assets/spawnTransports');
 const mH = require('./assets/moveHandlers');
 // TODO >>>>> #FFnn When near: capa de combate, con efectos de sonido, y modal
+// TODO attack with E?
 // TODO #RimWorld
 // TODO #CotND
 
@@ -73,7 +74,7 @@ global.player = player;
 // TODO Multiplayer MongoDB
 
 spawnEnemies(L, lat, long);
-spawnObjectives(L, lat, long);
+spawnObjectives(L, lat, long); // TODO thirst, hunger & vol
 spawnTransports(L, lat, long);
 var mCharacters = [];
 mCharacters.push(
@@ -164,6 +165,8 @@ let vel;
 function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 	global.moveDaemonizer = setInterval(function() {
 		if (L.DomUtil.get(hiddenHandlerKeys).innerHTML != 'p') {
+			// TODO enemies properties
+			// TODO only 1 healthHandler (not big in html!)
 			//mH.goToPlayer(global.bloodyeye,0.7*defaultMovementLength);
 			mH.goToPlayer(global.death,0.9*defaultMovementLength);
 			mH.goToPlayer(global.mummy,0.7*defaultMovementLength);
@@ -183,7 +186,10 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 		// counter++;
 	}, refreshRate);
 }
-keyListener(refreshRate,defaultMovementLength); // private params
+keyListener(
+	refreshRate,defaultMovementLength
+	//*parseFloat(document.getElementById('health').innerHTML)
+); // private params
 //#endregion
 
 //#region Keys interface
