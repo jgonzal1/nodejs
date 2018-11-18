@@ -161,7 +161,7 @@ setInterval(function() {
 }, 3000); // globalEventsDaemonizer*/
 
 let vel;
-// const pauseSound = new Sound("../sounds/pause.mp3",100,true);
+// const pauseSound = new Sound("../sounds/pause.mp3", 100, true);
 function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 	global.moveDaemonizer = setInterval(function() {
 
