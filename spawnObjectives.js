@@ -8,7 +8,7 @@ function spawnObjectives() {
 	const blackberryIcon = L.icon(createIcon('style/objectives/blackberry.png'));
 	const bootsIcon = L.icon(createIcon('style/objectives/boots.png'));
 	const chickenIcon = L.icon(createIcon('style/objectives/chicken.png'));
-	const greenflaskIcon = L.icon(createIcon('style/objectives/greenflask.png'));
+	const healthpotionIcon = L.icon(createIcon('style/objectives/healthpotion.png'));
 	const knifeIcon = L.icon(createIcon('style/objectives/knife.png'));
 	const pizzaIcon = L.icon(createIcon('style/objectives/pizza.png'));
 	const riceIcon = L.icon(createIcon('style/objectives/rice.png'));
@@ -31,7 +31,7 @@ function spawnObjectives() {
 	global.blackberry	= spawnObjective(blackberryIcon); // 400ml / restores 4 HP / hs hunger
 	global.boots		= spawnObjective(bootsIcon); // 800ml 2nd pair / velocity multiplier x 1.5
 	global.chicken		= spawnObjective(chickenIcon); // 500ml / restores 5 HP / hs hunger
-	global.greenflask	= spawnObjective(greenflaskIcon); // 500ml / restores 10 HP / hs thirst
+	global.healthpotion	= spawnObjective(healthpotionIcon); // 500ml / restores 10 HP / hs thirst
 	global.knife		= spawnObjective(knifeIcon); // 200ml / + 4 atk 
 	global.pizza		= spawnObjective(pizzaIcon); // 800ml / restores 10 HP / hs thirst
 	global.rice			= spawnObjective(riceIcon); // 300ml / restores 3 HP / hs thirst

@@ -18,7 +18,7 @@ var objectives = [
 	"blackberry",
 	"boots",
 	"chicken",
-	"greenflask",
+	"healthpotion",
 	"knife",
 	"pizza",
 	"rice",

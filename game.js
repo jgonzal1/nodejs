@@ -96,7 +96,7 @@ mCharacters.push(
 	global.blackberry,
 	global.boots,
 	global.chicken,
-	global.greenflask,
+	global.healthpotion,
 	global.knife,
 	global.pizza,
 	global.rice,
