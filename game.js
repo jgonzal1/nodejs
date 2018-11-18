@@ -11,11 +11,12 @@ const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasiera"];
 // TODO Que empiece en ubicación usuario L.DomUtil.get(hiddenHandlerPos).innerHTML.split(",")[0]/[1]
 const spawnEnemies = require('./assets/spawnEnemies');
 const spawnObjectives = require('./assets/spawnObjectives');
-// TODO >>>>> #Patrician When collide: capa de comercio, pausa, y en modal BDiA-showcase
+// TODO Delete objectives when taken
+// TODO >>>>> #Patrician When collide: capa de comercio, como modal BDiA-showcase
 // TODO #CataclysmDDA
 const spawnTransports = require('./assets/spawnTransports');
 const mH = require('./assets/moveHandlers');
-// TODO >>>>> #FFnn When near: efectos de sonido, y partículas
+// TODO >>>>> #FFnn When near: partículas
 // TODO #RimWorld
 // TODO #CotND
 
@@ -65,7 +66,7 @@ Verde: multiplicador velocidad no tan bajo como blanco
 
 //#region Create Characters and sitesMarkersLayers
 // TODO > Personalizar carácter personaje #CataclysmDDA + playerIcon "duplicado": personalizado con imagemagick
-const playerIcon	= L.icon(createIcon('style/ratkid-shaded.png'));
+const playerIcon	= L.icon(createIcon('sprites/pokemon/rattata.png'));
 const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
 );
@@ -113,7 +114,7 @@ mCharacters.push(
 );
 const characters = L.layerGroup(mCharacters).addTo(global.map);
 
-const greenIcon = L.icon(createIcon('style/marker-green.png'));
+const greenIcon = L.icon(createIcon('style/places/house.png'));
 var markers = [];
 for (var i in sites) {
     markers.push(
