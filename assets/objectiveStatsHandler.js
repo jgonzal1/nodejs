@@ -9,8 +9,8 @@ function objectiveStatsHandler(objective) {
     room = parseFloat(document.getElementById('room').innerHTML);
     switch (objective) {
     case "backpack":
-        room += 8;
-        document.getElementById('room').innerHTML = room;
+        // room += 8;
+        // document.getElementById('room').innerHTML = room;
         document.getElementById('backpack').style = "";
         return "¡Conseguiste 8L de almacenamiento de un objeto de 4L!";
     case "burger":
