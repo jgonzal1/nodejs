@@ -106,10 +106,10 @@ mCharacters.push(
 	global.water,
 
 	global.balloon,
-	global.boat,
+	global.bike,
 	global.bus,
-	global.furgo,	
-	global.plane,
+	global.schoolbus,	
+	global.taxi,
 	global.train
 );
 const characters = L.layerGroup(mCharacters).addTo(global.map);

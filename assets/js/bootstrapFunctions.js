@@ -262,7 +262,7 @@ var theaters = L.geoJson(null, {
     }
   }
 });
-$.getJSON("data/DOITT_THEATER_01_13SEPT2010.geojson", function (data) {
+$.getJSON("data/100913Theater.geojson", function (data) {
   theaters.addData(data);
   map.addLayer(theaterLayer);
 });
@@ -305,7 +305,7 @@ var museums = L.geoJson(null, {
     }
   }
 });
-$.getJSON("data/DOITT_MUSEUM_01_13SEPT2010.geojson", function (data) {
+$.getJSON("data/100913Museums.geojson", function (data) {
   museums.addData(data);
 });
 
