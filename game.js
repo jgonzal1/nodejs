@@ -66,9 +66,9 @@ Verde: multiplicador velocidad no tan bajo como blanco
 
 //#region Create Characters and sitesMarkersLayers
 // TODO > Personalizar carácter personaje #CataclysmDDA + playerIcon "duplicado": personalizado con imagemagick
-const playerIcon	= L.icon(createIcon('sprites/pokemon/rattata.png'));
+const playerIcon	= L.icon(createIcon('sprites/memes/spoderman.png'));
 const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
-	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
+	'<b>Tú (Spoderman rookie, lvl. 1)</b>'
 );
 global.player = player;
 // TODO Multiplayer MongoDB
