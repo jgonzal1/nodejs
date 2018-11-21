@@ -1,6 +1,6 @@
 //#region Imports
 const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
-const createIcon = require('./style/createIcon');
+const createLargeIcon = require('./style/createLargeIcon');
 const geoJsonStylers = require('./style/geoJsonStylers');
 const spawnRegionsAustria = require('./data/regionsAustria');
 const regionsAustria = spawnRegionsAustria();
@@ -66,9 +66,12 @@ Verde: multiplicador velocidad no tan bajo como blanco
 
 //#region Create Characters and sitesMarkersLayers
 // TODO > Personalizar carácter personaje #CataclysmDDA + playerIcon "duplicado": personalizado con imagemagick
-const playerIcon	= L.icon(createIcon('sprites/memes/spoderman.png'));
+const nAvailableAvatars = 24;
+const playerIcon	= L.icon(createLargeIcon('sprites/memes/' +
+	Math.ceil(nAvailableAvatars*Math.random()) +
+'.png'));
 const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
-	'<b>Tú (Spoderman rookie, lvl. 1)</b>'
+	'<b>Tú (Meme rookie, lvl. 1)</b>'
 );
 global.player = player;
 // TODO Multiplayer MongoDB
@@ -114,7 +117,7 @@ mCharacters.push(
 );
 const characters = L.layerGroup(mCharacters).addTo(global.map);
 
-const greenIcon = L.icon(createIcon('style/places/house.png'));
+const greenIcon = L.icon(createLargeIcon('style/places/house.png'));
 var markers = [];
 for (var i in sites) {
     markers.push(
