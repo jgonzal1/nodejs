@@ -164,12 +164,16 @@ setInterval(function() {
 	}*/
 }, 3000); // globalEventsDaemonizer*/
 
-let vel;
+let vel, pause;
 // const pauseSound = new Sound("../sounds/pause.mp3", 100, true);
 function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 	global.moveDaemonizer = setInterval(function() {
-
-		if (L.DomUtil.get(hiddenHandlerKeys).innerHTML != 'p') {
+		if (document.getElementById('openModal').innerText === 'true') {
+			pause = true;
+		} else {
+			pause = (L.DomUtil.get(hiddenHandlerKeys).innerHTML === 'p');
+		}
+		if (!pause) {
 			// pauseSound.start();
 			// pauseSound.stop();
 			// TODO enemies properties
@@ -187,7 +191,9 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 		} else {
 			// pauseSound.start();
 		}
-		mH.movePlayer(global.player,defaultMovementLength);
+		if (document.getElementById('openModal').innerText === 'false') {
+			mH.movePlayer(global.player,defaultMovementLength);
+		}
 		if (global.layerToRemove != undefined) {
 			global.map.removeLayer( global[layerToRemove] );
 			global.layerToRemove = undefined;

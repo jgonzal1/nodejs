@@ -72,7 +72,7 @@ function goToPlayer(target, velocity) {
 	if (0.0002 > Math.max(Math.abs(latDiff), Math.abs(lngDiff))) {
 		enemyStatsHandler(target.getAttribution());
 		if (
-			L.DomUtil.get(hiddenHandlerKeys).innerHTML === 'e' &&
+			L.DomUtil.get(hiddenHandlerKeys).innerHTML === 'e' && // TODO keymap
 			parseFloat(document.getElementById('atk').innerHTML) > 0
 		) {
 			// global.layerToRemove = target.getAttribution();
@@ -84,6 +84,13 @@ function goToPlayer(target, velocity) {
 				target.getLatLng().lat+(Math.random()-0.5)/20,
 				target.getLatLng().lng+(Math.random()-0.5)/20
 			));
+		}
+		if (target.getAttribution() === 'death') {
+			document.getElementById('openModal').innerText = 'true';
+			global.battleSound = new Audio("../sounds/wildpokemon.wav");
+			global.battleSound.play();
+			$("#legendModal").modal("show");
+			$(".navbar-collapse.in").collapse("hide");
 		}
 	}
 }
@@ -189,8 +196,10 @@ function movePlayer(character, velocity, forceDirection, movemap) { // 80km/h | 
 		if (atk === 0) {
 			alert('¡Necesitas un arma para activar la posición de ataque!');		
 		} else {
-			attackSound = new Audio("../sounds/attack"+Math.ceil(nAttackSounds*Math.random())+".wav");
-			attackSound.play();
+			if (document.getElementById('openModal').innerText === 'false') {
+				attackSound = new Audio("../sounds/attack"+Math.ceil(nAttackSounds*Math.random())+".wav");
+				attackSound.play();
+			}
 			if (displayAttackPositionAlert === true) {
 				alert('¡Activando posición de ataque!');
 				displayAttackPositionAlert = false;
@@ -228,7 +237,9 @@ function onMapClick(e) {
 			} else {
 				if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
 			}
-			mH.movePlayer(global.player, vel, forcedDirection);
+			if (document.getElementById('openModal').innerText === 'false') {
+				mH.movePlayer(global.player, vel, forcedDirection);
+			}
 			//alert(vars + "strings"); works
 			if (defaultMovementLength/50000 > Math.max(latDiffAbs, lngDiffAbs)) {
 				clearInterval(mouseClickDaemonizer);
