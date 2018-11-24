@@ -66,7 +66,7 @@ Verde: multiplicador velocidad no tan bajo como blanco
 
 //#region Create Characters and sitesMarkersLayers
 // TODO > Personalizar carácter personaje #CataclysmDDA + playerIcon "duplicado": personalizado con imagemagick
-const nAvailableAvatars = 24;
+const nAvailableAvatars = 22;
 const playerIcon	= L.icon(createLargeIcon('sprites/memes/' +
 	Math.ceil(nAvailableAvatars*Math.random()) +
 '.png'));
@@ -89,7 +89,7 @@ mCharacters.push(
 	//global.owl,
 	global.phantom,
 	//global.pirateskull,
-	//global.skeleton,
+	global.skeleton,
 	global.spider,
 	//global.undeadhand,
 	global.vampire,
@@ -184,7 +184,7 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 			//mH.goToPlayer(global.owl,0.5*defaultMovementLength);
 			mH.goToPlayer(global.phantom,0.7*defaultMovementLength);
 			//mH.goToPlayer(global.pirateskull,0.8*defaultMovementLength);
-			//mH.goToPlayer(global.skeleton,0.7*defaultMovementLength);
+			mH.goToPlayer(global.skeleton,0.7*defaultMovementLength);
 			mH.goToPlayer(global.spider,0.5*defaultMovementLength);
 			//mH.goToPlayer(global.undeadhand,0.6*defaultMovementLength);
 			mH.goToPlayer(global.vampire,0.5*defaultMovementLength);

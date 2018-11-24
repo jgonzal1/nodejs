@@ -40,7 +40,7 @@ function spawnEnemies() {
 	//global.owl		= spawnEnemy('owl', owlIcon); // 'Búho'
 	global.phantom		= spawnEnemy('phantom', phantomIcon); // 'Fantasma'
 	//global.pirateskull= spawnEnemy('pirateskull', pirateskullIcon); // 'Esqueleto pirata'
-	//global.skeleton	= spawnEnemy('skeleton', skeletonIcon); // 'Esqueleto'
+	global.skeleton	= spawnEnemy('skeleton', skeletonIcon); // 'Esqueleto'
 	global.spider		= spawnEnemy('spider', spiderIcon); // 'Araña'
 	//global.undeadhand	= spawnEnemy('undeadhand', undeadhandIcon); // 'Mano cercenada'
 	global.vampire		= spawnEnemy('vampire', vampireIcon); // 'Murciélago'
