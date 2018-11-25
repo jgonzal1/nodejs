@@ -1,6 +1,7 @@
 const cL = require('../data/charactersList');
 const objectiveStatsHandler = require('./objectiveStatsHandler');
 const enemyStatsHandler = require('./enemyStatsHandler');
+const loadEnemyBattle = require('./loadEnemyBattle');
 const objectives = cL.getObjectives();
 
 const lngCorrectionArr = [ // Corrección calculada de la distorsión angular de la longitud con respecto a su latiitud
@@ -88,6 +89,7 @@ function goToPlayer(target, velocity) {
 		}
 		targetName = target.getAttribution();
 		document.getElementById('currentBattle').innerText = targetName;
+		loadEnemyBattle(targetName);
 		document.getElementById('openModal').innerText = 'true';
 		global.battleSound = new Audio("../sounds/wildpokemon.wav");
 		global.battleSound.play();
