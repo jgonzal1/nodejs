@@ -21,6 +21,7 @@ const mH = require('./assets/moveHandlers');
 // TODO #RimWorld
 // TODO #CotND
 
+// const fs = require('fs');
 const L = require('leaflet');
 global.L = L;
 
@@ -67,11 +68,13 @@ Verde: multiplicador velocidad no tan bajo como blanco
 
 //#region Create Characters and sitesMarkersLayers
 // TODO > Personalizar carácter personaje #CataclysmDDA + playerIcon "duplicado": personalizado con imagemagick
-const nAvailableAvatars = 22;
-//const playerIcon	= L.icon(createLargeIcon('sprites/player/' +
-const playerIcon	= L.icon(createModalTriggerIcon('sprites/player/' +
-	Math.ceil(nAvailableAvatars*Math.random()) +
-'.png'));
+const nAvailableAvatars = 39;
+// const files = fs.readdirSync('./sprites/player');
+// alert(files[Math.ceil(nAvailableAvatars*Math.random())]);
+const playerIcon	= L.icon(createLargeIcon('sprites/player/' +
+	'marluxia.png'
+	// files[Math.ceil(nAvailableAvatars*Math.random())]
+));
 const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 	'<b>Tú (Meme rookie, lvl. 1)</b>'
 );
