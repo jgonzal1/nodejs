@@ -5,19 +5,25 @@ const createModalTriggerIcon = require('./style/createModalTriggerIcon');
 const geoJsonStylers = require('./style/geoJsonStylers');
 const spawnRegionsAustria = require('./data/regionsAustria');
 const regionsAustria = spawnRegionsAustria();
-// TODO #Risk
+// TODO > #Risk
 const spawnSites = require('./data/sites');
 const sites = spawnSites.getSites();
 const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasiera"];
-// TODO Que empiece en ubicación usuario document.getElementById('hiddenHandlerPos').innerText.split(",")[0]/[1]
+// TODO > Que empiece en ubicación usuario document.getElementById('hiddenHandlerPos').innerText.split(",")[0]/[1] + redis
 const spawnEnemies = require('./assets/spawnEnemies');
 const spawnObjectives = require('./assets/spawnObjectives');
 // TODO Delete objectives when taken
-// TODO >>>>> #Patrician When collide: capa de comercio, como modal BDiA-showcase
+// TODO #Patrician When collide
+// TODO >>>>> modal cosas en places
+// TODO > transports cambian velocidad y zoom
+// TODO > objectives
+// TODO trading materials
+// TODO misiones, traders
+// TODO > traders objectives
+// TODO > #FFnn partículas. desarrolar modal de batallas
 // TODO #CataclysmDDA
 const spawnTransports = require('./assets/spawnTransports');
 const mH = require('./assets/moveHandlers');
-// TODO >>>>> #FFnn When near: partículas
 // TODO #RimWorld
 // TODO #CotND
 
@@ -55,7 +61,7 @@ const artisticMap = L.tileLayer(
 ).addTo(global.map);
 const baseLayers = createBaseLayerAndAddMore(artisticMap, L);
 L.control.scale({imperial:false}).addTo(global.map);
-/* TODO Colores Tileset
+/* TODO > Colores Tileset
 Blanco: detectarlo en tileset permite mover 1x;
 si no, reducir multiplicador de velocidad y:
  Menos opacidad (fantasmas) o
@@ -79,10 +85,10 @@ const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 	'<b>Tú (Meme rookie, lvl. 1)</b>'
 );
 global.player = player;
-// TODO Multiplayer MongoDB
+// TODO Multiplayer MongoDB o Redis
 
 spawnEnemies(L, lat, long);
-spawnObjectives(L, lat, long); // TODO thirst, hunger & vol
+spawnObjectives(L, lat, long); // TODO > thirst, hunger & vol
 spawnTransports(L, lat, long);
 var mCharacters = [];
 mCharacters.push(
@@ -160,7 +166,7 @@ if (navigator.userAgent.match('Android|X11') !== null){ // X11 es mi redmi note 
 }
 // let moveDaemonizer;
 setInterval(function() {
-	// TODO > Daemonizer en legend para tiempo del día; on add: timeLegend();
+	// TODO Daemonizer en legend para tiempo del día; on add: timeLegend();
 	gameTimeStamp += 36000;
 	timeLegend();
 	/*if (cryptOfTheNecromancerMode !== document.getElementById('hiddenHandlerModeCotND').innerText) {
@@ -236,7 +242,7 @@ keyListener(
 // (1 - x^2 / 2 + x^4 / 24) aproxs cos(x) de 60 a 85º
 // 0 aproxs cos(x) from 85 to 90º
 // TODO Detectar dos botones a la vez (ej. W+A)
-// TODO > Migrar onMapClick
+// TODO Migrar onMapClick
 function onMapClick(e) {
 	if (mouseMoved !== true) {
 		const mouseClickDaemonizer = setInterval(function() {
