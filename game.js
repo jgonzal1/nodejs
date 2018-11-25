@@ -135,17 +135,49 @@ mCharacters.push(
 const characters = L.layerGroup(mCharacters).addTo(global.map);
 
 const greenIcon = L.icon(createLargeIcon('style/places/house.png'));
+const bankIcon = L.icon(createLargeIcon('style/places/bank.png'));
+const castleIcon = L.icon(createLargeIcon('style/places/castle.png'));
+const gasStationIcon = L.icon(createLargeIcon('style/places/gas_station.png'));
+const portIcon = L.icon(createLargeIcon('style/places/port.png'));
+const store3Icon = L.icon(createLargeIcon('style/places/store3.png'));
+const tree1Icon = L.icon(createLargeIcon('style/places/tree1.png'));
+const tree4Icon = L.icon(createLargeIcon('style/places/tree4.png'));
+const vendingIcon = L.icon(createLargeIcon('style/places/vending.png'));
+const chemistryIcon = L.icon(createLargeIcon('style/places/chemistry.png'));
+const houseIcon = L.icon(createLargeIcon('style/places/house.png'));
+const signIcon = L.icon(createLargeIcon('style/places/sign.png'));
+const tentIcon = L.icon(createLargeIcon('style/places/tent.png'));
+const tree2Icon = L.icon(createLargeIcon('style/places/tree2.png'));
+const treesIcon = L.icon(createLargeIcon('style/places/trees.png'));
+const blockhousesIcon = L.icon(createLargeIcon('style/places/blockhouses.png'));
+const lightHouseIcon = L.icon(createLargeIcon('style/places/light_house.png'));
+const store2Icon = L.icon(createLargeIcon('style/places/store2.png'));
+const tree3Icon = L.icon(createLargeIcon('style/places/tree3.png'));
+const placeIconsArray = [
+bankIcon, castleIcon, gasStationIcon, portIcon, store3Icon, tree1Icon,
+tree4Icon, vendingIcon, chemistryIcon, houseIcon, signIcon, tentIcon,
+tree2Icon, treesIcon, blockhousesIcon, lightHouseIcon, store2Icon, tree3Icon
+];
+var places = [
+	"bank", "castle", "gas_station", "port", "store3", "tree1",
+	"tree4", "vending", "chemistry", "house", "sign", "tent",
+	"tree2", "trees", "blockhouses", "light_house", "store2",
+	"tree3"
+	];
+var nPlaces = 18;
 var markers = [];
+let element;
 for (var i in sites) {
-    markers.push(
+	element = Math.floor(nPlaces*Math.random());
+	markers.push(
 		L.marker(
 			[
 				sites[i][1],
 				sites[i][2]
 			],
-			{icon: greenIcon}
+			{icon: placeIconsArray[element]}
 		).bindPopup(
-			'<b>' + sites[i][0] + '</b>'
+			'<b>' + places[element] + '</b>'
 		)
 	);
 }
