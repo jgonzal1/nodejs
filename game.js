@@ -1,6 +1,7 @@
 //#region Imports
 const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
 const createLargeIcon = require('./style/createLargeIcon');
+const createModalTriggerIcon = require('./style/createModalTriggerIcon');
 const geoJsonStylers = require('./style/geoJsonStylers');
 const spawnRegionsAustria = require('./data/regionsAustria');
 const regionsAustria = spawnRegionsAustria();
@@ -67,7 +68,8 @@ Verde: multiplicador velocidad no tan bajo como blanco
 //#region Create Characters and sitesMarkersLayers
 // TODO > Personalizar carácter personaje #CataclysmDDA + playerIcon "duplicado": personalizado con imagemagick
 const nAvailableAvatars = 22;
-const playerIcon	= L.icon(createLargeIcon('sprites/player/' +
+//const playerIcon	= L.icon(createLargeIcon('sprites/player/' +
+const playerIcon	= L.icon(createModalTriggerIcon('sprites/player/' +
 	Math.ceil(nAvailableAvatars*Math.random()) +
 '.png'));
 const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(

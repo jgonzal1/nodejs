@@ -2,12 +2,12 @@ const createIcon = require('../style/createIcon');
 const cercania = 2;
 
 function spawnTransports() {
-	const balloonIcon		= L.icon(createIcon('sprites/transports/balloon.png'));
-	const bikeIcon			= L.icon(createIcon('sprites/transports/bike.png'));
-	const busIcon			= L.icon(createIcon('sprites/transports/bus.png'));
-	const schoolbusIcon			= L.icon(createIcon('sprites/transports/schoolbus.png'));
-	const taxiIcon			= L.icon(createIcon('sprites/transports/taxi.png'));
-	const trainIcon			= L.icon(createIcon('sprites/transports/train.png'));
+	const balloonIcon		= L.icon(createIcon('sprites/map-transports/balloon.png'));
+	const bikeIcon			= L.icon(createIcon('sprites/map-transports/bike.png'));
+	const busIcon			= L.icon(createIcon('sprites/map-transports/bus.png'));
+	const schoolbusIcon		= L.icon(createIcon('sprites/map-transports/schoolbus.png'));
+	const taxiIcon			= L.icon(createIcon('sprites/map-transports/taxi.png'));
+	const trainIcon			= L.icon(createIcon('sprites/map-transports/train.png'));
 	/*for (let k = 0; k < length(transports); k++) {
 		eval("var "+transports[k]+"Icon = L.icon(createIcon('style/"+transports[k]+".png'))");
 	}*/
