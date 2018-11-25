@@ -62,7 +62,7 @@ function goToPlayer(target, velocity) {
 	velocity = ( velocity || 1 );
 	const latDiff = global.player.getLatLng().lat - target.getLatLng().lat;
 	const lngDiff = global.player.getLatLng().lng - target.getLatLng().lng;
-	let forcedDirection, btc;
+	let forcedDirection, btc, targetName;
 	if (Math.abs(latDiff) > Math.abs(lngDiff)) {
 		if (latDiff>0) {forcedDirection='w';} else {forcedDirection='s';}
 	} else {
@@ -72,7 +72,8 @@ function goToPlayer(target, velocity) {
 	if (0.0002 > Math.max(Math.abs(latDiff), Math.abs(lngDiff))) {
 		enemyStatsHandler(target.getAttribution());
 		if (
-			L.DomUtil.get(hiddenHandlerKeys).innerHTML === 'e' && // TODO keymap
+			document.getElementById('hiddenHandlerKeys').innerText === 'e' && // TODO keymap
+			// L.DomUtil.get(hiddenHandlerKeys).innerHTML === 'e' && // TODO keymap
 			parseFloat(document.getElementById('atk').innerHTML) > 0
 		) {
 			// global.layerToRemove = target.getAttribution();
@@ -85,13 +86,13 @@ function goToPlayer(target, velocity) {
 				target.getLatLng().lng+(Math.random()-0.5)/20
 			));
 		}
-		if (target.getAttribution() === 'death') {
-			document.getElementById('openModal').innerText = 'true';
-			global.battleSound = new Audio("../sounds/wildpokemon.wav");
-			global.battleSound.play();
-			$("#legendModal").modal("show");
-			$(".navbar-collapse.in").collapse("hide");
-		}
+		targetName = target.getAttribution();
+		document.getElementById('currentBattle').innerText = targetName;
+		document.getElementById('openModal').innerText = 'true';
+		global.battleSound = new Audio("../sounds/wildpokemon.wav");
+		global.battleSound.play();
+		$("#battleModal").modal("show");
+		$(".navbar-collapse.in").collapse("hide");
 	}
 }
 
@@ -132,7 +133,8 @@ function movePlayer(character, velocity, forceDirection, movemap) { // 80km/h | 
 	velocity = ( velocity || 1 );
 	velLng = velocity*lngCorrectionArr[Math.round(global.lat)];
 	movemap = (movemap || ['w', 'a', 's', 'd', ' ', 'e'] );
-	const direction = (forceDirection || L.DomUtil.get(hiddenHandlerKeys).innerHTML);
+	const direction = (forceDirection || document.getElementById('hiddenHandlerKeys').innerText);
+	// L.DomUtil.get(hiddenHandlerKeys).innerHTML);
 	let nearestObjetive, distancesArray, nearestObjetiveIndex, itemDescription, atk;
 	switch (direction) { //forceDirection
 	case movemap[0]:
