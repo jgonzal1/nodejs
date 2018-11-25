@@ -218,6 +218,7 @@
                     <td></td>
                     <td></td>
                   </tr>
+                  Enfrentándote a: <span id="currentBattle"></span><!--style="display:none;"-->
                 </tbody>
               </table>
             </div>
@@ -333,17 +334,51 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="resumeGame()">&times;</button>
-            <h4 class="modal-title">Map Legend</h4>
+            <h4 class="modal-title">Título</h4>
           </div>
           <div class="modal-body">
-            <p>Map Legend goes here...</p>
+            <p>Cuerpo de texto</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resumeGame()">Close</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+    </div><!-- /.modal batallas-->
+    <div class="modal fade" id="battleModal" tabindex="-1" role="dialog">
+      <span id="openModal" style="display: none">false</span>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="resumeGame()">&times;</button>
+            <h4 class="modal-title">Battle!</h4>
+          </div>
+          <div class="modal-body">
+            <p>La lucha va aquí...</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resumeGame()">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal batallas-->
+    <div class="modal fade" id="tradeModal" tabindex="-1" role="dialog">
+      <span id="openModal" style="display: none">false</span>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="resumeGame()">&times;</button>
+            <h4 class="modal-title">intercambio!</h4>
+          </div>
+          <div class="modal-body">
+            <p>El diálogo de intercambios va aquí...</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resumeGame()">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal comercio-->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
