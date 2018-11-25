@@ -87,6 +87,12 @@ mCharacters.push(
 	
 	//global.bloodyeye,
 	global.death,
+	global.dracula,
+	global.empire1,
+	global.empire2,
+	global.gollum,
+	global.jabba,
+	global.joker,
 	global.mummy,
 	//global.owl,
 	global.phantom,
@@ -94,7 +100,7 @@ mCharacters.push(
 	global.skeleton,
 	global.spider,
 	//global.undeadhand,
-	global.vampire,
+	//global.vampire,
 
 	global.backpack,
 	global.burger,
@@ -182,6 +188,12 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 			// TODO only 1 healthHandler (not big in html!)
 			//mH.goToPlayer(global.bloodyeye,0.7*defaultMovementLength);
 			mH.goToPlayer(global.death,0.9*defaultMovementLength);
+			mH.goToPlayer(global.dracula,0.8*defaultMovementLength);
+			mH.goToPlayer(global.empire1,0.4*defaultMovementLength);
+			mH.goToPlayer(global.empire2,0.4*defaultMovementLength);
+			mH.goToPlayer(global.gollum,0.4*defaultMovementLength);
+			mH.goToPlayer(global.jabba,0.1*defaultMovementLength);
+			mH.goToPlayer(global.joker,Math.random()*defaultMovementLength);
 			mH.goToPlayer(global.mummy,0.7*defaultMovementLength);
 			//mH.goToPlayer(global.owl,0.5*defaultMovementLength);
 			mH.goToPlayer(global.phantom,0.7*defaultMovementLength);

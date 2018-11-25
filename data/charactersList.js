@@ -1,6 +1,12 @@
 var enemies = [
     "bloodyeye",
     "death",
+    "dracula",
+    "empire1",
+    "empire2",
+    "gollum",
+    "jabba",
+    "joker",
     "mummy",
     "owl",
     "phantom",

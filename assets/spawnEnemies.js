@@ -1,4 +1,5 @@
 const createIcon = require('../style/createIcon');
+const createModalTriggerIcon = require('../style/createModalTriggerIcon');
 const cercania = 70;
 
 /**
@@ -25,6 +26,12 @@ function spawnEnemy(name, enemyIcon) {
 function spawnEnemies() {
 	const bloodyeyeIcon		= L.icon(createIcon('sprites/map-enemies/bloodyeye.png'));
 	const deathIcon			= L.icon(createIcon('sprites/map-enemies/death.png'));
+	const draculaIcon		= L.icon(createIcon('sprites/map-enemies/dracula.png'));
+	const empire1Icon		= L.icon(createIcon('sprites/map-enemies/empire1.png'));
+	const empire2Icon		= L.icon(createIcon('sprites/map-enemies/empire2.png'));
+	const gollumIcon		= L.icon(createIcon('sprites/map-enemies/gollum.png'));
+	const jabbaIcon			= L.icon(createIcon('sprites/map-enemies/jabba.png'));
+	const jokerIcon			= L.icon(createIcon('sprites/map-enemies/joker.png'));
 	const mummyIcon			= L.icon(createIcon('sprites/map-enemies/mummy.png'));
 	const owlIcon			= L.icon(createIcon('sprites/map-enemies/owl.png'));
 	const phantomIcon		= L.icon(createIcon('sprites/map-enemies/phantom.png'));
@@ -36,6 +43,12 @@ function spawnEnemies() {
 
 	//global.bloodyeye	= spawnEnemy('bloodyeye', bloodyeyeIcon); // 'Ojo sangriento'
 	global.death		= spawnEnemy('death', deathIcon); // 'Reaper'
+	global.dracula		= spawnEnemy('dracula', draculaIcon); // ''
+	global.empire1		= spawnEnemy('empire1', empire1Icon); // ''
+	global.empire2		= spawnEnemy('empire2', empire2Icon); // ''
+	global.gollum		= spawnEnemy('gollum', gollumIcon); // ''
+	global.jabba		= spawnEnemy('jabba', jabbaIcon); // ''
+	global.joker		= spawnEnemy('joker', jokerIcon); // ''
 	global.mummy		= spawnEnemy('mummy', mummyIcon); // 'Momia'
 	//global.owl		= spawnEnemy('owl', owlIcon); // 'Búho'
 	global.phantom		= spawnEnemy('phantom', phantomIcon); // 'Fantasma'
@@ -43,7 +56,7 @@ function spawnEnemies() {
 	global.skeleton		= spawnEnemy('skeleton', skeletonIcon); // 'Esqueleto'
 	global.spider		= spawnEnemy('spider', spiderIcon); // 'Araña'
 	//global.undeadhand	= spawnEnemy('undeadhand', undeadhandIcon); // 'Mano cercenada'
-	global.vampire		= spawnEnemy('vampire', vampireIcon); // 'Murciélago'
+	//global.vampire		= spawnEnemy('vampire', vampireIcon); // 'Murciélago'
 }
 
 module.exports = spawnEnemies;
