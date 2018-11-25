@@ -23,16 +23,16 @@ function spawnEnemy(name, enemyIcon) {
 
 /** @typedef L.icon @type {object} @type {L.icon} */
 function spawnEnemies() {
-	const bloodyeyeIcon		= L.icon(createIcon('sprites/enemies/bloodyeye.png'));
-	const deathIcon			= L.icon(createIcon('sprites/enemies/death.png'));
-	const mummyIcon			= L.icon(createIcon('sprites/enemies/mummy.png'));
-	const owlIcon			= L.icon(createIcon('sprites/enemies/owl.png'));
-	const phantomIcon		= L.icon(createIcon('sprites/enemies/phantom.png'));
-	const pirateskullIcon	= L.icon(createIcon('sprites/enemies/pirateskull.png'));
-	const skeletonIcon		= L.icon(createIcon('sprites/enemies/skeleton.png'));
-	const spiderIcon		= L.icon(createIcon('sprites/enemies/spider.png'));
-	const undeadhandIcon	= L.icon(createIcon('sprites/enemies/undeadhand.png'));
-	const vampireIcon		= L.icon(createIcon('sprites/enemies/vampire.png'));
+	const bloodyeyeIcon		= L.icon(createIcon('sprites/map-enemies/bloodyeye.png'));
+	const deathIcon			= L.icon(createIcon('sprites/map-enemies/death.png'));
+	const mummyIcon			= L.icon(createIcon('sprites/map-enemies/mummy.png'));
+	const owlIcon			= L.icon(createIcon('sprites/map-enemies/owl.png'));
+	const phantomIcon		= L.icon(createIcon('sprites/map-enemies/phantom.png'));
+	const pirateskullIcon	= L.icon(createIcon('sprites/map-enemies/pirateskull.png'));
+	const skeletonIcon		= L.icon(createIcon('sprites/map-enemies/skeleton.png'));
+	const spiderIcon		= L.icon(createIcon('sprites/map-enemies/spider.png'));
+	const undeadhandIcon	= L.icon(createIcon('sprites/map-enemies/undeadhand.png'));
+	const vampireIcon		= L.icon(createIcon('sprites/map-enemies/vampire.png'));
 
 	//global.bloodyeye	= spawnEnemy('bloodyeye', bloodyeyeIcon); // 'Ojo sangriento'
 	global.death		= spawnEnemy('death', deathIcon); // 'Reaper'
@@ -40,7 +40,7 @@ function spawnEnemies() {
 	//global.owl		= spawnEnemy('owl', owlIcon); // 'Búho'
 	global.phantom		= spawnEnemy('phantom', phantomIcon); // 'Fantasma'
 	//global.pirateskull= spawnEnemy('pirateskull', pirateskullIcon); // 'Esqueleto pirata'
-	global.skeleton	= spawnEnemy('skeleton', skeletonIcon); // 'Esqueleto'
+	global.skeleton		= spawnEnemy('skeleton', skeletonIcon); // 'Esqueleto'
 	global.spider		= spawnEnemy('spider', spiderIcon); // 'Araña'
 	//global.undeadhand	= spawnEnemy('undeadhand', undeadhandIcon); // 'Mano cercenada'
 	global.vampire		= spawnEnemy('vampire', vampireIcon); // 'Murciélago'

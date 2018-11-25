@@ -28,7 +28,7 @@ const velocity = 1/33; // Dµº / ms
 var refreshRate, defaultMovementLength;
 // TODO > Botón que cambie booleano #CotND
 if (cryptOfTheNecromancerMode === "true") {
-	refreshRate = 500; // asume <5ms delays! // 500 w/ 120 BPM music
+	refreshRate = 460; // 500 asume <5ms delays! // 500 w/ 120 BPM music
 } else {
 	refreshRate = 33; // 30+ FPS
 }
@@ -67,7 +67,7 @@ Verde: multiplicador velocidad no tan bajo como blanco
 //#region Create Characters and sitesMarkersLayers
 // TODO > Personalizar carácter personaje #CataclysmDDA + playerIcon "duplicado": personalizado con imagemagick
 const nAvailableAvatars = 22;
-const playerIcon	= L.icon(createLargeIcon('sprites/memes/' +
+const playerIcon	= L.icon(createLargeIcon('sprites/player/' +
 	Math.ceil(nAvailableAvatars*Math.random()) +
 '.png'));
 const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
