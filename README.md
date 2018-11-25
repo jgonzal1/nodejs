@@ -2,7 +2,7 @@
 
 2. From file:///e%3A/nodejs/game.js#8 : TODO charlist: const cL = require('./data/charactersList');
 
-3. From file:///e%3A/nodejs/game.js#12 : TODO Que empiece en ubicación usuario L.DomUtil.get(hiddenHandlerPos).innerHTML.split(",")[0]/[1]
+3. From file:///e%3A/nodejs/game.js#12 : TODO Que empiece en ubicación usuario document.getElementById('hiddenHandlerPos').innerText.split(",")[0]/[1]
 
 4. From file:///e%3A/nodejs/game.js#15 : TODO >>>>> #Patrician When colide: capa de comercio, pausa, y en modal BDiA-showcase
 

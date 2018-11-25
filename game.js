@@ -9,7 +9,7 @@ const regionsAustria = spawnRegionsAustria();
 const spawnSites = require('./data/sites');
 const sites = spawnSites.getSites();
 const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasiera"];
-// TODO Que empiece en ubicación usuario L.DomUtil.get(hiddenHandlerPos).innerHTML.split(",")[0]/[1]
+// TODO Que empiece en ubicación usuario document.getElementById('hiddenHandlerPos').innerText.split(",")[0]/[1]
 const spawnEnemies = require('./assets/spawnEnemies');
 const spawnObjectives = require('./assets/spawnObjectives');
 // TODO Delete objectives when taken
@@ -160,8 +160,8 @@ setInterval(function() {
 	// TODO > Daemonizer en legend para tiempo del día; on add: timeLegend();
 	gameTimeStamp += 36000;
 	timeLegend();
-	/*if (cryptOfTheNecromancerMode !== L.DomUtil.get(hiddenHandlerModeCotND).innerHTML) {
-		cryptOfTheNecromancerMode = L.DomUtil.get(hiddenHandlerModeCotND).innerHTML;
+	/*if (cryptOfTheNecromancerMode !== document.getElementById('hiddenHandlerModeCotND').innerText) {
+		cryptOfTheNecromancerMode = document.getElementById('hiddenHandlerModeCotND').innerText;
 		// if (typeof(cryptOfTheNecromancerMode) === 'string') {clearInterval(moveDaemonizer);}
 		if (cryptOfTheNecromancerMode === "true") {
 			refreshRate = 500; // w/ 120 BPM music
@@ -179,7 +179,7 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 		if (document.getElementById('openModal').innerText === 'true') {
 			pause = true;
 		} else {
-			pause = (L.DomUtil.get(hiddenHandlerKeys).innerHTML === 'p');
+			pause = (document.getElementById('hiddenHandlerKeys').innerText === 'p');
 		}
 		if (!pause) {
 			// pauseSound.start();
@@ -193,7 +193,7 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 			mH.goToPlayer(global.empire2,0.4*defaultMovementLength);
 			mH.goToPlayer(global.gollum,0.4*defaultMovementLength);
 			mH.goToPlayer(global.jabba,0.1*defaultMovementLength);
-			mH.goToPlayer(global.joker,Math.random()*defaultMovementLength);
+			mH.goToPlayer(global.joker,Math.random()*1.2*defaultMovementLength);
 			mH.goToPlayer(global.mummy,0.7*defaultMovementLength);
 			//mH.goToPlayer(global.owl,0.5*defaultMovementLength);
 			mH.goToPlayer(global.phantom,0.7*defaultMovementLength);
@@ -201,7 +201,7 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 			mH.goToPlayer(global.skeleton,0.7*defaultMovementLength);
 			mH.goToPlayer(global.spider,0.5*defaultMovementLength);
 			//mH.goToPlayer(global.undeadhand,0.6*defaultMovementLength);
-			mH.goToPlayer(global.vampire,0.5*defaultMovementLength);
+			//mH.goToPlayer(global.vampire,0.5*defaultMovementLength);
 		} else {
 			// pauseSound.start();
 		}
@@ -287,7 +287,7 @@ info.onAdd = function() {
 info.update = function(props) {
 	this._div.innerHTML = '' + (props ?
 		'<p><b>Population Density</b></p>' + '<b>' + props.name + '</b><br/>' + props.density + ' people / km<sup>2</sup>' :
-		'') // 'Hover over a state' + '<p>' + L.DomUtil.get(hiddenHandlerKeys).innerHTML + '</p>'
+		'') // 'Hover over a state' + '<p>' + document.getElementById('hiddenHandlerKeys').innerText + '</p>'
 	;
 };
 // let infoUpdaterCounter = 1;
@@ -298,7 +298,7 @@ function backgroundInfoUpdater(milliseconds) {
 		info.update = function() {
 			this._div.innerHTML = // +=
 				'<div class="backendlogs">' +
-				'<p><b>Key' + L.DomUtil.get(hiddenHandlerKeys).innerHTML + '</b></p>';
+				'<p><b>Key' + document.getElementById('hiddenHandlerKeys').innerText + '</b></p>';
 				'<b>' + boolChecker + '<br/>' + '</b>';
 				// infoUpdaterCounter.toString()
 				'</div>'
