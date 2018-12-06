@@ -1,5 +1,5 @@
 function loadEnemyBattle(enemyName) {
-    var ec = document.getElementById("enemyCanvas");
+    var ec = document.getElementById("battleCanvas");
     var eCtx = ec.getContext("2d");
     eCtx.clearRect(0, 0, ec.width, ec.height);
     var playerImage = document.getElementById('marluxia');
