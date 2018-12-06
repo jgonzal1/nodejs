@@ -366,9 +366,22 @@
             <img id="phantom" src="sprites/enemies-reverse/phantom.png" style="display:none;">
             <img id="skeleton" src="sprites/enemies-reverse/skeleton.png" style="display:none;">
             <img id="spider" src="sprites/enemies-reverse/spider.png" style="display:none;">
-            <canvas id="battleCanvas" width="680" height="256" style="border:1px solid #d3d3d3;">
-                Your browser does not support the HTML5 canvas tag.</canvas>
-            <p>La lucha va aquí...</p>
+            <canvas id="fightersCanvas" width="680" height="256" style="border:1px solid #d3d3d3;">
+                Your browser does not support the HTML5 canvas tag.
+            </canvas>
+            <table class="table">
+              <tbody>  
+                <tr>
+                  <td><button type="button" class="btn btn-info" style="width: 100%" onclick="loadTile()">Blue</button></td>
+                  <td><button type="button" class="btn btn-success" style="width: 100%">Green</button></td>
+                </tr>
+                <tr>
+                  <td><button type="button" class="btn btn-warning" style="width: 100%">Yellow</button></td>
+                  <td><button type="button" class="btn btn-danger" style="width: 100%">Red</button></td>
+                  <!--<td class="danger">Red</td>-->
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resumeGame()">Close</button>
@@ -494,7 +507,8 @@
         document.getElementById("hiddenHandlerPos").innerHTML = position.coords.latitude + 
         "," + position.coords.longitude;
     }
-    // Hide all elements with class="containerTab", except for the one that matches the clickable grid column
+    /** @return {Object} a Hides all elements with class="containerTab", except for the one that matches the clickable grid column
+    */
     function openTab(tabName) {
         var i, x;
         x = document.getElementsByClassName("containerTab");
