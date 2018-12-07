@@ -50,16 +50,23 @@ var gameTimeStamp = new Date(1262304000000);
 
 //#region Create Base Layers
 // const map = L.map('map', { scrollWheelZoom: true } );
-global.map = L.map('map', { inertia: true, inertiaMaxSpeed: 1000, scrollWheelZoom: true } );
+global.map = L.map(
+	'map',
+	{
+		inertia: true, inertiaMaxSpeed: 1000,
+		scrollWheelZoom: true,
+		minZoom: 2, maxZoom: 17
+	}
+	);
+global.map.zoomControl.setPosition("bottomright");
 const lat  = initialCoords[0]; global.lat = lat; // y
 const long = initialCoords[1]; global.long = long; // x
 const zoom = initialCoords[2]; // z
 global.map.setView([lat, long], zoom);
-const artisticMap = L.tileLayer(
-	'http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
-	{ minZoom: 2, maxZoom: 17 }
+global.artisticMap = L.tileLayer(
+	'http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
 ).addTo(global.map);
-const baseLayers = createBaseLayerAndAddMore(artisticMap, L);
+const baseLayers = createBaseLayerAndAddMore(global.artisticMap, L);
 L.control.scale({imperial:false}).addTo(global.map);
 /* TODO > Colores Tileset
 Blanco: detectarlo en tileset permite mover 1x;
@@ -186,16 +193,17 @@ const layers = L.layerGroup(markers).addTo(global.map);
 
 //#region TODO >>>>> Daemonizers
 // let counter = 1;
+// Moving with mouse or keypad
 if (navigator.userAgent.match('Android|X11') !== null){ // X11 es mi redmi note 3
 	alert('¡Bienvenido a DarksGeim! Haz tap para moverte.\n' +
 	'No podrás volver a moverte hasta llegar a tu destino, así que...\n' +
-	'¡Piensa poco a poco tu jugada!');
-	global.map.on('click', onMapClick);
+	'¡Piensa poco a poco tu jugada!');//*/
+	global.map.on('click', onMapClick);//*
 } else {
-	/*alert('Bienvenido a DarksGeim. Utiliza WASD para moverte,\n'+
-	'P para pausar, la rueda del ratón para elk zoom,\n'+
-	'y ←↑↓→ para mover el mapa');*/
-}
+	//alert('Bienvenido a DarksGeim. Utiliza WASD para moverte,\n'+
+	//'P para pausar, la rueda del ratón para elk zoom,\n'+
+	//'y ←↑↓→ para mover el mapa');
+}//*/
 // let moveDaemonizer;
 setInterval(function() {
 	// TODO Daemonizer en legend para tiempo del día; on add: timeLegend();
@@ -274,6 +282,7 @@ keyListener(
 // (1 - x^2 / 2 + x^4 / 24) aproxs cos(x) de 60 a 85º
 // 0 aproxs cos(x) from 85 to 90º
 // TODO Detectar dos botones a la vez (ej. W+A)
+
 // TODO Migrar onMapClick
 function onMapClick(e) {
 	if (mouseMoved !== true) {
