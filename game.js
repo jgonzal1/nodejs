@@ -1,17 +1,19 @@
 //#region Imports
-const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
-const createLargeIcon = require('./style/createLargeIcon');
-const createModalTriggerIcon = require('./style/createModalTriggerIcon');
-const geoJsonStylers = require('./style/geoJsonStylers');
+const pushCharacters = require('./assets/pushCharacters');
+const spawnEnemies = require('./assets/spawnEnemies');
+const spawnObjectives = require('./assets/spawnObjectives');
 const spawnRegionsAustria = require('./data/regionsAustria');
 const regionsAustria = spawnRegionsAustria();
-// TODO > #Risk
 const spawnSites = require('./data/sites');
 const sites = spawnSites.getSites();
 const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasiera"];
 // TODO > Que empiece en ubicación usuario document.getElementById('hiddenHandlerPos').innerText.split(",")[0]/[1] + redis
-const spawnEnemies = require('./assets/spawnEnemies');
-const spawnObjectives = require('./assets/spawnObjectives');
+const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
+const createLargeIcon = require('./style/createLargeIcon');
+const createModalTriggerIcon = require('./style/createModalTriggerIcon');
+const geoJsonStylers = require('./style/geoJsonStylers');
+// TODO > #Risk
+
 // TODO Delete objectives when taken
 // TODO #Patrician When collide
 // TODO >>>>> modal cosas en places
@@ -35,11 +37,9 @@ var cryptOfTheNecromancerMode =  'true';
 const velocity = 1/33; // Dµº / ms
 var refreshRate, defaultMovementLength;
 // TODO > Botón que cambie booleano #CotND
-if (cryptOfTheNecromancerMode === "true") {
-	refreshRate = 460; // 500 asume <5ms delays! // 500 w/ 120 BPM music
-} else {
-	refreshRate = 33; // 30+ FPS
-}
+if (cryptOfTheNecromancerMode === "true") { refreshRate = 460; }
+// 500 asume <5ms delays! // 500 w/ 120 BPM music
+else { refreshRate = 33; } // 30+ FPS
 defaultMovementLength = refreshRate * velocity;
 var mouseMoved; // = false;
 global.layerToRemove = undefined;
@@ -52,11 +52,7 @@ var gameTimeStamp = new Date(1262304000000);
 // const map = L.map('map', { scrollWheelZoom: true } );
 global.map = L.map(
 	'map',
-	{
-		inertia: true, inertiaMaxSpeed: 1000,
-		scrollWheelZoom: true,
-		minZoom: 2, maxZoom: 17
-	}
+	{ inertia: true, inertiaMaxSpeed: 1000, scrollWheelZoom: true, minZoom: 2, maxZoom: 17 }
 	);
 global.map.zoomControl.setPosition("bottomright");
 const lat  = initialCoords[0]; global.lat = lat; // y
@@ -97,81 +93,73 @@ global.player = player;
 spawnEnemies(L, lat, long);
 spawnObjectives(L, lat, long); // TODO > thirst, hunger & vol
 spawnTransports(L, lat, long);
-var mCharacters = [];
-mCharacters.push(
-	global.player,
-	
-	//global.bloodyeye,
-	global.death,
-	global.dracula,
-	global.empire1,
-	global.empire2,
-	global.gollum,
-	global.jabba,
-	global.joker,
-	global.mummy,
-	//global.owl,
-	global.phantom,
-	//global.pirateskull,
-	global.skeleton,
-	global.spider,
-	//global.undeadhand,
-	//global.vampire,
+global.mCharacters = [];
+pushCharacters();
+const characters = L.layerGroup(global.mCharacters).addTo(global.map);
 
-	global.backpack,
-	global.burger,
-	global.banana,
-	global.blackberry,
-	global.boots,
-	global.chicken,
-	global.healthpotion,
-	global.knife,
-	global.pizza,
-	global.rice,
-	global.steelaxe,
-	global.sword,
-	global.water,
-
-	global.balloon,
-	global.bike,
-	global.bus,
-	global.schoolbus,	
-	global.taxi,
-	global.train
-);
-const characters = L.layerGroup(mCharacters).addTo(global.map);
-
-const greenIcon = L.icon(createLargeIcon('style/places/house.png'));
+// const lightHouseIcon = L.icon(createLargeIcon('style/places/light_house.png'));
+// const portIcon = L.icon(createLargeIcon('style/places/port.png'));
 const bankIcon = L.icon(createLargeIcon('style/places/bank.png'));
+const blockhousesIcon = L.icon(createLargeIcon('style/places/blockhouses.png'));
 const castleIcon = L.icon(createLargeIcon('style/places/castle.png'));
-const gasStationIcon = L.icon(createLargeIcon('style/places/gas_station.png'));
-const portIcon = L.icon(createLargeIcon('style/places/port.png'));
-const store3Icon = L.icon(createLargeIcon('style/places/store3.png'));
-const tree1Icon = L.icon(createLargeIcon('style/places/tree1.png'));
-const tree4Icon = L.icon(createLargeIcon('style/places/tree4.png'));
-const vendingIcon = L.icon(createLargeIcon('style/places/vending.png'));
 const chemistryIcon = L.icon(createLargeIcon('style/places/chemistry.png'));
+const cornshopIcon = L.icon(createLargeIcon('style/places/cornshop.png'));
+const gasStationIcon = L.icon(createLargeIcon('style/places/gas_station.png'));
+const greenIcon = L.icon(createLargeIcon('style/places/house.png'));
 const houseIcon = L.icon(createLargeIcon('style/places/house.png'));
 const signIcon = L.icon(createLargeIcon('style/places/sign.png'));
-const tentIcon = L.icon(createLargeIcon('style/places/tent.png'));
-const tree2Icon = L.icon(createLargeIcon('style/places/tree2.png'));
-const treesIcon = L.icon(createLargeIcon('style/places/trees.png'));
-const blockhousesIcon = L.icon(createLargeIcon('style/places/blockhouses.png'));
-const lightHouseIcon = L.icon(createLargeIcon('style/places/light_house.png'));
 const store2Icon = L.icon(createLargeIcon('style/places/store2.png'));
+const store3Icon = L.icon(createLargeIcon('style/places/store3.png'));
+const tentIcon = L.icon(createLargeIcon('style/places/tent.png'));
+const tree1Icon = L.icon(createLargeIcon('style/places/tree1.png'));
+const tree2Icon = L.icon(createLargeIcon('style/places/tree2.png'));
 const tree3Icon = L.icon(createLargeIcon('style/places/tree3.png'));
+const tree4Icon = L.icon(createLargeIcon('style/places/tree4.png'));
+const treesIcon = L.icon(createLargeIcon('style/places/trees.png'));
+const vendingIcon = L.icon(createLargeIcon('style/places/vending.png'));
 const placeIconsArray = [
-bankIcon, castleIcon, gasStationIcon, portIcon, store3Icon, tree1Icon,
-tree4Icon, vendingIcon, chemistryIcon, houseIcon, signIcon, tentIcon,
-tree2Icon, treesIcon, blockhousesIcon, lightHouseIcon, store2Icon, tree3Icon
+	//lightHouseIcon,
+	//portIcon,
+	bankIcon,
+	blockhousesIcon,
+	castleIcon,
+	chemistryIcon,
+	cornshopIcon,
+	gasStationIcon,
+	houseIcon,
+	signIcon,
+	store2Icon,
+	store3Icon,
+	tentIcon,
+	tree1Icon,
+	tree2Icon,
+	tree3Icon,
+	tree4Icon,
+	treesIcon,
+	vendingIcon
 ];
 var places = [
-	"bank", "castle", "gas_station", "port", "store3", "tree1",
-	"tree4", "vending", "chemistry", "house", "sign", "tent",
-	"tree2", "trees", "blockhouses", "light_house", "store2",
-	"tree3"
-	];
-var nPlaces = 18;
+	"bank",
+	"blockhouses",
+	"castle",
+	"chemistry",
+	"cornshop",
+	"gas_station",
+	"house",
+	"sign",
+	"store2",
+	"store3",
+	"tent",
+	"tree1",
+	"tree2",
+	"tree3",
+	"tree4",
+	"trees",
+	"vending"
+	//"light_house",
+	//"port",
+];
+var nPlaces = 17; //18
 var markers = [];
 let element;
 for (var i in sites) {
