@@ -124,9 +124,9 @@ for (var i in sites) {
 	);
 }//*/
 //spawnPlaces(sites, L, function(markers){
-	layers = L.layerGroup(
-		markers
-	).addTo(global.map);
+const layers = L.layerGroup(
+	markers
+).addTo(global.map);
 //});
 //}); //*/
 
