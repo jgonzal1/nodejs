@@ -14,7 +14,8 @@
     <title>Darks Game</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><!--4.4.0-->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 4.7.0 4.4.0 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css">
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css">
@@ -58,7 +59,7 @@
         </div>         
     </div>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation"> <!-- Top Menu -->
         <div class="container-fluid">
             <div class="navbar-header">
             <div class="navbar-icon-container">
@@ -132,35 +133,53 @@
                                 </div>
                             </div>
                     </ul>
-
                 <li class="dropdown">
-                    <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe white"></i>&nbsp;&nbsp;Misiones <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Pantalla completa (indev)</a></li>
-                        <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="legend-btn"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Mostrar modal (indev)</a></li>
-                        <li class="divider hidden-xs"></li>
-                        <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="login-btn"><i class="fa fa-user"></i>&nbsp;&nbsp;Personaje (indev)</a></li>
-                    </ul>
+                  <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-cog"></i>&nbsp;&nbsp;Opciones <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <!-- anchor para brevario barcos -->
+                      <!-- atlas clipboard-list -->
+                      <!-- atom react rocket para investigar -->
+                      <!-- bolt para energia -->
+                      <!-- book-dead graduation-cap para habs -->
+                      <!-- flask para hechizos -->
+                      <!-- gabel para diplomacia -->
+                      <!-- estado:
+                        dizzy angry tired sad-cry sad-tear frown frown-open
+                        meh
+                        smile smile-beam grin grin-beam kiss kiss-beam laugh laugh-beam -->
+                      <!-- hammer para construccion -->
+                      <!-- heart stethoscope para salud -->
+                      <!-- key para keys -->
+                      <!-- user-cog para settings -->
+                      <!-- utensils para comer -->                    
+                      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn">
+                        <i class="fa fa-home"></i>&nbsp;&nbsp;Centrar en el spawn</a></li>
+                      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="legend-btn">
+                        <i class="fa fa-clipboard-list"></i>&nbsp;&nbsp;Mostrar modal (indev)</a></li>
+                      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="login-btn">
+                        <i class="fa fa-user"></i>&nbsp;&nbsp;Login (indev)</a></li><!--fa fa-user-->
+                      <li><a href="data/boroughs.geojson" download="boroughs.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Test1</a></li>
+                      <!--<li class="divider hidden-xs"></li>-->
+                  </ul>
+              
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" id="downloadDrop" href="#" role="button" data-toggle="dropdown"><i class="fa fa-cloud-download white"></i>&nbsp;&nbsp;Guardar (indev) <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                    <li><a href="data/boroughs.geojson" download="boroughs.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Test1</a></li>
-                    </ul>
-                </li>
-                <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;Panel de Stats y Objetos</a></li>
+                    <a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="legend-btn">
+                        <i class="fa fa-globe white"></i>&nbsp;&nbsp;Misiones</a>
+                </li>                
+                <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;Toggle panel Stats y Objetos</a></li>
             </ul>
             </div>
         </div>
     </div>
 
-    <div id="container">
+    <div id="container"> <!-- Left Menu -->
       <div id="sidebar">
         <div class="sidebar-wrapper">
           <div class="panel panel-default" id="features">
             <div class="panel-heading">
               <h3 class="panel-title">
-                Stats y Objetos
+                <i class="far address-card"></i> Stats y Objetos
                 <button type="button" class="btn btn-xs btn-default pull-right" id="sidebar-hide-btn">
                   <i class="fa fa-chevron-left"></i>
                 </button>
@@ -243,16 +262,9 @@
       </div>
       <div id="map"></div>
     </div>
-	
-    <!--<div id="loading">
-      <div class="loading-indicator">
-        <div class="progress progress-striped active">
-          <div class="progress-bar progress-bar-info progress-bar-full"></div>
-        </div>
-      </div>
-    </div>-->
 
-    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
+	  <!-- Modals -->
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog"> 
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
@@ -343,7 +355,7 @@
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+    </div><!-- /.modal misiones-->
     <div class="modal fade" id="legendModal" tabindex="-1" role="dialog">
       <span id="openModal" style="display: none">false</span>
       <div class="modal-dialog">

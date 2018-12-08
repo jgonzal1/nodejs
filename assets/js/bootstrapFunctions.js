@@ -24,7 +24,8 @@ $("#about-btn").click(function() {
 });
 
 $("#full-extent-btn").click(function() {
-  map.fitBounds(boroughs.getBounds());
+  map.setView([40.4942011, -3.71013], 16);
+  // map.fitBounds(boroughs.getBounds());
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
