@@ -48,13 +48,16 @@ var madridSites = [
 ];
 
 var places = [
-	"bank",
+    "bank",
+    "bank2",
 	"blockhouses",
 	"castle",
-	"chemistry",
+	"brewery",
 	"cornshop",
 	"gas_station",
-	"house",
+    "house",
+    "refinery",
+    "brickbuilding",
 	"sign",
 	"store2",
 	"store3",
@@ -68,7 +71,7 @@ var places = [
 	//"light_house",
 	//"port",
 ];
-var nPlaces = 17;
+var nPlaces = places.length;
 
 function getAustrianCapitals() {
     return austrianCapitals;
