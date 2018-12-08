@@ -23,14 +23,14 @@ $("#about-btn").click(function() {
   return false;
 });
 
-$("#full-extent-btn").click(function() {
+$("#go-to-spawn-btn").click(function() {
   map.setView([40.4942011, -3.71013], 16);
   // map.fitBounds(boroughs.getBounds());
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
 
-$("#legend-btn").click(function() {
+$("#missions-btn").click(function() {
   $("#missionsModal").modal("show");
   $(".navbar-collapse.in").collapse("hide");
   return false;

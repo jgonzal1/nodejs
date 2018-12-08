@@ -20,9 +20,10 @@
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css">
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css">
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@[VERSION]/dist/L.Control.Locate.min.css" />
     <link rel="stylesheet" href="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.css">
     <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@[VERSION]/dist/L.Control.Locate.min.css" />
+    <link rel="stylesheet" href="style/dialog.css">
 
     <!--<link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
     <link rel="stylesheet" href="style/style.css">-->
@@ -131,37 +132,47 @@
                       </div>
                   </ul>
               </li>
-              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn">
-                  <i class="fas fa-hammer"></i>&nbsp;&nbsp; </a></li><!-- Construcciones (indev)-->
-              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn">
-                  <i class="fas fa-handshake"></i>&nbsp;&nbsp;</a></li><!-- Diplomacia (indev) -->
-              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn">
-                  <i class="fas fa-anchor"></i>&nbsp;&nbsp;</a></li><!-- Flota (indev) -->
-              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn">
-                  <i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;</a></li><!-- Habilidades (indev) book-dead-->
-              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn">
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="constructions-btn">
+                  <i class="fas fa-hammer"></i>&nbsp;&nbsp; </a></li><!--(indev)-->
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="diplomacy-btn">
+                  <i class="fas fa-handshake"></i>&nbsp;&nbsp;</a></li><!--(indev) -->
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="fleet-btn">
+                  <i class="fas fa-anchor"></i>&nbsp;&nbsp;</a></li><!--(indev) -->
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="habilities-btn">
+                  <i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;</a></li><!--(indev) book-dead journal-whills-->
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="research-btn">
                   <i class="fab fa-react"></i>&nbsp;&nbsp;</a></li><!--Investigaciones (indev) atom rocket-->
               <!-- Misiones -->
-              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="legend-btn">
+              <li>
+                <!--<div class="wrapper">
+                  <button type="button" aria-label="Open Navigation" class="open-dialog">
+                    <i class="fa fa-globe white"></i>
+                  </button>
+                </div>-->
+                <a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="missions-btn">
                   <i class="fa fa-globe white"></i>&nbsp;&nbsp;Misiones</a><!-- fa-clipboard-list atlas -->
               </li>
-              <li class="dropdown"> <!-- Opciones -->
+              <!-- Opciones --><li class="dropdown">
                 <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-cog"></i>&nbsp;&nbsp;Opciones <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn">
+                    <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="go-to-spawn-btn">
                         <i class="fa fa-home"></i>&nbsp;&nbsp;GoTo Spawn</a></li>
-                    <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn">
+                    <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="spells-btn">
                         <i class="fas fa-flask"></i>&nbsp;&nbsp;Hechizos (indev)</a></li>
-                    <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn">
+                    <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="keys-btn">
                         <i class="fas fa-key"></i>&nbsp;&nbsp;Llaves (indev)</a></li>
                     <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="login-btn">
                       <i class="fa fa-user"></i>&nbsp;&nbsp;Login (indev)</a></li><!--fa fa-user-->
 
-                    <li><a href="data/boroughs.geojson" download="boroughs.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Save copy of the current game (indev)</a></li>
+                    <li><a href="data/boroughs.geojson" download="boroughs.geojson" target="_blank"
+                      data-toggle="collapse" data-target=".navbar-collapse.in">
+                      <i class="fa fa-download"></i>&nbsp;&nbsp;Save (indev)</a>
+                    </li><!-- copy of the current game  -->
                     <!--<li class="divider hidden-xs"></li>-->
                 </ul>
               </li>
-              <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;Toggle panel Stats y Objetos</a></li>
+              <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn">
+                <i class="fa fa-list white"></i>&nbsp;&nbsp;Toggle panel Stats y Objetos</a></li>
           </ul>
         </div>
       </div>
@@ -283,9 +294,21 @@
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
-    </div><!-- /.modal misiones-->
+    </div><!-- /.modal misiones v1
+    <div class="dialog" role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+      <h1 id="dialog-title">Site Navigation</h1>
+      <p id="dialog-description" class="sr-only">Description goes here</p>
+      <nav>
+        <ul>
+          <li><a href="one.html">Link One</a></li>
+          <li><a href="two.html">Link Two</a></li>
+          <li><a href="three.html">Link Three</a></li>
+        </ul>
+      </nav>
+      <button type="button" aria-label="Close Navigation" class="close-dialog"> <i class="fa fa-times"></i> </button>
+    </div>--><div class="dialog-overlay" tabindex="-1"></div><!-- /.modal misiones v2-->
     <div class="modal fade" id="missionsModal" tabindex="-1" role="dialog">
-      <span id="openModal" style="display: none">false</span>
+      <span id="openModal" style="display: none">false</span>-->
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -293,13 +316,24 @@
             <h4 class="modal-title">Título</h4>
           </div>
           <div class="modal-body">
-            <p>Cuerpo de texto</p>
+            <table class="table">
+                <tbody>  
+                  <tr>
+                    <td><button type="button" class="btn btn-info" style="width: 100%" onclick="loadTile()">Blue</button></td>
+                    <td><button type="button" class="btn btn-success" style="width: 100%">Green</button></td>
+                  </tr>
+                  <tr>
+                    <td><button type="button" class="btn btn-warning" style="width: 100%">Yellow</button></td>
+                    <td><button type="button" class="btn btn-danger" style="width: 100%">Red</button></td>
+                  </tr>
+                </tbody>
+              </table>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resumeGame()">Close</button>
           </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
+        </div> <!-- /.modal-content -->
+      </div> <!-- /.modal-dialog -->
     </div><!-- /.modal batallas-->
     <div class="modal fade" id="battleModal" tabindex="-1" role="dialog">
       <span id="openModal" style="display: none">false</span>
@@ -328,7 +362,7 @@
             <table class="table">
               <tbody>  
                 <tr>
-                  <td><button type="button" class="btn btn-info" style="width: 100%" onclick="loadTile()">Blue</button></td>
+                  <td><button type="button" class="btn btn-info" style="width: 100%">Blue</button></td>
                   <td><button type="button" class="btn btn-success" style="width: 100%">Green</button></td>
                 </tr>
                 <tr>
@@ -422,6 +456,7 @@
 
     <!-- Scripts -->
     <script src="bundle.js"></script>
+    <script src="dialog.js"></script>
     <script>
     /**
      * @param {Number} hp
@@ -477,33 +512,6 @@
       document.getElementById('openModal').innerText = 'false';
       global.battleSound.pause();
     }
-
-    healthCanvas(parseFloat(document.getElementById('health').innerHTML));
-    // getLocation();
-
-    // keyListener
-    let buttonsPushed = 0;
-    $("#map").keypress(
-        function(event) {
-            if(event.which===13) {
-                event.preventDefault();
-            }
-            buttonsPushed++;
-            document.getElementById("hiddenHandlerKeys").innerHTML = event.key;
-                // " " + buttonsPushed + "t," + // Times called .keypress() handler
-                // " " + event.key + " key"; // Last pushed key in keyboard
-                // <p> works but is unhidden
-        }
-    );
-    //*/
-    function simulateKeyPress(character) {
-        jQuery.event//('input[type=submit][name=btnK]')
-            .trigger({
-                type: 'keypress',
-                which: character.charCodeAt(65)
-            });
-    }
-    
     function loadTile() {
       var canvas = document.getElementById("myCanvas");
       var ctx = canvas.getContext("2d");
@@ -529,6 +537,37 @@
         ctx.putImageData(tileData[0], x, y);
       }
     }
+    function simulateKeyPress(character) {
+        jQuery.event//('input[type=submit][name=btnK]')
+            .trigger({
+                type: 'keypress',
+                which: character.charCodeAt(65)
+            });
+    }
+
+    var navDialogEl = document.querySelector('.dialog');
+		var dialogOverlay = document.querySelector('.dialog-overlay');
+		var myDialog = new Dialog(navDialogEl, dialogOverlay);
+		myDialog.addEventListeners('.open-dialog', '.close-dialog');
+
+    healthCanvas(parseFloat(document.getElementById('health').innerHTML));
+    // getLocation();
+
+    // keyListener
+    let buttonsPushed = 0;
+    $("#map").keypress(
+        function(event) {
+            if(event.which===13) {
+                event.preventDefault();
+            }
+            buttonsPushed++;
+            document.getElementById("hiddenHandlerKeys").innerHTML = event.key;
+                // " " + buttonsPushed + "t," + // Times called .keypress() handler
+                // " " + event.key + " key"; // Last pushed key in keyboard
+                // <p> works but is unhidden
+        }
+    );
+    //*/
     </script>
     <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
     <script src="assets/js/bootstrapFunctions.js"></script>
