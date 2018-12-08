@@ -148,6 +148,11 @@ if (navigator.userAgent.match('Android|X11') !== null){ // X11 es mi redmi note 
 		} else {
 			if (global.map.hasLayer(layers) === false) { global.map.addLayer(layers); }
 		}
+		if (currentZoom < 12) { // hide characters
+			if (global.map.hasLayer(characters)) { global.map.removeLayer(characters); }
+		} else {
+			if (global.map.hasLayer(characters) === false) { global.map.addLayer(characters); }
+		}
 	});
 }//*/
 // let moveDaemonizer;
