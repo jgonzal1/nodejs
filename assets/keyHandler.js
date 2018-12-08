@@ -24,6 +24,7 @@ function keyHandler(velocity, keymap) { // 80km/h | 12x
 		mH.moveCharacter(global.player, velocity, direction, keymap);
 		break;
 	case keymap[4]: // [ ]
+		//alert('Calculando distancia...');
 		distancesArray = [
 			mH.fcalcDist(global.backpack),
 			mH.fcalcDist(global.burger),
@@ -39,7 +40,22 @@ function keyHandler(velocity, keymap) { // 80km/h | 12x
 			mH.fcalcDist(global.sword),
 			mH.fcalcDist(global.water)
 		];
-		nearestObjetive = Math.min(distancesArray);
+		nearestObjetive = Math.min( // distancesArray
+			//TODO Duplicated because of async
+			mH.fcalcDist(global.backpack),
+			mH.fcalcDist(global.burger),
+			mH.fcalcDist(global.banana),
+			mH.fcalcDist(global.blackberry),
+			mH.fcalcDist(global.boots),
+			mH.fcalcDist(global.chicken),
+			mH.fcalcDist(global.healthpotion),
+			mH.fcalcDist(global.knife),
+			mH.fcalcDist(global.pizza),
+			mH.fcalcDist(global.rice),
+			mH.fcalcDist(global.steelaxe),
+			mH.fcalcDist(global.sword),
+			mH.fcalcDist(global.water)//*/
+		);
 		nearestObjetiveIndex = distancesArray.indexOf(Math.min(...distancesArray));
 		if (nearestObjetive < 0.0002) {
 			itemDescription = objectiveStatsHandler(objectives[nearestObjetiveIndex]);

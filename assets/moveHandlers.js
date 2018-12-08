@@ -170,6 +170,7 @@ function getLngCorrectionArr() {
 module.exports.targetFleeFromPlayer = targetFleeFromPlayer;
 module.exports.targetGoToPlayer = targetGoToPlayer;
 module.exports.goToPlayer = goToPlayer;
+module.exports.fcalcDist = fcalcDist;
 module.exports.moveCharacter = moveCharacter;
 module.exports.onMapClick = onMapClick;
 module.exports.getLngCorrectionArr = getLngCorrectionArr;
