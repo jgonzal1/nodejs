@@ -21,7 +21,7 @@
         ],
         "new-parens": 2,
         "no-await-in-loop": "warn",
-        "no-bitwise": 2,
+        "no-bitwise": "warn",
         "no-console": "warn",
         "no-constant-condition": 2,
         "no-control-regex": 2,

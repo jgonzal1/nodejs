@@ -1,8 +1,12 @@
 //#region Imports
+const enemyMover = require('./assets/enemyMover');
+const keyHandler = require("./assets/keyHandler");
+const mH = require('./assets/moveHandlers');
 const pushCharacters = require('./assets/pushCharacters');
-const spawnEnemies = require('./assets/spawnEnemies');
+const spawnEnemies = require('./assets/spawnEnemies'); // TODO enemies properties
 const spawnObjectives = require('./assets/spawnObjectives');
 const spawnPlaces = require('./assets/spawnPlaces');
+const spawnTransports = require('./assets/spawnTransports');
 const spawnRegionsAustria = require('./data/regionsAustria');
 const regionsAustria = spawnRegionsAustria();
 const spawnSites = require('./data/sites');
@@ -10,7 +14,8 @@ const sites = spawnSites.getSites();
 const places = spawnSites.getPlaces();
 const nPlaces = places.length;
 const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasiera"];
-// TODO > Que empiece en ubicación usuario document.getElementById('hiddenHandlerPos').innerText.split(",")[0]/[1] + redis
+// TODO > Que empiece en ubicación usuario (locatePlayer in assets)
+// document.getElementById('hiddenHandlerPos').innerText.split(",")[0]/[1] + redis
 const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
 const createLargeIcon = require('./style/createLargeIcon');
 const createModalTriggerIcon = require('./style/createModalTriggerIcon');
@@ -27,8 +32,6 @@ const geoJsonStylers = require('./style/geoJsonStylers');
 // TODO > traders objectives
 // TODO > #FFnn partículas. desarrolar modal de batallas
 // TODO #CataclysmDDA
-const spawnTransports = require('./assets/spawnTransports');
-const mH = require('./assets/moveHandlers');
 // TODO #RimWorld
 // TODO #CotND
 
@@ -67,15 +70,15 @@ global.artisticMap = L.tileLayer(
 ).addTo(global.map);
 const baseLayers = createBaseLayerAndAddMore(global.artisticMap, L);
 L.control.scale({imperial:false}).addTo(global.map);
-/* TODO > Colores Tileset
-Blanco: detectarlo en tileset permite mover 1x;
-si no, reducir multiplicador de velocidad y:
- Menos opacidad (fantasmas) o
- Spawnear círculo azul ahí durante el refreshtime (GPS)
-Verde: multiplicador velocidad no tan bajo como blanco
-- No se puede entrar fuera del Blanco o verde excepto lugares*
-*Lugares -> puerta para permitir cambio color y salida del mismo
-@ tileset artístico zoom 15+*/
+// TODO > Colores Tileset
+// Blanco: mover 1x;
+// si no, reducir multiplicador de velocidad y:
+//  Menos opacidad (fantasmas) o
+//  Spawnear círculo azul ahí durante el refreshtime (GPS)
+// Verde: multiplicador velocidad no tan bajo como blanco
+// - No se puede entrar fuera del Blanco o verde excepto lugares*
+// * -> puerta para permitir cambio color y salida del mismo
+// @ tileset artístico zoom 15+*/
 //#endregion
 
 //#region Create Characters and sitesMarkersLayers
@@ -107,10 +110,7 @@ for (var i in sites) {
 	element = Math.floor(nPlaces*Math.random());
 	markers.push(
 		L.marker(
-			[
-				sites[i][1],
-				sites[i][2]
-			],
+			[ sites[i][1], sites[i][2] ],
 			{icon: global.placeIconsArray[element]}
 		).bindPopup(
 			'<b>' + places[element] + '</b>'
@@ -146,12 +146,9 @@ setInterval(function() {
 	timeLegend();
 	/*if (cryptOfTheNecromancerMode !== document.getElementById('hiddenHandlerModeCotND').innerText) {
 		cryptOfTheNecromancerMode = document.getElementById('hiddenHandlerModeCotND').innerText;
-		// if (typeof(cryptOfTheNecromancerMode) === 'string') {clearInterval(moveDaemonizer);}
-		if (cryptOfTheNecromancerMode === "true") {
-			refreshRate = 500; // w/ 120 BPM music
-		} else {
-			refreshRate = 33; // 30+ FPS
-		}
+		if (typeof(cryptOfTheNecromancerMode) === 'string') {clearInterval(moveDaemonizer);}
+		if (cryptOfTheNecromancerMode === "true") { refreshRate = 500; } // 120 BPM
+		else { refreshRate = 33; } // 30+ FPS
 		defaultMovementLength = refreshRate * velocity;
 	}*/
 }, 3000); // globalEventsDaemonizer*/
@@ -165,32 +162,9 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 		} else {
 			pause = (document.getElementById('hiddenHandlerKeys').innerText === 'p');
 		}
-		if (!pause) {
-			// pauseSound.start();
-			// pauseSound.stop();
-			// TODO enemies properties
-			// TODO only 1 healthHandler (not big in html!)
-			//mH.goToPlayer(global.bloodyeye,0.7*defaultMovementLength);
-			mH.goToPlayer(global.death,0.9*defaultMovementLength);
-			mH.goToPlayer(global.dracula,0.8*defaultMovementLength);
-			mH.goToPlayer(global.empire1,0.4*defaultMovementLength);
-			mH.goToPlayer(global.empire2,0.4*defaultMovementLength);
-			mH.goToPlayer(global.gollum,0.4*defaultMovementLength);
-			mH.goToPlayer(global.jabba,0.1*defaultMovementLength);
-			mH.goToPlayer(global.joker,Math.random()*1.2*defaultMovementLength);
-			mH.goToPlayer(global.mummy,0.7*defaultMovementLength);
-			//mH.goToPlayer(global.owl,0.5*defaultMovementLength);
-			mH.goToPlayer(global.phantom,0.7*defaultMovementLength);
-			//mH.goToPlayer(global.pirateskull,0.8*defaultMovementLength);
-			mH.goToPlayer(global.skeleton,0.7*defaultMovementLength);
-			mH.goToPlayer(global.spider,0.5*defaultMovementLength);
-			//mH.goToPlayer(global.undeadhand,0.6*defaultMovementLength);
-			//mH.goToPlayer(global.vampire,0.5*defaultMovementLength);
-		} else {
-			// pauseSound.start();
-		}
+		if (!pause) { enemyMover(defaultMovementLength); } // else { pauseSound.start(); }
 		if (document.getElementById('openModal').innerText === 'false') {
-			mH.movePlayer(global.player,defaultMovementLength);
+			keyHandler(defaultMovementLength);
 		}
 		if (global.layerToRemove != undefined) {
 			global.map.removeLayer( global[layerToRemove] );
@@ -203,10 +177,6 @@ keyListener(
 	refreshRate,defaultMovementLength
 	//*parseFloat(document.getElementById('health').innerHTML)
 ); // private params
-//#endregion
-
-//#region Keys interface
-// TODO keys menú
 //#endregion
 
 //#region Move handlers
@@ -234,7 +204,7 @@ function onMapClick(e) {
 			} else {
 				if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
 			}
-			mH.movePlayer(global.player, vel, forcedDirection);
+			mH.moveCharacter(global.player, vel, forcedDirection); //movePlayer
 			// alert(vars + "strings"); works
 			if (defaultMovementLength/50000 > Math.max(latDiffAbs, lngDiffAbs)) {
 				clearInterval(mouseClickDaemonizer);
@@ -329,58 +299,10 @@ function onEachFeature(feature, layer) {
 }
 //#endregion
 
-//#region geolocation control to follow the user's location
-/*
-const locateControl = L.control.locate({
-	position: "bottomright",
-	drawCircle: true,
-	follow: true,
-	setView: true,
-	keepCurrentZoomLevel: true,
-	markerStyle: {
-		weight: 1,
-		opacity: 0.8,
-		fillOpacity: 0.8
-	},
-	circleStyle: {
-		weight: 1,
-		clickable: false
-	},
-	icon: "fa fa-location-arrow",
-	metric: false,
-	strings: {
-		title: "My location",
-		popup: "You are within {distance} {unit} from this point",
-		outsideMapBoundsMsg: "You seem located outside the boundaries of the map"
-	},
-	locateOptions: {
-		maxZoom: 18,
-		watch: true,
-		enableHighAccuracy: true,
-		maximumAge: 10000,
-		timeout: 10000
-	}
-}).addTo(global.map);
-locateControl.start();*/
-//#endregion
-
 //#region Legend
 const legend = L.control({position: 'bottomright'});
 legend.onAdd = function() {
-	const div = L.DomUtil.create('div', 'info legend');/*,
-		grades = [1, 70, 80, 100, 130, 1000],
-		labels = ["personas/km²"];
-	let from, to;
-
-	for(let i = 0; i < grades.length; i++) {
-		from = grades[i];
-		to = grades[i + 1];
-		labels.push(
-			'<i style="background:' + geoJsonStylers.getColor(from + 1) + '">' +
-				'<font color=' + geoJsonStylers.getColor(from + 1) + '>__</font>' +
-			'</i> ' + from + (to ? '&ndash;' + to : '+'));
-	}*/
-	//div.innerHTML = [formatDate(gameTimeStamp)]; // labels.join('<br>');
+	const div = L.DomUtil.create('div', 'info legend');
 	return div;
 };
 function formatDate(date) {

@@ -1,8 +1,5 @@
-const cL = require('../data/charactersList');
-const objectiveStatsHandler = require('./objectiveStatsHandler');
 const enemyStatsHandler = require('./enemyStatsHandler');
 const loadEnemyBattle = require('./loadEnemyBattle');
-const objectives = cL.getObjectives();
 
 const lngCorrectionArr = [ // Corrección calculada de la distorsión angular de la longitud con respecto a su latiitud
     1.00858,    1.006355176,1.003926264,1.001293264,
@@ -29,10 +26,6 @@ const lngCorrectionArr = [ // Corrección calculada de la distorsión angular de
     0.110244016,0.0908758,  0.071303496,0.051527104,
     0.031546624,0.011362056,0
 ]; // De momento tomo la de 40º porque estamos en Madrid
-const nStepSounds = 2, nAttackSounds = 2;
-let stepSound, attackSound;
-
-let displayAttackPositionAlert = true;
 
 function targetFleeFromPlayer(target, velocity, player) {
 	const latDiff = player.getLatLng().lat - target.getLatLng().lat;
@@ -130,104 +123,6 @@ function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h
 	}
 }
 
-function movePlayer(character, velocity, forceDirection, movemap) { // 80km/h | 12x
-	character = ( character || global.player );
-	velocity = ( velocity || 1 );
-	velLng = velocity*lngCorrectionArr[Math.round(global.lat)];
-	movemap = (movemap || ['w', 'a', 's', 'd', ' ', 'e', 'y'] );
-	const direction = (forceDirection || document.getElementById('hiddenHandlerKeys').innerText);
-	// L.DomUtil.get(hiddenHandlerKeys).innerHTML);
-	let nearestObjetive, distancesArray, nearestObjetiveIndex, itemDescription, atk;
-	switch (direction) { //forceDirection
-	case movemap[0]:
-	case movemap[1]:
-	case movemap[2]:
-	case movemap[3]:
-		stepSound = new Audio("../sounds/step"+Math.ceil(nStepSounds*Math.random())+".wav");
-		stepSound.play();
-		moveCharacter(character, velocity, direction, movemap);
-		break;
-	case movemap[4]: // [ ]
-		//alert('Calculando distancia...');
-		distancesArray = [
-			fcalcDist(global.backpack),
-			fcalcDist(global.burger),
-			fcalcDist(global.banana),
-			fcalcDist(global.blackberry),
-			fcalcDist(global.boots),
-			fcalcDist(global.chicken),
-			fcalcDist(global.healthpotion),
-			fcalcDist(global.knife),
-			fcalcDist(global.pizza),
-			fcalcDist(global.rice),
-			fcalcDist(global.steelaxe),
-			fcalcDist(global.sword),
-			fcalcDist(global.water)
-		];
-		nearestObjetive = Math.min( // TODO Duplicated because of async
-			fcalcDist(global.backpack),
-			fcalcDist(global.burger),
-			fcalcDist(global.banana),
-			fcalcDist(global.blackberry),
-			fcalcDist(global.boots),
-			fcalcDist(global.chicken),
-			fcalcDist(global.healthpotion),
-			fcalcDist(global.knife),
-			fcalcDist(global.pizza),
-			fcalcDist(global.rice),
-			fcalcDist(global.steelaxe),
-			fcalcDist(global.sword),
-			fcalcDist(global.water)
-		);
-		nearestObjetiveIndex = distancesArray.indexOf(Math.min(...distancesArray));
-		if (nearestObjetive < 0.0002) {
-			itemDescription = objectiveStatsHandler(objectives[nearestObjetiveIndex]);
-			alert('¡Has conseguido ' + itemDescription + ', al recoger ' + objectives[nearestObjetiveIndex] +'!');
-			global.layerToRemove = objectives[nearestObjetiveIndex];
-			global.points += 1;			
-		} else {
-			alert(
-				'¡Tu objetivo más cercano aún está a ' + Math.round(5000*nearestObjetive) + ' pasos y\n' +
-				'es: ' + objectives[nearestObjetiveIndex] + '!'
-			);
-		}
-		if (displayAttackPositionAlert === false) { // TODO for all player attack position disruption cases
-			displayAttackPositionAlert = true;
-		}
-		break;
-	case movemap[5]: // 'E'
-		atk = parseFloat(document.getElementById('atk').innerHTML);
-		if (atk === 0) {
-			alert('¡Necesitas un arma para activar la posición de ataque!');		
-		} else {
-			if (document.getElementById('openModal').innerText === 'false') {
-				attackSound = new Audio("../sounds/attack"+Math.ceil(nAttackSounds*Math.random())+".wav");
-				attackSound.play();
-			}
-			if (displayAttackPositionAlert === true) {
-				alert('¡Activando posición de ataque!');
-				displayAttackPositionAlert = false;
-			}
-		}
-		break;
-	case movemap[6]: // 'Y'
-		var a = getColor(character.getLatLng());
-		if (a !== null) {
-			alert(a);
-			var hex = "#" + (0x1000000 + (a[0] << 16) + (a[1] << 8) + a[2]).toString(16).substr(1);
-			var tmpl = "<b style='background:@;color:black;'>@</b>";
-			if (Math.min(a[0], a[1], a[2]) < 0x40)
-			{
-				tmpl = tmpl.replace("black", "white");
-			}
-			/*map.attributionControl.setPrefix*/alert(tmpl.replace(/@/g, hex));
-		} else {
-			/*map.attributionControl.setPrefix*/alert("Color unavailable");
-		}
-		break;
-	}
-}
-
 /** @typedef L.marker @type {object} @type {L.marker} */
 /**@param {L.marker} m1 
  * @param {L.marker} m2 defaults player
@@ -257,7 +152,7 @@ function onMapClick(e) {
 				if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
 			}
 			if (document.getElementById('openModal').innerText === 'false') {
-				mH.movePlayer(global.player, vel, forcedDirection);
+				moveCharacter(global.player, vel, forcedDirection);
 			}
 			//alert(vars + "strings"); works
 			if (defaultMovementLength/50000 > Math.max(latDiffAbs, lngDiffAbs)) {
@@ -268,32 +163,13 @@ function onMapClick(e) {
 	}
 }
 
-function getColor(latlng) {
-	var size = global.artisticMap.getTileSize();
-	var point = global.artisticMap._map.project(latlng, global.artisticMap._tileZoom).floor();
-	var coords = point.unscaleBy(size).floor();
-	var offset = point.subtract(coords.scaleBy(size));
-	coords.z = global.artisticMap._tileZoom;
-	var tile = global.artisticMap._tiles[global.artisticMap._tileCoordsToKey(coords)];
-	if (!tile || !tile.loaded) { return null; }
-	try {
-		var colorSniffer = document.getElementById("testsCanvas");
-		var contextSniffer = colorSniffer.getContext('2d');
-		// tile.el.crossOrigin = "Anonymous";		
-		contextSniffer.drawImage(tile.el, -offset.x, -offset.y, size.x, size.y);
-		return alert(contextSniffer.getImageData(8, 8, 1, 1).data); // 0, 0, 1, 1
-	} catch (e) {
-		return e;
-	}
-}//*/
-
-function getRandomInt(max) {
-	return Math.floor(Math.random() * Math.floor(max));
+function getLngCorrectionArr() {
+	return lngCorrectionArr;
 }
 
 module.exports.targetFleeFromPlayer = targetFleeFromPlayer;
 module.exports.targetGoToPlayer = targetGoToPlayer;
 module.exports.goToPlayer = goToPlayer;
 module.exports.moveCharacter = moveCharacter;
-module.exports.movePlayer = movePlayer;
 module.exports.onMapClick = onMapClick;
+module.exports.getLngCorrectionArr = getLngCorrectionArr;
