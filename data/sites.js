@@ -47,12 +47,39 @@ var madridSites = [
     ["Orilla del Manzanares", 40.4547697, -3.7466842]
 ];
 
+var places = [
+	"bank",
+	"blockhouses",
+	"castle",
+	"chemistry",
+	"cornshop",
+	"gas_station",
+	"house",
+	"sign",
+	"store2",
+	"store3",
+	"tent",
+	"tree1",
+	"tree2",
+	"tree3",
+	"tree4",
+	"trees",
+	"vending"
+	//"light_house",
+	//"port",
+];
+var nPlaces = 17;
+
 function getAustrianCapitals() {
     return austrianCapitals;
 }
 function getInitialCoords() {
     return initialCoords;
 }
+function getPlaces() {
+    return places;
+}
+
 const sites = [], closeness = 20;
 function getSites() {
     for (let k = 0; k < 100; k++) {
@@ -69,4 +96,5 @@ function getSites() {
 
 module.exports.getAustrianCapitals  = getAustrianCapitals;
 module.exports.getInitialCoords     = getInitialCoords;
+module.exports.getPlaces            = getPlaces;
 module.exports.getSites             = getSites;

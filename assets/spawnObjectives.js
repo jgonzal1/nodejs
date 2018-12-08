@@ -3,6 +3,7 @@ const cercania = 80; // 600 para tests, 40 normal
 
 /** @typedef L.icon @type {object} @type {L.icon} */
 function spawnObjectives() {
+	// alert("Creación de objetivos en marcha");
 	const backpackIcon = L.icon(createIcon('style/objectives/backpack.png'));
 	const burgerIcon = L.icon(createIcon('style/objectives/burger.png'));
 	const bananaIcon = L.icon(createIcon('style/objectives/banana.png'));

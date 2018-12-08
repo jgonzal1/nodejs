@@ -2,10 +2,13 @@
 const pushCharacters = require('./assets/pushCharacters');
 const spawnEnemies = require('./assets/spawnEnemies');
 const spawnObjectives = require('./assets/spawnObjectives');
+const spawnPlaces = require('./assets/spawnPlaces');
 const spawnRegionsAustria = require('./data/regionsAustria');
 const regionsAustria = spawnRegionsAustria();
 const spawnSites = require('./data/sites');
 const sites = spawnSites.getSites();
+const places = spawnSites.getPlaces();
+const nPlaces = places.length;
 const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasiera"];
 // TODO > Que empiece en ubicación usuario document.getElementById('hiddenHandlerPos').innerText.split(",")[0]/[1] + redis
 const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
@@ -97,69 +100,7 @@ global.mCharacters = [];
 pushCharacters();
 const characters = L.layerGroup(global.mCharacters).addTo(global.map);
 
-// const lightHouseIcon = L.icon(createLargeIcon('style/places/light_house.png'));
-// const portIcon = L.icon(createLargeIcon('style/places/port.png'));
-const bankIcon = L.icon(createLargeIcon('style/places/bank.png'));
-const blockhousesIcon = L.icon(createLargeIcon('style/places/blockhouses.png'));
-const castleIcon = L.icon(createLargeIcon('style/places/castle.png'));
-const chemistryIcon = L.icon(createLargeIcon('style/places/chemistry.png'));
-const cornshopIcon = L.icon(createLargeIcon('style/places/cornshop.png'));
-const gasStationIcon = L.icon(createLargeIcon('style/places/gas_station.png'));
-const greenIcon = L.icon(createLargeIcon('style/places/house.png'));
-const houseIcon = L.icon(createLargeIcon('style/places/house.png'));
-const signIcon = L.icon(createLargeIcon('style/places/sign.png'));
-const store2Icon = L.icon(createLargeIcon('style/places/store2.png'));
-const store3Icon = L.icon(createLargeIcon('style/places/store3.png'));
-const tentIcon = L.icon(createLargeIcon('style/places/tent.png'));
-const tree1Icon = L.icon(createLargeIcon('style/places/tree1.png'));
-const tree2Icon = L.icon(createLargeIcon('style/places/tree2.png'));
-const tree3Icon = L.icon(createLargeIcon('style/places/tree3.png'));
-const tree4Icon = L.icon(createLargeIcon('style/places/tree4.png'));
-const treesIcon = L.icon(createLargeIcon('style/places/trees.png'));
-const vendingIcon = L.icon(createLargeIcon('style/places/vending.png'));
-const placeIconsArray = [
-	//lightHouseIcon,
-	//portIcon,
-	bankIcon,
-	blockhousesIcon,
-	castleIcon,
-	chemistryIcon,
-	cornshopIcon,
-	gasStationIcon,
-	houseIcon,
-	signIcon,
-	store2Icon,
-	store3Icon,
-	tentIcon,
-	tree1Icon,
-	tree2Icon,
-	tree3Icon,
-	tree4Icon,
-	treesIcon,
-	vendingIcon
-];
-var places = [
-	"bank",
-	"blockhouses",
-	"castle",
-	"chemistry",
-	"cornshop",
-	"gas_station",
-	"house",
-	"sign",
-	"store2",
-	"store3",
-	"tent",
-	"tree1",
-	"tree2",
-	"tree3",
-	"tree4",
-	"trees",
-	"vending"
-	//"light_house",
-	//"port",
-];
-var nPlaces = 17; //18
+spawnPlaces(L);
 var markers = [];
 let element;
 for (var i in sites) {
@@ -170,13 +111,19 @@ for (var i in sites) {
 				sites[i][1],
 				sites[i][2]
 			],
-			{icon: placeIconsArray[element]}
+			{icon: global.placeIconsArray[element]}
 		).bindPopup(
 			'<b>' + places[element] + '</b>'
 		)
 	);
-}
-const layers = L.layerGroup(markers).addTo(global.map);
+}//*/
+//spawnPlaces(sites, L, function(markers){
+	layers = L.layerGroup(
+		markers
+	).addTo(global.map);
+//});
+//}); //*/
+
 //#endregion
 
 //#region TODO >>>>> Daemonizers
