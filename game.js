@@ -58,8 +58,14 @@ var gameTimeStamp = new Date(1262304000000);
 // const map = L.map('map', { scrollWheelZoom: true } );
 global.map = L.map(
 	'map',
-	{ inertia: true, inertiaMaxSpeed: 1000, scrollWheelZoom: true, minZoom: 2, maxZoom: 17 }
-	);
+	{
+		inertia: true, inertiaMaxSpeed: 1000,
+		tilt: true, // moves map
+		// w/ mobiles giroscope(deviceOrientation)
+		scrollWheelZoom: true, wheelPxPerZoomLevel: 150,
+		minZoom: 2, maxZoom: 17
+	}
+);
 global.map.zoomControl.setPosition("bottomright");
 const lat  = initialCoords[0]; global.lat = lat; // y
 const long = initialCoords[1]; global.long = long; // x
@@ -135,9 +141,14 @@ if (navigator.userAgent.match('Android|X11') !== null){ // X11 es mi redmi note 
 	'¡Piensa poco a poco tu jugada!');//*/
 	global.map.on('click', onMapClick);//*
 } else {
-	//alert('Bienvenido a DarksGeim. Utiliza WASD para moverte,\n'+
-	//'P para pausar, la rueda del ratón para elk zoom,\n'+
-	//'y ←↑↓→ para mover el mapa');
+	global.map.on('zoomend', function() {
+		const currentZoom = global.map.getZoom();
+		if (currentZoom < 15) { // hide places
+			if (global.map.hasLayer(layers)) { global.map.removeLayer(layers); }
+		} else {
+			if (global.map.hasLayer(layers) === false) { global.map.addLayer(layers); }
+		}
+	});
 }//*/
 // let moveDaemonizer;
 setInterval(function() {
