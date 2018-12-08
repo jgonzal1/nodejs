@@ -71,10 +71,22 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown">
                     <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('info');"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp;Info <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" style="width:400px">
                         <div id="info" class="containerTab" style="display:none;background:#90cc90">
                                 <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
                                 <!--<input type="checkbox" id="checkInfoDiv" onclick="showInfo()">-->
+                                <h4 style="text-align:center;">¡Bienvenido a DarksGeim!</h4>
+                                <p style="text-align:center;">Controles básicos:<br>
+                                WASD para moverte,<br>
+                                BarraEspaciadora para recoger objetos<br>
+                                (o recibir una pista sobre el más cercano).<br>
+                                P para pausar,<br>
+                                
+                                Controles avanzados:<br>
+                                E para atacar (si tienes arma),<br>
+                                RuedaRatón para el zoom,<br>
+                                ←↑↓→ para mover el mapa,<br>
+                                e "Y" para testear la última funcionalidad.</p>
                                 <div id="infoDiv"></div>
                                 <!--<input type="checkbox" id="checkModeCotND" onclick="modeCotND()"> Modo 30FPS
                                 <p id="text" style="display:none">Checkbox is CHECKED!</p>-->
@@ -136,7 +148,7 @@
                     <li><a href="data/boroughs.geojson" download="boroughs.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Test1</a></li>
                     </ul>
                 </li>
-                <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;Recursos</a></li>
+                <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;Panel de Stats y Objetos</a></li>
             </ul>
             </div>
         </div>
@@ -148,7 +160,7 @@
           <div class="panel panel-default" id="features">
             <div class="panel-heading">
               <h3 class="panel-title">
-                Recursos
+                Stats y Objetos
                 <button type="button" class="btn btn-xs btn-default pull-right" id="sidebar-hide-btn">
                   <i class="fa fa-chevron-left"></i>
                 </button>
@@ -278,8 +290,8 @@
                 </div>
               </div>
               <div id="disclaimer" class="tab-pane fade text-danger">
-                <p>The data provided on this site is for informational and planning purposes only.</p>
-                <p>Absolutely no accuracy or completeness guarantee is implied or intended. All information on this map is subject to such variations and corrections as might result from a complete title search and/or accurate field survey.</p>
+                <p>The data provided on this site is for informational and planning purposes only.<br>
+                Absolutely no accuracy or completeness guarantee is implied or intended. All information on this map is subject to such variations and corrections as might result from a complete title search and/or accurate field survey.</p>
               </div>
               <div class="tab-pane fade" id="contact">
                 <form id="contact-form">
@@ -392,7 +404,7 @@
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
-    </div><!-- /.modal batallas-->
+    </div><!-- /.modal comercio-->
     <div class="modal fade" id="tradeModal" tabindex="-1" role="dialog">
       <span id="openModal" style="display: none">false</span>
       <div class="modal-dialog">
@@ -409,7 +421,7 @@
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
-    </div><!-- /.modal comercio-->
+    </div><!-- /.modal login-->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
