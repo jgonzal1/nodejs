@@ -31,7 +31,7 @@ $("#full-extent-btn").click(function() {
 });
 
 $("#legend-btn").click(function() {
-  $("#legendModal").modal("show");
+  $("#missionsModal").modal("show");
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });

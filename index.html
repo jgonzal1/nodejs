@@ -48,7 +48,7 @@
   </head>
 
   <body>
-    <div class="row" width="100%"><!-- Instances columns -->
+    <!-- Instances columns --><div class="row" width="100%">
         <div class="column" style="color:#444444;background:#90cc90;">
             <div id="logs"></div>
         </div>
@@ -58,122 +58,115 @@
             <div id="hiddenHandlerPos" style="display: none"></div>
         </div>         
     </div>
-
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation"> <!-- Top Menu -->
-        <div class="container-fluid">
-            <div class="navbar-header">
-            <div class="navbar-icon-container">
-                <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
-                <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a>
-            </div>
-            <a class="navbar-brand" href="#">Darks Game</a>
-            </div>
-            <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('info');"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp;Info <b class="caret"></b></a>
-                    <ul class="dropdown-menu" style="width:400px">
-                        <div id="info" class="containerTab" style="display:none;background:#90cc90">
-                                <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-                                <!--<input type="checkbox" id="checkInfoDiv" onclick="showInfo()">-->
-                                <h4 style="text-align:center;">¡Bienvenido a DarksGeim!</h4>
-                                <p style="text-align:center;">Controles básicos:<br>
-                                WASD para moverte,<br>
-                                BarraEspaciadora para recoger objetos<br>
-                                (o recibir una pista sobre el más cercano).<br>
-                                P para pausar,<br>
-                                
-                                Controles avanzados:<br>
-                                E para atacar (si tienes arma),<br>
-                                RuedaRatón para el zoom,<br>
-                                ←↑↓→ para mover el mapa,<br>
-                                e "Y" para testear la última funcionalidad.</p>
-                                <div id="infoDiv"></div>
-                                <!--<input type="checkbox" id="checkModeCotND" onclick="modeCotND()"> Modo 30FPS
-                                <p id="text" style="display:none">Checkbox is CHECKED!</p>-->
-                        </div> 
-                    </ul>
-                
-                <li class="dropdown">
-                    <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('music');"><i class="fa fa-music white"></i>&nbsp;&nbsp;Música <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                            <div id="music" class="containerTab" style="display:none;background:#cfc999">
-                                <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-                                <div class="row">
-                                    <div class="column" onclick="openTab('music');">
-                                        <p>Música predefinida</p>
-                                        <!-- 120BPM -->
-                                        <iframe
-                                        width="560" height="315"
-                                        src="https://www.youtube.com/embed/90ELxgNoxTs"
-                                        frameborder="0" allow="autoplay;encrypted-media" allowfullscreen>
-                                        <!--
-                                          https://youtu.be/FYH8DsU2WCk?t=21
-                                          videoseries?list=PLHeTSqyMs2Xbsn_LFYNFUZNDQf3ZalUpz&autoplay=1
-                                          allow="autoplay;   embed/0IT9A9GvjWo"
-                                        -->
-                                        </iframe>
-                                        <!-- Lista Lo-Fi
-                                        <iframe
-                                            src="https://open.spotify.com/embed/user/foilism/playlist/0xzpsVjnE6OSjdBC4iIzqe"
-                                            width="auto" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media">
-                                        </iframe>
-                                        -->
-                                        <!-- Lista 8Bit
-                                        <iframe
-                                            src="https://www.youtube.com/embed/LQmi1GaQH2o"
-                                            width="auto" height="200" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-                                        </iframe> -->                   </div>
-                                    <div class="column">
-                                        <p>Género:</p>(aleatorio, 120 BPM) <!-- chiptune, lo-fi, instrumental-->
-                                    </div>
-                                    <div class="column">
-                                        <p>Artistas:</p>(aleatorio)
-                                    </div>
-                                </div>
-                            </div>
-                    </ul>
-                <li class="dropdown">
-                  <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-cog"></i>&nbsp;&nbsp;Opciones <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                      <!-- anchor para brevario barcos -->
-                      <!-- atlas clipboard-list -->
-                      <!-- atom react rocket para investigar -->
-                      <!-- bolt para energia -->
-                      <!-- book-dead graduation-cap para habs -->
-                      <!-- flask para hechizos -->
-                      <!-- gabel para diplomacia -->
-                      <!-- estado:
-                        dizzy angry tired sad-cry sad-tear frown frown-open
-                        meh
-                        smile smile-beam grin grin-beam kiss kiss-beam laugh laugh-beam -->
-                      <!-- hammer para construccion -->
-                      <!-- heart stethoscope para salud -->
-                      <!-- key para keys -->
-                      <!-- user-cog para settings -->
-                      <!-- utensils para comer -->                    
-                      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn">
-                        <i class="fa fa-home"></i>&nbsp;&nbsp;Centrar en el spawn</a></li>
-                      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="legend-btn">
-                        <i class="fa fa-clipboard-list"></i>&nbsp;&nbsp;Mostrar modal (indev)</a></li>
-                      <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="login-btn">
-                        <i class="fa fa-user"></i>&nbsp;&nbsp;Login (indev)</a></li><!--fa fa-user-->
-                      <li><a href="data/boroughs.geojson" download="boroughs.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Test1</a></li>
-                      <!--<li class="divider hidden-xs"></li>-->
-                  </ul>
-              
-                </li>
-                <li class="dropdown">
-                    <a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="legend-btn">
-                        <i class="fa fa-globe white"></i>&nbsp;&nbsp;Misiones</a>
-                </li>                
-                <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;Toggle panel Stats y Objetos</a></li>
-            </ul>
-            </div>
+    <!-- Top Menu --><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header"> <!-- Title & Hidden settings -->
+          <a class="navbar-brand" href="#">Darks Game</a>
+          <div class="navbar-icon-container">
+              <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
+              <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a>
+          </div>          
         </div>
-    </div>
+        <div class="navbar-collapse collapse"> <!-- Horizontal Menu -->
+          <ul class="nav navbar-nav">
+              <li class="dropdown"> <!-- Info -->
+                  <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('info');"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp; <b class="caret"></b></a>
+                  <ul class="dropdown-menu" style="width:400px">
+                      <div id="info" class="containerTab" style="display:none;background:#90cc90">
+                              <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+                              <!--<input type="checkbox" id="checkInfoDiv" onclick="showInfo()">-->
+                              <h4 style="text-align:center;"><b>Ayuda</b><br><br>
+                                ¡Bienvenido a DarksGeim!</h4>
+                              <p style="text-align:center;">Controles básicos:<br>
+                              WASD para moverte,<br>
+                              BarraEspaciadora para recoger objetos<br>
+                              (o recibir una pista sobre el más cercano).<br>
+                              P para pausar,<br>
+                              
+                              Controles avanzados:<br>
+                              E para atacar (si tienes arma),<br>
+                              RuedaRatón para el zoom,<br>
+                              ←↑↓→ para mover el mapa,<br>
+                              e "Y" para testear la última funcionalidad.</p>
+                              <div id="infoDiv"></div>
+                              <!--<input type="checkbox" id="checkModeCotND" onclick="modeCotND()"> Modo 30FPS
+                              <p id="text" style="display:none">Checkbox is CHECKED!</p>-->
+                      </div> 
+                  </ul>
+              </li>
+              <li class="dropdown"> <!-- Música -->
+                  <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('music');"><i class="fa fa-music white"></i>&nbsp;&nbsp; <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <div id="music" class="containerTab" style="display:none;background:#cfc999">
+                          <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+                          <div class="row">
+                              <div class="column" onclick="openTab('music');">
+                                  <p>Música predefinida</p>
+                                  <!-- 120BPM -->
+                                  <iframe
+                                  width="560" height="315"
+                                  src="https://www.youtube.com/embed/90ELxgNoxTs"
+                                  frameborder="0" allow="autoplay;encrypted-media" allowfullscreen>
+                                  <!--
+                                    https://youtu.be/FYH8DsU2WCk?t=21
+                                    videoseries?list=PLHeTSqyMs2Xbsn_LFYNFUZNDQf3ZalUpz&autoplay=1
+                                    allow="autoplay;   embed/0IT9A9GvjWo"
+                                  -->
+                                  </iframe>
+                                  <!-- Lista Lo-Fi
+                                  <iframe
+                                      src="https://open.spotify.com/embed/user/foilism/playlist/0xzpsVjnE6OSjdBC4iIzqe"
+                                      width="auto" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media">
+                                  </iframe>
+                                  -->
+                                  <!-- Lista 8Bit
+                                  <iframe
+                                      src="https://www.youtube.com/embed/LQmi1GaQH2o"
+                                      width="auto" height="200" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                                  </iframe> -->                   </div>
+                              <div class="column"> <p>Género:</p>(aleatorio, 120 BPM) </div>
+                              <!-- chiptune, lo-fi, instrumental-->
+                              <div class="column"> <p>Artistas:</p>(aleatorio) </div>
+                          </div>
+                      </div>
+                  </ul>
+              </li>
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn">
+                  <i class="fas fa-hammer"></i>&nbsp;&nbsp; </a></li><!-- Construcciones (indev)-->
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn">
+                  <i class="fas fa-handshake"></i>&nbsp;&nbsp;</a></li><!-- Diplomacia (indev) -->
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn">
+                  <i class="fas fa-anchor"></i>&nbsp;&nbsp;</a></li><!-- Flota (indev) -->
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn">
+                  <i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;</a></li><!-- Habilidades (indev) book-dead-->
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn">
+                  <i class="fab fa-react"></i>&nbsp;&nbsp;</a></li><!--Investigaciones (indev) atom rocket-->
+              <!-- Misiones -->
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="legend-btn">
+                  <i class="fa fa-globe white"></i>&nbsp;&nbsp;Misiones</a><!-- fa-clipboard-list atlas -->
+              </li>
+              <li class="dropdown"> <!-- Opciones -->
+                <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-cog"></i>&nbsp;&nbsp;Opciones <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn">
+                        <i class="fa fa-home"></i>&nbsp;&nbsp;GoTo Spawn</a></li>
+                    <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn">
+                        <i class="fas fa-flask"></i>&nbsp;&nbsp;Hechizos (indev)</a></li>
+                    <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn">
+                        <i class="fas fa-key"></i>&nbsp;&nbsp;Llaves (indev)</a></li>
+                    <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="login-btn">
+                      <i class="fa fa-user"></i>&nbsp;&nbsp;Login (indev)</a></li><!--fa fa-user-->
 
-    <div id="container"> <!-- Left Menu -->
+                    <li><a href="data/boroughs.geojson" download="boroughs.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Save copy of the current game (indev)</a></li>
+                    <!--<li class="divider hidden-xs"></li>-->
+                </ul>
+              </li>
+              <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;Toggle panel Stats y Objetos</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Left Menu & Map --><div id="container">
       <div id="sidebar">
         <div class="sidebar-wrapper">
           <div class="panel panel-default" id="features">
@@ -196,7 +189,15 @@
                   </button>
                 </div>
               </div>
-            </div>-->
+            </div>
+            bolt para energia
+            estado:
+              dizzy angry tired sad-cry sad-tear frown frown-open
+              meh
+              smile smile-beam grin grin-beam kiss kiss-beam laugh laugh-beam
+            heart stethoscope para salud
+            utensils para comer 
+          -->
             <div class="sidebar-table">
               <table class="table table-hover" id="feature-list">
                 <thead><!--<class="hidden">-->
@@ -275,80 +276,7 @@
             <ul class="nav nav-tabs nav-justified" id="aboutTabs">
               <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;About the project</a></li>
               <li><a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i>&nbsp;Contact us</a></li>
-              <li><a href="#disclaimer" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>&nbsp;Disclaimer</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i>&nbsp;Metadata <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#boroughs-tab" data-toggle="tab">Boroughs</a></li>
-                  <li><a href="#subway-lines-tab" data-toggle="tab">Subway Lines</a></li>
-                  <li><a href="#theaters-tab" data-toggle="tab">Theaters</a></li>
-                  <li><a href="#museums-tab" data-toggle="tab">Museums</a></li>
-                </ul>
-              </li>
             </ul>
-            <div class="tab-content" id="aboutTabsContent">
-              <div class="tab-pane fade active in" id="about">
-                <p>A simple, responsive template for building web mapping applications with <a href="http://getbootstrap.com/">Bootstrap 3</a>, <a href="http://leafletjs.com/" target="_blank">Leaflet</a>, and <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a>. Open source, MIT licensed, and available on <a href="https://github.com/bmcbride/bootleaf" target="_blank">GitHub</a>.</p>
-                <div class="panel panel-primary">
-                  <div class="panel-heading">Features</div>
-                  <ul class="list-group">
-                    <li class="list-group-item">Fullscreen mobile-friendly map template with responsive navbar and modal placeholders</li>
-                    <li class="list-group-item">jQuery loading of external GeoJSON files</li>
-                    <li class="list-group-item">Logical multiple layer marker clustering via the <a href="https://github.com/Leaflet/Leaflet.markercluster" target="_blank">leaflet marker cluster plugin</a></li>
-                    <li class="list-group-item">Elegant client-side multi-layer feature search with autocomplete using <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a></li>
-                    <li class="list-group-item">Responsive sidebar feature list synced with map bounds, which includes sorting and filtering via <a href="http://listjs.com/" target="_blank">list.js</a></li>
-                    <li class="list-group-item">Marker icons included in grouped layer control via the <a href="https://github.com/ismyrnow/Leaflet.groupedlayercontrol" target="_blank">grouped layer control plugin</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div id="disclaimer" class="tab-pane fade text-danger">
-                <p>The data provided on this site is for informational and planning purposes only.<br>
-                Absolutely no accuracy or completeness guarantee is implied or intended. All information on this map is subject to such variations and corrections as might result from a complete title search and/or accurate field survey.</p>
-              </div>
-              <div class="tab-pane fade" id="contact">
-                <form id="contact-form">
-                  <div class="well well-sm">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label for="first-name">First Name:</label>
-                          <input type="text" class="form-control" id="first-name">
-                        </div>
-                        <div class="form-group">
-                          <label for="last-name">Last Name:</label>
-                          <input type="text" class="form-control" id="last-email">
-                        </div>
-                        <div class="form-group">
-                          <label for="email">Email:</label>
-                          <input type="text" class="form-control" id="email">
-                        </div>
-                      </div>
-                      <div class="col-md-8">
-                        <label for="message">Message:</label>
-                        <textarea class="form-control" rows="8" id="message"></textarea>
-                      </div>
-                      <div class="col-md-12">
-                        <p>
-                          <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Submit</button>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="tab-pane fade" id="boroughs-tab">
-                <p>Borough data courtesy of <a href="http://www.nyc.gov/html/dcp/pdf/bytes/nybbwi_metadata.pdf" target="_blank">New York City Department of City Planning</a></p>
-              </div>
-              <div class="tab-pane fade" id="subway-lines-tab">
-                <p><a href="http://spatialityblog.com/2010/07/08/mta-gis-data-update/#datalinks" target="_blank">MTA Subway data</a> courtesy of the <a href="http://www.urbanresearch.org/about/cur-components/cuny-mapping-service" target="_blank">CUNY Mapping Service at the Center for Urban Research</a></p>
-              </div>
-              <div class="tab-pane fade" id="theaters-tab">
-                <p>Theater data courtesy of <a href="https://data.cityofnewyork.us/Recreation/Theaters/kdu2-865w" target="_blank">NYC Department of Information & Telecommunications (DoITT)</a></p>
-              </div>
-              <div class="tab-pane fade" id="museums-tab">
-                <p>Museum data courtesy of <a href="https://data.cityofnewyork.us/Recreation/Museums-and-Galleries/sat5-adpb" target="_blank">NYC Department of Information & Telecommunications (DoITT)</a></p>
-              </div>
-            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -356,7 +284,7 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal misiones-->
-    <div class="modal fade" id="legendModal" tabindex="-1" role="dialog">
+    <div class="modal fade" id="missionsModal" tabindex="-1" role="dialog">
       <span id="openModal" style="display: none">false</span>
       <div class="modal-dialog">
         <div class="modal-content">
@@ -461,7 +389,7 @@
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+    </div><!--
     <div class="modal fade" id="featureModal" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -473,9 +401,9 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+        </div>
+      </div>
+    </div>
     <div class="modal fade" id="attributionModal" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -488,12 +416,12 @@
           <div class="modal-body">
             <div id="attribution"></div>
           </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+        </div>
+      </div>
+    </div>-->
 
+    <!-- Scripts -->
     <script src="bundle.js"></script>
-
     <script>
     /**
      * @param {Number} hp
@@ -602,7 +530,6 @@
       }
     }
     </script>
-
     <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
     <script src="assets/js/bootstrapFunctions.js"></script>
   </body>
