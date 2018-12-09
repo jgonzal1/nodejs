@@ -47,18 +47,7 @@
     <!--<script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
     <script src="assets/js/app.js"></script>-->
   </head>
-
   <body>
-    <!-- Instances columns --><div class="row" width="100%">
-        <div class="column" style="color:#444444;background:#90cc90;">
-            <div id="logs"></div>
-        </div>
-        <div class="column" style="color:#dddddd">
-            <div id="hiddenHandlerKeys" style="display: none"></div>
-            <div id="hiddenHandlerModeCotND" style="display: none"></div>
-            <div id="hiddenHandlerPos" style="display: none"></div>
-        </div>         
-    </div>
     <!-- Top Menu --><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header"> <!-- Title & Hidden settings -->
@@ -178,100 +167,79 @@
       </div>
     </div>
     <!-- Left Menu & Map --><div id="container">
-      <div id="sidebar">
-        <div class="sidebar-wrapper">
-          <div class="panel panel-default" id="features">
-            <div class="panel-heading">
-              <h3 class="panel-title">
-                <i class="far address-card"></i> Stats y Objetos
-                <button type="button" class="btn btn-xs btn-default pull-right" id="sidebar-hide-btn">
-                  <i class="fa fa-chevron-left"></i>
-                </button>
-              </h3>
+      <div id="sidebar"><div class="sidebar-wrapper"><div class="panel panel-default" id="features">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <i class="far address-card"></i> Stats y Objetos
+            <button type="button" class="btn btn-xs btn-default pull-right" id="sidebar-hide-btn">
+              <i class="fa fa-chevron-left"></i>
+            </button>
+          </h3>
+        </div>
+        <!--<div class="panel-body">
+          <div class="row">
+            <div class="col-xs-8 col-md-8">
+              <input type="text" class="form-control search" placeholder="Filter" />
             </div>
-            <!--<div class="panel-body">
-              <div class="row">
-                <div class="col-xs-8 col-md-8">
-                  <input type="text" class="form-control search" placeholder="Filter" />
-                </div>
-                <div class="col-xs-4 col-md-4">
-                  <button type="button" class="btn btn-primary pull-right sort" data-sort="feature-name" id="sort-btn">
-                    <i class="fa fa-sort"></i>&nbsp;&nbsp;Sort
-                  </button>
-                </div>
-              </div>
-            </div>
-            bolt para energia
-            estado:
-              dizzy angry tired sad-cry sad-tear frown frown-open
-              meh
-              smile smile-beam grin grin-beam kiss kiss-beam laugh laugh-beam
-            heart stethoscope para salud
-            utensils para comer 
-          -->
-            <div class="sidebar-table">
-              <table class="table table-hover" id="feature-list">
-                <thead><!--<class="hidden">-->
-                  <tr>
-                    <th>Icon</th>
-                    <th>Resource</th>
-                    <th>Quantity</th>
-                  </tr>
-                </thead>
-                <tbody class="list">
-                  <tr>
-                    <img id="fh" src="style/interface/full-health.png" style="display:none;">
-                    <img id="lh" src="style/interface/lost-health.png" style="display:none;">
-                  </tr>
-                  <tr>
-                    <td><img src="style/interface/health.png" style="width:16px;height:16px;"></td>
-                    <td>Vida</td>
-                    <td align="right"><span id="health" style="display: none">3</span>
-                      <canvas id="healthCanvas" width="80" height="16" style="border:1px solid #d3d3d3;">
-                      Your browser does not support the HTML5 canvas tag.</canvas>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><img src="style/interface/attack.png" style="width:16px;height:16px;"></td>
-                    <td>Ataque</td>
-                    <td align="right"><span id="atk">0</span> <img src="style/interface/atk-point.png"></td>
-                  </tr>
-                  <tr>
-                    <td><img src="style/interface/defense.png" style="width:16px;height:16px;"></td>
-                    <td>Defensa</td>
-                    <td align="right"><span id="def">0</span> <img src="style/interface/def-point.gif"></td>
-                  </tr>
-                  <tr>
-                    <td><img src="style/interface/run.png" style="width:16px;height:16px;"></td>
-                    <td>Velocidad (indev)</td>
-                    <td align="right"><span id="vel">1</span> <img src="style/interface/velocity.png"></td>
-                  </tr>
-                  <tr>
-                    <td><img src="style/interface/batcoin.png" style="width:16px;height:16px;"></td>
-                    <td>BatCoins</td>
-                    <td align="right"><span id="btc">0</span> <img src="style/interface/coin-point.png"></td>
-                  </tr>
-                  <tr id="backpack" style="display:none;">
-                    <td><img src="style/interface/equipment.png" style="width:32px;height:32px;"></td>
-                    <td>Mochila</td>
-                    <td align="right"><span id="room">0</span>/8L <img src="style/interface/space.gif"></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td>
-                      <canvas id="testsCanvas" width="16" height="16" style="border:1px solid #d3d3d3;">
-                        Your browser does not support the HTML5 canvas tag.
-                      </canvas>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <!--Enfrentándote a: <span id="currentBattle"></span>style="display:none;"-->
-                </tbody>
-              </table>
+            <div class="col-xs-4 col-md-4">
+              <button type="button" class="btn btn-primary pull-right sort" data-sort="feature-name" id="sort-btn">
+                <i class="fa fa-sort"></i>&nbsp;&nbsp;Sort
+              </button>
             </div>
           </div>
         </div>
-      </div>
+        bolt para energia
+        estado:
+          dizzy angry tired sad-cry sad-tear frown frown-open
+          meh
+          smile smile-beam grin grin-beam kiss kiss-beam laugh laugh-beam
+        heart stethoscope para salud
+        utensils para comer 
+      -->
+        <div class="sidebar-table"><table class="table table-hover" id="feature-list">
+          <thead><tr><th>Icon</th><th>Resource</th><th>Quantity</th></tr></thead>
+          <tbody class="list">
+            <tr><!--Hidden health images-->
+              <img id="fh" src="style/interface/full-health.png" style="display:none;">
+              <img id="lh" src="style/interface/lost-health.png" style="display:none;">
+            </tr><tr><!-- Vida -->
+              <td><img src="style/interface/health.png" style="width:16px;height:16px;"></td>
+              <td>Vida</td>
+              <td align="right"><span id="health" style="display: none">3</span>
+                <canvas id="healthCanvas" width="80" height="16" style="border:1px solid #d3d3d3;">
+                Your browser does not support the HTML5 canvas tag.</canvas>
+              </td>
+            </tr><tr><!-- Ataque -->
+              <td><img src="style/interface/attack.png" style="width:16px;height:16px;"></td>
+              <td>Ataque</td>
+              <td align="right"><span id="atk">0</span> <img src="style/interface/atk-point.png"></td>
+            </tr><tr><!-- Defensa -->
+              <td><img src="style/interface/defense.png" style="width:16px;height:16px;"></td>
+              <td>Defensa</td>
+              <td align="right"><span id="def">0</span> <img src="style/interface/def-point.gif"></td>
+            </tr><tr><!-- Velocidad -->
+              <td><img src="style/interface/run.png" style="width:16px;height:16px;"></td>
+              <td>Velocidad (indev)</td>
+              <td align="right"><span id="vel">1</span> <img src="style/interface/velocity.png"></td>
+            </tr><tr><!-- BatCoins -->
+              <td><img src="style/interface/batcoin.png" style="width:16px;height:16px;"></td>
+              <td>BatCoins</td>
+              <td align="right"><span id="btc">0</span> <img src="style/interface/coin-point.png"></td>
+            </tr><tr id="backpack" style="display:none;">
+              <td><img src="style/interface/equipment.png" style="width:32px;height:32px;"></td>
+              <td>Mochila</td>
+              <td align="right"><span id="room">0</span>/8L <img src="style/interface/space.gif"></td>
+            </tr><tr><!-- Tests -->
+              <td><canvas id="floorColorSniffCanvas" width="16" height="16"></canvas></td>
+              <td><div id="logs"></div></td>
+              <td><div id="hiddenHandlerKeys"></div>
+                  <div id="hiddenHandlerModeCotND" style="display: none"></div>
+                  <div id="hiddenHandlerPos" style="display: none"></div></td>
+            </tr>
+            <!--Enfrentándote a: <span id="currentBattle"></span>style="display:none;"-->
+          </tbody>
+        </table></div>
+      </div></div></div>
       <div id="map"></div>
     </div>
 
@@ -306,8 +274,9 @@
           </ul>
         </nav>
         <button type="button" aria-label="Close Navigation" class="close-dialog"> <i class="fa fa-times"></i> </button>
-      </div>--<div class="dialog-overlay" tabindex="-1"></div><!- /.modal misiones v2-->
-      <div class="modal fade" id="missionsModal" tabindex="-1" role="dialog">
+      </div>--</div><!- /.modal misiones v2
+    <div class="missionOptionOverlay" tabindex="-1">-->
+    <div class="modal fade" id="missionsModal" tabindex="-1" role="dialog">
       <span id="openModal" style="display: none">false</span>
       <div class="modal-dialog">
         <div class="modal-content">
@@ -319,12 +288,12 @@
             <table class="table">
               <tbody>  
                 <tr>
-                  <td><button type="button" class="btn btn-info" style="width: 100%" onclick="loadTile()">Blue</button></td>
-                  <td><button type="button" class="btn btn-success" style="width: 100%">Green</button></td>
+                  <td class="missionOption"><button type="button" class="btn btn-info" style="width: 100%" onclick="loadTile()">Blue</button></td>
+                  <td class="missionOption"><button type="button" class="btn btn-success" style="width: 100%">Green</button></td>
                 </tr>
                 <tr>
-                  <td><button type="button" class="btn btn-warning" style="width: 100%">Yellow</button></td>
-                  <td><button type="button" class="btn btn-danger" style="width: 100%">Red</button></td>
+                  <td class="missionOption"><button type="button" class="btn btn-warning" style="width: 100%">Yellow</button></td>
+                  <td class="missionOption"><button type="button" class="btn btn-danger" style="width: 100%">Red</button></td>
                 </tr>
               </tbody>
             </table>
@@ -456,7 +425,7 @@
 
     <!-- Scripts -->
     <script src="bundle.js"></script>
-   <!--<script src="dialog.js"></script>-->
+    <script src="./style/dialog.js"></script>
     <script>
     /**
      * @param {Number} hp
@@ -565,8 +534,8 @@
       }
     }
 
-        var navDialogEl = document.querySelector('.dialog');
-		var dialogOverlay = document.querySelector('.dialog-overlay');
+    // var navDialogEl = document.querySelector('.missionOption');
+		// var dialogOverlay = document.querySelector('.missionOptionOverlay');
 		var myDialog = new Dialog(navDialogEl, dialogOverlay);
 		myDialog.addEventListeners('.open-dialog', '.close-dialog');
     </script>

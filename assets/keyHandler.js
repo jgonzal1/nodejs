@@ -114,7 +114,7 @@ function getColor(latlng) {
 	var tile = global.artisticMap._tiles[global.artisticMap._tileCoordsToKey(coords)];
 	if (!tile || !tile.loaded) { return null; }
 	try {
-		var colorSniffer = document.getElementById("testsCanvas");
+		var colorSniffer = document.getElementById("floorColorSniffCanvas");
 		var contextSniffer = colorSniffer.getContext('2d');
 		// tile.el.crossOrigin = "Anonymous";		
 		contextSniffer.drawImage(tile.el, -offset.x, -offset.y, size.x, size.y);
