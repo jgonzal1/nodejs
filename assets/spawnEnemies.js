@@ -1,5 +1,5 @@
 const createIcon = require('../style/createIcon');
-const createModalTriggerIcon = require('../style/createModalTriggerIcon');
+const createBattlerIcon = require('../style/createBattlerIcon');
 const cercania = 70;
 
 /**
@@ -25,19 +25,19 @@ function spawnEnemy(name, enemyIcon) {
 /** @typedef L.icon @type {object} @type {L.icon} */
 function spawnEnemies() {
 	const bloodyeyeIcon		= L.icon(createIcon('sprites/map-enemies/bloodyeye.png'));
-	const deathIcon			= L.icon(createModalTriggerIcon('sprites/map-enemies/death.png'));
-	const draculaIcon		= L.icon(createModalTriggerIcon('sprites/map-enemies/dracula.png'));
-	const empire1Icon		= L.icon(createModalTriggerIcon('sprites/map-enemies/empire1.png'));
-	const empire2Icon		= L.icon(createModalTriggerIcon('sprites/map-enemies/empire2.png'));
-	const gollumIcon		= L.icon(createModalTriggerIcon('sprites/map-enemies/gollum.png'));
-	const jabbaIcon			= L.icon(createModalTriggerIcon('sprites/map-enemies/jabba.png'));
-	const jokerIcon			= L.icon(createModalTriggerIcon('sprites/map-enemies/joker.png'));
-	const mummyIcon			= L.icon(createModalTriggerIcon('sprites/map-enemies/mummy.png'));
+	const deathIcon			= L.icon(createBattlerIcon('sprites/map-enemies/death.png'));
+	const draculaIcon		= L.icon(createBattlerIcon('sprites/map-enemies/dracula.png'));
+	const empire1Icon		= L.icon(createBattlerIcon('sprites/map-enemies/empire1.png'));
+	const empire2Icon		= L.icon(createBattlerIcon('sprites/map-enemies/empire2.png'));
+	const gollumIcon		= L.icon(createBattlerIcon('sprites/map-enemies/gollum.png'));
+	const jabbaIcon			= L.icon(createBattlerIcon('sprites/map-enemies/jabba.png'));
+	const jokerIcon			= L.icon(createBattlerIcon('sprites/map-enemies/joker.png'));
+	const mummyIcon			= L.icon(createBattlerIcon('sprites/map-enemies/mummy.png'));
 	const owlIcon			= L.icon(createIcon('sprites/map-enemies/owl.png'));
-	const phantomIcon		= L.icon(createModalTriggerIcon('sprites/map-enemies/phantom.png'));
+	const phantomIcon		= L.icon(createBattlerIcon('sprites/map-enemies/phantom.png'));
 	const pirateskullIcon	= L.icon(createIcon('sprites/map-enemies/pirateskull.png'));
-	const skeletonIcon		= L.icon(createModalTriggerIcon('sprites/map-enemies/skeleton.png'));
-	const spiderIcon		= L.icon(createModalTriggerIcon('sprites/map-enemies/spider.png'));
+	const skeletonIcon		= L.icon(createBattlerIcon('sprites/map-enemies/skeleton.png'));
+	const spiderIcon		= L.icon(createBattlerIcon('sprites/map-enemies/spider.png'));
 	const undeadhandIcon	= L.icon(createIcon('sprites/map-enemies/undeadhand.png'));
 	const vampireIcon		= L.icon(createIcon('sprites/map-enemies/vampire.png'));
 

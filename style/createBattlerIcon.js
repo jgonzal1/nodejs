@@ -1,4 +1,4 @@
-function createModalTriggerIcon(path) {
+function createBattlerIcon(path) {
     return {
         iconUrl: path,
         shadowUrl: '/style/battle.png',
@@ -10,4 +10,4 @@ function createModalTriggerIcon(path) {
     };
 }
 
-module.exports = createModalTriggerIcon;
+module.exports = createBattlerIcon;
