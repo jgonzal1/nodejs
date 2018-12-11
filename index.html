@@ -48,6 +48,16 @@
     <script src="assets/js/app.js"></script>-->
   </head>
   <body>
+    <!-- Instances columns --><div class="row" width="100%">
+        <div class="column" style="color:#444444;background:#90cc90;">
+            <div id="logs"></div>
+        </div>
+        <div class="column" style="color:#dddddd">
+            <div id="hiddenHandlerKeys" style="display: none"></div>
+            <div id="hiddenHandlerModeCotND" style="display: none"></div>
+            <div id="hiddenHandlerPos" style="display: none"></div>
+        </div>         
+    </div>
     <!-- Top Menu --><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header"> <!-- Title & Hidden settings -->
@@ -231,10 +241,10 @@
               <td align="right"><span id="room">0</span>/8L <img src="style/interface/space.gif"></td>
             </tr><tr><!-- Tests -->
               <td><canvas id="floorColorSniffCanvas" width="16" height="16"></canvas></td>
-              <td><div id="logs"></div></td>
-              <td><div id="hiddenHandlerKeys"></div>
+              <td><!--<div id="logs"></div>--></td>
+              <td><!--<div id="hiddenHandlerKeys"></div>
                   <div id="hiddenHandlerModeCotND" style="display: none"></div>
-                  <div id="hiddenHandlerPos" style="display: none"></div></td>
+                  <div id="hiddenHandlerPos" style="display: none"></div>--></td>
             </tr>
             <!--Enfrentándote a: <span id="currentBattle"></span>style="display:none;"-->
           </tbody>
