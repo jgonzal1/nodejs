@@ -18,6 +18,7 @@ const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasiera"];
 // document.getElementById('hiddenHandlerPos').innerText.split(",")[0]/[1] + redis
 const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
 const createLargeIcon = require('./style/createLargeIcon');
+const createBattlerIcon = require('./style/createBattlerIcon');
 const geoJsonStylers = require('./style/geoJsonStylers');
 // TODO > #Risk
 
