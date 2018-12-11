@@ -79,15 +79,16 @@ function goToPlayer(target, velocity) {
 				target.getLatLng().lat+(Math.random()-0.5)/20,
 				target.getLatLng().lng+(Math.random()-0.5)/20
 			));
+		} else {
+			targetName = target.getAttribution();
+			// document.getElementById('currentBattle').innerText = targetName;
+			loadEnemyBattle(targetName);
+			document.getElementById('openModal').innerText = 'true';
+			global.battleSound = new Audio("../sounds/wildpokemon.wav");
+			global.battleSound.play();
+			$("#battleModal").modal("show");
+			$(".navbar-collapse.in").collapse("hide");			
 		}
-		targetName = target.getAttribution();
-		// document.getElementById('currentBattle').innerText = targetName;
-		loadEnemyBattle(targetName);
-		document.getElementById('openModal').innerText = 'true';
-		global.battleSound = new Audio("../sounds/wildpokemon.wav");
-		global.battleSound.play();
-		$("#battleModal").modal("show");
-		$(".navbar-collapse.in").collapse("hide");
 	}
 }
 
