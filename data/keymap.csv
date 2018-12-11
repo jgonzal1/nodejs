@@ -1,0 +1,189 @@
+You can find the controls list for vehicles in the driving page.
+All the listed key binds are case sensitive (so an a is different from an A).
+Shift view
+Comma wass pick up object and was disabled because this is a csv
+
+WASDEYP[ ]
+
+keyEventWhich,keyFunction,description
+?1,customizeKeymap,to revert back to defaults the personalized-keymap.csv key bindings just delete it.
+7,moveNW
+y,FREE,moveNW
+8,moveNorth
+k,moveNorth (MAL)
+9,moveNE
+u,FREE,moveNE
+UP,moveMapViewUp
+4,moveWest
+h,moveWest (MAL)
+LEFT,moveMapViewLeft
+5,pause
+.,pause
+6,moveEast
+l,moveEast (MAL)
+RIGH,moveMapViewRight
+1,moveSW
+b,FREE,moveSW
+2,moveSouth
+j,moveSouth (MAL)
+DOWN,moveMapViewDown
+3,moveSE
+n,FREE,moveSE
+>,FREE,descendStairs
+<,FREE,ascendStairs
+",Toggle run
+o,Open door or window [Hint]
+c,Close door or window [Hint]
+s,Smash nearby object / Vehicle handbrake [Hint]
+e,Examine or interact with nearby world object [Hint].
+/,Advanced inventory management [Hint]
+g,Pick item(s) up [Hint]
+G,Grab a nearby vehicle / Release vehicle [Hint]
+B,Butcher a corpse [Hint]
+C,Chat with an NPC [Hint]
+; or x,Look around
+X,Peek around corners
+Shift+V,List all items/creatures around the player [Hint]
+Inventory and quasi-inventory interaction
+i,Open your inventory
+I,Compare two items [Hint]
+=,Swap inventory letters [Hint]
+a,Apply or use an item [Hint]
+A,Apply or use currently wielded item
+W,Wear item
+T,Take off worn item
+E,Eat/Drink/Consume item [Hint]
+R,Read a book or a magazine [Hint]
+w,Wield item [Hint]
+_,Select unarmed style [Hint]
+r,Reload wielded item [Hint]
+U,Unload or empty wielded or nearby item [Hint]
+t,Throw item [Hint]
+f,Fire wielded item [Hint]
+<Unbound>,Burst-fire wielded item [Hint]
+F,Toggle attack mode of wielded item [Hint]
+d,Drop item [Hint]
+D,Drop item to adjacent tile* [Hint]
+p,View/Activate bionics
++,Re-layer armour/clothing [Hint]
+{,View/Activate mutations
+
+Mounted turrets from vehicle mods are reloaded using either of the [D]rop commands.
+Item action menu
+%,Access list of actions [Hint]
+
+
+Long term and special actions
+|,Wait for several minutes [Hint]
+&,Craft items
+-,Re-craft last recipe
+<Unbound>,Craft for as long as possible
+*,Construct terrain
+(,Disassemble items
+$,Sleep [Hint]
+^,Control vehicle [Hint]
+!,Toggle Safemode
+",Toggle Auto-Safemode
+',Ignore nearby enemy
+S,Save and quit [Hint]
+<Unbound>,Quicksave
+Q,Commit suicide [Hint]
+Info screens
+@,View player info
+m,View map
+M,View missions
+#,View factions
+),View kill count
+v,View morale
+P,View message log
+?,View help
+Debug functions
+<Unbound>,Debug menu
+<Unbound>,View scentmap
+~,Toggle debug messages. Will show various debug messages, and will allow you to see things like the age/damage/freshness values of various items, and more!
+ESC or SPACE,Exit dialog or screen / Cancel
+COMMA,Select/Deselect all items [Hint]
+
+Press w
+Choose currently wielded item
+If you previously selected a martial arts style through _ it'll revert to that MA style instead.
+In any case, the currently wielded item will be automatically placed in your inventory, or you'll be asked if you want to drop it if there's no space left.
+
+Dropping Partial Stacks
+Press d or D to drop the items and display the inventory screen
+Type the number of items you want to drop
+Press again the key of the inventory item you want to divide (in some cases, this will cause the item letter to be displayed as #)
+Press RETURN
+
+Picking up Items
+Pressing COMMA twice selects all items
+
+Controlling Skill Gain
+Open the @ Character Status screen
+Use TAB to navigate to the SKILLS section.
+Use the arrow keys to navigate the SKILLS list.
+Press SPACE when having selected the skill you want to freeze skill-gain.
+Press that key again to reactivate it.
+Talking to NPC's or Yelling
+Press the C key. Select the option from the menu.
+
+Debug keys
+Note: Use of these keys is essentially CHEATING, unless you are in a situation caused by bugs (e.g. spawning in a windowless doorless room) or testing game features.
+
+~ — Toggle debug messages.
+
+Unbound — Scent map. Asks you what scent sensitivity you would like to view your surrounding with (0-9, 1 greatest smeller, 9 dullest nose, 0 divides by 0, causing a crash). Shows the trace that forms around you as you linger in a building or move through town.
+
+To enable this menu, you will need to edit the Controls. Go to the main menu by pressing Esc followed by the keybindings list by pressing 1. Close to the bottom of the list will be the Debug Menu which should be in red and unbound. Press + followed by the appropriate letter to assign a key of your choice. Note: many keys are already bound to other features, using the ` key is a good option as it's unbound by default and is in the same place as the Debug messages and Console Commands present in many PC games.
+
+Unassigned — Debug menu. Open's up a list and asks you what Debug you want to do.
+
+1: Wish for an item. — Type /hammer to search for "hammer", then press up and down to cycle through jackhammer, hammer, sledge hammer, etc. Hitting enter will exit search, hitting enter again will ask for an amount. Entering a value will add that value times the default stack size number of items to inventory. q exits.
+2: Teleport - Short Range — Select a location in sight to move to.
+3: Teleport - Long Range — Asks to what map square you want to move to, then places you randomly in the selected map square.
+4: Reveal map - Instantly explores the current overmap.
+5: Spawn NPC - Spawns random NPC nearby.
+6: Spawn Monster — It works the same as item wishing for the most part; pressing f will let you make the monster friendly if you want. After making your selection, move the cursor to pick a location to place the monster.
+7: Check game state... - Shows game state, planned events, active monsters, and active NPCs and locations of these NPCs. And your location.
+8: Kill NPCs - Kills all NPCs
+9: Mutate — Allow to toggle your traits & mutations. If the mutation requires crossing the threshold, you need to first add the threshold mutation.
+0: Spawn a vehicle - Spawn vehicle from the list.
+a: Change all skills - Allows you to increase and decrease skill values using a menu.
+b: Learn all melee styles - Unlocks all melee styles, including a debug one.
+c: Unlock all recipes - Unlocks all recipes, including unlearnable recipes.
+d: Edit player/NPC - Allows you to edit the player or NPCs. See below for options.
+e: Spawn Artifact — Creates natural artifact and forms anomaly around it.
+f: Spawn Clairvoyance Artifact - Adds clairvoyance artifact to inventory, allowing you to see through walls.
+g: Map Editor - Opens map editor, use q to cancel.
+h: Change weather - Select a new weather to start.
+i: Kill all monsters - Kills all active monsters. Processes their death effect as normal.
+j: Display hordes - Displays the hordes on the map. Also displays hordes created by Fungal blooms, Anthills etc.
+k: Test Item Group - Tests item groups, this submenu is only quitable by selecting the 'cancel' option.
+l: Damage self - Damages torso with inputted amount. Negative values heal.
+m: Show Sound Clustering
+n: Lua command - Opens a Lua command console.
+o: Display weather
+p: Display overmap scents - Shows player scent values on the overmap.
+q: Change time - Change the current year, season, day, hour, minute, and amount of turns.
+r: Set automove route - Moves player to selected location, by walking normally.
+m: Show mutation category levels - Shows the levels of the various threshold mutations.
+t: Overmap editor - Allows you to edit the overmap. Locations in red will not be changed. Follow on screen instructions.
+u: Cancel
+Edit player/NPCs
+Looking at an NPC with this debug feature shows the name, class, destination, internal values (Trust, Fear, Anger, Owed, Aggression, Bravery, Collector, Altruism, and the needs of the NPC.
+
+s: Edit skills: - Allows editing of the NPC, or player skills
+t: Edit Stats: - Edit the player or NPC maximum stats.
+i: Grant items: - Grants items using the same interface as the main debug menu item grant mechanics.
+d: Delete all items: - Deletes all items and clothing on the character.
+w: Wear/Wield an item from NPC/Player's inventory: - Selects item to (un)wear/(un)wield.
+h: Set hit points: - Set the hitpoints on a bodypart. Can go over and under natural limits.
+p: Cause pain: - Enter a number of pain to cause, negative numbers removes pain.
+a: Set health: - Allows you to edit the health values.
+n: Set needs: - Allows you to see and edit the Hunger, Thirst, Fatigue and Vitamins levels of the NPC/player.
+u: Mutate: - Edits mutations/traits of the NPC/player using the same interface as the previous menu.
+@: Status Window: Shows the status window. Same window as the normal @ would show.
+e: teleport: - Performs short range teleport, like debug feature above.
+m: Add mission: - NPC ONLY - Adds a possible mission to the NPC. NPC's can have multiple missions, this mission is probably added to the end of the possible mission list.
+c: Randomize with class: - NPC ONLY - Select a new NPC class, and randomizes the NPC given this class. Creates new name and items.
+q: quit: - Quits this menu.
