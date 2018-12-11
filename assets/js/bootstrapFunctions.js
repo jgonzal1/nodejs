@@ -32,6 +32,19 @@ $("#go-to-spawn-btn").click(function() {
 
 $("#missions-btn").click(function() {
   $("#missionsModal").modal("show");
+  $("#missionsModal").keypress( function(event) {
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case 113: //Q
+      break;
+    case 119: //W
+      break;
+    case 101: //E
+      break;
+    case 114: //R
+      break;
+    }
+  });
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
