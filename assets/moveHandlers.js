@@ -66,8 +66,8 @@ function goToPlayer(target, velocity) {
 	if (0.0002 > Math.max(Math.abs(latDiff), Math.abs(lngDiff))) {
 		enemyStatsHandler(target.getAttribution());
 		if (
-			document.getElementById('hiddenHandlerKeys').innerText === 'e' && // TODO keymap
-			// L.DomUtil.get(hiddenHandlerKeys).innerHTML === 'e' && // TODO keymap
+			( document.getElementById('hiddenHandlerKeys').innerText === global.keymap["wield"][0] ||
+			document.getElementById('hiddenHandlerKeys').innerText === global.keymap["wield"][1] ) &&
 			parseFloat(document.getElementById('atk').innerHTML) > 0
 		) {
 			// global.layerToRemove = target.getAttribution();
@@ -92,30 +92,37 @@ function goToPlayer(target, velocity) {
 	}
 }
 
-function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h | 12x
+function moveCharacter(character, velocity, forceDirection) { // 80km/h | 12x
 	velocity = ( velocity || 1 );
 	velLng = velocity*lngCorrectionArr[Math.round(global.lat)];
-	movemap = (movemap || ['w', 'a', 's', 'd'] );
 	switch (forceDirection) { //forceDirection
-	case movemap[0]:
+	case global.keymap["moveNorth"][0]:
+	case global.keymap["moveNorth"][1]:
+	case global.keymap["moveNorth"][2]:
 		character.setLatLng(
 			L.latLng(character.getLatLng().lat+0.00001*velLng,
 			character.getLatLng().lng)
 		);
 		break;
-	case movemap[1]:
+	case global.keymap["moveWest"][0]:
+	case global.keymap["moveWest"][1]:
+	case global.keymap["moveWest"][2]:
 		character.setLatLng(
 			L.latLng(character.getLatLng().lat,
 			character.getLatLng().lng-0.00001*velocity)
 		);
 		break;
-	case movemap[2]:
+	case global.keymap["moveSouth"][0]:
+	case global.keymap["moveSouth"][1]:
+	case global.keymap["moveSouth"][2]:
 		character.setLatLng(
 			L.latLng(character.getLatLng().lat-0.00001*velLng,
 			character.getLatLng().lng)
 		);
 		break;
-	case movemap[3]:
+	case global.keymap["moveEast"][0]:
+	case global.keymap["moveEast"][1]:
+	case global.keymap["moveEast"][2]:
 		character.setLatLng(
 			L.latLng(character.getLatLng().lat,
 			character.getLatLng().lng+0.00001*velocity)

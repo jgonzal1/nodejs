@@ -7,7 +7,6 @@ var keypressMap = {
 "controlVehicle":[94],
 "craft":[38],
 "debugModal":[126],
-"developerSwitch":[89,121],
 "disassembly":[40],
 "examine":[88,120],
 "exit":[27],
@@ -59,7 +58,8 @@ var keypressMap = {
 "viewMorale":[118],
 "waitLong":[124],
 "wear":[43],
-"wield":[69,101]
+"wield":[69,101],
+"yes":[89,121],
 };
 
 var keymap = {
@@ -78,7 +78,6 @@ var keymap = {
     "customizeKeymap":["?1"],
     "debugModal":["~"],
     "deleteAllItems":["~D"],
-    "developerSwitch":["y"],
     "disassembly":["("],
     "editCharacter":["~d"],
     "editMap":["~g","~m"],
@@ -107,18 +106,18 @@ var keymap = {
     "listOfActions":["%"],
     "login":["Shift+L"],
     "manageInventory":["/"],
-    "moveEast":["6","D","d"],
+    "moveEast":["d","6","D"],
     "moveMapViewDown":["DOWN"],
     "moveMapViewLeft":["LEFT"],
     "moveMapViewRight":["RIGH"],
     "moveMapViewUp":["UP"],
     "moveNE":["9"],
     "moveNW":["7"],
-    "moveNorth":["8","W","w"],
+    "moveNorth":["w","8","W"],
     "moveSE":["3"],
     "moveSW":["1"],
-    "moveSouth":["2","S","s"],
-    "moveWest":["4","A","a"],
+    "moveSouth":["s","2","S"],
+    "moveWest":["a","4","A"],
     "music":["M","m"],
     "mutate":["~u"],
     "no":["n"],
@@ -170,7 +169,8 @@ var keymap = {
     "viewMutations":["~m"],
     "waitLong":["|"],
     "wear":["+"],
-    "wearWield":["~w","E","e"]
+    "wield":["E","e"],
+    "yes":["y","Y"]
 };
 
 function getKeypressMap() {
@@ -265,5 +265,5 @@ u	use	eat, drink or consume item [Hint]. Apply or use currently wielded item. Ap
 V	vehicleHandbrake	Vehicle handbrake [Hint]
 X	examine	Peek around corners
 x	examine	Examine or interact with nearby world object [Hint].
-y	developerSwitch	also yes
+y	yes also developerSwitch
 */

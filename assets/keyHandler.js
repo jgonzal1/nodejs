@@ -11,19 +11,26 @@ let stepSound, attackSound;
 function keyHandler(velocity, keymap) { // 80km/h | 12x
 	velocity = ( velocity || 1 );
 	const velLng = velocity * lngCorrectionArr[Math.round(global.lat)];
-	keymap = ( keymap || ['w', 'a', 's', 'd', ' ', 'e', 'y'] );
     let nearestObjetive, distancesArray, nearestObjetiveIndex, itemDescription, atk;
 	const direction = document.getElementById('hiddenHandlerKeys').innerText;
 	switch (direction) {
-	case keymap[0]:
-	case keymap[1]:
-	case keymap[2]:
-	case keymap[3]:
+	case global.keymap["moveEast"][0]:
+	case global.keymap["moveEast"][1]:
+	case global.keymap["moveEast"][2]:
+	case global.keymap["moveNorth"][0]:
+	case global.keymap["moveNorth"][1]:
+	case global.keymap["moveNorth"][2]:
+	case global.keymap["moveSouth"][0]:
+	case global.keymap["moveSouth"][1]:
+	case global.keymap["moveSouth"][2]:
+	case global.keymap["moveWest"][0]:
+	case global.keymap["moveWest"][1]:
+	case global.keymap["moveWest"][2]:
 		stepSound = new Audio("../sounds/step"+Math.ceil(nStepSounds*Math.random())+".wav");
 		stepSound.play();
-		mH.moveCharacter(global.player, velocity, direction, keymap);
+		mH.moveCharacter(global.player, velocity, direction);
 		break;
-	case keymap[4]: // [ ]
+	case global.keymap["pickOrSearchNearest"][0]:
 		//alert('Calculando distancia...');
 		distancesArray = [
 			mH.fcalcDist(global.backpack),
@@ -72,7 +79,8 @@ function keyHandler(velocity, keymap) { // 80km/h | 12x
 			displayAttackPositionAlert = true;
 		}
 		break;
-	case keymap[5]: // 'E'
+	case global.keymap["wield"][0]:
+	case global.keymap["wield"][1]:
 		atk = parseFloat(document.getElementById('atk').innerHTML);
 		if (atk === 0) {
 			alert('¡Necesitas un arma para activar la posición de ataque!');		
@@ -87,7 +95,8 @@ function keyHandler(velocity, keymap) { // 80km/h | 12x
 			}
 		}
 		break;
-	case keymap[6]: // 'Y'
+	case global.keymap["yes"][0]:
+	case global.keymap["yes"][1]:
 		var a = getColor(global.player.getLatLng());
 		if (a !== null) {
 			alert(a);

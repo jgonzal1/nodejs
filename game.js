@@ -179,7 +179,11 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 		if (document.getElementById('openModal').innerText === 'true') {
 			pause = true;
 		} else {
-			pause = (document.getElementById('hiddenHandlerKeys').innerText === 'p');
+			pause = (
+				global.keymap["pause"].includes(
+					document.getElementById('hiddenHandlerKeys').innerText
+				)
+			);
 		}
 		if (!pause) { enemyMover(defaultMovementLength); } // else { pauseSound.start(); }
 		if (document.getElementById('openModal').innerText === 'false') {
