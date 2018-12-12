@@ -35,13 +35,18 @@ $("#missions-btn").click(function() {
   $("#missionsModal").keypress( function(event) {
     document.getElementById("keyhandlerModalTester").innerText = event.which;
     switch(event.which) {
-    case 113: //Q
+    case global.keypressMap["attack1"][0]: // Q
+    case global.keypressMap["attack1"][1]:
+      document.getElementById("missionSelection").innerHTML = "¡Marluxa usó ataque básico!";
       break;
-    case 119: //W
+    case global.keypressMap["attack2"][0]: // W
+    case global.keypressMap["attack2"][1]:
       break;
-    case 101: //E
+    case global.keypressMap["attack3"][0]: // E
+    case global.keypressMap["attack3"][1]:
       break;
-    case 114: //R
+    case global.keypressMap["attack4"][0]: // R
+    case global.keypressMap["attack4"][1]:
       break;
     }
   });
