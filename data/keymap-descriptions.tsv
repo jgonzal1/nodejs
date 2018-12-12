@@ -1,0 +1,133 @@
+keyEventWhich	keyFunction	description
+_	unArm	Select unarmed style [Hint]
+-	recraftLast	Re-craft last recipe
+!	Toggle Safemode	
+?	help	
+?1	customizeKeymap	To revert back to defaults the personalized-keymap.csv key bindings just delete it.
+,	pause	Comma used to PickingUpItems; Twice Selects/Deselect all items [Hint]
+.	pause	
+'	ignoreRearestEnemy	
+"	run	
+(	disassembly	Disassemble items
+)	killCount	
+{	activateMutations	
+@	playerInfo	Open Character Status screen for Controlling Skills. TAB to navigate, enter to toggle activation
+*	build	Construct terrain
+/	manageInventory	Advanced inventory management [Hint]
+&	craft	
+#	factions	
+%	listOfActions	Access list of actions [Hint]
+^	controlVehicle	Control vehicle [Hint]
++	wear	Re-layer armour/clothing [Hint]
+<	FREE	ascendStairs
+=	swapInventoryLetters	Swap inventory letters [Hint]
+>	FREE	descendStairs
+|	waitLong	Wait for several minutes [Hint]
+~	debugModal	It will allow you to see things like the age/damage/freshness values of various items. Debug keys usage is essentially CHEATING; unless you are in a situation caused by bugs (e.g. spawning in a windowless doorless room) or testing game features.
+~@	statusWindow	Shows the status window. Same window as the normal @ would show.
+~0	spawnVehicle	Spawn vehicle from the list.
+~1	searchItem	then press up and down to cycle through searches, or number for amounts; Hitting enter will exit search; q exits.
+~2	teleportShort	Select a location in sight to move to.
+~3	teleportLong	Asks to what map square you want to move to; then places you randomly in the selected map square.
+~5	spawnEnemy	Spawns random NPC nearby.
+~6	spawnEnemy	It works the same as item wishing for the most part; pressing f will let you make the monster friendly if you want. After making your selection; move the cursor to pick a location to place the monster.
+~7	gameState	Shows game state; planned events; active monsters; and active NPCs and locations of these NPCs. And your location.
+~8	killNpcs	Kill NPCs - Kills all NPCs
+~A	changeSkills	Allows you to increase and decrease skill values using a menu.
+~B	unlockAllMeleeAttacks	Unlocks all melee styles; including a debug one.
+~c	setRandomClass	Select a new NPC class to the nearest; and randomizes the NPC given this class. Creates new name and items.
+~C	unlockAllRecipes	Unlocks all recipes; including unlearnable recipes.
+~d	editCharacter	Allows you to edit the player or NPCs. See below for options.
+~D	deleteAllItems	Deletes all items and clothing on the character.
+~e	teleport	Performs short range teleport; like debug feature above.
+~E	spawnPlace	Creates natural artifact and forms anomaly around it.
+~g	editMap	Opens map editor; use q to cancel.
+~H	setHealth	Set the hitpoints on a bodypart. Can go over and under natural limits.
+~h	changeWeather	Select a new weather to start.
+~k	testItems	Tests item groups; this submenu is only quitable by selecting the 'cancel' option.
+~K	killAllNearby	Kills all active monsters. Processes their death effect as normal.
+~M	addMission	Adds a possible mission to the nearest NPC. NPC's can have multiple missions; this mission is probably added to the end of the possible mission list.
+~m	editMap	Allows you to edit the overmap. Locations in red will not be changed. Follow on screen instructions.
+~m	viewMutations	Shows the levels of the various threshold mutations.
+~n	Set needs	Allows you to see and edit the Hunger; Thirst; Fatigue and Vitamins levels of the NPC/player.
+~o	seeWeather	
+~p	scents	
+~r	routePlanner	Moves player to selected location; by walking normally.
+~S	skills	Allows editing of the NPC; or player skills
+~s	sounds	
+~t	setTime	Change the current year; season; day; hour; minute; and amount of turns.
+~T	Edit Stats	Edit the player or NPC maximum stats.
+~u	mutate	Edits mutations/traits of the NPC/player using the same interface as the previous menu.
+~w	Wear/Wield	Selects item to (un)wear/(un)wield an item from NPC/Player's inventory
+$	sleep	Sleep [Hint]
+1	moveSW	
+2	moveSouth	
+3	moveSE	
+4	moveWest	
+5	pause	
+6	moveEast	
+7	moveNW	
+8	moveNorth	
+9	moveNE	
+A	moveWest	
+a	moveWest	
+B	build	ex-Butcher a corpse [Hint]
+b	build	ex-Butcher a corpse [Hint]
+C	chatMenu	Menu for Talking to NPC's or Yelling. Chat with an NPC [Hint]
+c	close	Close door or window [Hint]
+Ctrl+S	saveQuit	Save and quit [Hint]
+D	moveEast	
+d	moveEast	
+DOWN	moveMapViewDown	
+e	wield	Wield item [Hint]. If you previously selected a martial arts style through _ it'll revert to that MA style instead. The currently wielded item will be automatically placed in your inventory or you'll be asked if you want to drop it if there's no space left.
+E	wield	Wield item [Hint]. If you previously selected a martial arts style through _ it'll revert to that MA style instead. The currently wielded item will be automatically placed in your inventory or you'll be asked if you want to drop it if there's no space left.
+ESC	exit	Exit dialog or screen / Cancel
+F	fireMode	Toggle attack mode of wielded item [Hint]. Fire wielded item [Hint]
+f	fleet	
+G	grabVehicle	Grab a nearby vehicle / Release vehicle [Hint]
+g	get	Pick item(s) up [Hint]
+H	help	
+h	help	
+I	compare	Compare two items [Hint]
+i	inventory	
+j	journal	missions
+J	journal	missions
+k	kick	Smash nearby object
+l	leaveItem	Drop item [Hint]. Items to adjacent tile [Hint] also displays the inventory screen.Type the number of items you want to drop. Press again the key of the inventory item you want to divide (in some cases; this will cause the item letter to be displayed as #). Press RETURN. Mounted turrets from vehicle mods are reloaded using either of the [D]rop commands.
+LEFT	moveMapViewLeft	
+M	music	
+m	music	
+n	no	
+o	options	
+O	open	Open door or window [Hint]
+p	pause	
+P	pause	
+Q	quitGame	Commit suicide [Hint]
+R	read,reload	Read a book or a magazine [Hint],Reload wielded item [Hint]
+r	research	
+RIGH	moveMapViewRight	
+S	moveDown	
+s	moveDown	
+Shift+B	bionics	View/Activate bionics
+Shift+C	craftIndefinedly	Craft for as long as possible
+Shift+F	fireWielded	Burst-fire wielded item [Hint]
+Shift+G	goToSpawn	
+Shift+K	keys	
+Shift+L	login/logout	
+Shift+M	viewMessages	View message log
+Shift+S	sorceries	
+Shift+V	listEnemies	List all items/creatures around the player [Hint]
+SPACE	pickOrSearchNearest	Pick or search object
+T	treatmentsModal	diplomacy
+t	takeOut	Throw item [Hint] / Take off worn item
+U	unWield	Unload or empty wielded or nearby item [Hint]
+u	use	eat, drink or consume item [Hint]. Apply or use currently wielded item. Apply or use an item [Hint]
+UP	moveMapViewUp	
+V	vehicleHandbrake	Vehicle handbrake [Hint]
+v	viewMorale	
+w	moveUp	
+W	moveUp	
+X	examine	Peek around corners
+x	examine	Examine or interact with nearby world object [Hint].
+y	developerSwitch	also yes
+z	toggleStats	
