@@ -10,8 +10,66 @@ let stepSound, attackSound;
 function keyHandler(velocity) {
 	velocity = ( velocity || 1 );
     let nearestObjetive, distancesArray, nearestObjetiveIndex, itemDescription, atk;
-	const direction = document.getElementById('hiddenHandlerKeys').innerText;
-	switch (direction) {
+	const pressedKey = document.getElementById('hiddenHandlerKeys').innerText;
+	switch (pressedKey) {
+	//#region Top_Menu
+	/*case global.keymap["help"][0]:
+	case global.keymap["help"][1]:
+	case global.keymap["help"][2]:
+		break;
+	case global.keymap["music"][0]:
+	case global.keymap["music"][1]:
+		break;
+	case global.keymap["build"][0]:
+	case global.keymap["build"][1]:
+	case global.keymap["build"][2]:
+	case global.keymap["creaft"][0]:
+		break;
+	case global.keymap["factions"][0]:
+	case global.keymap["treatmentsModal"][0]:
+		break;
+	case global.keymap["fleet"][0]:
+		break;
+	case global.keymap["playerInfo"][0]:
+	case global.keymap["viewMorale"][0]:
+		break;
+	case global.keymap["research"][0]:
+		break;
+	case global.keymap["journal"][0]:
+	case global.keymap["journal"][1]:
+		break;
+	case global.keymap["options"][0]:
+		break;
+	case global.keymap["toggleStats"][0]:
+		break;*/
+	//#endregion
+	//#region Top_Menu/Options
+	/*case global.keymap["goToSpawn"][0]:
+		break;
+	case global.keymap["sorceries"][0]:
+		break;
+	case global.keymap["keys"][0]:
+		break;
+	case global.keymap["login"][0]:
+		break;
+	case global.keymap["saveQuit"][0]:
+		break;*/
+	//#endregion
+	//#region Left_Menu
+	/*
+	case global.keymap["inventory"][0]:
+		break;
+	case global.keymap["leaveItem"][0]:
+		break;
+	case global.keymap["manageInventory"][0]:
+		break;
+	case global.keymap["swapInventoryLetters"][0]:
+		break;
+	case global.keymap["takeOut"][0]:
+		break;
+	*/
+	//#endregion
+	//#region Map/MoveCharacter
 	case global.keymap["moveEast"][0]:
 	case global.keymap["moveEast"][1]:
 	case global.keymap["moveEast"][2]:
@@ -26,9 +84,19 @@ function keyHandler(velocity) {
 	case global.keymap["moveWest"][2]:
 		stepSound = new Audio("../sounds/step"+Math.ceil(nStepSounds*Math.random())+".wav");
 		stepSound.play();
-		mH.moveCharacter(global.player, velocity, direction);
+		mH.moveCharacter(global.player, velocity, pressedKey);
 		break;
-	case global.keymap["pickOrSearchNearest"][0]:
+	//#endregion
+	//#region Map/ObjectiveInteraction
+	/*case global.keymap["open"][0]:
+	case global.keymap["read"][0]:
+	case global.keymap["wear"][0]:
+	case global.keymap["examine"][0]:
+	case global.keymap["examine"][1]:
+	case global.keymap["use"][0]:
+	case global.keymap["vehicleHandbrake"][0]:*/
+	case global.keymap["pickOrSearchNearest"][0]: // only one completed
+	//case global.keymap["unWield"][0]:
 		//alert('Calculando distancia...');
 		distancesArray = [
 			mH.fcalcDist(global.backpack),
@@ -76,6 +144,8 @@ function keyHandler(velocity) {
 			displayAttackPositionAlert = true;
 		}
 		break;
+	//#endregion
+	//#region Objectives
 	case global.keymap["wield"][0]:
 	case global.keymap["wield"][1]:
 		atk = parseFloat(document.getElementById('atk').innerHTML);
@@ -92,6 +162,8 @@ function keyHandler(velocity) {
 			}
 		}
 		break;
+	//#endregion
+	//#region Advanced
 	case global.keymap["yes"][0]:
 	case global.keymap["yes"][1]:
 		var a = getColor(global.player.getLatLng());
@@ -108,6 +180,7 @@ function keyHandler(velocity) {
 			/*map.attributionControl.setPrefix*/alert("Color unavailable");
 		}
 		break;
+	//#endregion
 	}
 }
 
@@ -129,9 +202,5 @@ function getColor(latlng) {
 		return e;
 	}
 }//*/
-
-function getRandomInt(max) {
-	return Math.floor(Math.random() * Math.floor(max));
-}
 
 module.exports = keyHandler;

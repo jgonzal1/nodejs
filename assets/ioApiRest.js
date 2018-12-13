@@ -39,6 +39,10 @@ function setIOEndpoint(input, output) {
   });
 }
 
+function getRandomInt(max) {
+	return Math.floor(Math.random() * Math.floor(max));
+}
+
 if (require.main === module) {
   setApiPort(4000);
   setIOEndpoint(process.argv[2], process.argv[3]);

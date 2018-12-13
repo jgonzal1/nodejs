@@ -13,6 +13,7 @@ const spawnPlaces = require('./assets/spawnPlaces');
 const spawnTransports = require('./assets/spawnTransports');
 const getKeymap = require('./data/keymap');
 global.keymap = getKeymap();
+// TODO Recover > < keys but for open/close doors
 const spawnRegionsAustria = require('./data/regionsAustria');
 const regionsAustria = spawnRegionsAustria();
 const spawnSites = require('./data/sites');
