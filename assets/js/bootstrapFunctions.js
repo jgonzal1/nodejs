@@ -38,7 +38,6 @@ $("#missions-btn").click(function() {
     switch(event.which) {
     case keypressMap["attack1"][0]: // Q
     case keypressMap["attack1"][1]:
-      document.getElementById("missionSelection").innerHTML = "¡Marluxa usó ataque básico!";
       break;
     case keypressMap["attack2"][0]: // W
     case keypressMap["attack2"][1]:
@@ -57,7 +56,6 @@ $("#missions-btn").click(function() {
 
 $("#battleModal").keypress( function(event) {
   keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
-  document.getElementById("keyhandlerModalTester").innerText = event.which;
   switch(event.which) {
   case keypressMap["attack1"][0]: // Q
   case keypressMap["attack1"][1]:
