@@ -36,17 +36,17 @@ $("#missions-btn").click(function() {
     keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
     document.getElementById("keyhandlerModalTester").innerText = event.which;
     switch(event.which) {
-    case keypressMap["attack1"][0]: // Q
-    case keypressMap["attack1"][1]:
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
       break;
-    case keypressMap["attack2"][0]: // W
-    case keypressMap["attack2"][1]:
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
       break;
-    case keypressMap["attack3"][0]: // E
-    case keypressMap["attack3"][1]:
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
       break;
-    case keypressMap["attack4"][0]: // R
-    case keypressMap["attack4"][1]:
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
       break;
     }
   });
@@ -57,18 +57,18 @@ $("#missions-btn").click(function() {
 $("#battleModal").keypress( function(event) {
   keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
   switch(event.which) {
-  case keypressMap["attack1"][0]: // Q
-  case keypressMap["attack1"][1]:
+  case keypressMap["option1"][0]: // Q
+  case keypressMap["option1"][1]:
     document.getElementById("battleLogs").innerHTML = "¡Marluxa usó ataque básico!";
     break;
-  case keypressMap["attack2"][0]: // W
-  case keypressMap["attack2"][1]:
+  case keypressMap["option2"][0]: // W
+  case keypressMap["option2"][1]:
     break;
-  case keypressMap["attack3"][0]: // E
-  case keypressMap["attack3"][1]:
+  case keypressMap["option3"][0]: // E
+  case keypressMap["option3"][1]:
     break;
-  case keypressMap["attack4"][0]: // R
-  case keypressMap["attack4"][1]:
+  case keypressMap["option4"][0]: // R
+  case keypressMap["option4"][1]:
     break;
   }
 });

@@ -45,7 +45,8 @@ const L = require('leaflet');
 global.L = L;
 
 var cryptOfTheNecromancerMode =  'true';
-const velocity = 1/33; // Dµº / ms
+const velocity = 1/33; // Dµº / ms , 80km/h | 12x
+// TODO Velocity within ingame options so anyone can handle and keyHandler is not dependant
 var refreshRate, defaultMovementLength;
 // TODO > Change boolean #CotND
 if (cryptOfTheNecromancerMode === "true") { refreshRate = 460; }

@@ -7,7 +7,7 @@ const nStepSounds = 2, nAttackSounds = 2;
 let displayAttackPositionAlert = true;
 let stepSound, attackSound;
 
-function keyHandler(velocity) { // 80km/h | 12x
+function keyHandler(velocity) {
 	velocity = ( velocity || 1 );
     let nearestObjetive, distancesArray, nearestObjetiveIndex, itemDescription, atk;
 	const direction = document.getElementById('hiddenHandlerKeys').innerText;
