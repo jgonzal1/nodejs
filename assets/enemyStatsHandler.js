@@ -13,6 +13,30 @@ function enemyStatsHandler(objective) {
         health -= 2;
         healthHandler(health);
         break;
+    case "dracula": // chupa vida
+        health -= 2;
+        healthHandler(health);
+        break;
+    case "empire1":
+        health -= 1;
+        healthHandler(health);
+        break;
+    case "empire2":
+        health -= 1;
+        healthHandler(health);
+        break;
+    case "gollum": // roba 1 oro
+        health -= 1;
+        healthHandler(health);
+        break;
+    case "jabba": // roba comida
+        health -= 1;
+        healthHandler(health);
+        break;
+    case "joker": // asusta
+        health -= 3;
+        healthHandler(health);
+        break;
     case "mummy": // ralentiza
         health -= 1;
         healthHandler(health);

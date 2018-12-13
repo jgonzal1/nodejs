@@ -14,14 +14,16 @@
     <title>Darks Game</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><!--4.4.0-->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 4.7.0 4.4.0 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css">
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css">
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@[VERSION]/dist/L.Control.Locate.min.css">    
     <link rel="stylesheet" href="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.css">
     <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@[VERSION]/dist/L.Control.Locate.min.css" />
+    <link rel="stylesheet" href="style/dialog.css">
 
     <!--<link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
     <link rel="stylesheet" href="style/style.css">-->
@@ -45,9 +47,8 @@
     <!--<script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
     <script src="assets/js/app.js"></script>-->
   </head>
-
   <body>
-    <div class="row" width="100%"><!-- Instances columns -->
+    <!-- Instances columns --><div class="row" width="100%">
         <div class="column" style="color:#444444;background:#90cc90;">
             <div id="logs"></div>
         </div>
@@ -55,183 +56,208 @@
             <div id="hiddenHandlerKeys" style="display: none"></div>
             <div id="hiddenHandlerModeCotND" style="display: none"></div>
             <div id="hiddenHandlerPos" style="display: none"></div>
+            <div id="keypressReference" style="display: none"></div>
         </div>         
     </div>
-
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-            <div class="navbar-icon-container">
-                <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
-                <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a>
-            </div>
-            <a class="navbar-brand" href="#">Darks Game</a>
-            </div>
-            <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('info');"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp;Info <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <div id="info" class="containerTab" style="display:none;background:#90cc90">
-                                <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-                                <!--<input type="checkbox" id="checkInfoDiv" onclick="showInfo()">-->
-                                <div id="infoDiv"></div>
-                                <!--<input type="checkbox" id="checkModeCotND" onclick="modeCotND()"> Modo 30FPS
-                                <p id="text" style="display:none">Checkbox is CHECKED!</p>-->
-                        </div> 
-                    </ul>
-                
-                <li class="dropdown">
-                    <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('music');"><i class="fa fa-music white"></i>&nbsp;&nbsp;Música <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                            <div id="music" class="containerTab" style="display:none;background:#cfc999">
-                                <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-                                <div class="row">
-                                    <div class="column" onclick="openTab('music');">
-                                        <p>Música predefinida</p>
-                                        <!-- 120BPM -->
-                                        <iframe
-                                        width="560" height="315"
-                                        src="https://www.youtube.com/embed/videoseries?list=PLHeTSqyMs2Xbsn_LFYNFUZNDQf3ZalUpz&autoplay=1"
-                                        frameborder="0" allow="encrypted-media" allowfullscreen>
-                                        <!-- allow="autoplay;   embed/0IT9A9GvjWo" -->
-                                        </iframe>
-                                        <!-- Lista Lo-Fi
-                                        <iframe
-                                            src="https://open.spotify.com/embed/user/foilism/playlist/0xzpsVjnE6OSjdBC4iIzqe"
-                                            width="auto" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media">
-                                        </iframe>
-                                        -->
-                                        <!-- Lista 8Bit
-                                        <iframe
-                                            src="https://www.youtube.com/embed/LQmi1GaQH2o"
-                                            width="auto" height="200" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-                                        </iframe> -->                   </div>
-                                    <div class="column">
-                                        <p>Género:</p>(aleatorio, 120 BPM) <!-- chiptune, lo-fi, instrumental-->
-                                    </div>
-                                    <div class="column">
-                                        <p>Artistas:</p>(aleatorio)
-                                    </div>
-                                </div>
-                            </div>
-                    </ul>
-
-                <li class="dropdown">
-                    <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe white"></i>&nbsp;&nbsp;Misiones <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Pantalla completa (indev)</a></li>
-                        <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="legend-btn"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Mostrar modal (indev)</a></li>
-                        <li class="divider hidden-xs"></li>
-                        <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="login-btn"><i class="fa fa-user"></i>&nbsp;&nbsp;Personaje (indev)</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" id="downloadDrop" href="#" role="button" data-toggle="dropdown"><i class="fa fa-cloud-download white"></i>&nbsp;&nbsp;Guardar (indev) <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                    <li><a href="data/boroughs.geojson" download="boroughs.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Test1</a></li>
-                    </ul>
-                </li>
-                <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;Recursos</a></li>
-            </ul>
-            </div>
+    <!-- Top Menu --><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header"> <!-- Title & Hidden settings -->
+          <a class="navbar-brand" href="#">Darks Game</a>
+          <div class="navbar-icon-container">
+              <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
+              <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a>
+          </div>          
         </div>
-    </div>
-
-    <div id="container">
-      <div id="sidebar">
-        <div class="sidebar-wrapper">
-          <div class="panel panel-default" id="features">
-            <div class="panel-heading">
-              <h3 class="panel-title">
-                Recursos
-                <button type="button" class="btn btn-xs btn-default pull-right" id="sidebar-hide-btn">
-                  <i class="fa fa-chevron-left"></i>
-                </button>
-              </h3>
-            </div>
-            <!--<div class="panel-body">
-              <div class="row">
-                <div class="col-xs-8 col-md-8">
-                  <input type="text" class="form-control search" placeholder="Filter" />
-                </div>
-                <div class="col-xs-4 col-md-4">
-                  <button type="button" class="btn btn-primary pull-right sort" data-sort="feature-name" id="sort-btn">
-                    <i class="fa fa-sort"></i>&nbsp;&nbsp;Sort
+        <div class="navbar-collapse collapse"> <!-- Horizontal Menu -->
+          <ul class="nav navbar-nav">
+              <li class="dropdown"> <!-- Info -->
+                  <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('info');"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp; <b class="caret"></b></a>
+                  <ul class="dropdown-menu" style="width:400px">
+                      <div id="info" class="containerTab" style="display:none;background:#90cc90">
+                              <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+                              <!--<input type="checkbox" id="checkInfoDiv" onclick="showInfo()">-->
+                              <h4 style="text-align:center;"><b>Ayuda</b><br><br>
+                                ¡Bienvenido a DarksGeim!</h4>
+                              <p style="text-align:center;">Controles básicos:<br>
+                              WASD para moverte,<br>
+                              BarraEspaciadora para recoger objetos<br>
+                              (o recibir una pista sobre el más cercano).<br>
+                              P para pausar,<br>
+                              
+                              Controles avanzados:<br>
+                              E para atacar (si tienes arma),<br>
+                              RuedaRatón para el zoom,<br>
+                              ←↑↓→ para mover el mapa,<br>
+                              e Y para testear la última funcionalidad.</p>
+                              <div id="infoDiv"></div>
+                              <!--<input type="checkbox" id="checkModeCotND" onclick="modeCotND()"> Modo 30FPS
+                              <p id="text" style="display:none">Checkbox is CHECKED!</p>-->
+                      </div> 
+                  </ul>
+              </li>
+              <li class="dropdown"> <!-- Música -->
+                  <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('music');"><i class="fa fa-music white"></i>&nbsp;&nbsp; <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <div id="music" class="containerTab" style="display:none;background:#cfc999">
+                          <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+                          <div class="row">
+                              <div class="column" onclick="openTab('music');">
+                                  <p>Música predefinida</p>
+                                  <!-- 120BPM -->
+                                  <iframe
+                                  width="560" height="315"
+                                  src="https://www.youtube.com/embed/90ELxgNoxTs"
+                                  frameborder="0" allow="autoplay;encrypted-media" allowfullscreen>
+                                  <!--
+                                    https://youtu.be/FYH8DsU2WCk?t=21
+                                    videoseries?list=PLHeTSqyMs2Xbsn_LFYNFUZNDQf3ZalUpz&autoplay=1
+                                    allow="autoplay;   embed/0IT9A9GvjWo"
+                                  -->
+                                  </iframe>
+                                  <!-- Lista Lo-Fi
+                                  <iframe
+                                      src="https://open.spotify.com/embed/user/foilism/playlist/0xzpsVjnE6OSjdBC4iIzqe"
+                                      width="auto" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media">
+                                  </iframe>
+                                  -->
+                                  <!-- Lista 8Bit
+                                  <iframe
+                                      src="https://www.youtube.com/embed/LQmi1GaQH2o"
+                                      width="auto" height="200" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                                  </iframe> -->                   </div>
+                              <div class="column"> <p>Género:</p>(aleatorio, 120 BPM) </div>
+                              <!-- chiptune, lo-fi, instrumental-->
+                              <div class="column"> <p>Artistas:</p>(aleatorio) </div>
+                          </div>
+                      </div>
+                  </ul>
+              </li>
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="constructions-btn">
+                <i class="fas fa-hammer"></i>&nbsp;&nbsp; </a></li><!--(indev)-->
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="diplomacy-btn">
+                  <i class="fas fa-handshake"></i>&nbsp;&nbsp;</a></li><!--(indev) -->
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="fleet-btn">
+                  <i class="fas fa-anchor"></i>&nbsp;&nbsp;</a></li><!--(indev) -->
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="habilities-btn">
+                  <i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;</a></li><!--(indev) book-dead journal-whills-->
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="research-btn">
+                  <i class="fab fa-react"></i>&nbsp;&nbsp;</a></li><!--Investigaciones (indev) atom rocket-->
+              <!-- Misiones -->
+              <li>
+                <!--<div class="wrapper">
+                  <button type="button" aria-label="Open Navigation" class="open-dialog">
+                    <i class="fa fa-globe white"></i>
                   </button>
-                </div>
-              </div>
-            </div>-->
-            <div class="sidebar-table">
-              <table class="table table-hover" id="feature-list">
-                <thead><!--<class="hidden">-->
-                  <tr>
-                    <th>Icon</th>
-                    <th>Resource</th>
-                    <th>Quantity</th>
-                  </tr>
-                </thead>
-                <tbody class="list">
-                  <tr>
-                    <img id="fh" src="style/interface/full-health.png" style="display:none;">
-                    <img id="lh" src="style/interface/lost-health.png" style="display:none;">
-                  </tr>
-                  <tr>
-                    <td><img src="style/interface/health.png" style="width:16px;height:16px;"></td>
-                    <td>Vida</td>
-                    <td align="right"><span id="health" style="display: none">3</span>
-                      <canvas id="healthCanvas" width="80" height="16" style="border:1px solid #d3d3d3;">
-                      Your browser does not support the HTML5 canvas tag.</canvas>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><img src="style/interface/attack.png" style="width:16px;height:16px;"></td>
-                    <td>Ataque</td>
-                    <td align="right"><span id="atk">0</span> <img src="style/interface/atk-point.png"></td>
-                  </tr>
-                  <tr>
-                    <td><img src="style/interface/defense.png" style="width:16px;height:16px;"></td>
-                    <td>Defensa</td>
-                    <td align="right"><span id="def">0</span> <img src="style/interface/def-point.gif"></td>
-                  </tr>
-                  <tr>
-                      <td><img src="style/interface/run.png" style="width:16px;height:16px;"></td>
-                      <td>Velocidad (indev)</td>
-                      <td align="right"><span id="vel">1</span> <img src="style/interface/velocity.png"></td>
-                  </tr>
-                  <tr>
-                    <td><img src="style/interface/batcoin.png" style="width:16px;height:16px;"></td>
-                    <td>BatCoins</td>
-                    <td align="right"><span id="btc">0</span> <img src="style/interface/coin-point.png"></td>
-                  </tr>
-                  <tr id="backpack" style="display:none;">
-                    <td><img src="style/interface/equipment.png" style="width:32px;height:32px;"></td>
-                    <td>Mochila</td>
-                    <td align="right"><span id="room">0</span>/8L <img src="style/interface/space.gif"></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
+                </div>-->
+                <a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="missions-btn">
+                  <i class="fa fa-globe white"></i>&nbsp;&nbsp;Misiones</a><!-- fa-clipboard-list atlas -->
+              </li>
+              <!-- Opciones --><li class="dropdown">
+                <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-cog"></i>&nbsp;&nbsp;Opciones <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="go-to-spawn-btn">
+                      <i class="fa fa-home"></i>&nbsp;&nbsp;GoTo Spawn</a></li>
+                  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="spells-btn">
+                      <i class="fas fa-flask"></i>&nbsp;&nbsp;Hechizos (indev)</a></li>
+                  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="keys-btn">
+                      <i class="fas fa-key"></i>&nbsp;&nbsp;Llaves (indev)</a></li>
+                  <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="login-btn">
+                    <i class="fa fa-user"></i>&nbsp;&nbsp;Login (indev)</a></li><!--fa fa-user-->
+
+                  <li><a href="data/boroughs.geojson" download="boroughs.geojson" target="_blank"
+                    data-toggle="collapse" data-target=".navbar-collapse.in">
+                    <i class="fa fa-download"></i>&nbsp;&nbsp;Save (indev)</a>
+                  </li><!-- copy of the current game  -->
+                  <!--<li class="divider hidden-xs"></li>-->
+                </ul>
+              </li>
+              <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn">
+                <i class="fa fa-list white"></i>&nbsp;&nbsp;Toggle panel Stats y Objetos</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Left Menu & Map --><div id="container">
+      <div id="sidebar"><div class="sidebar-wrapper"><div class="panel panel-default" id="features">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <i class="far address-card"></i> Stats y Objetos
+            <button type="button" class="btn btn-xs btn-default pull-right" id="sidebar-hide-btn">
+              <i class="fa fa-chevron-left"></i>
+            </button>
+          </h3>
+        </div>
+        <!--<div class="panel-body">
+          <div class="row">
+            <div class="col-xs-8 col-md-8">
+              <input type="text" class="form-control search" placeholder="Filter" />
+            </div>
+            <div class="col-xs-4 col-md-4">
+              <button type="button" class="btn btn-primary pull-right sort" data-sort="feature-name" id="sort-btn">
+                <i class="fa fa-sort"></i>&nbsp;&nbsp;Sort
+              </button>
             </div>
           </div>
         </div>
-      </div>
+        bolt para energia
+        estado:
+          dizzy angry tired sad-cry sad-tear frown frown-open
+          meh
+          smile smile-beam grin grin-beam kiss kiss-beam laugh laugh-beam
+        heart stethoscope para salud
+        utensils para comer 
+      -->
+        <div class="sidebar-table"><table class="table table-hover" id="feature-list">
+          <thead><tr><th>Icon</th><th>Resource</th><th>Quantity</th></tr></thead>
+          <tbody class="list">
+            <tr><!--Hidden health images-->
+              <img id="fh" src="style/interface/full-health.png" style="display:none;">
+              <img id="lh" src="style/interface/lost-health.png" style="display:none;">
+            </tr><tr><!-- Vida -->
+              <td><img src="style/interface/health.png" style="width:16px;height:16px;"></td>
+              <td>Vida</td>
+              <td align="right"><span id="health" style="display: none">3</span>
+                <canvas id="healthCanvas" width="80" height="16" style="border:1px solid #d3d3d3;">
+                Your browser does not support the HTML5 canvas tag.</canvas>
+              </td>
+            </tr><tr><!-- Ataque -->
+              <td><img src="style/interface/attack.png" style="width:16px;height:16px;"></td>
+              <td>Ataque</td>
+              <td align="right"><span id="atk">0</span> <img src="style/interface/atk-point.png"></td>
+            </tr><tr><!-- Defensa -->
+              <td><img src="style/interface/defense.png" style="width:16px;height:16px;"></td>
+              <td>Defensa</td>
+              <td align="right"><span id="def">0</span> <img src="style/interface/def-point.gif"></td>
+            </tr><tr><!-- Velocidad -->
+              <td><img src="style/interface/run.png" style="width:16px;height:16px;"></td>
+              <td>Velocidad (indev)</td>
+              <td align="right"><span id="vel">1</span> <img src="style/interface/velocity.png"></td>
+            </tr><tr><!-- BatCoins -->
+              <td><img src="style/interface/batcoin.png" style="width:16px;height:16px;"></td>
+              <td>BatCoins</td>
+              <td align="right"><span id="btc">0</span> <img src="style/interface/coin-point.png"></td>
+            </tr><tr id="backpack" style="display:none;">
+              <td><img src="style/interface/equipment.png" style="width:32px;height:32px;"></td>
+              <td>Mochila</td>
+              <td align="right"><span id="room">0</span>/8L <img src="style/interface/space.gif"></td>
+            </tr><tr><!-- Tests -->
+              <td><canvas id="floorColorSniffCanvas" width="16" height="16"></canvas></td>
+              <td>
+                <!--<div id="logs"></div>--></td>
+              <td id="keyhandlerModalTester">
+                <!--<div id="hiddenHandlerKeys"></div>
+                <div id="hiddenHandlerModeCotND" style="display: none"></div>
+                <div id="hiddenHandlerPos" style="display: none"></div>--></td>
+            </tr>
+            <!--Enfrentándote a: <span id="currentBattle"></span>style="display:none;"-->
+          </tbody>
+        </table></div>
+      </div></div></div>
       <div id="map"></div>
     </div>
-	
-    <!--<div id="loading">
-      <div class="loading-indicator">
-        <div class="progress progress-striped active">
-          <div class="progress-bar progress-bar-info progress-bar-full"></div>
-        </div>
-      </div>
-    </div>-->
 
-    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
+	  <!-- Modals -->
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog"> 
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
@@ -242,103 +268,120 @@
             <ul class="nav nav-tabs nav-justified" id="aboutTabs">
               <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;About the project</a></li>
               <li><a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i>&nbsp;Contact us</a></li>
-              <li><a href="#disclaimer" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>&nbsp;Disclaimer</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i>&nbsp;Metadata <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#boroughs-tab" data-toggle="tab">Boroughs</a></li>
-                  <li><a href="#subway-lines-tab" data-toggle="tab">Subway Lines</a></li>
-                  <li><a href="#theaters-tab" data-toggle="tab">Theaters</a></li>
-                  <li><a href="#museums-tab" data-toggle="tab">Museums</a></li>
-                </ul>
-              </li>
             </ul>
-            <div class="tab-content" id="aboutTabsContent">
-              <div class="tab-pane fade active in" id="about">
-                <p>A simple, responsive template for building web mapping applications with <a href="http://getbootstrap.com/">Bootstrap 3</a>, <a href="http://leafletjs.com/" target="_blank">Leaflet</a>, and <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a>. Open source, MIT licensed, and available on <a href="https://github.com/bmcbride/bootleaf" target="_blank">GitHub</a>.</p>
-                <div class="panel panel-primary">
-                  <div class="panel-heading">Features</div>
-                  <ul class="list-group">
-                    <li class="list-group-item">Fullscreen mobile-friendly map template with responsive navbar and modal placeholders</li>
-                    <li class="list-group-item">jQuery loading of external GeoJSON files</li>
-                    <li class="list-group-item">Logical multiple layer marker clustering via the <a href="https://github.com/Leaflet/Leaflet.markercluster" target="_blank">leaflet marker cluster plugin</a></li>
-                    <li class="list-group-item">Elegant client-side multi-layer feature search with autocomplete using <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a></li>
-                    <li class="list-group-item">Responsive sidebar feature list synced with map bounds, which includes sorting and filtering via <a href="http://listjs.com/" target="_blank">list.js</a></li>
-                    <li class="list-group-item">Marker icons included in grouped layer control via the <a href="https://github.com/ismyrnow/Leaflet.groupedlayercontrol" target="_blank">grouped layer control plugin</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div id="disclaimer" class="tab-pane fade text-danger">
-                <p>The data provided on this site is for informational and planning purposes only.</p>
-                <p>Absolutely no accuracy or completeness guarantee is implied or intended. All information on this map is subject to such variations and corrections as might result from a complete title search and/or accurate field survey.</p>
-              </div>
-              <div class="tab-pane fade" id="contact">
-                <form id="contact-form">
-                  <div class="well well-sm">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label for="first-name">First Name:</label>
-                          <input type="text" class="form-control" id="first-name">
-                        </div>
-                        <div class="form-group">
-                          <label for="last-name">Last Name:</label>
-                          <input type="text" class="form-control" id="last-email">
-                        </div>
-                        <div class="form-group">
-                          <label for="email">Email:</label>
-                          <input type="text" class="form-control" id="email">
-                        </div>
-                      </div>
-                      <div class="col-md-8">
-                        <label for="message">Message:</label>
-                        <textarea class="form-control" rows="8" id="message"></textarea>
-                      </div>
-                      <div class="col-md-12">
-                        <p>
-                          <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Submit</button>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="tab-pane fade" id="boroughs-tab">
-                <p>Borough data courtesy of <a href="http://www.nyc.gov/html/dcp/pdf/bytes/nybbwi_metadata.pdf" target="_blank">New York City Department of City Planning</a></p>
-              </div>
-              <div class="tab-pane fade" id="subway-lines-tab">
-                <p><a href="http://spatialityblog.com/2010/07/08/mta-gis-data-update/#datalinks" target="_blank">MTA Subway data</a> courtesy of the <a href="http://www.urbanresearch.org/about/cur-components/cuny-mapping-service" target="_blank">CUNY Mapping Service at the Center for Urban Research</a></p>
-              </div>
-              <div class="tab-pane fade" id="theaters-tab">
-                <p>Theater data courtesy of <a href="https://data.cityofnewyork.us/Recreation/Theaters/kdu2-865w" target="_blank">NYC Department of Information & Telecommunications (DoITT)</a></p>
-              </div>
-              <div class="tab-pane fade" id="museums-tab">
-                <p>Museum data courtesy of <a href="https://data.cityofnewyork.us/Recreation/Museums-and-Galleries/sat5-adpb" target="_blank">NYC Department of Information & Telecommunications (DoITT)</a></p>
-              </div>
-            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-    <div class="modal fade" id="legendModal" tabindex="-1" role="dialog">
+    </div><!-- /.modal misiones v1
+      <div class="dialog" role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+        <h1 id="dialog-title">Site Navigation</h1>
+        <p id="dialog-description" class="sr-only">Description goes here</p>
+        <nav>
+          <ul>
+            <li><a href="one.html">Link One</a></li>
+            <li><a href="two.html">Link Two</a></li>
+            <li><a href="three.html">Link Three</a></li>
+          </ul>
+        </nav>
+        <button type="button" aria-label="Close Navigation" class="close-dialog"> <i class="fa fa-times"></i> </button>
+      </div>--</div><!- /.modal misiones v2
+    <div class="missionOptionOverlay" tabindex="-1">-->
+    <div class="modal fade" id="missionsModal" tabindex="-1" role="dialog">
+      <span id="openModal" style="display: none">false</span>
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Map Legend</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="resumeGame()">&times;</button>
+            <h4 class="modal-title">Título</h4>
           </div>
           <div class="modal-body">
-            <p>Map Legend goes here...</p>
+            <table class="table">
+              <tbody>  
+                <tr>
+                  <td class="missionOption">
+                  </td><td></td>
+                </tr>
+              </tbody>
+            </table>
+            <span id="missionSelection"></span>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resumeGame()">Close</button>
+          </div>
+        </div> <!-- /.modal-content -->
+      </div> <!-- /.modal-dialog -->
+    </div><!-- /.modal batallas-->
+    <div class="modal fade" id="battleModal" tabindex="-1" role="dialog">
+      <span id="openModal" style="display: none">false</span>
+      <div class="modal-dialog" style="width:720px;height:480px;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="resumeGame()">&times;</button>
+            <h4 class="modal-title">Battle!</h4>
+          </div>
+          <div class="modal-body">
+            <img id="marluxia" src="sprites/player/marluxia.png" style="display:none;">
+            <img id="death" src="sprites/enemies-reverse/death.png" style="display:none;">
+            <img id="dracula" src="sprites/enemies-reverse/dracula.png" style="display:none;">
+            <img id="empire1" src="sprites/enemies-reverse/empire1.png" style="display:none;">
+            <img id="empire2" src="sprites/enemies-reverse/empire2.png" style="display:none;">
+            <img id="gollum" src="sprites/enemies-reverse/gollum.png" style="display:none;">
+            <img id="jabba" src="sprites/enemies-reverse/jabba.png" style="display:none;">
+            <img id="joker" src="sprites/enemies-reverse/joker.png" style="display:none;">
+            <img id="mummy" src="sprites/enemies-reverse/mummy.png" style="display:none;">
+            <img id="phantom" src="sprites/enemies-reverse/phantom.png" style="display:none;">
+            <img id="skeleton" src="sprites/enemies-reverse/skeleton.png" style="display:none;">
+            <img id="spider" src="sprites/enemies-reverse/spider.png" style="display:none;">
+            <canvas id="fightersCanvas" width="680" height="256" style="border:1px solid #d3d3d3;">
+                Your browser does not support the HTML5 canvas tag.
+            </canvas>
+            <table class="table">
+              <tbody>  
+                <tr>
+                  <td class="fightOption1">
+                    <button type="button" class="btn btn-info" style="width: 100%" onclick="loadTile()">Ataque pred.</button><!--Blue-->
+                  </td><td class="fightOption2">
+                    <button type="button" class="btn btn-success" style="width: 100%">Más ataques</button><!--Green-->
+                  </td>
+                </tr>
+                <tr>
+                  <td class="fightOption3">
+                    <button type="button" class="btn btn-warning" style="width: 100%">Objetos</button><!--Yellow-->
+                  </td><td class="fightOption4">
+                    <button type="button" class="btn btn-danger" style="width: 100%">Intenta huir</button><!--Red-->
+                  </td>
+                  <!--<td class="danger">Red</td>-->
+                </tr>
+              </tbody>
+            </table>
+            <div id="battleLogs"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resumeGame()">Close</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+    </div><!-- /.modal comercio-->
+    <div class="modal fade" id="tradeModal" tabindex="-1" role="dialog">
+      <span id="openModal" style="display: none">false</span>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="resumeGame()">&times;</button>
+            <h4 class="modal-title">intercambio!</h4>
+          </div>
+          <div class="modal-body">
+            <p>El diálogo de intercambios va aquí...</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resumeGame()">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal login-->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -366,7 +409,7 @@
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+    </div><!--
     <div class="modal fade" id="featureModal" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -378,9 +421,9 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+        </div>
+      </div>
+    </div>
     <div class="modal fade" id="attributionModal" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -393,12 +436,13 @@
           <div class="modal-body">
             <div id="attribution"></div>
           </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+        </div>
+      </div>
+    </div>-->
 
+    <!-- Scripts -->
     <script src="bundle.js"></script>
-
+    <script src="./style/dialog.js"></script>
     <script>
     /**
      * @param {Number} hp
@@ -440,7 +484,8 @@
         document.getElementById("hiddenHandlerPos").innerHTML = position.coords.latitude + 
         "," + position.coords.longitude;
     }
-    // Hide all elements with class="containerTab", except for the one that matches the clickable grid column
+    /** @return {Object} a Hides all elements with class="containerTab", except for the one that matches the clickable grid column
+    */
     function openTab(tabName) {
         var i, x;
         x = document.getElementsByClassName("containerTab");
@@ -448,6 +493,10 @@
             x[i].style.display = "none";
         }
         document.getElementById(tabName).style.display = "block";
+    }
+    function resumeGame() {
+      document.getElementById('openModal').innerText = 'false';
+      global.battleSound.pause();
     }
 
     healthCanvas(parseFloat(document.getElementById('health').innerHTML));
@@ -475,8 +524,38 @@
                 which: character.charCodeAt(65)
             });
     }
-    </script>
+    
+    function loadTile() {
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+      var imageObj = new Image();
+      imageObj.src = "style/visual-effects/!Explosion.png";
 
+      imageObj.onload = function() {
+        ctx.drawImage(imageObj, 0, 0);
+
+        var tilesX = 3; // 96 / 32; // imageWidth / tileWidth;
+        var tilesY = 1; // 32 / 32; // imageHeight / tileHeight;
+        var totalTiles = tilesX * tilesY;        
+        var tileData = new Array();
+        for(var i=0; i<tilesY; i++) {
+          for(var j=0; j<tilesX; j++) {           
+            // Store the image data of each tile in the array.
+            tileData.push(
+              ctx.getImageData(j*tileWidth, i*tileHeight, tileWidth, tileHeight)
+            );
+          }
+        }
+        //From here you should be able to draw your images back into a canvas like so:
+        ctx.putImageData(tileData[0], x, y);
+      }
+    }
+
+    // var navDialogEl = document.querySelector('.missionOption');
+		// var dialogOverlay = document.querySelector('.missionOptionOverlay');
+		var myDialog = new Dialog(navDialogEl, dialogOverlay);
+		myDialog.addEventListeners('.open-dialog', '.close-dialog');
+    </script>
     <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
     <script src="assets/js/bootstrapFunctions.js"></script>
   </body>

@@ -1,6 +1,12 @@
 var enemies = [
     "bloodyeye",
     "death",
+    "dracula",
+    "empire1",
+    "empire2",
+    "gollum",
+    "jabba",
+    "joker",
     "mummy",
     "owl",
     "phantom",
@@ -29,11 +35,11 @@ var objectives = [
 
 var transports = [
     "balloon",
-    "boat",
+    "bike",
     "bus",
     //"car", 
     //"moto",
-    "plane",
+    "taxi",
     //"taxi",
     "train",
     "truck"

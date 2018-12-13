@@ -1,4 +1,4 @@
-var map, featureList, boroughSearch = [], theaterSearch = [], museumSearch = [];
+var keypressMap, map, featureList, boroughSearch = [], theaterSearch = [], museumSearch = [];
 
 $(window).resize(function() {
   sizeLayerControl();
@@ -23,16 +23,54 @@ $("#about-btn").click(function() {
   return false;
 });
 
-$("#full-extent-btn").click(function() {
-  map.fitBounds(boroughs.getBounds());
+$("#go-to-spawn-btn").click(function() {
+  map.setView([40.4942011, -3.71013], 16);
+  // map.fitBounds(boroughs.getBounds());
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
 
-$("#legend-btn").click(function() {
-  $("#legendModal").modal("show");
+$("#missions-btn").click(function() {
+  $("#missionsModal").modal("show");
+  $("#missionsModal").keypress( function(event) {
+    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["attack1"][0]: // Q
+    case keypressMap["attack1"][1]:
+      break;
+    case keypressMap["attack2"][0]: // W
+    case keypressMap["attack2"][1]:
+      break;
+    case keypressMap["attack3"][0]: // E
+    case keypressMap["attack3"][1]:
+      break;
+    case keypressMap["attack4"][0]: // R
+    case keypressMap["attack4"][1]:
+      break;
+    }
+  });
   $(".navbar-collapse.in").collapse("hide");
   return false;
+});
+
+$("#battleModal").keypress( function(event) {
+  keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
+  switch(event.which) {
+  case keypressMap["attack1"][0]: // Q
+  case keypressMap["attack1"][1]:
+    document.getElementById("battleLogs").innerHTML = "¡Marluxa usó ataque básico!";
+    break;
+  case keypressMap["attack2"][0]: // W
+  case keypressMap["attack2"][1]:
+    break;
+  case keypressMap["attack3"][0]: // E
+  case keypressMap["attack3"][1]:
+    break;
+  case keypressMap["attack4"][0]: // R
+  case keypressMap["attack4"][1]:
+    break;
+  }
 });
 
 $("#login-btn").click(function() {
@@ -114,6 +152,10 @@ function syncSidebar() {
   featureList.sort("feature-name", {
     order: "asc"
   });
+}
+
+function instanceKeymap() {
+
 }
 
 /* Basemap Layers */
@@ -262,7 +304,7 @@ var theaters = L.geoJson(null, {
     }
   }
 });
-$.getJSON("data/DOITT_THEATER_01_13SEPT2010.geojson", function (data) {
+$.getJSON("data/100913Theater.geojson", function (data) {
   theaters.addData(data);
   map.addLayer(theaterLayer);
 });
@@ -305,7 +347,7 @@ var museums = L.geoJson(null, {
     }
   }
 });
-$.getJSON("data/DOITT_MUSEUM_01_13SEPT2010.geojson", function (data) {
+$.getJSON("data/100913Museums.geojson", function (data) {
   museums.addData(data);
 });
 

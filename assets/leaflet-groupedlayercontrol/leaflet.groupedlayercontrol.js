@@ -103,7 +103,6 @@ L.Control.GroupedLayers = L.Control.extend({
       }
 
       this._map.on('click', this._collapse, this);
-      // TODO keyboard accessibility
     } else {
       this._expand();
     }

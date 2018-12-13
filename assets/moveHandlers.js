@@ -1,7 +1,5 @@
-const cL = require('../data/charactersList');
-const objectiveStatsHandler = require('./objectiveStatsHandler');
 const enemyStatsHandler = require('./enemyStatsHandler');
-const objectives = cL.getObjectives();
+const loadEnemyBattle = require('./loadEnemyBattle');
 
 const lngCorrectionArr = [ // Corrección calculada de la distorsión angular de la longitud con respecto a su latiitud
     1.00858,    1.006355176,1.003926264,1.001293264,
@@ -28,7 +26,6 @@ const lngCorrectionArr = [ // Corrección calculada de la distorsión angular de
     0.110244016,0.0908758,  0.071303496,0.051527104,
     0.031546624,0.011362056,0
 ]; // De momento tomo la de 40º porque estamos en Madrid
-let displayAttackPositionAlert = true;
 
 function targetFleeFromPlayer(target, velocity, player) {
 	const latDiff = player.getLatLng().lat - target.getLatLng().lat;
@@ -59,7 +56,7 @@ function goToPlayer(target, velocity) {
 	velocity = ( velocity || 1 );
 	const latDiff = global.player.getLatLng().lat - target.getLatLng().lat;
 	const lngDiff = global.player.getLatLng().lng - target.getLatLng().lng;
-	let forcedDirection, btc;
+	let forcedDirection, btc, targetName;
 	if (Math.abs(latDiff) > Math.abs(lngDiff)) {
 		if (latDiff>0) {forcedDirection='w';} else {forcedDirection='s';}
 	} else {
@@ -69,116 +66,75 @@ function goToPlayer(target, velocity) {
 	if (0.0002 > Math.max(Math.abs(latDiff), Math.abs(lngDiff))) {
 		enemyStatsHandler(target.getAttribution());
 		if (
-			L.DomUtil.get(hiddenHandlerKeys).innerHTML === 'e' &&
+			( document.getElementById('hiddenHandlerKeys').innerText === global.keymap["wield"][0] ||
+			document.getElementById('hiddenHandlerKeys').innerText === global.keymap["wield"][1] ) &&
 			parseFloat(document.getElementById('atk').innerHTML) > 0
 		) {
 			// global.layerToRemove = target.getAttribution();
 			btc = parseFloat(document.getElementById('btc').innerHTML);
 			btc += 1;
 			document.getElementById('btc').innerHTML = btc; 
-			alert(target.getLatLng());
+			// alert(target.getLatLng());
 			target.setLatLng(L.latLng(
 				target.getLatLng().lat+(Math.random()-0.5)/20,
 				target.getLatLng().lng+(Math.random()-0.5)/20
 			));
+		} else {
+			targetName = target.getAttribution();
+			// document.getElementById('currentBattle').innerText = targetName;
+			loadEnemyBattle(targetName);
+			document.getElementById('openModal').innerText = 'true';
+			global.battleSound = new Audio("../sounds/wildpokemon.wav");
+			global.battleSound.play();
+			$("#battleModal").modal("show");
+			$(".navbar-collapse.in").collapse("hide");			
 		}
-		// alert('Game Over');
+		target.setLatLng(L.latLng(
+			target.getLatLng().lat+(Math.random()-0.5)/20,
+			target.getLatLng().lng+(Math.random()-0.5)/20
+		));
 	}
 }
 
-function moveCharacter(character, velocity, forceDirection, movemap) { // 80km/h | 12x
-	character = ( character || global.player );
+function moveCharacter(character, velocity, forceDirection) { // 80km/h | 12x
 	velocity = ( velocity || 1 );
 	velLng = velocity*lngCorrectionArr[Math.round(global.lat)];
-	movemap = (movemap || ['w', 'a', 's', 'd', ' ', 'e'] );
-	const direction = (forceDirection || L.DomUtil.get(hiddenHandlerKeys).innerHTML);
-	let nearestObjetive, distancesArray, nearestObjetiveIndex, itemDescription, atk;
-	switch (direction) { //forceDirection
-	case movemap[0]:
+	switch (forceDirection) { //forceDirection
+	case global.keymap["moveNorth"][0]:
+	case global.keymap["moveNorth"][1]:
+	case global.keymap["moveNorth"][2]:
 		character.setLatLng(
 			L.latLng(character.getLatLng().lat+0.00001*velLng,
 			character.getLatLng().lng)
 		);
 		break;
-	case movemap[1]:
+	case global.keymap["moveWest"][0]:
+	case global.keymap["moveWest"][1]:
+	case global.keymap["moveWest"][2]:
 		character.setLatLng(
 			L.latLng(character.getLatLng().lat,
 			character.getLatLng().lng-0.00001*velocity)
 		);
 		break;
-	case movemap[2]:
+	case global.keymap["moveSouth"][0]:
+	case global.keymap["moveSouth"][1]:
+	case global.keymap["moveSouth"][2]:
 		character.setLatLng(
 			L.latLng(character.getLatLng().lat-0.00001*velLng,
 			character.getLatLng().lng)
 		);
 		break;
-	case movemap[3]:
+	case global.keymap["moveEast"][0]:
+	case global.keymap["moveEast"][1]:
+	case global.keymap["moveEast"][2]:
 		character.setLatLng(
 			L.latLng(character.getLatLng().lat,
 			character.getLatLng().lng+0.00001*velocity)
 		);
 		break;
-	case movemap[4]: // [ ]
-		//alert('Calculando distancia...');
-		distancesArray = [
-			fcalcDist(global.backpack),
-			fcalcDist(global.burger),
-			fcalcDist(global.banana),
-			fcalcDist(global.blackberry),
-			fcalcDist(global.boots),
-			fcalcDist(global.chicken),
-			fcalcDist(global.healthpotion),
-			fcalcDist(global.knife),
-			fcalcDist(global.pizza),
-			fcalcDist(global.rice),
-			fcalcDist(global.steelaxe),
-			fcalcDist(global.sword),
-			fcalcDist(global.water)
-		];
-		nearestObjetive = Math.min( // TODO Duplicated because of async
-			fcalcDist(global.backpack),
-			fcalcDist(global.burger),
-			fcalcDist(global.banana),
-			fcalcDist(global.blackberry),
-			fcalcDist(global.boots),
-			fcalcDist(global.chicken),
-			fcalcDist(global.healthpotion),
-			fcalcDist(global.knife),
-			fcalcDist(global.pizza),
-			fcalcDist(global.rice),
-			fcalcDist(global.steelaxe),
-			fcalcDist(global.sword),
-			fcalcDist(global.water)
-		);
-		nearestObjetiveIndex = distancesArray.indexOf(Math.min(...distancesArray));
-		if (nearestObjetive < 0.0002) {
-			itemDescription = objectiveStatsHandler(objectives[nearestObjetiveIndex]);
-			alert('¡Has conseguido ' + itemDescription + ', al recoger ' + objectives[nearestObjetiveIndex] +'!');
-			global.layerToRemove = objectives[nearestObjetiveIndex];
-			global.points += 1;			
-		} else {
-			alert(
-				'¡Tu objetivo más cercano aún está a ' + Math.round(5000*nearestObjetive) + ' pasos y\n' +
-				'es: ' + objectives[nearestObjetiveIndex] + '!'
-			);
-		}
-		if (displayAttackPositionAlert === false) { // TODO for all player attack position disruption cases
-			displayAttackPositionAlert = true;
-		}
-		break;
-	case movemap[5]: // 'E'
-		atk = parseFloat(document.getElementById('atk').innerHTML);
-		if (atk === 0) {
-			alert('¡Necesitas un arma para activar la posición de ataque!');		
-		} else {
-			if (displayAttackPositionAlert === true) {
-				alert('¡Activando posición de ataque!');
-				displayAttackPositionAlert = false;
-			}
-		}
-		break;
 	}
 }
+
 /** @typedef L.marker @type {object} @type {L.marker} */
 /**@param {L.marker} m1 
  * @param {L.marker} m2 defaults player
@@ -207,7 +163,9 @@ function onMapClick(e) {
 			} else {
 				if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
 			}
-			mH.moveCharacter(global.player, vel, forcedDirection);
+			if (document.getElementById('openModal').innerText === 'false') {
+				moveCharacter(global.player, vel, forcedDirection);
+			}
 			//alert(vars + "strings"); works
 			if (defaultMovementLength/50000 > Math.max(latDiffAbs, lngDiffAbs)) {
 				clearInterval(mouseClickDaemonizer);
@@ -217,12 +175,14 @@ function onMapClick(e) {
 	}
 }
 
-function getRandomInt(max) {
-	return Math.floor(Math.random() * Math.floor(max));
+function getLngCorrectionArr() {
+	return lngCorrectionArr;
 }
 
 module.exports.targetFleeFromPlayer = targetFleeFromPlayer;
 module.exports.targetGoToPlayer = targetGoToPlayer;
 module.exports.goToPlayer = goToPlayer;
+module.exports.fcalcDist = fcalcDist;
 module.exports.moveCharacter = moveCharacter;
 module.exports.onMapClick = onMapClick;
+module.exports.getLngCorrectionArr = getLngCorrectionArr;

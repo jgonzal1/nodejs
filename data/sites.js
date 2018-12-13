@@ -20,8 +20,8 @@ var initialCoords = {
     "Noruega.Svalbard.Longyearbyen":    [78.223331 , 15.646849, 16]
 };
 
-var sites = [
-    ["Casa Julio", 40.42, -3.7],
+var madridSites = [
+    ["Bar", 40.42, -3.7],
     ["Correos", 40.51, -3.7],
     ["Discoteca Azúcar", 40.41, -3.7],
     ["Generación X Fermín Caballero", 40.48, -3.71],
@@ -32,8 +32,8 @@ var sites = [
     ["Rita Sibarita", 40.5, -3.71],
     ["Taberna La Felipa", 40.51, -3.69],
     ["Tropical House", 40.42, -3.71],
-    ["UNIDE Market", 40.5, -3.7],
-    ["UNIDE Market", 40.49, -3.71],
+    ["Market", 40.5, -3.7],
+    ["Market", 40.49, -3.71],
     ["WiZink Center", 40.42, -3.67],
     ["Bar Hawaiano Mauna Loa", 40.41, -3.7],
     ["Faborit Cuzco", 40.46, -3.69],
@@ -47,16 +47,57 @@ var sites = [
     ["Orilla del Manzanares", 40.4547697, -3.7466842]
 ];
 
+var places = [
+    "bank",
+    "bank2",
+	"blockhouses",
+	"castle",
+	"brewery",
+	"cornshop",
+	"gas_station",
+    "house",
+    "refinery",
+    "brickbuilding",
+	"sign",
+	"store2",
+	"store3",
+	"tent",
+	"tree1",
+	"tree2",
+	"tree3",
+	"tree4",
+	"trees",
+	"vending"
+	//"light_house",
+	//"port",
+];
+var nPlaces = places.length;
+
 function getAustrianCapitals() {
     return austrianCapitals;
 }
 function getInitialCoords() {
     return initialCoords;
 }
+function getPlaces() {
+    return places;
+}
+
+const sites = [], closeness = 20;
 function getSites() {
-    return sites;
+    for (let k = 0; k < 100; k++) {
+        sites.push([
+            '', // places[Math.floor(Math.random()*nPlaces)],
+            40.485+(Math.random()-0.5)/closeness,
+            -3.69+(Math.random()-0.5)*1.5/closeness
+        ]);
+        if (k == 99) {
+            return sites;
+        }
+    }
 }
 
 module.exports.getAustrianCapitals  = getAustrianCapitals;
 module.exports.getInitialCoords     = getInitialCoords;
+module.exports.getPlaces            = getPlaces;
 module.exports.getSites             = getSites;

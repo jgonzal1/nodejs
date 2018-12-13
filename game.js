@@ -1,37 +1,56 @@
 //#region Imports
-const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
-const createIcon = require('./style/createIcon');
-const geoJsonStylers = require('./style/geoJsonStylers');
+const enemyMover = require('./assets/enemyMover');
+const keyHandler = require("./assets/keyHandler");
+// TODO >>>>> Working main game key bindings & hints
+// TODO Duplicated mH.fcalcDist array on the inside because of async
+// TODO Make attack handler different for all player attack position disruption cases
+const mH = require('./assets/moveHandlers');
+// TODO Not always take out enemy (after battles, it may stay)
+const pushCharacters = require('./assets/pushCharacters');
+const spawnEnemies = require('./assets/spawnEnemies'); // TODO Enemies properties + battler hearths
+const spawnObjectives = require('./assets/spawnObjectives');
+const spawnPlaces = require('./assets/spawnPlaces');
+const spawnTransports = require('./assets/spawnTransports');
+const getKeymap = require('./data/keymap');
+global.keymap = getKeymap();
 const spawnRegionsAustria = require('./data/regionsAustria');
 const regionsAustria = spawnRegionsAustria();
-// TODO #Risk
 const spawnSites = require('./data/sites');
 const sites = spawnSites.getSites();
+const places = spawnSites.getPlaces();
+const nPlaces = places.length;
 const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasiera"];
-// TODO Que empiece en ubicación usuario L.DomUtil.get(hiddenHandlerPos).innerHTML.split(",")[0]/[1]
-const spawnEnemies = require('./assets/spawnEnemies');
-const spawnObjectives = require('./assets/spawnObjectives');
-// TODO >>>>> #Patrician When collide: capa de comercio, pausa, y en modal BDiA-showcase
+// TODO > Start in player's location (locatePlayer in assets)
+// document.getElementById('hiddenHandlerPos').innerText.split(",")[0]/[1] + redis
+const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
+const createLargeIcon = require('./style/createLargeIcon');
+const createBattlerIcon = require('./style/createBattlerIcon');
+const geoJsonStylers = require('./style/geoJsonStylers');
+// TODO #Risk
+
+// TODO #Patrician When collide
+// TODO >>>>> Modal things in places
+// TODO > Transports change velocity & zoom
+// TODO Objectives
+// TODO Trading materials
+// TODO Misiones, traders
+// TODO > Traders objectives
+// TODO >>>>> #FFnn particles, develop in battles modal
 // TODO #CataclysmDDA
-const spawnTransports = require('./assets/spawnTransports');
-const mH = require('./assets/moveHandlers');
-// TODO >>>>> #FFnn When near: capa de combate, con efectos de sonido, y modal
-// TODO attack with E?
 // TODO #RimWorld
 // TODO #CotND
 
+// const fs = require('fs');
 const L = require('leaflet');
 global.L = L;
 
 var cryptOfTheNecromancerMode =  'true';
 const velocity = 1/33; // Dµº / ms
 var refreshRate, defaultMovementLength;
-// TODO > Botón que cambie booleano #CotND
-if (cryptOfTheNecromancerMode === "true") {
-	refreshRate = 500; // asume <5ms delays! // 500 w/ 120 BPM music
-} else {
-	refreshRate = 33; // 30+ FPS
-}
+// TODO > Change boolean #CotND
+if (cryptOfTheNecromancerMode === "true") { refreshRate = 460; }
+// 500 asume <5ms delays! // 500 w/ 120 BPM music
+else { refreshRate = 33; } // 30+ FPS
 defaultMovementLength = refreshRate * velocity;
 var mouseMoved; // = false;
 global.layerToRemove = undefined;
@@ -42,143 +61,137 @@ var gameTimeStamp = new Date(1262304000000);
 
 //#region Create Base Layers
 // const map = L.map('map', { scrollWheelZoom: true } );
-global.map = L.map('map', { inertia: true, inertiaMaxSpeed: 1000, scrollWheelZoom: true } );
+global.map = L.map(
+	'map',
+	{
+		inertia: true, inertiaMaxSpeed: 1000,
+		tilt: true, // moves map
+		// w/ mobiles giroscope(deviceOrientation)
+		scrollWheelZoom: true, wheelPxPerZoomLevel: 150,
+		minZoom: 2, maxZoom: 17
+	}
+);
+global.map.zoomControl.setPosition("bottomright");
 const lat  = initialCoords[0]; global.lat = lat; // y
 const long = initialCoords[1]; global.long = long; // x
 const zoom = initialCoords[2]; // z
 global.map.setView([lat, long], zoom);
-const artisticMap = L.tileLayer(
-	'http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg',
-	{ minZoom: 2, maxZoom: 17 }
+global.artisticMap = L.tileLayer(
+	'http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
 ).addTo(global.map);
-const baseLayers = createBaseLayerAndAddMore(artisticMap, L);
+const baseLayers = createBaseLayerAndAddMore(global.artisticMap, L);
 L.control.scale({imperial:false}).addTo(global.map);
-/* TODO Colores Tileset
-Blanco: detectarlo en tileset permite mover 1x;
-si no, reducir multiplicador de velocidad y:
- Menos opacidad (fantasmas) o
- Spawnear círculo azul ahí durante el refreshtime (GPS)
-Verde: multiplicador velocidad no tan bajo como blanco
-- No se puede entrar fuera del Blanco o verde excepto lugares*
-*Lugares -> puerta para permitir cambio color y salida del mismo
-@ tileset artístico zoom 15+*/
+// TODO > Spawn con lng correction
+// TODO >>>>> Colores Tileset
+// Blanco: mover 1x;
+// si no, reducir multiplicador de velocidad y:
+//  Menos opacidad (fantasmas) o
+//  Spawnear círculo azul ahí durante el refreshtime (GPS)
+// Verde: multiplicador velocidad no tan bajo como blanco
+// - No se puede entrar fuera del Blanco o verde excepto lugares*
+// * -> puerta para permitir cambio color y salida del mismo
+// @ tileset artístico zoom 15+*/
 //#endregion
 
 //#region Create Characters and sitesMarkersLayers
-// TODO > Personalizar carácter personaje #CataclysmDDA + playerIcon "duplicado": personalizado con imagemagick
-const playerIcon	= L.icon(createIcon('style/ratkid-shaded.png'));
+// TODO > Personalize character #CataclysmDDA + playerIcon "duplicado": imagemagick
+const nAvailableAvatars = 39;
+// const files = fs.readdirSync('./sprites/player');
+// alert(files[Math.ceil(nAvailableAvatars*Math.random())]);
+const playerIcon	= L.icon(createLargeIcon('sprites/player/' +
+	'marluxia.png'
+	// files[Math.ceil(nAvailableAvatars*Math.random())]
+));
 const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
-	'<b>Tú (Ratkids rookie, lvl. 1)</b>'
+	'<b>Tú (Meme rookie, lvl. 1)</b>'
 );
 global.player = player;
-// TODO Multiplayer MongoDB
+// TODO Multiplayer MongoDB or Redis
 
 spawnEnemies(L, lat, long);
-spawnObjectives(L, lat, long); // TODO thirst, hunger & vol
+spawnObjectives(L, lat, long); // TODO > Thirst, hunger & vol
 spawnTransports(L, lat, long);
-var mCharacters = [];
-mCharacters.push(
-	global.player,
-	
-	//global.bloodyeye,
-	global.death,
-	global.mummy,
-	//global.owl,
-	global.phantom,
-	//global.pirateskull,
-	//global.skeleton,
-	global.spider,
-	//global.undeadhand,
-	global.vampire,
+global.mCharacters = [];
+pushCharacters();
+const characters = L.layerGroup(global.mCharacters).addTo(global.map);
 
-	global.backpack,
-	global.burger,
-	global.banana,
-	global.blackberry,
-	global.boots,
-	global.chicken,
-	global.healthpotion,
-	global.knife,
-	global.pizza,
-	global.rice,
-	global.steelaxe,
-	global.sword,
-	global.water,
-
-	global.balloon,
-	global.boat,
-	global.bus,
-	global.furgo,	
-	global.plane,
-	global.train
-);
-const characters = L.layerGroup(mCharacters).addTo(global.map);
-
-const greenIcon = L.icon(createIcon('style/marker-green.png'));
+spawnPlaces(L);
 var markers = [];
+let element;
 for (var i in sites) {
-    markers.push(
+	element = Math.floor(nPlaces*Math.random());
+	markers.push(
 		L.marker(
-			[
-				sites[i][1],
-				sites[i][2]
-			],
-			{icon: greenIcon}
+			[ sites[i][1], sites[i][2] ],
+			{icon: global.placeIconsArray[element]}
 		).bindPopup(
-			'<b>' + sites[i][0] + '</b>'
+			'<b>' + places[element] + '</b>'
 		)
 	);
-}
-const layers = L.layerGroup(markers).addTo(global.map);
+}//*/
+//spawnPlaces(sites, L, function(markers){
+const layers = L.layerGroup(
+	markers
+).addTo(global.map);
+//});
+//}); //*/
+
 //#endregion
 
 //#region TODO >>>>> Daemonizers
 // let counter = 1;
+// Moving with mouse or keypad
 if (navigator.userAgent.match('Android|X11') !== null){ // X11 es mi redmi note 3
 	alert('¡Bienvenido a DarksGeim! Haz tap para moverte.\n' +
 	'No podrás volver a moverte hasta llegar a tu destino, así que...\n' +
-	'¡Piensa poco a poco tu jugada!');
-	global.map.on('click', onMapClick);
+	'¡Piensa poco a poco tu jugada!');//*/
+	global.map.on('click', onMapClick);//*
 } else {
-	/*alert('Bienvenido a DarksGeim. Utiliza WASD para moverte,\n'+
-	'P para pausar, la rueda del ratón para elk zoom,\n'+
-	'y ←↑↓→ para mover el mapa');*/
-}
+	global.map.on('zoomend', function() {
+		const currentZoom = global.map.getZoom();
+		if (currentZoom < 15) { // hide places
+			if (global.map.hasLayer(layers)) { global.map.removeLayer(layers); }
+		} else {
+			if (global.map.hasLayer(layers) === false) { global.map.addLayer(layers); }
+		}
+		if (currentZoom < 12) { // hide characters
+			if (global.map.hasLayer(characters)) { global.map.removeLayer(characters); }
+		} else {
+			if (global.map.hasLayer(characters) === false) { global.map.addLayer(characters); }
+		}
+	});
+}//*/
 // let moveDaemonizer;
 setInterval(function() {
-	// TODO > Daemonizer en legend para tiempo del día; on add: timeLegend();
+	// TODO Daemonizer in legend for weather; on add: timeLegend();
 	gameTimeStamp += 36000;
 	timeLegend();
-	/*if (cryptOfTheNecromancerMode !== L.DomUtil.get(hiddenHandlerModeCotND).innerHTML) {
-		cryptOfTheNecromancerMode = L.DomUtil.get(hiddenHandlerModeCotND).innerHTML;
-		// if (typeof(cryptOfTheNecromancerMode) === 'string') {clearInterval(moveDaemonizer);}
-		if (cryptOfTheNecromancerMode === "true") {
-			refreshRate = 500; // w/ 120 BPM music
-		} else {
-			refreshRate = 33; // 30+ FPS
-		}
+	/*if (cryptOfTheNecromancerMode !== document.getElementById('hiddenHandlerModeCotND').innerText) {
+		cryptOfTheNecromancerMode = document.getElementById('hiddenHandlerModeCotND').innerText;
+		if (typeof(cryptOfTheNecromancerMode) === 'string') {clearInterval(moveDaemonizer);}
+		if (cryptOfTheNecromancerMode === "true") { refreshRate = 500; } // 120 BPM
+		else { refreshRate = 33; } // 30+ FPS
 		defaultMovementLength = refreshRate * velocity;
 	}*/
 }, 3000); // globalEventsDaemonizer*/
 
-let vel;
+let vel, pause;
+// const pauseSound = new Sound("../sounds/pause.mp3", 100, true);
 function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 	global.moveDaemonizer = setInterval(function() {
-		if (L.DomUtil.get(hiddenHandlerKeys).innerHTML != 'p') {
-			// TODO enemies properties
-			// TODO only 1 healthHandler (not big in html!)
-			//mH.goToPlayer(global.bloodyeye,0.7*defaultMovementLength);
-			mH.goToPlayer(global.death,0.9*defaultMovementLength);
-			mH.goToPlayer(global.mummy,0.7*defaultMovementLength);
-			//mH.goToPlayer(global.owl,0.5*defaultMovementLength);
-			mH.goToPlayer(global.phantom,0.7*defaultMovementLength);
-			//mH.goToPlayer(global.pirateskull,0.8*defaultMovementLength);
-			//mH.goToPlayer(global.skeleton,0.7*defaultMovementLength);
-			mH.goToPlayer(global.spider,0.5*defaultMovementLength);
-			//mH.goToPlayer(global.undeadhand,0.6*defaultMovementLength);
-			mH.goToPlayer(global.vampire,0.5*defaultMovementLength);
+		if (document.getElementById('openModal').innerText === 'true') {
+			pause = true;
+		} else {
+			pause = (
+				global.keymap["pause"].includes(
+					document.getElementById('hiddenHandlerKeys').innerText
+				)
+			);
 		}
-		mH.moveCharacter(global.player,defaultMovementLength);
+		if (!pause) { enemyMover(defaultMovementLength); } // else { pauseSound.start(); }
+		if (document.getElementById('openModal').innerText === 'false') {
+			keyHandler(defaultMovementLength);
+		}
 		if (global.layerToRemove != undefined) {
 			global.map.removeLayer( global[layerToRemove] );
 			global.layerToRemove = undefined;
@@ -192,19 +205,15 @@ keyListener(
 ); // private params
 //#endregion
 
-//#region Keys interface
-// TODO keys menú
-//#endregion
-
 //#region Move handlers
 // TODO Own music
-// TODO Añadir series taylor; correcciones angulares al habilitar ratón
+// > TODO Añadir series taylor; correcciones angulares al habilitar ratón
 // (x - (x^3 / 6 )) aproxs sin(x) max 7% err
 // (1 - x^2 / 2) aproxs cos(x) hasta 60ª
 // (1 - x^2 / 2 + x^4 / 24) aproxs cos(x) de 60 a 85º
 // 0 aproxs cos(x) from 85 to 90º
-// TODO Detectar dos botones a la vez (ej. W+A)
-// TODO > Migrar onMapClick
+
+// TODO Migrate onMapClick
 function onMapClick(e) {
 	if (mouseMoved !== true) {
 		const mouseClickDaemonizer = setInterval(function() {
@@ -220,7 +229,7 @@ function onMapClick(e) {
 			} else {
 				if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
 			}
-			mH.moveCharacter(global.player, vel, forcedDirection);
+			mH.moveCharacter(global.player, vel, forcedDirection); //movePlayer
 			// alert(vars + "strings"); works
 			if (defaultMovementLength/50000 > Math.max(latDiffAbs, lngDiffAbs)) {
 				clearInterval(mouseClickDaemonizer);
@@ -229,7 +238,6 @@ function onMapClick(e) {
 		}, refreshRate);
 	}
 }
-// TODO Inhabilitar para su uso el right-click = contextmenu; left-click = click
 //#endregion
 
 //#region geoJson Overlays
@@ -258,7 +266,7 @@ info.onAdd = function() {
 info.update = function(props) {
 	this._div.innerHTML = '' + (props ?
 		'<p><b>Population Density</b></p>' + '<b>' + props.name + '</b><br/>' + props.density + ' people / km<sup>2</sup>' :
-		'') // 'Hover over a state' + '<p>' + L.DomUtil.get(hiddenHandlerKeys).innerHTML + '</p>'
+		'') // 'Hover over a state' + '<p>' + document.getElementById('hiddenHandlerKeys').innerText + '</p>'
 	;
 };
 // let infoUpdaterCounter = 1;
@@ -269,7 +277,7 @@ function backgroundInfoUpdater(milliseconds) {
 		info.update = function() {
 			this._div.innerHTML = // +=
 				'<div class="backendlogs">' +
-				'<p><b>Key' + L.DomUtil.get(hiddenHandlerKeys).innerHTML + '</b></p>';
+				'<p><b>Key' + document.getElementById('hiddenHandlerKeys').innerText + '</b></p>';
 				'<b>' + boolChecker + '<br/>' + '</b>';
 				// infoUpdaterCounter.toString()
 				'</div>'
@@ -315,58 +323,10 @@ function onEachFeature(feature, layer) {
 }
 //#endregion
 
-//#region geolocation control to follow the user's location
-/*
-const locateControl = L.control.locate({
-	position: "bottomright",
-	drawCircle: true,
-	follow: true,
-	setView: true,
-	keepCurrentZoomLevel: true,
-	markerStyle: {
-		weight: 1,
-		opacity: 0.8,
-		fillOpacity: 0.8
-	},
-	circleStyle: {
-		weight: 1,
-		clickable: false
-	},
-	icon: "fa fa-location-arrow",
-	metric: false,
-	strings: {
-		title: "My location",
-		popup: "You are within {distance} {unit} from this point",
-		outsideMapBoundsMsg: "You seem located outside the boundaries of the map"
-	},
-	locateOptions: {
-		maxZoom: 18,
-		watch: true,
-		enableHighAccuracy: true,
-		maximumAge: 10000,
-		timeout: 10000
-	}
-}).addTo(global.map);
-locateControl.start();*/
-//#endregion
-
 //#region Legend
 const legend = L.control({position: 'bottomright'});
 legend.onAdd = function() {
-	const div = L.DomUtil.create('div', 'info legend');/*,
-		grades = [1, 70, 80, 100, 130, 1000],
-		labels = ["personas/km²"];
-	let from, to;
-
-	for(let i = 0; i < grades.length; i++) {
-		from = grades[i];
-		to = grades[i + 1];
-		labels.push(
-			'<i style="background:' + geoJsonStylers.getColor(from + 1) + '">' +
-				'<font color=' + geoJsonStylers.getColor(from + 1) + '>__</font>' +
-			'</i> ' + from + (to ? '&ndash;' + to : '+'));
-	}*/
-	//div.innerHTML = [formatDate(gameTimeStamp)]; // labels.join('<br>');
+	const div = L.DomUtil.create('div', 'info legend');
 	return div;
 };
 function formatDate(date) {
@@ -385,10 +345,10 @@ function formatDate(date) {
 	return year + '/' + monthNames[monthIndex] + '/' + day + ' ' + hours + ':' + mins;
 }
 function timeLegend(){
-	const labels = [formatDate(gameTimeStamp)]; // TODO Tiempo y dependencias de regiones en legend?
+	const labels = [formatDate(gameTimeStamp)]; // TODO Weather and region dependencies in legend?
 }
 legend.addTo(global.map);
-// TODO Asistente virtual en ayuda / cómo jugar
+// TODO Virtual assistant in help / how to play
 // Asistente sens/virt UAL
 // Lo añadiré a la lista de cosas que me importan una mierda/pendientes
 //#endregion
