@@ -2,15 +2,13 @@ const objectiveStatsHandler = require('./objectiveStatsHandler');
 const mH = require("./moveHandlers");
 const cL = require('../data/charactersList');
 
-const lngCorrectionArr = mH.getLngCorrectionArr();
 const objectives = cL.getObjectives();
 const nStepSounds = 2, nAttackSounds = 2;
 let displayAttackPositionAlert = true;
 let stepSound, attackSound;
 
-function keyHandler(velocity, keymap) { // 80km/h | 12x
+function keyHandler(velocity) { // 80km/h | 12x
 	velocity = ( velocity || 1 );
-	const velLng = velocity * lngCorrectionArr[Math.round(global.lat)];
     let nearestObjetive, distancesArray, nearestObjetiveIndex, itemDescription, atk;
 	const direction = document.getElementById('hiddenHandlerKeys').innerText;
 	switch (direction) {
@@ -48,7 +46,6 @@ function keyHandler(velocity, keymap) { // 80km/h | 12x
 			mH.fcalcDist(global.water)
 		];
 		nearestObjetive = Math.min( // distancesArray
-			//TODO Duplicated because of async
 			mH.fcalcDist(global.backpack),
 			mH.fcalcDist(global.burger),
 			mH.fcalcDist(global.banana),
@@ -75,7 +72,7 @@ function keyHandler(velocity, keymap) { // 80km/h | 12x
 				'es: ' + objectives[nearestObjetiveIndex] + '!'
 			);
 		}
-		if (displayAttackPositionAlert === false) { // TODO for all player attack position disruption cases
+		if (displayAttackPositionAlert === false) { 
 			displayAttackPositionAlert = true;
 		}
 		break;
