@@ -4,7 +4,7 @@ const keyHandler = require("./assets/keyHandler");
 // TODO Duplicated mH.fcalcDist array on the inside because of async
 // TODO make attack handler different for all player attack position disruption cases
 const mH = require('./assets/moveHandlers');
-// TODO noq uitar siempre el enemigo (en batallas, a veces se quedaría)
+// TODO no quitar siempre el enemigo (en batallas, a veces se quedaría)
 const pushCharacters = require('./assets/pushCharacters');
 const spawnEnemies = require('./assets/spawnEnemies'); // TODO enemies properties
 const spawnObjectives = require('./assets/spawnObjectives');
