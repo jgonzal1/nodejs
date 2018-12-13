@@ -1,12 +1,13 @@
 //#region Imports
 const enemyMover = require('./assets/enemyMover');
 const keyHandler = require("./assets/keyHandler");
+// TODO >>>>> Working main game key bindings & hints
 // TODO Duplicated mH.fcalcDist array on the inside because of async
-// TODO make attack handler different for all player attack position disruption cases
+// TODO Make attack handler different for all player attack position disruption cases
 const mH = require('./assets/moveHandlers');
-// TODO no quitar siempre el enemigo (en batallas, a veces se quedaría)
+// TODO Not always take out enemy (after battles, it may stay)
 const pushCharacters = require('./assets/pushCharacters');
-const spawnEnemies = require('./assets/spawnEnemies'); // TODO enemies properties
+const spawnEnemies = require('./assets/spawnEnemies'); // TODO Enemies properties + battler hearths
 const spawnObjectives = require('./assets/spawnObjectives');
 const spawnPlaces = require('./assets/spawnPlaces');
 const spawnTransports = require('./assets/spawnTransports');
@@ -19,23 +20,22 @@ const sites = spawnSites.getSites();
 const places = spawnSites.getPlaces();
 const nPlaces = places.length;
 const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasiera"];
-// TODO > Que empiece en ubicación usuario (locatePlayer in assets)
+// TODO > Start in player's location (locatePlayer in assets)
 // document.getElementById('hiddenHandlerPos').innerText.split(",")[0]/[1] + redis
 const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
 const createLargeIcon = require('./style/createLargeIcon');
 const createBattlerIcon = require('./style/createBattlerIcon');
 const geoJsonStylers = require('./style/geoJsonStylers');
-// TODO > #Risk
+// TODO #Risk
 
-// TODO Delete objectives when taken
 // TODO #Patrician When collide
-// TODO >>>>> modal cosas en places
-// TODO > transports cambian velocidad y zoom
-// TODO > objectives
-// TODO trading materials
-// TODO misiones, traders
-// TODO > traders objectives
-// TODO > #FFnn partículas. desarrolar modal de batallas
+// TODO >>>>> Modal things in places
+// TODO > Transports change velocity & zoom
+// TODO Objectives
+// TODO Trading materials
+// TODO Misiones, traders
+// TODO > Traders objectives
+// TODO >>>>> #FFnn particles, develop in battles modal
 // TODO #CataclysmDDA
 // TODO #RimWorld
 // TODO #CotND
@@ -47,7 +47,7 @@ global.L = L;
 var cryptOfTheNecromancerMode =  'true';
 const velocity = 1/33; // Dµº / ms
 var refreshRate, defaultMovementLength;
-// TODO > Botón que cambie booleano #CotND
+// TODO > Change boolean #CotND
 if (cryptOfTheNecromancerMode === "true") { refreshRate = 460; }
 // 500 asume <5ms delays! // 500 w/ 120 BPM music
 else { refreshRate = 33; } // 30+ FPS
@@ -81,8 +81,8 @@ global.artisticMap = L.tileLayer(
 ).addTo(global.map);
 const baseLayers = createBaseLayerAndAddMore(global.artisticMap, L);
 L.control.scale({imperial:false}).addTo(global.map);
-// TODO Spawn con lng correction
-// TODO > Colores Tileset
+// TODO > Spawn con lng correction
+// TODO >>>>> Colores Tileset
 // Blanco: mover 1x;
 // si no, reducir multiplicador de velocidad y:
 //  Menos opacidad (fantasmas) o
@@ -94,7 +94,7 @@ L.control.scale({imperial:false}).addTo(global.map);
 //#endregion
 
 //#region Create Characters and sitesMarkersLayers
-// TODO > Personalizar carácter personaje #CataclysmDDA + playerIcon "duplicado": personalizado con imagemagick
+// TODO > Personalize character #CataclysmDDA + playerIcon "duplicado": imagemagick
 const nAvailableAvatars = 39;
 // const files = fs.readdirSync('./sprites/player');
 // alert(files[Math.ceil(nAvailableAvatars*Math.random())]);
@@ -106,10 +106,10 @@ const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 	'<b>Tú (Meme rookie, lvl. 1)</b>'
 );
 global.player = player;
-// TODO Multiplayer MongoDB o Redis
+// TODO Multiplayer MongoDB or Redis
 
 spawnEnemies(L, lat, long);
-spawnObjectives(L, lat, long); // TODO > thirst, hunger & vol
+spawnObjectives(L, lat, long); // TODO > Thirst, hunger & vol
 spawnTransports(L, lat, long);
 global.mCharacters = [];
 pushCharacters();
@@ -163,7 +163,7 @@ if (navigator.userAgent.match('Android|X11') !== null){ // X11 es mi redmi note 
 }//*/
 // let moveDaemonizer;
 setInterval(function() {
-	// TODO Daemonizer en legend para tiempo del día; on add: timeLegend();
+	// TODO Daemonizer in legend for weather; on add: timeLegend();
 	gameTimeStamp += 36000;
 	timeLegend();
 	/*if (cryptOfTheNecromancerMode !== document.getElementById('hiddenHandlerModeCotND').innerText) {
@@ -207,14 +207,13 @@ keyListener(
 
 //#region Move handlers
 // TODO Own music
-// TODO Añadir series taylor; correcciones angulares al habilitar ratón
+// > TODO Añadir series taylor; correcciones angulares al habilitar ratón
 // (x - (x^3 / 6 )) aproxs sin(x) max 7% err
 // (1 - x^2 / 2) aproxs cos(x) hasta 60ª
 // (1 - x^2 / 2 + x^4 / 24) aproxs cos(x) de 60 a 85º
 // 0 aproxs cos(x) from 85 to 90º
-// TODO Detectar dos botones a la vez (ej. W+A)
 
-// TODO Migrar onMapClick
+// TODO Migrate onMapClick
 function onMapClick(e) {
 	if (mouseMoved !== true) {
 		const mouseClickDaemonizer = setInterval(function() {
@@ -239,7 +238,6 @@ function onMapClick(e) {
 		}, refreshRate);
 	}
 }
-// TODO Inhabilitar para su uso el right-click = contextmenu; left-click = click
 //#endregion
 
 //#region geoJson Overlays
@@ -347,10 +345,10 @@ function formatDate(date) {
 	return year + '/' + monthNames[monthIndex] + '/' + day + ' ' + hours + ':' + mins;
 }
 function timeLegend(){
-	const labels = [formatDate(gameTimeStamp)]; // TODO Tiempo y dependencias de regiones en legend?
+	const labels = [formatDate(gameTimeStamp)]; // TODO Weather and region dependencies in legend?
 }
 legend.addTo(global.map);
-// TODO Asistente virtual en ayuda / cómo jugar
+// TODO Virtual assistant in help / how to play
 // Asistente sens/virt UAL
 // Lo añadiré a la lista de cosas que me importan una mierda/pendientes
 //#endregion
