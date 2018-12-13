@@ -9,7 +9,6 @@ const spawnPlaces = require('./assets/spawnPlaces');
 const spawnTransports = require('./assets/spawnTransports');
 const kM = require('./data/keymap');
 global.keymap = kM.getKeymap();
-global.keypressMap = kM.getKeypressMap();
 const spawnRegionsAustria = require('./data/regionsAustria');
 const regionsAustria = spawnRegionsAustria();
 const spawnSites = require('./data/sites');

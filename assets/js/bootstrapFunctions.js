@@ -1,4 +1,4 @@
-var map, featureList, boroughSearch = [], theaterSearch = [], museumSearch = [];
+var keypressMap, map, featureList, boroughSearch = [], theaterSearch = [], museumSearch = [];
 
 $(window).resize(function() {
   sizeLayerControl();
@@ -33,25 +33,46 @@ $("#go-to-spawn-btn").click(function() {
 $("#missions-btn").click(function() {
   $("#missionsModal").modal("show");
   $("#missionsModal").keypress( function(event) {
+    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
     document.getElementById("keyhandlerModalTester").innerText = event.which;
     switch(event.which) {
-    case global.keypressMap["attack1"][0]: // Q
-    case global.keypressMap["attack1"][1]:
+    case keypressMap["attack1"][0]: // Q
+    case keypressMap["attack1"][1]:
       document.getElementById("missionSelection").innerHTML = "¡Marluxa usó ataque básico!";
       break;
-    case global.keypressMap["attack2"][0]: // W
-    case global.keypressMap["attack2"][1]:
+    case keypressMap["attack2"][0]: // W
+    case keypressMap["attack2"][1]:
       break;
-    case global.keypressMap["attack3"][0]: // E
-    case global.keypressMap["attack3"][1]:
+    case keypressMap["attack3"][0]: // E
+    case keypressMap["attack3"][1]:
       break;
-    case global.keypressMap["attack4"][0]: // R
-    case global.keypressMap["attack4"][1]:
+    case keypressMap["attack4"][0]: // R
+    case keypressMap["attack4"][1]:
       break;
     }
   });
   $(".navbar-collapse.in").collapse("hide");
   return false;
+});
+
+$("#battleModal").keypress( function(event) {
+  keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
+  document.getElementById("keyhandlerModalTester").innerText = event.which;
+  switch(event.which) {
+  case keypressMap["attack1"][0]: // Q
+  case keypressMap["attack1"][1]:
+    document.getElementById("battleLogs").innerHTML = "¡Marluxa usó ataque básico!";
+    break;
+  case keypressMap["attack2"][0]: // W
+  case keypressMap["attack2"][1]:
+    break;
+  case keypressMap["attack3"][0]: // E
+  case keypressMap["attack3"][1]:
+    break;
+  case keypressMap["attack4"][0]: // R
+  case keypressMap["attack4"][1]:
+    break;
+  }
 });
 
 $("#login-btn").click(function() {
@@ -133,6 +154,10 @@ function syncSidebar() {
   featureList.sort("feature-name", {
     order: "asc"
   });
+}
+
+function instanceKeymap() {
+
 }
 
 /* Basemap Layers */
