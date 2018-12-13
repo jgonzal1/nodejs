@@ -1,7 +1,10 @@
 //#region Imports
 const enemyMover = require('./assets/enemyMover');
 const keyHandler = require("./assets/keyHandler");
+// TODO Duplicated mH.fcalcDist array on the inside because of async
+// TODO make attack handler different for all player attack position disruption cases
 const mH = require('./assets/moveHandlers');
+// TODO noq uitar siempre el enemigo (en batallas, a veces se quedaría)
 const pushCharacters = require('./assets/pushCharacters');
 const spawnEnemies = require('./assets/spawnEnemies'); // TODO enemies properties
 const spawnObjectives = require('./assets/spawnObjectives');
@@ -78,6 +81,7 @@ global.artisticMap = L.tileLayer(
 ).addTo(global.map);
 const baseLayers = createBaseLayerAndAddMore(global.artisticMap, L);
 L.control.scale({imperial:false}).addTo(global.map);
+// TODO Spawn con lng correction
 // TODO > Colores Tileset
 // Blanco: mover 1x;
 // si no, reducir multiplicador de velocidad y:

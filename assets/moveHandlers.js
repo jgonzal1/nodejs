@@ -92,7 +92,7 @@ function goToPlayer(target, velocity) {
 		target.setLatLng(L.latLng(
 			target.getLatLng().lat+(Math.random()-0.5)/20,
 			target.getLatLng().lng+(Math.random()-0.5)/20
-		)); // TODO NO SIEMPRE
+		));
 	}
 }
 
