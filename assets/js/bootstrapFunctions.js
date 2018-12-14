@@ -1,5 +1,6 @@
 //#region Bootstrap initial settings and configs
-var keypressMap, map, featureList, boroughSearch = [], theaterSearch = [], museumSearch = [];
+var map, featureList, boroughSearch = [], theaterSearch = [], museumSearch = [];
+var keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
 
 $(window).resize(function() {
   sizeLayerControl();
@@ -19,7 +20,6 @@ if ( !("ontouchstart" in window) ) {
 $(document).on("mouseout", ".feature-row", clearHighlight);
 //#endregion
 
-
 //#region Top_Menu modal handlers
 /*["help"][0]
 ["help"][1]
@@ -31,7 +31,6 @@ $(document).on("mouseout", ".feature-row", clearHighlight);
 $("#constructions-btn").click(function() {
   $("#buildModal").modal("show");
   $("#buildModal").keypress( function(event) {
-    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
     document.getElementById("keyhandlerModalTester").innerText = event.which;
     switch(event.which) {
     case keypressMap["option1"][0]: // Q
@@ -51,17 +50,14 @@ $("#constructions-btn").click(function() {
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
-/*
-["build"][0]
-["build"][1]
-["build"][2]
-["craft"][0]
-*/
+$("#buildModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
 
 $("#diplomacy-btn").click(function() {
   $("#factionsModal").modal("show");
   $("#factionsModal").keypress( function(event) {
-    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
     document.getElementById("keyhandlerModalTester").innerText = event.which;
     switch(event.which) {
     case keypressMap["option1"][0]: // Q
@@ -81,13 +77,14 @@ $("#diplomacy-btn").click(function() {
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
-// ["factions"][0]
-// ["treatmentsModal"][0]
+$("#factionsModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
 
 $("#fleet-btn").click(function() {
   $("#fleetModal").modal("show");
   $("#fleetModal").keypress( function(event) {
-    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
     document.getElementById("keyhandlerModalTester").innerText = event.which;
     switch(event.which) {
     case keypressMap["option1"][0]: // Q
@@ -107,12 +104,14 @@ $("#fleet-btn").click(function() {
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
-// ["fleet"][0]
+$("#fleetModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
 
 $("#skills-btn").click(function() {
   $("#skillsModal").modal("show");
   $("#skillsModal").keypress( function(event) {
-    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
     document.getElementById("keyhandlerModalTester").innerText = event.which;
     switch(event.which) {
     case keypressMap["option1"][0]: // Q
@@ -132,13 +131,14 @@ $("#skills-btn").click(function() {
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
-// ["playerInfo"][0]
-// ["viewMorale"][0]
+$("#skillsModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
 
 $("#research-btn").click(function() {
   $("#researchModal").modal("show");
   $("#researchModal").keypress( function(event) {
-    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
     document.getElementById("keyhandlerModalTester").innerText = event.which;
     switch(event.which) {
     case keypressMap["option1"][0]: // Q
@@ -158,12 +158,14 @@ $("#research-btn").click(function() {
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
-// ["research"][0]
+$("#researchModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = global.keymap["pause"][0];
+});
 
 $("#missions-btn").click(function() {
   $("#missionsModal").modal("show");
   $("#missionsModal").keypress( function(event) {
-    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
     document.getElementById("keyhandlerModalTester").innerText = event.which;
     switch(event.which) {
     case keypressMap["option1"][0]: // Q
@@ -183,8 +185,10 @@ $("#missions-btn").click(function() {
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
-// ["journal"][0]
-// ["journal"][1]
+$("#missionsModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
 
 /*["options"][0]
 
@@ -203,7 +207,6 @@ $("#go-to-spawn-btn").click(function() {
 $("#spells-btn").click(function() {
   $("#sorceriesModal").modal("show");
   $("#sorceriesModal").keypress( function(event) {
-    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
     document.getElementById("keyhandlerModalTester").innerText = event.which;
     switch(event.which) {
     case keypressMap["option1"][0]: // Q
@@ -223,12 +226,13 @@ $("#spells-btn").click(function() {
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
-// ["sorceries"][0]
-
+$("#sorceriesModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
 $("#keys-btn").click(function() {
   $("#keysModal").modal("show");
   $("#keysModal").keypress( function(event) {
-    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
     document.getElementById("keyhandlerModalTester").innerText = event.which;
     switch(event.which) {
     case keypressMap["option1"][0]: // Q
@@ -248,14 +252,20 @@ $("#keys-btn").click(function() {
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
-// ["keys"][0]
+$("#keysModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
 
 $("#login-btn").click(function() {
   $("#loginModal").modal("show");
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
-// ["login"][0]
+$("#loginModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
 
 // save-btn
 // ["saveQuit"][0]
@@ -275,7 +285,6 @@ $("#login-btn").click(function() {
 
 //#region Map/ObjectiveInteraction modal handlers
 $("#battleModal").keypress( function(event) {
-  keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
   switch(event.which) {
   case keypressMap["option1"][0]: // Q
   case keypressMap["option1"][1]:
@@ -292,6 +301,10 @@ $("#battleModal").keypress( function(event) {
     break;
   }
 });
+$("#battleModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
 
 /*["open"][0]
 ["read"][0]
@@ -301,7 +314,6 @@ $("#battleModal").keypress( function(event) {
 ["use"][0]
 ["vehicleHandbrake"][0]*/
 //#endregion
-	
 
 //#region Other Bootstrap+jQuery Functions
 $("#list-btn").click(function() {
