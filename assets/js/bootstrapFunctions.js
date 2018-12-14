@@ -1,3 +1,4 @@
+//#region Bootstrap initial settings and configs
 var keypressMap, map, featureList, boroughSearch = [], theaterSearch = [], museumSearch = [];
 
 $(window).resize(function() {
@@ -16,34 +17,11 @@ if ( !("ontouchstart" in window) ) {
 }
 
 $(document).on("mouseout", ".feature-row", clearHighlight);
+//#endregion
 
 $("#go-to-spawn-btn").click(function() {
   map.setView([40.4942011, -3.71013], 16);
   // map.fitBounds(boroughs.getBounds());
-  $(".navbar-collapse.in").collapse("hide");
-  return false;
-});
-
-$("#missions-btn").click(function() {
-  $("#missionsModal").modal("show");
-  $("#missionsModal").keypress( function(event) {
-    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
-    document.getElementById("keyhandlerModalTester").innerText = event.which;
-    switch(event.which) {
-    case keypressMap["option1"][0]: // Q
-    case keypressMap["option1"][1]:
-      break;
-    case keypressMap["option2"][0]: // W
-    case keypressMap["option2"][1]:
-      break;
-    case keypressMap["option3"][0]: // E
-    case keypressMap["option3"][1]:
-      break;
-    case keypressMap["option4"][0]: // R
-    case keypressMap["option4"][1]:
-      break;
-    }
-  });
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
@@ -73,6 +51,217 @@ $("#login-btn").click(function() {
   return false;
 });
 
+//#region Top_Menu
+/*["help"][0]
+["help"][1]
+["help"][2]
+
+["music"][0]
+["music"][1]*/
+
+$("#constructions-btn").click(function() {
+  $("#buildModal").modal("show");
+  $("#buildModal").keypress( function(event) {
+    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
+  });
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+/*
+["build"][0]
+["build"][1]
+["build"][2]
+["craft"][0]
+*/
+
+$("#diplomacy-btn").click(function() {
+  $("#factionsModal").modal("show");
+  $("#factionsModal").keypress( function(event) {
+    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
+  });
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+// ["factions"][0]
+// ["treatmentsModal"][0]
+
+$("#fleet-btn").click(function() {
+  $("#fleetModal").modal("show");
+  $("#fleetModal").keypress( function(event) {
+    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
+  });
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+// ["fleet"][0]
+
+$("#skills-btn").click(function() {
+  $("#skillsModal").modal("show");
+  $("#skillsModal").keypress( function(event) {
+    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
+  });
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+// ["playerInfo"][0]
+// ["viewMorale"][0]
+
+$("#research-btn").click(function() {
+  $("#researchModal").modal("show");
+  $("#researchModal").keypress( function(event) {
+    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
+  });
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+// ["research"][0]
+
+$("#missions-btn").click(function() {
+  $("#missionsModal").modal("show");
+  $("#missionsModal").keypress( function(event) {
+    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
+  });
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+// ["journal"][0]
+// ["journal"][1]
+
+/*["options"][0]
+
+["toggleStats"][0]*/
+//#endregion
+
+//#region Top_Menu/Options
+//["goToSpawn"][0]
+/*
+spells-btn
+["sorceries"][0]
+
+keys-btn
+["keys"][0]
+
+login-btn
+["login"][0]
+
+save-btn
+["saveQuit"][0]*/
+//#endregion
+
+//#region Left_Menu
+/*["inventory"][0]
+
+["leaveItem"][0]
+
+["manageInventory"][0]
+
+["swapInventoryLetters"][0]
+
+["takeOut"][0]*/
+//#endregion
+
+//#region Map/ObjectiveInteraction
+/*["open"][0]
+["read"][0]
+["wear"][0]
+["examine"][0]
+["examine"][1]
+["use"][0]
+["vehicleHandbrake"][0]*/
+//#endregion
+	
+
+//#region Other Bootstrap+jQuery Functions
 $("#list-btn").click(function() {
   animateSidebar();
   return false;
@@ -147,11 +336,9 @@ function syncSidebar() {
     order: "asc"
   });
 }
+//#endregion
 
-function instanceKeymap() {
-
-}
-
+//#region Bootstrap Leaflet Handlers
 /* Basemap Layers */
 // map.setView([40.4942011, -3.71013], 16);
 var cartoLight = L.tileLayer(
@@ -643,3 +830,4 @@ if (!L.Browser.touch) {
 } else {
   L.DomEvent.disableClickPropagation(container);
 }
+//#endregion
