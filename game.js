@@ -1,6 +1,7 @@
 //#region Imports
 const enemyMover = require('./assets/enemyMover');
 const keyHandler = require("./assets/keyHandler");
+// TODO beefy/browserify not working properly in work laptop=
 // TODO >>>>> Working main game key bindings & hints
 // TODO Duplicated mH.fcalcDist array on the inside because of async
 // TODO Make attack handler different for all player attack position disruption cases
@@ -12,6 +13,7 @@ const spawnObjectives = require('./assets/spawnObjectives');
 const spawnPlaces = require('./assets/spawnPlaces');
 const spawnTransports = require('./assets/spawnTransports');
 const getKeymap = require('./data/keymap');
+// TODO To access js variables within bootstrap, load in HTML and charge bootstrap in it afterwards
 global.keymap = getKeymap();
 const spawnRegionsAustria = require('./data/regionsAustria');
 const regionsAustria = spawnRegionsAustria();

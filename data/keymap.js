@@ -121,6 +121,7 @@ function getKeymap() {
 
 module.exports = getKeymap;
 
+//#region descriptions
 /*
 keyEventWhich	keyFunction	description
 _	unArm	Select unarmed style [Hint]
@@ -205,3 +206,4 @@ X	examine	Peek around corners
 x	examine	Examine or interact with nearby world object [Hint].
 y	yes also developerSwitch
 */
+//#endregion
