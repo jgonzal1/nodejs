@@ -30,7 +30,7 @@ function keyHandler(velocity) {
 			$(".navbar-collapse.in").collapse("hide");
 			break;
 		case global.keymap["factions"][0]:
-		case global.keymap["treatmentsModal"][0]:
+		case global.keymap["treats"][0]:
 			document.getElementById('openModal').innerText = 'true';
 			$("#factionsModal").modal("show");
 			$(".navbar-collapse.in").collapse("hide");

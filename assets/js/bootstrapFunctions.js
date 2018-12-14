@@ -160,7 +160,7 @@ $("#research-btn").click(function() {
 });
 $("#researchModal").on('hide.bs.modal', function(){
   document.getElementById('openModal').innerText = 'false';
-  document.getElementById('hiddenHandlerKeys').innerText = global.keymap["pause"][0];
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
 });
 
 $("#missions-btn").click(function() {

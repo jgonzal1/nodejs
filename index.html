@@ -66,7 +66,8 @@
         <div class="navbar-collapse collapse"> <!-- Horizontal Menu -->
           <ul class="nav navbar-nav">
               <li class="dropdown"> <!-- Info -->
-                  <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('info');"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp; <b class="caret"></b></a>
+                  <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('info');"><i class="fa fa-question-circle white"><span id="helpMenuPlaceholder">&nbsp;</span>
+                  </i><b class="caret"></b></a>
                   <ul class="dropdown-menu" style="width:400px">
                       <div id="info" class="containerTab" style="display:none;background:#90cc90">
                               <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
@@ -91,7 +92,8 @@
                   </ul>
               </li>
               <li class="dropdown"> <!-- Música -->
-                  <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('music');"><i class="fa fa-music white"></i>&nbsp;&nbsp; <b class="caret"></b></a>
+                  <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('music');"><i class="fa fa-music white"><span id="musicMenuPlaceholder">&nbsp;</span>
+                  </i><b class="caret"></b></a>
                   <ul class="dropdown-menu">
                       <div id="music" class="containerTab" style="display:none;background:#cfc999">
                           <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
@@ -128,15 +130,19 @@
                   </ul>
               </li>
               <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="constructions-btn">
-                <i class="fas fa-hammer"></i>&nbsp;&nbsp; </a></li><!--(indev)-->
+                <i class="fas fa-hammer"><span id="buildMenuPlaceholder">&nbsp;</span></i></a></li><!--(indev)-->
               <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="diplomacy-btn">
-                  <i class="fas fa-handshake"></i>&nbsp;&nbsp;</a></li><!--(indev) -->
+                  <i class="fas fa-handshake"><span id="treatsMenuPlaceholder">&nbsp;</span>
+                  </i></a></li><!--(indev) -->
               <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="fleet-btn">
-                  <i class="fas fa-anchor"></i>&nbsp;&nbsp;</a></li><!--(indev) -->
+                  <i class="fas fa-anchor"><span id="fleetMenuPlaceholder">&nbsp;</span>
+                  </i></a></li><!--(indev) -->
               <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="skills-btn">
-                  <i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;</a></li><!--(indev) book-dead journal-whills-->
+                  <i class="fas fa-graduation-cap"><span id="playerInfoMenuPlaceholder">&nbsp;</span>
+                  </i></a></li><!--(indev) book-dead journal-whills-->
               <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="research-btn">
-                  <i class="fab fa-react"></i>&nbsp;&nbsp;</a></li><!--Investigaciones (indev) atom rocket-->
+                  <i class="fab fa-react"><span id="researchMenuPlaceholder">&nbsp;</span>
+                  </i></a></li><!--Investigaciones (indev) atom rocket-->
               <!-- Misiones -->
               <li>
                 <!--<div class="wrapper">
@@ -145,29 +151,31 @@
                   </button>
                 </div>-->
                 <a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="missions-btn">
-                  <i class="fa fa-globe white"></i>&nbsp;&nbsp;Misiones</a><!-- fa-clipboard-list atlas -->
+                  <i class="fa fa-globe white"><span id="journalMenuPlaceholder">&nbsp;Misiones -&nbsp;</span>
+                    </i></a><!-- fa-clipboard-list atlas -->
               </li>
               <!-- Opciones --><li class="dropdown">
-                <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-cog"></i>&nbsp;&nbsp;Opciones <b class="caret"></b></a>
+                <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-cog"><span id="optionsMenuPlaceholder">&nbsp;Opciones -&nbsp;</span>
+                </i><b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="go-to-spawn-btn">
-                      <i class="fa fa-home"></i>&nbsp;&nbsp;GoTo Spawn</a></li>
+                      <i class="fa fa-home">&nbsp;&nbsp;GoTo Spawn</i></a></li>
                   <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="spells-btn">
-                      <i class="fas fa-flask"></i>&nbsp;&nbsp;Hechizos (indev)</a></li>
+                      <i class="fas fa-flask">&nbsp;&nbsp;Hechizos (indev)</i></a></li>
                   <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="keys-btn">
-                      <i class="fas fa-key"></i>&nbsp;&nbsp;Llaves (indev)</a></li>
+                      <i class="fas fa-key">&nbsp;&nbsp;Llaves (indev)</i></a></li>
                   <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="login-btn">
-                    <i class="fa fa-user"></i>&nbsp;&nbsp;Login (indev)</a></li><!--fa fa-user-->
+                    <i class="fa fa-user">&nbsp;&nbsp;Login (indev)</i></a></li><!--fa fa-user-->
 
                   <li><a href="data/boroughs.geojson" download="boroughs.geojson" id="save-btn" target="_blank"
                     data-toggle="collapse" data-target=".navbar-collapse.in">
-                    <i class="fa fa-download"></i>&nbsp;&nbsp;Save (indev)</a>
+                    <i class="fa fa-download">&nbsp;&nbsp;Save (indev)</i></a>
                   </li><!-- copy of the current game  -->
                   <!--<li class="divider hidden-xs"></li>-->
                 </ul>
               </li>
               <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn">
-                <i class="fa fa-list white"></i>&nbsp;&nbsp;Toggle panel Stats y Objetos</a></li>
+                <i class="fa fa-list white"><span id="toggleStatsMenuPlaceholder">&nbsp;Toggle panel Stats y Objetos -&nbsp;</span></i></a></li>
           </ul>
         </div>
       </div>

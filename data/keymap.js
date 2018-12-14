@@ -1,4 +1,4 @@
-var keypressReference = '{"activateMutations":[123],"option1":[81,113],"option2":[87,119],"option3":[69,101],"option4":[82,114],"build":[42,66,98],"chatMenu":[67],"close":[99],"compare":[73],"controlVehicle":[94],"craft":[38],"debugModal":[126],"disassembly":[40],"examine":[88,120],"exit":[27],"factions":[35],"fireMode":[70],"fleet":[102],"get":[103],"grabVehicle":[71],"help":[63,72,104],"ignoreRearestEnemy":[39],"inventory":[105],"journal":[74,106],"kick":[75,107],"killCount":[41],"leaveItem":[76,108],"listOfActions":[37],"manageInventory":[47],"moveEast":[54,68,100],"moveNE":[57],"moveNW":[55],"moveNorth":[56,87,119],"moveSE":[51],"moveSouth":[50,83,115],"moveSW":[49],"moveWest":[52,65,97],"music":[77,109],"no":[78,110],"open":[79],"options":[111],"pause":[112,44,46,53,80],"pickOrSearchNearest":[32],"playerInfo":[64],"quests":[81,113],"read":[114],"recraftLast":[45],"reload":[114],"research":[82],"run":[34],"safemode":[33],"sleep":[36],"swapInventoryLetters":[61],"takeOut":[116],"toggleStats":[122],"treatmentsModal":[84],"unArm":[95],"unWield":[85],"use":[117],"vehicleHandbrake":[86],"viewMorale":[118],"waitLong":[124],"wear":[43],"wield":[69,101],"yes":[89,121]}';
+var keypressReference = '{"activateMutations":[123],"option1":[81,113],"option2":[87,119],"option3":[69,101],"option4":[82,114],"build":[98,42,66],"chatMenu":[67],"close":[99],"compare":[73],"controlVehicle":[94],"craft":[38],"debugModal":[126],"disassembly":[40],"examine":[88,120],"exit":[27],"factions":[35],"fireMode":[70],"fleet":[102],"get":[103],"grabVehicle":[71],"help":[104,63,72],"ignoreRearestEnemy":[39],"inventory":[105],"journal":[106,74],"kick":[75,107],"killCount":[41],"leaveItem":[76,108],"listOfActions":[37],"manageInventory":[47],"moveEast":[54,68,100],"moveNE":[57],"moveNW":[55],"moveNorth":[56,87,119],"moveSE":[51],"moveSouth":[50,83,115],"moveSW":[49],"moveWest":[52,65,97],"music":[109,77],"no":[78,110],"open":[79],"options":[111],"pause":[112,44,46,53,80],"pickOrSearchNearest":[32],"playerInfo":[64],"quests":[81,113],"read":[114],"recraftLast":[45],"reload":[114],"research":[82],"run":[34],"safemode":[33],"sleep":[36],"swapInventoryLetters":[61],"takeOut":[84],"toggleStats":[122],"treats":[116],"unArm":[95],"unWield":[85],"use":[117],"vehicleHandbrake":[86],"viewMorale":[118],"waitLong":[124],"wear":[43],"wield":[69,101],"yes":[89,121]}';
 document.getElementById('keypressReference').innerText = keypressReference;
 
 var keymap = {
@@ -9,7 +9,7 @@ var keymap = {
     "option3":["e","E"],
     "option4":["r","R"],
     "bionics":["Shift+B"],
-    "build":["*","B","b"],
+    "build":["b","*","B"],
     "changeSkills":["~A"],
     "changeWeather":["~h"],
     "chatMenu":["C"],
@@ -35,10 +35,10 @@ var keymap = {
     "get":["g"],
     "goToSpawn":["Shift+G"],
     "grabVehicle":["G"],
-    "help":["?","H","h"],
+    "help":["h","?","H"],
     "ignoreRearestEnemy":["'"],
     "inventory":["i"],
-    "journal":["J","j"],
+    "journal":["j","J"],
     "keys":["Shift+K"],
     "kick":["k"],
     "killAllNearby":["~K"],
@@ -61,7 +61,7 @@ var keymap = {
     "moveSW":["1"],
     "moveSouth":["s","2","S"],
     "moveWest":["a","4","A"],
-    "music":["M","m"],
+    "music":["m","M"],
     "mutate":["~u"],
     "no":["n"],
     "open":["O"],
@@ -92,14 +92,14 @@ var keymap = {
     "spawnVehicle":["~0"],
     "statusWindow":["~@"],
     "swapInventoryLetters":["="],
-    "takeOut":["t"],
+    "takeOut":["T"],
     "teleport":["~e"],
     "teleportLong":["~3"],
     "teleportShort":["~2"],
     "testItems":["~k"],
     "toggleSafemode":["!"],
     "toggleStats":["z"],
-    "treatmentsModal":["T"],
+    "treats":["t"],
     "unArm":["_"],
     "unWield":["U"],
     "unlockAllMeleeAttacks":["~B"],
@@ -114,6 +114,16 @@ var keymap = {
     "wield":["E","e"],
     "yes":["y","Y"]
 };
+document.getElementById('helpMenuPlaceholder').innerText += keymap["help"][0];
+document.getElementById('musicMenuPlaceholder').innerText += keymap["music"][0];
+document.getElementById('buildMenuPlaceholder').innerText += keymap["build"][0];
+document.getElementById('treatsMenuPlaceholder').innerText += keymap["treats"][0];
+document.getElementById('fleetMenuPlaceholder').innerText += keymap["fleet"][0];
+document.getElementById('playerInfoMenuPlaceholder').innerText += keymap["playerInfo"][0];
+document.getElementById('researchMenuPlaceholder').innerText += keymap["research"][0];
+document.getElementById('journalMenuPlaceholder').innerText += keymap["journal"][0];
+document.getElementById('optionsMenuPlaceholder').innerText += keymap["options"][0];
+document.getElementById('toggleStatsMenuPlaceholder').innerText += keymap["toggleStats"][0];
 
 function getKeymap() {
     return keymap;
@@ -196,7 +206,7 @@ Shift+F	fireWielded	Burst-fire wielded item [Hint]
 Shift+M	viewMessages	View message log
 Shift+V	listEnemies	List all items/creatures around the player [Hint]
 SPACE	pickOrSearchNearest	Pick or search object
-T	treatmentsModal	diplomacy
+T	treats	diplomacy
 t	takeOut	Throw item [Hint] / Take off worn item
 U	unWield	Unload or empty wielded or nearby item [Hint]
 u	use	eat, drink or consume item [Hint]. Apply or use currently wielded item. Apply or use an item [Hint]

@@ -13,6 +13,7 @@ const spawnPlaces = require('./assets/spawnPlaces');
 const spawnTransports = require('./assets/spawnTransports');
 const getKeymap = require('./data/keymap');
 global.keymap = getKeymap();
+// TODO arreglar que se pueda clicar o usar teclado (id. unico a eventos)
 // TODO Recover > < keys but for open/close doors
 const spawnRegionsAustria = require('./data/regionsAustria');
 const regionsAustria = spawnRegionsAustria();
