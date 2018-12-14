@@ -17,12 +17,6 @@ if ( !("ontouchstart" in window) ) {
 
 $(document).on("mouseout", ".feature-row", clearHighlight);
 
-$("#about-btn").click(function() {
-  $("#aboutModal").modal("show");
-  $(".navbar-collapse.in").collapse("hide");
-  return false;
-});
-
 $("#go-to-spawn-btn").click(function() {
   map.setView([40.4942011, -3.71013], 16);
   // map.fitBounds(boroughs.getBounds());

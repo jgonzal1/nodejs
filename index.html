@@ -27,7 +27,6 @@
 
     <!--<link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
     <link rel="stylesheet" href="style/style.css">-->
-
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon-76.png">
     <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon-120.png">
     <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon-152.png">
@@ -256,72 +255,185 @@
       <div id="map"></div>
     </div>
 
-	  <!-- Modals -->
-    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog"> 
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Welcome to the BootLeaf template!</h4>
-          </div>
+    <!-- Modals --><div id="templateModal"
+      class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-header"></div><div class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resumeGame()">Close</button>
+      </div>
+    </div>
+    <!-- #region Top_Menu -->
+      <!-- #region build -->
+      <div class="modal fade" id="missionsModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Build/Craft</h4></div>
           <div class="modal-body">
-            <ul class="nav nav-tabs nav-justified" id="aboutTabs">
-              <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;About the project</a></li>
-              <li><a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i>&nbsp;Contact us</a></li>
-            </ul>
+            <table class="table"><tbody>  
+              <tr class="craftOptionRow"><td></td><td></td></tr>
+              <tr class="buildOptionRow"><td></td><td></td></tr>
+            </tbody></table>
+            <span id="bcSelection"></span>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal misiones v1
-      <div class="dialog" role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
-        <h1 id="dialog-title">Site Navigation</h1>
-        <p id="dialog-description" class="sr-only">Description goes here</p>
-        <nav>
-          <ul>
-            <li><a href="one.html">Link One</a></li>
-            <li><a href="two.html">Link Two</a></li>
-            <li><a href="three.html">Link Three</a></li>
-          </ul>
-        </nav>
-        <button type="button" aria-label="Close Navigation" class="close-dialog"> <i class="fa fa-times"></i> </button>
-      </div>--</div><!- /.modal misiones v2
-    <div class="missionOptionOverlay" tabindex="-1">-->
-    <div class="modal fade" id="missionsModal" tabindex="-1" role="dialog">
-      <span id="openModal" style="display: none">false</span>
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="resumeGame()">&times;</button>
-            <h4 class="modal-title">Título</h4>
-          </div>
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div><!-- endregion -->
+      <!-- #region factions -->
+      <div class="modal fade" id="factionsModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Factions & treatments (Diplomacy)</h4></div>
           <div class="modal-body">
-            <table class="table">
-              <tbody>  
-                <tr>
-                  <td class="missionOption">
-                  </td><td></td>
-                </tr>
-              </tbody>
-            </table>
+            <table class="table"><tbody>  
+              <tr class="factionRow"><td></td><td></td></tr>
+            </tbody></table>
+            <span id="factionSelection"></span>
+          </div>
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div><!-- endregion -->
+      <!-- #region fleet -->
+      <div class="modal fade" id="fleetModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Fleet</h4></div>
+          <div class="modal-body">
+            <table class="table"><tbody>  
+              <tr class="fleetRow"><td></td><td></td></tr>
+            </tbody></table>
+            <span id="fleetSelection"></span>
+          </div>
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div><!-- endregion -->
+      <!-- #region skills&morale -->
+      <div class="modal fade" id="skillsModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Skills & Morale</h4></div>
+          <div class="modal-body">
+            <table class="table"><tbody>
+              <tr class="moraleRow"><td></td><td class="moraleState"></td></tr>
+              <tr class="skillsRow"><td></td><td></td></tr>
+            </tbody></table>
+            <span id="skillSelection"></span>
+          </div>
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div><!-- endregion -->
+      <!-- #region research -->
+      <div class="modal fade" id="researchModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Research</h4></div>
+          <div class="modal-body">
+            <table class="table"><tbody>
+              <tr class="researchRow"><td></td><td></td></tr>
+            </tbody></table>
+            <span id="researchSelection"></span>
+          </div>
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div><!-- endregion -->
+      <!-- #region missions&journal -->
+      <div class="modal fade" id="missionsModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Missions</h4></div>
+          <div class="modal-body">
+            <table class="table"><tbody><!-- Journal -->
+              <tr class="missionOptionRow"><td></td><td></td></tr>
+            </tbody></table>
             <span id="missionSelection"></span>
           </div>
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div><!-- endregion -->
+      <!-- #region options/sorceries -->
+      <div class="modal fade" id="sorceriesModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Sorceries</h4></div>
+          <div class="modal-body">
+            <table class="table"><tbody>
+              <tr class="sorceryRow"><td></td><td></td></tr>
+            </tbody></table>
+            <span id="sorcerySelection"></span>
+          </div>
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div><!-- endregion -->
+      <!-- #region options/keys -->
+      <div class="modal fade" id="keysModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Keys</h4></div>
+          <div class="modal-body">
+            <table class="table"><tbody>
+              <tr class="keyRow"><td></td><td></td></tr>
+            </tbody></table>
+            <span id="keySelection"></span>
+          </div>
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div><!-- endregion -->
+      <!-- #region options/login-->
+      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            &times;</button><h4 class="modal-title">Login</h4></div>
+          <div class="modal-body">
+            <form id="contact-form"><fieldset>
+              <div class="form-group">
+                <label for="name">Username:</label><input type="text" class="form-control" id="username">
+              </div><div class="form-group">
+                <label for="email">Password:</label><input type="password" class="form-control" id="password">
+              </div>
+            </fieldset></form>
+          </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resumeGame()">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary" data-dismiss="modal">Login</button>
           </div>
-        </div> <!-- /.modal-content -->
-      </div> <!-- /.modal-dialog -->
-    </div><!-- /.modal batallas-->
-    <div class="modal fade" id="battleModal" tabindex="-1" role="dialog">
-      <span id="openModal" style="display: none">false</span>
-      <div class="modal-dialog" style="width:720px;height:480px;">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="resumeGame()">&times;</button>
-            <h4 class="modal-title">Battle!</h4>
+        </div></div><!-- </modal-content></modal-dialog> -->
+      </div><!-- endregion -->
+      <!-- #region options/save&quit -->
+      <div class="modal fade" id="saveModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Save & Load & Quit</h4></div>
+          <div class="modal-body">
+            <table class="table"><tbody>
+              <tr class="loadRow"><td></td><td></td></tr>
+              <tr class="saveAsRow"><td></td><td></td></tr>
+              <tr class="saveAndQuitRow"><td></td><td></td></tr>
+              <tr class="quitRow"><td></td><td></td></tr>
+            </tbody></table>
+            <span id="saveModalSelection"></span>
           </div>
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div>
+      <!-- endregion -->
+    <!-- endregion -->
+    <!-- #region Left_Menu -->
+    <!-- endregion -->
+    <!-- #region Map/ObjectiveInteraction -->
+      <!-- #region battles -->
+      <div class="modal fade" id="battleModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog" style="width:720px;height:480px;"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Battle</h4></div>
           <div class="modal-body">
             <img id="marluxia" src="sprites/player/marluxia.png" style="display:none;">
             <img id="death" src="sprites/enemies-reverse/death.png" style="display:none;">
@@ -336,117 +448,74 @@
             <img id="skeleton" src="sprites/enemies-reverse/skeleton.png" style="display:none;">
             <img id="spider" src="sprites/enemies-reverse/spider.png" style="display:none;">
             <canvas id="fightersCanvas" width="680" height="256" style="border:1px solid #d3d3d3;">
-                Your browser does not support the HTML5 canvas tag.
+              Your browser does not support the HTML5 canvas tag.
             </canvas>
-            <table class="table">
-              <tbody>  
-                <tr>
-                  <td class="fightOption1">
-                    <button type="button" class="btn btn-info" style="width: 100%" onclick="loadTile()">Ataque pred.</button><!--Blue-->
-                  </td><td class="fightOption2">
-                    <button type="button" class="btn btn-success" style="width: 100%">Más ataques</button><!--Green-->
-                  </td>
-                </tr>
-                <tr>
-                  <td class="fightOption3">
-                    <button type="button" class="btn btn-warning" style="width: 100%">Objetos</button><!--Yellow-->
-                  </td><td class="fightOption4">
-                    <button type="button" class="btn btn-danger" style="width: 100%">Intenta huir</button><!--Red-->
-                  </td>
-                  <!--<td class="danger">Red</td>-->
-                </tr>
-              </tbody>
-            </table>
+            <table class="table"><tbody>  
+              <tr>
+                <td class="fightOption1">
+                  <button type="button" class="btn btn-info" style="width: 100%" onclick="loadTile()">Ataque pred.</button><!--Blue-->
+                </td><td class="fightOption2">
+                  <button type="button" class="btn btn-success" style="width: 100%">Más ataques</button><!--Green-->
+                </td>
+              </tr>
+              <tr>
+                <td class="fightOption3">
+                  <button type="button" class="btn btn-warning" style="width: 100%">Objetos</button><!--Yellow-->
+                </td><td class="fightOption4">
+                  <button type="button" class="btn btn-danger" style="width: 100%">Intenta huir</button><!--Red-->
+                </td>
+              </tr>
+            </tbody></table>
             <div id="battleLogs"></div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resumeGame()">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal comercio-->
-    <div class="modal fade" id="tradeModal" tabindex="-1" role="dialog">
-      <span id="openModal" style="display: none">false</span>
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="resumeGame()">&times;</button>
-            <h4 class="modal-title">intercambio!</h4>
-          </div>
-          <div class="modal-body">
-            <p>El diálogo de intercambios va aquí...</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resumeGame()">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal login-->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Login</h4>
-          </div>
-          <div class="modal-body">
-            <form id="contact-form">
-              <fieldset>
-                <div class="form-group">
-                  <label for="name">Username:</label>
-                  <input type="text" class="form-control" id="username">
-                </div>
-                <div class="form-group">
-                  <label for="email">Password:</label>
-                  <input type="password" class="form-control" id="password">
-                </div>
-              </fieldset>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary" data-dismiss="modal">Login</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!--
-    <div class="modal fade" id="featureModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title text-primary" id="feature-title"></h4>
-          </div>
-          <div class="modal-body" id="feature-info"></div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
+          <div class="modal-footer"></div>
+        </div></div><!-- </modal-content></modal-dialog> -->
       </div>
-    </div>
-    <div class="modal fade" id="attributionModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">
-              Developed by <a href='http://bryanmcbride.com'>bryanmcbride.com</a>
-            </h4>
-          </div>
+      <!-- endregion -->
+      <!-- #region trade -->
+      <div class="modal fade" id="tradeModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Trade</h4></div>
           <div class="modal-body">
-            <div id="attribution"></div>
+            <table class="table"><tbody>  
+              <tr class="tradeOptionRow"><td></td><td></td></tr>
+            </tbody></table>
+            <span id="tradeSelection"></span>
           </div>
-        </div>
-      </div>
-    </div>-->
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div>    
+      <!-- endregion -->
+    <!-- endregion -->
 
     <!-- Scripts -->
     <script src="bundle.js"></script>
-    <script src="./style/dialog.js"></script>
-    <script>
-    /**
-     * @param {Number} hp
-     */
+    <script>//src this
+    // keyListener
+    let buttonsPushed = 0;
+    $("#map").keypress(
+        function(event) {
+            if(event.which===13) {
+                event.preventDefault();
+            }
+            buttonsPushed++;
+            document.getElementById("hiddenHandlerKeys").innerHTML = event.key;
+                // " " + buttonsPushed + "t," + // Times called .keypress() handler
+                // " " + event.key + " key"; // Last pushed key in keyboard
+                // <p> works but is unhidden
+        }
+    );
+    //*/
+    function simulateKeyPress(character) {
+        jQuery.event//('input[type=submit][name=btnK]')
+            .trigger({
+                type: 'keypress',
+                which: character.charCodeAt(65)
+            });
+    }
+    /** @param {Number} hp */
     function healthCanvas(hp) {
         var c = document.getElementById("healthCanvas");
         var ctx = c.getContext("2d");
@@ -484,8 +553,7 @@
         document.getElementById("hiddenHandlerPos").innerHTML = position.coords.latitude + 
         "," + position.coords.longitude;
     }
-    /** @return {Object} a Hides all elements with class="containerTab", except for the one that matches the clickable grid column
-    */
+    /** Hides all class="containerTab", except for the one that matches the clickable grid column */
     function openTab(tabName) {
         var i, x;
         x = document.getElementsByClassName("containerTab");
@@ -498,33 +566,6 @@
       document.getElementById('openModal').innerText = 'false';
       global.battleSound.pause();
     }
-
-    healthCanvas(parseFloat(document.getElementById('health').innerHTML));
-    // getLocation();
-
-    // keyListener
-    let buttonsPushed = 0;
-    $("#map").keypress(
-        function(event) {
-            if(event.which===13) {
-                event.preventDefault();
-            }
-            buttonsPushed++;
-            document.getElementById("hiddenHandlerKeys").innerHTML = event.key;
-                // " " + buttonsPushed + "t," + // Times called .keypress() handler
-                // " " + event.key + " key"; // Last pushed key in keyboard
-                // <p> works but is unhidden
-        }
-    );
-    //*/
-    function simulateKeyPress(character) {
-        jQuery.event//('input[type=submit][name=btnK]')
-            .trigger({
-                type: 'keypress',
-                which: character.charCodeAt(65)
-            });
-    }
-    
     function loadTile() {
       var canvas = document.getElementById("myCanvas");
       var ctx = canvas.getContext("2d");
@@ -550,13 +591,15 @@
         ctx.putImageData(tileData[0], x, y);
       }
     }
-
-    // var navDialogEl = document.querySelector('.missionOption');
+    healthCanvas(parseFloat(document.getElementById('health').innerHTML));
+    // getLocation();
+    // var navDialogEl = document.querySelector('.missionOptionRow');
 		// var dialogOverlay = document.querySelector('.missionOptionOverlay');
 		var myDialog = new Dialog(navDialogEl, dialogOverlay);
 		myDialog.addEventListeners('.open-dialog', '.close-dialog');
     </script>
     <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
     <script src="assets/js/bootstrapFunctions.js"></script>
+    <script src="style/dialog.js"></script>      
   </body>
 </html>
