@@ -19,39 +19,8 @@ if ( !("ontouchstart" in window) ) {
 $(document).on("mouseout", ".feature-row", clearHighlight);
 //#endregion
 
-$("#go-to-spawn-btn").click(function() {
-  map.setView([40.4942011, -3.71013], 16);
-  // map.fitBounds(boroughs.getBounds());
-  $(".navbar-collapse.in").collapse("hide");
-  return false;
-});
 
-$("#battleModal").keypress( function(event) {
-  keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
-  switch(event.which) {
-  case keypressMap["option1"][0]: // Q
-  case keypressMap["option1"][1]:
-    document.getElementById("battleLogs").innerHTML = "¡Marluxa usó ataque básico!";
-    break;
-  case keypressMap["option2"][0]: // W
-  case keypressMap["option2"][1]:
-    break;
-  case keypressMap["option3"][0]: // E
-  case keypressMap["option3"][1]:
-    break;
-  case keypressMap["option4"][0]: // R
-  case keypressMap["option4"][1]:
-    break;
-  }
-});
-
-$("#login-btn").click(function() {
-  $("#loginModal").modal("show");
-  $(".navbar-collapse.in").collapse("hide");
-  return false;
-});
-
-//#region Top_Menu
+//#region Top_Menu modal handlers
 /*["help"][0]
 ["help"][1]
 ["help"][2]
@@ -222,23 +191,77 @@ $("#missions-btn").click(function() {
 ["toggleStats"][0]*/
 //#endregion
 
-//#region Top_Menu/Options
-//["goToSpawn"][0]
-/*
-spells-btn
-["sorceries"][0]
+//#region Top_Menu/Options modal handlers
+$("#go-to-spawn-btn").click(function() {
+  map.setView([40.4942011, -3.71013], 16);
+  // map.fitBounds(boroughs.getBounds());
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+// ["goToSpawn"][0]
 
-keys-btn
-["keys"][0]
+$("#spells-btn").click(function() {
+  $("#sorceriesModal").modal("show");
+  $("#sorceriesModal").keypress( function(event) {
+    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
+  });
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+// ["sorceries"][0]
 
-login-btn
-["login"][0]
+$("#keys-btn").click(function() {
+  $("#keysModal").modal("show");
+  $("#keysModal").keypress( function(event) {
+    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
+  });
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+// ["keys"][0]
 
-save-btn
-["saveQuit"][0]*/
+$("#login-btn").click(function() {
+  $("#loginModal").modal("show");
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+// ["login"][0]
+
+// save-btn
+// ["saveQuit"][0]
 //#endregion
 
-//#region Left_Menu
+//#region Left_Menu modal handlers
 /*["inventory"][0]
 
 ["leaveItem"][0]
@@ -250,7 +273,26 @@ save-btn
 ["takeOut"][0]*/
 //#endregion
 
-//#region Map/ObjectiveInteraction
+//#region Map/ObjectiveInteraction modal handlers
+$("#battleModal").keypress( function(event) {
+  keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
+  switch(event.which) {
+  case keypressMap["option1"][0]: // Q
+  case keypressMap["option1"][1]:
+    document.getElementById("battleLogs").innerHTML = "¡Marluxa usó ataque básico!";
+    break;
+  case keypressMap["option2"][0]: // W
+  case keypressMap["option2"][1]:
+    break;
+  case keypressMap["option3"][0]: // E
+  case keypressMap["option3"][1]:
+    break;
+  case keypressMap["option4"][0]: // R
+  case keypressMap["option4"][1]:
+    break;
+  }
+});
+
 /*["open"][0]
 ["read"][0]
 ["wear"][0]
