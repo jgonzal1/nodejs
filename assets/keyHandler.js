@@ -13,7 +13,7 @@ function keyHandler(velocity) {
 	const pressedKey = document.getElementById('hiddenHandlerKeys').innerText;
 	switch (pressedKey) {
 	//#region Top_Menu
-	/*case global.keymap["help"][0]:
+	case global.keymap["help"][0]:
 	case global.keymap["help"][1]:
 	case global.keymap["help"][2]:
 		break;
@@ -23,7 +23,7 @@ function keyHandler(velocity) {
 	case global.keymap["build"][0]:
 	case global.keymap["build"][1]:
 	case global.keymap["build"][2]:
-	case global.keymap["creaft"][0]:
+	case global.keymap["craft"][0]:
 		break;
 	case global.keymap["factions"][0]:
 	case global.keymap["treatmentsModal"][0]:
@@ -41,10 +41,10 @@ function keyHandler(velocity) {
 	case global.keymap["options"][0]:
 		break;
 	case global.keymap["toggleStats"][0]:
-		break;*/
+		break;//*/
 	//#endregion
 	//#region Top_Menu/Options
-	/*case global.keymap["goToSpawn"][0]:
+	case global.keymap["goToSpawn"][0]:
 		break;
 	case global.keymap["sorceries"][0]:
 		break;
@@ -53,10 +53,9 @@ function keyHandler(velocity) {
 	case global.keymap["login"][0]:
 		break;
 	case global.keymap["saveQuit"][0]:
-		break;*/
+		break;//*/
 	//#endregion
 	//#region Left_Menu
-	/*
 	case global.keymap["inventory"][0]:
 		break;
 	case global.keymap["leaveItem"][0]:
@@ -67,7 +66,7 @@ function keyHandler(velocity) {
 		break;
 	case global.keymap["takeOut"][0]:
 		break;
-	*/
+	//*/
 	//#endregion
 	//#region Map/MoveCharacter
 	case global.keymap["moveEast"][0]:
@@ -88,13 +87,13 @@ function keyHandler(velocity) {
 		break;
 	//#endregion
 	//#region Map/ObjectiveInteraction
-	/*case global.keymap["open"][0]:
+	case global.keymap["open"][0]:
 	case global.keymap["read"][0]:
 	case global.keymap["wear"][0]:
 	case global.keymap["examine"][0]:
 	case global.keymap["examine"][1]:
 	case global.keymap["use"][0]:
-	case global.keymap["vehicleHandbrake"][0]:*/
+	case global.keymap["vehicleHandbrake"][0]://*/
 	case global.keymap["pickOrSearchNearest"][0]: // only one completed
 	//case global.keymap["unWield"][0]:
 		//alert('Calculando distancia...');
