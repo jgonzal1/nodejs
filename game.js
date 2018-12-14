@@ -1,7 +1,6 @@
 //#region Imports
 const enemyMover = require('./assets/enemyMover');
 const keyHandler = require("./assets/keyHandler");
-// TODO >>>>> Working main game key bindings & hints
 // TODO Duplicated mH.fcalcDist array on the inside because of async
 // TODO Make attack handler different for all player attack position disruption cases
 const mH = require('./assets/moveHandlers');

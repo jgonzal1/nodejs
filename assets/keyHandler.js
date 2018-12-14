@@ -11,8 +11,7 @@ function keyHandler(velocity) {
 	velocity = ( velocity || 1 );
     let nearestObjetive, distancesArray, nearestObjetiveIndex, itemDescription, atk;
 	const pressedKey = document.getElementById('hiddenHandlerKeys').innerText;
-	if (document.getElementById("keyChange").innerText != "false") {
-		switch (pressedKey) {
+	if (document.getElementById("keyChange").innerText != "false") { switch (pressedKey) {
 		//#region Top_Menu
 		case global.keymap["help"][0]:
 		case global.keymap["help"][1]:
@@ -101,6 +100,8 @@ function keyHandler(velocity) {
 		//#endregion
 		//#region Map/ObjectiveInteraction
 		case global.keymap["open"][0]:
+		
+			break;
 		case global.keymap["read"][0]:
 		case global.keymap["wear"][0]:
 		case global.keymap["examine"][0]:
@@ -160,8 +161,7 @@ function keyHandler(velocity) {
 		default:
 			document.getElementById('hiddenHandlerKeys').innerText = global.keymap["pause"][0];
 			break;
-		}
-	}
+	}}
 	switch (pressedKey) {
 		//#region Map/MoveCharacter
 		case global.keymap["moveEast"][0]:
