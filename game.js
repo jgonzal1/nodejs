@@ -3,6 +3,7 @@ const enemyMover = require('./assets/enemyMover');
 const keyHandler = require("./assets/keyHandler");
 // TODO Duplicated mH.fcalcDist array on the inside because of async
 // TODO Make attack handler different for all player attack position disruption cases
+const loadPlaceModal = require('./assets/loadPlaceModal');
 const mH = require('./assets/moveHandlers');
 // TODO Not always take out enemy (after battles, it may stay)
 const pushCharacters = require('./assets/pushCharacters');
@@ -177,7 +178,7 @@ setInterval(function() {
 	}*/
 }, 3000); // globalEventsDaemonizer*/
 
-let vel, pause;
+let vel, pause, objectiveDistanceToPlayer, objectiveNearPlayer;
 // const pauseSound = new Sound("../sounds/pause.mp3", 100, true);
 function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 	global.moveDaemonizer = setInterval(function() {
@@ -192,6 +193,13 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 		}
 		if (!pause) { enemyMover(defaultMovementLength); } // else { pauseSound.start(); }
 		if (document.getElementById('openModal').innerText === 'false') {
+			// TODO keyHandler out of scope for third party layer group
+			if (document.getElementById('hiddenHandlerKeys').innerText == global.keymap["open"][0]) {
+				// alert("Empezamos a buscar");
+				// try {
+				loadPlaceModal(sites, markers);
+				// } catch (e) {}
+			}
 			keyHandler(defaultMovementLength);
 		}
 		if (global.layerToRemove != undefined) {
