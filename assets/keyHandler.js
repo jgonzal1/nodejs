@@ -100,7 +100,7 @@ function keyHandler(velocity) {
 		//#endregion
 		//#region Map/ObjectiveInteraction
 		case global.keymap["open"][0]:
-		
+			// TODO game is dealing with this out of scope layers reference
 			break;
 		case global.keymap["read"][0]:
 		case global.keymap["wear"][0]:
@@ -157,6 +157,34 @@ function keyHandler(velocity) {
 				displayAttackPositionAlert = true;
 			}
 			break;
+		//#endregion
+		//#region +
+		/*// Enemies & Vehicles advanced
+		"grabVehicle":["G"]
+		"controlVehicle":["^"]
+		"ignoreRearestEnemy":["'"]
+		"toggleSafemode":["!"]
+
+		// Map advanced
+		"run":["\""]
+		"sleep":["$"]
+		"unArm":["_"]
+		"waitLong":["|"]
+
+		// Advanced
+		"no":["n"]
+		"listOfActions":["%"]
+		"chatMenu":["C"]
+		"debugModal":["~"]
+		"viewMessages":["Shift+M"]
+
+		// Unimplemented
+		"close":["c"]
+		"compare":["I"]
+		"kick":["k"]
+		"killCount":[")"]
+		"reload":["R"]
+		"recraftLast":["-"]*/
 		//#endregion
 		default:
 			document.getElementById('hiddenHandlerKeys').innerText = global.keymap["pause"][0];
