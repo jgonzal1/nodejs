@@ -20,7 +20,7 @@ const spawnSites = require('./data/sites');
 const sites = spawnSites.getSites();
 const places = spawnSites.getPlaces();
 const nPlaces = places.length;
-const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasiera"];
+const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasierra"];
 // TODO > Start in player's location (locatePlayer in assets)
 // document.getElementById('hiddenHandlerPos').innerText.split(",")[0]/[1] + redis
 const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
