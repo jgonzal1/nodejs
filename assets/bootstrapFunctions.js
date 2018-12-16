@@ -306,6 +306,29 @@ $("#battleModal").on('hide.bs.modal', function(){
   document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
 });
 
+$("#tradeModal").keypress( function(event) {
+  switch(event.which) {
+  case keypressMap["option1"][0]: // Q
+  case keypressMap["option1"][1]:
+    document.getElementById("tradeSelection").innerHTML = "¡Has elegido el primer elemento!";
+    break;
+  case keypressMap["option2"][0]: // W
+  case keypressMap["option2"][1]:
+    break;
+  case keypressMap["option3"][0]: // E
+  case keypressMap["option3"][1]:
+    break;
+  case keypressMap["option4"][0]: // R
+  case keypressMap["option4"][1]:
+    break;
+  }
+});
+$("#tradeModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  //document.getElementById('currentPlace').innerText = 'outside';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
+
 /*["open"][0]
 ["read"][0]
 ["wear"][0]
