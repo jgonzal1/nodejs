@@ -192,7 +192,7 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 		if (!pause) { enemyMover(defaultMovementLength); } // else { pauseSound.start(); }
 		if (document.getElementById('openModal').innerText === 'false') {
 			// TODO keyHandler out of scope for third party layer group
-			if (document.getElementById('hiddenHandlerKeys').innerText == global.keymap["open"][0]) {
+			if (global.keymap["open"].includes(document.getElementById('hiddenHandlerKeys').innerText)) {
 				loadPlaceModal(sites, markers);
 			}
 			keyHandler(defaultMovementLength);

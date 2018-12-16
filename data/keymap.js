@@ -1,4 +1,4 @@
-var keypressReference = '{"activateMutations":[123],"option1":[81,113],"option2":[87,119],"option3":[69,101],"option4":[82,114],"build":[98,42,66],"chatMenu":[67],"close":[99],"compare":[73],"controlVehicle":[94],"craft":[38],"debugModal":[126],"disassembly":[40],"examine":[88,120],"exit":[27],"factions":[35],"fireMode":[70],"fleet":[102],"get":[103],"grabVehicle":[71],"help":[104,63,72],"ignoreRearestEnemy":[39],"inventory":[105],"journal":[106,74],"kick":[75,107],"killCount":[41],"leaveItem":[76,108],"listOfActions":[37],"manageInventory":[47],"moveEast":[54,68,100],"moveNE":[57],"moveNW":[55],"moveNorth":[56,87,119],"moveSE":[51],"moveSouth":[50,83,115],"moveSW":[49],"moveWest":[52,65,97],"music":[109,77],"no":[78,110],"open":[79],"options":[111],"pause":[112,44,46,53,80],"pickOrSearchNearest":[32],"playerInfo":[64],"quests":[81,113],"read":[114],"recraftLast":[45],"reload":[114],"research":[82],"run":[34],"safemode":[33],"sleep":[36],"swapInventoryLetters":[61],"takeOut":[84],"toggleStats":[122],"treats":[116],"unArm":[95],"unWield":[85],"use":[117],"vehicleHandbrake":[86],"viewMorale":[118],"waitLong":[124],"wear":[43],"wield":[69,101],"yes":[89,121]}';
+var keypressReference = '{"activateMutations":[123],"option1":[81,113],"option2":[87,119],"option3":[69,101],"option4":[82,114],"build":[98,42,66],"chatMenu":[67],"close":[99],"compare":[73],"controlVehicle":[94],"craft":[38],"debugModal":[126],"disassembly":[40],"examine":[88,120],"exit":[27],"factions":[35],"fireMode":[70],"fleet":[102],"get":[103],"grabVehicle":[71],"help":[104,63,72],"ignoreRearestEnemy":[39],"inventory":[105],"journal":[106,74],"kick":[75,107],"killCount":[41],"leaveItem":[76,108],"listOfActions":[37],"manageInventory":[47],"moveEast":[54,68,100],"moveNE":[57],"moveNW":[55],"moveNorth":[56,87,119],"moveSE":[51],"moveSouth":[50,83,115],"moveSW":[49],"moveWest":[52,65,97],"music":[109,77],"no":[78,110],"open":[62,60,79],"options":[111],"pause":[112,44,46,53,80],"pickOrSearchNearest":[32],"playerInfo":[64],"quests":[81,113],"read":[114],"recraftLast":[45],"reload":[114],"research":[82],"run":[34],"safemode":[33],"sleep":[36],"swapInventoryLetters":[61],"takeOut":[84],"toggleStats":[122],"treats":[116],"unArm":[95],"unWield":[85],"use":[117],"vehicleHandbrake":[86],"viewMorale":[118],"waitLong":[124],"wear":[43],"wield":[69,101],"yes":[89,121]}';
 document.getElementById('keypressReference').innerText = keypressReference;
 
 var keymap = {
@@ -64,7 +64,7 @@ var keymap = {
     "music":["m","M"],
     "mutate":["~u"],
     "no":["n"],
-    "open":["O"],
+    "open":[">","<","O"],
     "options":["o"],
     "pause":["p",".",",","5","P"],
     "pickOrSearchNearest":[" "],
