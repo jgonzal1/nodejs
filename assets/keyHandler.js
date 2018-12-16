@@ -9,7 +9,7 @@ let stepSound, attackSound;
 
 function keyHandler(velocity) {
 	velocity = ( velocity || 1 );
-    let nearestObjetive, distancesArray, nearestObjetiveIndex, itemDescription, atk;
+    let nearestObjective, distancesArray, nearestObjectiveIndex, itemDescription, atk;
 	const pressedKey = document.getElementById('hiddenHandlerKeys').innerText;
 	if (document.getElementById("keyChange").innerText != "false") { switch (pressedKey) {
 		//#region Top_Menu
@@ -126,7 +126,7 @@ function keyHandler(velocity) {
 				mH.fcalcDist(global.sword),
 				mH.fcalcDist(global.water)
 			];
-			nearestObjetive = Math.min( // distancesArray
+			nearestObjective = Math.min( // distancesArray
 				mH.fcalcDist(global.backpack),
 				mH.fcalcDist(global.burger),
 				mH.fcalcDist(global.banana),
@@ -141,16 +141,16 @@ function keyHandler(velocity) {
 				mH.fcalcDist(global.sword),
 				mH.fcalcDist(global.water)//*/
 			);
-			nearestObjetiveIndex = distancesArray.indexOf(Math.min(...distancesArray));
-			if (nearestObjetive < 0.0002) {
-				itemDescription = objectiveStatsHandler(objectives[nearestObjetiveIndex]);
-				alert('¡Has conseguido ' + itemDescription + ', al recoger ' + objectives[nearestObjetiveIndex] +'!');
-				global.layerToRemove = objectives[nearestObjetiveIndex];
+			nearestObjectiveIndex = distancesArray.indexOf(Math.min(...distancesArray));
+			if (nearestObjective < 0.0002) {
+				itemDescription = objectiveStatsHandler(objectives[nearestObjectiveIndex]);
+				alert('¡Has conseguido ' + itemDescription + ', al recoger ' + objectives[nearestObjectiveIndex] +'!');
+				global.layerToRemove = objectives[nearestObjectiveIndex];
 				global.points += 1;			
 			} else {
 				alert(
-					'¡Tu objetivo más cercano aún está a ' + Math.round(5000*nearestObjetive) + ' pasos y\n' +
-					'es: ' + objectives[nearestObjetiveIndex] + '!'
+					'¡Tu objetivo más cercano aún está a ' + Math.round(5000*nearestObjective) + ' pasos y\n' +
+					'es: ' + objectives[nearestObjectiveIndex] + '!'
 				);
 			}
 			if (displayAttackPositionAlert === false) { 
