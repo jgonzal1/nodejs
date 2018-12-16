@@ -1,6 +1,7 @@
 const math = require("mathjs");
 
 let playerComparer, coordsDiff, distancesArray, nearestObjective, nearestPlaceIndex, place;
+let tradeMatrix = {};
 function loadPlaceModal(sites, markers) {
     playerComparer = 
         math.zeros(1, sites.length).valueOf() .concat(
@@ -21,24 +22,44 @@ function loadPlaceModal(sites, markers) {
     // document.getElementById('logs').innerText = Math.round(Math.random()*100).toString() + ' ' ;
     if (true) {
         switch (place) {
+        case 'blockhouses': // → beer, fish, grain, salt, wool, spices ← grain, salt (style/trading_materials/)
         default:
             var tradeTable = document.getElementById("tradeTable").getElementsByTagName('tbody')[0];
-            var rBeer = tradeTable.insertRow(tradeTable.rows.length);
-            /*Resource
-            Quantity here
-            Sell Price
-            Trade
-            Buy Price
-            Quantity owned*/
-            var newCell = rBeer.insertCell(0);
-            var img  = document.createElement('img');
-            img.src='style/trading_materials/beer.png';img.width=32;img.height=32;
-            newCell.appendChild(img);
+            var rowBeer = tradeTable.insertRow(tradeTable.rows.length);
+            /*
+            Cell(c)
+            >Resource(i)
+            >Quantity here(h)
+            Price(p)
+            >Sell Price(s)
+            >Trade(t)
+            >Buy Price(b)
+            Quantity owned(o)*/
+            var ciBeer = rowBeer.insertCell(0); var iBeer = document.createElement('img');
+            iBeer.src = 'style/trading_materials/beer.png'; iBeer.width = 32; iBeer.height = 32;
+            ciBeer.appendChild(iBeer);
 
-            var newCell2  = rBeer.insertCell(1);
-            // Append a text node to the cell
-            var newText2  = document.createTextNode('New rc');
-            newCell2.appendChild(newText2);
+            var chBeer = rowBeer.insertCell(1);
+            tradeMatrix["nBeer"] = Math.round(Math.random()*20);
+            var hBeer = document.createTextNode( tradeMatrix["nBeer"] );
+            chBeer.appendChild(hBeer);
+
+            var csBeer = rowBeer.insertCell(2);
+            var pBeer = Math.round(100 + Math.random()*600);
+            tradeMatrix["pSellBeer"] = Math.round( pBeer/(2+Math.random()) )/100;
+            tradeMatrix["pBuyBeer"] = Math.round(pBeer)/100;
+            var sBeer = document.createTextNode( tradeMatrix["pSellBeer"] );
+            csBeer.appendChild(sBeer);
+
+            var ctBeer = rowBeer.insertCell(3); var tBeer = document.createElement('button');
+            tBeer.addEventListener("click", showSlide, false);
+            var tBeerText = document.createTextNode("Trade");
+            tBeer.appendChild(tBeerText);
+            ctBeer.appendChild(tBeer);
+
+            var cbBeer = rowBeer.insertCell(4);
+            var bBeer = document.createTextNode( tradeMatrix["pBuyBeer"] );
+            cbBeer.appendChild(bBeer);
 
             document.getElementById('logs').innerText = place;
             /*tableBody.innerHTML = document.createTextNode(
@@ -55,10 +76,6 @@ function loadPlaceModal(sites, markers) {
         case bank: // money (invest / recover after invest)
             break;
         case bank2: // money (take and give loans)
-        case blockhouses:
-            // → beer, fish, grain, salt, wool, spices
-            // ← grain, salt (style/trading_materials/)
-            break;
         case castle:
             // → beer, bricks, fish, gold, meat, salt, wine, wood, wool, spices
             // ← gold, wine
@@ -89,14 +106,19 @@ function loadPlaceModal(sites, markers) {
         $(".navbar-collapse.in").collapse("hide");
     }
     if (nearestObjective < 0.0002) {
-            //document.getElementById('tradeOptionRow').innerHTML
-            //document.getElementById('tradeSelection').innerText
+        //document.getElementById('tradeSelection').innerText
     } else {
         alert(
             '¡Tu objetivo más cercano aún está a ' + Math.round(5000*nearestObjective) + ' pasos y\n' +
             'es: ' + place + '!'
         );
     }
+}
+function showSlide() {
+    document.getElementById("tradeSlider").style.display = "inline";
+    document.getElementById("tradeRange").min = 0;
+    document.getElementById("tradeRange").max = tradeMatrix["nBeer"];
+    document.getElementById("tradeSelection").style.display = "inline";
 }
 
 module.exports = loadPlaceModal;

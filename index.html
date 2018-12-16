@@ -492,7 +492,10 @@
               </tr>
             </thead><tbody>  
             </tbody></table>
-            <span id="tradeSelection"></span>
+            <div id="tradeSlider" class="slidecontainer" style="display: none">
+              <input type="range" min="-100" max="100" value="0" class="slider" id="tradeRange"><!-- style="display: none "-->
+            </div>
+            <span id="tradeSelection" style="display: none"></span>
           </div>
           <div class="modal-footer"></div>
         </div></div> <!-- </modal-content></modal-dialog> -->
@@ -503,6 +506,14 @@
     <!-- Scripts -->
     <script src="bundle.js"></script>
     <script>//src this
+    var slider = document.getElementById("tradeRange");
+    var output = document.getElementById("tradeSelection");
+    output.innerHTML = slider.value; // Display the default slider value
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+    }
+
     // keyListener
     let buttonsPushed = 0;
     $("#map").keypress(
