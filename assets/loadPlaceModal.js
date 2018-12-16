@@ -1,7 +1,7 @@
 const math = require("mathjs");
 
 let playerComparer, coordsDiff, distancesArray, nearestObjective, nearestPlaceIndex, place;
-let tradeMatrix = {};
+const tradeMatrix = {};
 function loadPlaceModal(sites, markers) {
     playerComparer = 
         math.zeros(1, sites.length).valueOf() .concat(
@@ -20,57 +20,18 @@ function loadPlaceModal(sites, markers) {
     place = markers[nearestPlaceIndex].getPopup().getContent();
     //document.getElementById('currentPlace').innerText = place;
     // document.getElementById('logs').innerText = Math.round(Math.random()*100).toString() + ' ' ;
-    if (true) {
-        switch (place) {
-        case 'blockhouses': // → beer, fish, grain, salt, wool, spices ← grain, salt (style/trading_materials/)
+    // if (true) {
+    switch (place) {
+        case 'blockhouses': // → beer, fish, grain, salt, wool, spices ← grain, salt
         default:
             var tradeTable = document.getElementById("tradeTable").getElementsByTagName('tbody')[0];
-            var rowBeer = tradeTable.insertRow(tradeTable.rows.length);
-            /*
-            Cell(c)
-            >Resource(i)
-            >Quantity here(h)
-            Price(p)
-            >Sell Price(s)
-            >Trade(t)
-            >Buy Price(b)
-            Quantity owned(o)*/
-            var ciBeer = rowBeer.insertCell(0); var iBeer = document.createElement('img');
-            iBeer.src = 'style/trading_materials/beer.png'; iBeer.width = 32; iBeer.height = 32;
-            ciBeer.appendChild(iBeer);
-
-            var chBeer = rowBeer.insertCell(1);
-            tradeMatrix["nBeer"] = Math.round(Math.random()*20);
-            var hBeer = document.createTextNode( tradeMatrix["nBeer"] );
-            chBeer.appendChild(hBeer);
-
-            var csBeer = rowBeer.insertCell(2);
-            var pBeer = Math.round(100 + Math.random()*600);
-            tradeMatrix["pSellBeer"] = Math.round( pBeer/(2+Math.random()) )/100;
-            tradeMatrix["pBuyBeer"] = Math.round(pBeer)/100;
-            var sBeer = document.createTextNode( tradeMatrix["pSellBeer"] );
-            csBeer.appendChild(sBeer);
-
-            var ctBeer = rowBeer.insertCell(3); var tBeer = document.createElement('button');
-            tBeer.addEventListener("click", showSlide, false);
-            var tBeerText = document.createTextNode("Trade");
-            tBeer.appendChild(tBeerText);
-            ctBeer.appendChild(tBeer);
-
-            var cbBeer = rowBeer.insertCell(4);
-            var bBeer = document.createTextNode( tradeMatrix["pBuyBeer"] );
-            cbBeer.appendChild(bBeer);
-
+            setTradingMaterialRow(tradeTable, 'beer', 100, 600);
+            setTradingMaterialRow(tradeTable, 'fish', 600, 4500);
+            setTradingMaterialRow(tradeTable, 'grain', 40, 200);
+            setTradingMaterialRow(tradeTable, 'salt', 18, 300);
+            setTradingMaterialRow(tradeTable, 'wool', 800, 8000);
+            setTradingMaterialRow(tradeTable, 'spices', 300, 500); // Volumen: 50g (20v menos)
             document.getElementById('logs').innerText = place;
-            /*tableBody.innerHTML = document.createTextNode(
-            '&lt;tr&gt;'+
-                '<th scope="row">img1</th>'+
-                '<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>'+
-            '</tr><tr>'+
-                '<th scope="row">img2</th>'+
-                '<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>'+
-            '&lt;/tr&gt;'
-            );*/
             break;
         }/*
         case bank: // money (invest / recover after invest)
@@ -104,9 +65,8 @@ function loadPlaceModal(sites, markers) {
         document.getElementById('openModal').innerText = 'true';
         $("#tradeModal").modal("show");
         $(".navbar-collapse.in").collapse("hide");
-    }
+    //}
     if (nearestObjective < 0.0002) {
-        //document.getElementById('tradeSelection').innerText
     } else {
         alert(
             '¡Tu objetivo más cercano aún está a ' + Math.round(5000*nearestObjective) + ' pasos y\n' +
@@ -114,11 +74,52 @@ function loadPlaceModal(sites, markers) {
         );
     }
 }
-function showSlide() {
-    document.getElementById("tradeSlider").style.display = "inline";
-    document.getElementById("tradeRange").min = 0;
-    document.getElementById("tradeRange").max = tradeMatrix["nBeer"];
-    document.getElementById("tradeSelection").style.display = "inline";
+function setTradingMaterialRow(tradeTable, tradingMaterial, minPrice, avgMaxPrice) {
+    /*Cell(c)
+    >Resource(i)
+    >Quantity here(h)
+    Price(p)
+    >Sell Price(s)
+    >Trade(t)
+    >Buy Price(b)
+    Quantity owned(o)*/
+    var rowTM = tradeTable.insertRow(tradeTable.rows.length);
+    var ciTM = rowTM.insertCell(0); var iTM = document.createElement('img');
+    iTM.src = 'style/trading_materials/'+tradingMaterial+'.png'; iTM.width = 32; iTM.height = 32;
+    ciTM.appendChild(iTM);
+
+    var chTM = rowTM.insertCell(1);
+    tradeMatrix[tradingMaterial+'Number'] = Math.round(Math.random()*20);
+    var hTM = document.createTextNode( tradeMatrix[tradingMaterial+'Number'] );
+    chTM.appendChild(hTM);
+
+    var csTM = rowTM.insertCell(2);
+    var pTM = Math.round(minPrice + Math.random()*avgMaxPrice);
+    tradeMatrix[tradingMaterial+"SellPrice"] = Math.round( pTM/(2+Math.random()) )/100;
+    tradeMatrix[tradingMaterial+"BuyPrice"] = Math.round(pTM)/100;
+    var sTM = document.createTextNode( tradeMatrix[tradingMaterial+"SellPrice"] );
+    csTM.appendChild(sTM);
+
+    var ctTM = rowTM.insertCell(3); var tTM = document.createElement('button');
+
+    tTM.addEventListener("click", function(){
+        document.getElementById("tradeSlider").style.display = "inline";
+        document.getElementById("tradeRange").min = 0;
+        document.getElementById("tradeRange").max = tradeMatrix[tradingMaterial+'Number'];
+        document.getElementById("tradeSelectionN").style.display = "inline";
+        document.getElementById("tradeSelection").innerText = tradingMaterial;        
+    }, false);
+    var tTMText = document.createTextNode("Trade");
+    tTM.appendChild(tTMText);
+    ctTM.appendChild(tTM);
+
+    var cbTM = rowTM.insertCell(4);
+    var bTM = document.createTextNode( tradeMatrix[tradingMaterial+"BuyPrice"] );
+    cbTM.appendChild(bTM);
+
+    var coTM = rowTM.insertCell(5);
+    var oTM = document.createTextNode( 0 );
+    coTM.appendChild(oTM);
 }
 
 module.exports = loadPlaceModal;
