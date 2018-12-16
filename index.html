@@ -272,7 +272,7 @@
           <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
             onclick="resumeGame()">&times;</button><h4 class="modal-title">Build/Craft</h4></div>
           <div class="modal-body">
-            <table class="table"><tbody>  
+            <table class="table table-striped"><tbody>  
               <tr class="craftOptionRow"><td></td><td></td></tr>
               <tr class="buildOptionRow"><td></td><td></td></tr>
             </tbody></table>
@@ -288,7 +288,7 @@
           <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
             onclick="resumeGame()">&times;</button><h4 class="modal-title">Factions & treatments (Diplomacy)</h4></div>
           <div class="modal-body">
-            <table class="table"><tbody>  
+            <table class="table table-striped"><tbody>  
               <tr class="factionRow"><td></td><td></td></tr>
             </tbody></table>
             <span id="factionSelection"></span>
@@ -303,7 +303,7 @@
           <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
             onclick="resumeGame()">&times;</button><h4 class="modal-title">Fleet</h4></div>
           <div class="modal-body">
-            <table class="table"><tbody>  
+            <table class="table table-striped"><tbody>  
               <tr class="fleetRow"><td></td><td></td></tr>
             </tbody></table>
             <span id="fleetSelection"></span>
@@ -318,7 +318,7 @@
           <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
             onclick="resumeGame()">&times;</button><h4 class="modal-title">Skills & Morale</h4></div>
           <div class="modal-body">
-            <table class="table"><tbody>
+            <table class="table table-striped"><tbody>
               <tr class="moraleRow"><td></td><td class="moraleState"></td></tr>
               <tr class="skillsRow"><td></td><td></td></tr>
             </tbody></table>
@@ -334,7 +334,7 @@
           <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
             onclick="resumeGame()">&times;</button><h4 class="modal-title">Research</h4></div>
           <div class="modal-body">
-            <table class="table"><tbody>
+            <table class="table table-striped"><tbody>
               <tr class="researchRow"><td></td><td></td></tr>
             </tbody></table>
             <span id="researchSelection"></span>
@@ -349,7 +349,7 @@
           <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
             onclick="resumeGame()">&times;</button><h4 class="modal-title">Missions</h4></div>
           <div class="modal-body">
-            <table class="table"><tbody><!-- Journal -->
+            <table class="table table-striped"><tbody><!-- Journal -->
               <tr class="missionOptionRow"><td></td><td></td></tr>
             </tbody></table>
             <span id="missionSelection"></span>
@@ -364,7 +364,7 @@
           <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
             onclick="resumeGame()">&times;</button><h4 class="modal-title">Sorceries</h4></div>
           <div class="modal-body">
-            <table class="table"><tbody>
+            <table class="table table-striped"><tbody>
               <tr class="sorceryRow"><td></td><td></td></tr>
             </tbody></table>
             <span id="sorcerySelection"></span>
@@ -379,7 +379,7 @@
           <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
             onclick="resumeGame()">&times;</button><h4 class="modal-title">Keys</h4></div>
           <div class="modal-body">
-            <table class="table"><tbody>
+            <table class="table table-striped"><tbody>
               <tr class="keyRow"><td></td><td></td></tr>
             </tbody></table>
             <span id="keySelection"></span>
@@ -414,7 +414,7 @@
           <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
             onclick="resumeGame()">&times;</button><h4 class="modal-title">Save & Load & Quit</h4></div>
           <div class="modal-body">
-            <table class="table"><tbody>
+            <table class="table table-striped"><tbody>
               <tr class="loadRow"><td></td><td></td></tr>
               <tr class="saveAsRow"><td></td><td></td></tr>
               <tr class="saveAndQuitRow"><td></td><td></td></tr>
@@ -452,7 +452,7 @@
             <canvas id="fightersCanvas" width="680" height="256" style="border:1px solid #d3d3d3;">
               Your browser does not support the HTML5 canvas tag.
             </canvas>
-            <table class="table"><tbody>  
+            <table class="table table-striped"><tbody>  
               <tr>
                 <td class="fightOption1">
                   <button type="button" class="btn btn-info" style="width: 100%" onclick="loadTile()">Ataque pred.</button><!--Blue-->
@@ -479,10 +479,18 @@
         <span id="openModal" style="display: none">false</span>
         <div class="modal-dialog"><div class="modal-content">
           <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-            onclick="resumeGame()">&times;</button><h4 class="modal-title">Trade</h4></div>
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Trade with<!--&nbsp;<span id="currentPlace"></span>--></h4></div>
           <div class="modal-body">
-            <table class="table"><tbody>  
-              <tr class="tradeOptionRow"><td></td><td></td></tr>
+            <table class="table table-striped" id="tradeTable"><thead>
+              <tr>
+                <th scope="col">Resource&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th scope="col">Quantity here&nbsp;</th>
+                <th scope="col">Sell Price&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th scope="col">Trade&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th scope="col">Buy Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th scope="col">Quantity owned</th>
+              </tr>
+            </thead><tbody>  
             </tbody></table>
             <span id="tradeSelection"></span>
           </div>
