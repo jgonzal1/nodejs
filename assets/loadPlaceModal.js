@@ -2,26 +2,23 @@ const math = require("mathjs");
 
 let playerComparer, coordsDiff, distancesArray, nearestObjective, nearestPlaceIndex;
 function loadPlaceModal(sites, markers) {
-   // document.getElementById('logs').innerText += sites.length;
-   alert("entro"); // TODO
     playerComparer = 
-        math.multiply( math.ones( 1,  sites.length ), global.player.latLng[0] ).valueOf() .concat(
-        math.multiply( math.ones( 1,  sites.length ), global.player.latLng[1] ).valueOf() )
+        math.zeros(1, sites.length).valueOf() .concat(
+        math.multiply( math.ones( 1,  sites.length ), global.player.getLatLng().lat ).valueOf() ,
+        math.multiply( math.ones( 1,  sites.length ), global.player.getLatLng().lng ).valueOf() )
     ;
     coordsDiff =
-        math.abs( math.substract(
-            math.transpose( math.matrix(sites) ),
+        math.abs( math.subtract(
+            math.transpose( math.matrix(sites) ), // [1] lat, [2] lng;
             playerComparer
         ) ).valueOf()
     ;
-    distancesArray = math.add(coordsDiff[0],coordsDiff[1]).valueOf();
-    nearestObjective = Math.min(distancesArray);
+    distancesArray = math.add(coordsDiff[1],coordsDiff[2]);
+    nearestObjective = Math.min(...distancesArray);
     nearestPlaceIndex = distancesArray.indexOf(Math.min(...distancesArray));
-    
-    alert(markers[nearestPlaceIndex].getContent());
+    document.getElementById('logs').innerText = Math.round(Math.random()*100).toString() + ' ' ;    
     if (nearestObjective < 0.0002) {
-        // throw objectiveNearPlayer;
-        return '¡Estás cerca de algo!';
+        alert(markers[nearestPlaceIndex].getPopup().getContent());
     }
 }
 

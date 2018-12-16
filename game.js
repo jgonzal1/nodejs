@@ -127,9 +127,7 @@ for (var i in sites) {
 		L.marker(
 			[ sites[i][1], sites[i][2] ],
 			{icon: global.placeIconsArray[element]}
-		).bindPopup(
-			'<b>' + places[element] + '</b>'
-		)
+		).bindPopup( places[element] )
 	);
 }//*/
 //spawnPlaces(sites, L, function(markers){
@@ -195,10 +193,7 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 		if (document.getElementById('openModal').innerText === 'false') {
 			// TODO keyHandler out of scope for third party layer group
 			if (document.getElementById('hiddenHandlerKeys').innerText == global.keymap["open"][0]) {
-				// alert("Empezamos a buscar");
-				// try {
 				loadPlaceModal(sites, markers);
-				// } catch (e) {}
 			}
 			keyHandler(defaultMovementLength);
 		}
