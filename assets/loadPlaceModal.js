@@ -2,6 +2,8 @@ const math = require("mathjs");
 
 let playerComparer, coordsDiff, distancesArray, nearestObjective, nearestPlaceIndex, place;
 const tradeMatrix = {};
+/*tradeMatrix["goldSellPrice"] = 3900000;
+tradeMatrix["goldBuyPrice"] = 4100000*/
 function loadPlaceModal(sites, markers, callback) {
     playerComparer = 
         math.zeros(1, sites.length).valueOf() .concat(
@@ -30,52 +32,94 @@ function loadPlaceModal(sites, markers, callback) {
         }*/
         var tradeTable = document.getElementById("tradeTable").getElementsByTagName('tbody')[0];
         switch (place) {
-        case 'blockhouses': // → beer, fish, grain, salt, wool, spices ← grain, salt
-            setTradingMaterialRow(tradeTable, 'sell', 'beer', 20, 100, 600);
-            setTradingMaterialRow(tradeTable, 'sell', 'fish', 3, 600, 4500);
-            setTradingMaterialRow(tradeTable, 'change', 'grain', 5, 40, 200);
+        case 'blockhouses':
+            setTradingMaterialRow(tradeTable, 'buy', 'beer', 20, 100, 600);
+            setTradingMaterialRow(tradeTable, 'change', 'fish', 3, 600, 4500);
+            setTradingMaterialRow(tradeTable, 'buy', 'grain', 5, 40, 200);
             setTradingMaterialRow(tradeTable, 'change', 'salt', 2, 18, 300);
-            setTradingMaterialRow(tradeTable, 'sell', 'wool', 1, 800, 8000);
-            setTradingMaterialRow(tradeTable, 'sell', 'spices', 2, 300, 500); // Volumen: 50g (20v menos)
+            setTradingMaterialRow(tradeTable, 'change', 'wool', 1, 800, 8000);
+            setTradingMaterialRow(tradeTable, 'change', 'spices', 2, 300, 500); // Volumen: 50g (20v menos)
             document.getElementById('logs').innerText = place;
             break;
+        case 'brewery':
+            setTradingMaterialRow(tradeTable, 'sell', 'beer', 200, 100, 300);
+            setTradingMaterialRow(tradeTable, 'buy', 'grain', 25, 40, 200);
+            setTradingMaterialRow(tradeTable, 'sell', 'wine', 20, 100, 5000);
+            setTradingMaterialRow(tradeTable, 'buy', 'wood', 500, 500, 1500);
+            break;
+        case 'brickbuilding':
+            setTradingMaterialRow(tradeTable, 'sell', 'bricks', 500, 50, 150);
+            break;
         case 'castle':
-        default:
-            setTradingMaterialRow(tradeTable, 'sell', 'beer', 20, 100, 600);
-            setTradingMaterialRow(tradeTable, 'sell', 'fish', 3, 600, 4500);
-            setTradingMaterialRow(tradeTable, 'change', 'grain', 5, 40, 200);
+            setTradingMaterialRow(tradeTable, 'sell', 'beer', 200, 200, 600);
+            setTradingMaterialRow(tradeTable, 'sell', 'bricks', 500, 100, 150);
+            setTradingMaterialRow(tradeTable, 'sell', 'fish', 10, 600, 4500);
+            // setTradingMaterialRow(tradeTable, 'change', 'gold', 1, 3900000, 4100000);
+            setTradingMaterialRow(tradeTable, 'sell', 'grain', 25, 40, 200);
+            setTradingMaterialRow(tradeTable, 'sell', 'meat', 15, 600, 3000);
+            setTradingMaterialRow(tradeTable, 'sell', 'salt', 18, 18, 300);
+            setTradingMaterialRow(tradeTable, 'change', 'wine', 20, 1000, 10000);
+            setTradingMaterialRow(tradeTable, 'sell', 'wood', 500, 500, 1500);
+            setTradingMaterialRow(tradeTable, 'sell', 'wool', 20, 800, 8000);
+            setTradingMaterialRow(tradeTable, 'sell', 'spices', 10, 300, 500); // Volumen: 50g (20v menos)
+            document.getElementById('logs').innerText = place;
+            break;
+        case 'cornshop':
+            setTradingMaterialRow(tradeTable, 'sell', 'grain', 150, 35, 145);
+            break;
+        case 'house':
+            setTradingMaterialRow(tradeTable, 'buy', 'beer', 20, 100, 600);
+            setTradingMaterialRow(tradeTable, 'change', 'fish', 3, 600, 4500);
+            setTradingMaterialRow(tradeTable, 'buy', 'grain', 5, 40, 200);
             setTradingMaterialRow(tradeTable, 'change', 'salt', 2, 18, 300);
-            setTradingMaterialRow(tradeTable, 'sell', 'wool', 1, 800, 8000);
-            setTradingMaterialRow(tradeTable, 'sell', 'spices', 2, 300, 500); // Volumen: 50g (20v menos)
+            setTradingMaterialRow(tradeTable, 'buy', 'wine', 20, 1000, 10000);
+            setTradingMaterialRow(tradeTable, 'change', 'wool', 1, 800, 8000);
+            setTradingMaterialRow(tradeTable, 'change', 'spices', 2, 300, 500); // Volumen: 50g (20v menos)
+            document.getElementById('logs').innerText = place;
+            break;
+        case 'store2':
+            setTradingMaterialRow(tradeTable, 'sell', 'beer', 200, 200, 600);
+            setTradingMaterialRow(tradeTable, 'sell', 'fish', 10, 550, 4000);
+            setTradingMaterialRow(tradeTable, 'sell', 'grain', 25, 40, 200);
+            setTradingMaterialRow(tradeTable, 'sell', 'meat', 25, 550, 2450);
+            setTradingMaterialRow(tradeTable, 'sell', 'wine', 20, 1000, 10000);
+            setTradingMaterialRow(tradeTable, 'sell', 'spices', 100, 300, 500); // Volumen: 50g (20v menos)
+            document.getElementById('logs').innerText = place;
+            break;
+        case 'store3':
+            setTradingMaterialRow(tradeTable, 'sell', 'beer', 200, 200, 600);
+            setTradingMaterialRow(tradeTable, 'sell', 'fish', 10, 550, 4000);
+            setTradingMaterialRow(tradeTable, 'sell', 'grain', 25, 40, 200);
+            setTradingMaterialRow(tradeTable, 'sell', 'iron', 25, 40, 110);
+            setTradingMaterialRow(tradeTable, 'sell', 'meat', 25, 550, 2450);
+            setTradingMaterialRow(tradeTable, 'sell', 'wine', 20, 1000, 10000);
+            setTradingMaterialRow(tradeTable, 'sell', 'spices', 100, 300, 500); // Volumen: 50g (20v menos)
+            document.getElementById('logs').innerText = place;
+            break;
+        case 'tent':
+            setTradingMaterialRow(tradeTable, 'buy', 'beer', 10, 200, 600);
+            setTradingMaterialRow(tradeTable, 'buy', 'fish', 1, 550, 4000);
+            setTradingMaterialRow(tradeTable, 'buy', 'grain', 2, 40, 200);
+            setTradingMaterialRow(tradeTable, 'buy', 'meat', 1, 550, 2450);
+            setTradingMaterialRow(tradeTable, 'buy', 'wine', 10, 1000, 10000);
+            setTradingMaterialRow(tradeTable, 'buy', 'spices', 1, 300, 500); // Volumen: 50g (20v menos)
+            document.getElementById('logs').innerText = place;
+            break;
+        case 'vending':
+            setTradingMaterialRow(tradeTable, 'sell', 'beer', 30, 200, 600);
+            setTradingMaterialRow(tradeTable, 'sell', 'fish', 10, 550, 4000);
+            setTradingMaterialRow(tradeTable, 'sell', 'grain', 20, 40, 200);
+            setTradingMaterialRow(tradeTable, 'sell', 'wool', 10, 800, 8000);
+            setTradingMaterialRow(tradeTable, 'sell', 'spices', 50, 300, 500); // Volumen: 50g (20v menos)
             document.getElementById('logs').innerText = place;
             break;
         }/*
         case bank: // money (invest / recover after invest)
-            break;
         case bank2: // money (take and give loans)
-        case castle:
-            // → beer, bricks, fish, gold, meat, salt, wine, wood, wool, spices
-            // ← gold, wine
-            break;
-        case brewery:
-            // → grain, wood
-            // ← beer, wine
-            break;
-        case cornshop: // → grain
         case gasStation: // → tool/gasoline, tools
-        case house:
-            // → beer, fish, grain, salt, wine, wool, spices
-            // ← grain, salt, wool, spices
-            break;
         case refinery: // → tool/gasoline
-        case brickbuilding: // → bricks
-        case store2: // → beer, fish, grain, meat, wine, spices
-        case store3: // → beer, fish, grain, iron, meat, wine, spices
-        case tent:
-            // → beer, fish, grain, meat, wine, spices
-            // ← tools
-            break;
-        case vending: // ←→ wool, tools/compass, tools/gloves, tools/map2, beer, fish, spices, grain, tools
+        case tent: // ← tools
+        case vending: // ←→ wool, tools/compass, tools/gloves, tools/map2, spices, tools
             break;
         }*/
         document.getElementById('openModal').innerText = 'true';
