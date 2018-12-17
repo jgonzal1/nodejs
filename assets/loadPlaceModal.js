@@ -21,16 +21,32 @@ function loadPlaceModal(sites, markers, callback) {
     //document.getElementById('currentPlace').innerText = place;
     // document.getElementById('logs').innerText = Math.round(Math.random()*100).toString() + ' ' ;
     if (document.getElementById("backpack").style.display === 'none') { // TODO !== + estando ahí
-    switch (place) {
+        /*if (nearestObjective < 0.0002) {
+        } else {
+            alert(
+                '¡Tu objetivo más cercano aún está a ' + Math.round(5000*nearestObjective) + ' pasos y\n' +
+                'es: ' + place + '!'
+            );
+        }*/
+        var tradeTable = document.getElementById("tradeTable").getElementsByTagName('tbody')[0];
+        switch (place) {
         case 'blockhouses': // → beer, fish, grain, salt, wool, spices ← grain, salt
+            setTradingMaterialRow(tradeTable, 'sell', 'beer', 20, 100, 600);
+            setTradingMaterialRow(tradeTable, 'sell', 'fish', 3, 600, 4500);
+            setTradingMaterialRow(tradeTable, 'change', 'grain', 5, 40, 200);
+            setTradingMaterialRow(tradeTable, 'change', 'salt', 2, 18, 300);
+            setTradingMaterialRow(tradeTable, 'sell', 'wool', 1, 800, 8000);
+            setTradingMaterialRow(tradeTable, 'sell', 'spices', 2, 300, 500); // Volumen: 50g (20v menos)
+            document.getElementById('logs').innerText = place;
+            break;
+        case 'castle':
         default:
-            var tradeTable = document.getElementById("tradeTable").getElementsByTagName('tbody')[0];
-            setTradingMaterialRow(tradeTable, 'beer', 20, 100, 600);
-            setTradingMaterialRow(tradeTable, 'fish', 3, 600, 4500);
-            setTradingMaterialRow(tradeTable, 'grain', 5, 40, 200);
-            setTradingMaterialRow(tradeTable, 'salt', 2, 18, 300);
-            setTradingMaterialRow(tradeTable, 'wool', 1, 800, 8000);
-            setTradingMaterialRow(tradeTable, 'spices', 2, 300, 500); // Volumen: 50g (20v menos)
+            setTradingMaterialRow(tradeTable, 'sell', 'beer', 20, 100, 600);
+            setTradingMaterialRow(tradeTable, 'sell', 'fish', 3, 600, 4500);
+            setTradingMaterialRow(tradeTable, 'change', 'grain', 5, 40, 200);
+            setTradingMaterialRow(tradeTable, 'change', 'salt', 2, 18, 300);
+            setTradingMaterialRow(tradeTable, 'sell', 'wool', 1, 800, 8000);
+            setTradingMaterialRow(tradeTable, 'sell', 'spices', 2, 300, 500); // Volumen: 50g (20v menos)
             document.getElementById('logs').innerText = place;
             break;
         }/*
@@ -66,24 +82,20 @@ function loadPlaceModal(sites, markers, callback) {
         $("#tradeModal").modal("show");
         $(".navbar-collapse.in").collapse("hide");
         callback(nearestPlaceIndex);
-    }
-    if (nearestObjective < 0.0002) {
     } else {
-        alert(
-            '¡Tu objetivo más cercano aún está a ' + Math.round(5000*nearestObjective) + ' pasos y\n' +
-            'es: ' + place + '!'
-        );
+        alert('¡Necesitas una mochila para comerciar!');
     }
 }
 /** @typedef HTML.table @type {object} @type {HTML.table} */
 /**
- * @param {HTML.table} tradeTable 
- * @param {string} tradingMaterial 
+ * @param {HTML.table} tradeTable
+ * @param {string} tradeType
+ * @param {string} tradingMaterial
  * @param {number} quantity
- * @param {number} minPrice 
- * @param {number} avgMaxPrice 
+ * @param {number} minPrice
+ * @param {number} avgMaxPrice
  */
-function setTradingMaterialRow(tradeTable, tradingMaterial, quantity, minPrice, avgMaxPrice) {
+function setTradingMaterialRow(tradeTable, tradeType, tradingMaterial, quantity, minPrice, avgMaxPrice) {
     /*Cell(c)
     >Resource(i)
     >Quantity here(h)
@@ -113,7 +125,11 @@ function setTradingMaterialRow(tradeTable, tradingMaterial, quantity, minPrice, 
 
     tTM.addEventListener("click", function(){
         document.getElementById("tradeSlider").style.display = "inline";
-        document.getElementById("tradeRange").min = 0;
+        if (tradeType === 'sell') {
+            document.getElementById("tradeRange").min = 0;
+        } else {
+            document.getElementById("tradeRange").min = -1; //TODO user available
+        }
         document.getElementById("tradeRange").max = tradeMatrix[tradingMaterial+'Number'];
         document.getElementById("tradeSelectionN").style.display = "inline";
         document.getElementById("tradeSelection").innerText = tradingMaterial;        
