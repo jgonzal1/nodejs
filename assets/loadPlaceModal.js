@@ -2,7 +2,7 @@ const math = require("mathjs");
 
 let playerComparer, coordsDiff, distancesArray, nearestObjective, nearestPlaceIndex, place;
 const tradeMatrix = {};
-function loadPlaceModal(sites, markers) {
+function loadPlaceModal(sites, markers, callback) {
     playerComparer = 
         math.zeros(1, sites.length).valueOf() .concat(
         math.multiply( math.ones( 1,  sites.length ), global.player.getLatLng().lat ).valueOf() ,
@@ -20,17 +20,17 @@ function loadPlaceModal(sites, markers) {
     place = markers[nearestPlaceIndex].getPopup().getContent();
     //document.getElementById('currentPlace').innerText = place;
     // document.getElementById('logs').innerText = Math.round(Math.random()*100).toString() + ' ' ;
-    // if (true) {
+    if (document.getElementById("backpack").style.display === 'none') { // TODO !== + estando ahí
     switch (place) {
         case 'blockhouses': // → beer, fish, grain, salt, wool, spices ← grain, salt
         default:
             var tradeTable = document.getElementById("tradeTable").getElementsByTagName('tbody')[0];
-            setTradingMaterialRow(tradeTable, 'beer', 100, 600);
-            setTradingMaterialRow(tradeTable, 'fish', 600, 4500);
-            setTradingMaterialRow(tradeTable, 'grain', 40, 200);
-            setTradingMaterialRow(tradeTable, 'salt', 18, 300);
-            setTradingMaterialRow(tradeTable, 'wool', 800, 8000);
-            setTradingMaterialRow(tradeTable, 'spices', 300, 500); // Volumen: 50g (20v menos)
+            setTradingMaterialRow(tradeTable, 'beer', 20, 100, 600);
+            setTradingMaterialRow(tradeTable, 'fish', 3, 600, 4500);
+            setTradingMaterialRow(tradeTable, 'grain', 5, 40, 200);
+            setTradingMaterialRow(tradeTable, 'salt', 2, 18, 300);
+            setTradingMaterialRow(tradeTable, 'wool', 1, 800, 8000);
+            setTradingMaterialRow(tradeTable, 'spices', 2, 300, 500); // Volumen: 50g (20v menos)
             document.getElementById('logs').innerText = place;
             break;
         }/*
@@ -65,7 +65,8 @@ function loadPlaceModal(sites, markers) {
         document.getElementById('openModal').innerText = 'true';
         $("#tradeModal").modal("show");
         $(".navbar-collapse.in").collapse("hide");
-    //}
+        callback(nearestPlaceIndex);
+    }
     if (nearestObjective < 0.0002) {
     } else {
         alert(
@@ -74,7 +75,15 @@ function loadPlaceModal(sites, markers) {
         );
     }
 }
-function setTradingMaterialRow(tradeTable, tradingMaterial, minPrice, avgMaxPrice) {
+/** @typedef HTML.table @type {object} @type {HTML.table} */
+/**
+ * @param {HTML.table} tradeTable 
+ * @param {string} tradingMaterial 
+ * @param {number} quantity
+ * @param {number} minPrice 
+ * @param {number} avgMaxPrice 
+ */
+function setTradingMaterialRow(tradeTable, tradingMaterial, quantity, minPrice, avgMaxPrice) {
     /*Cell(c)
     >Resource(i)
     >Quantity here(h)
@@ -89,7 +98,7 @@ function setTradingMaterialRow(tradeTable, tradingMaterial, minPrice, avgMaxPric
     ciTM.appendChild(iTM);
 
     var chTM = rowTM.insertCell(1);
-    tradeMatrix[tradingMaterial+'Number'] = Math.round(Math.random()*20);
+    tradeMatrix[tradingMaterial+'Number'] = Math.round(Math.random()*quantity);
     var hTM = document.createTextNode( tradeMatrix[tradingMaterial+'Number'] );
     chTM.appendChild(hTM);
 

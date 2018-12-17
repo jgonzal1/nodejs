@@ -176,7 +176,7 @@ setInterval(function() {
 	}*/
 }, 3000); // globalEventsDaemonizer*/
 
-let vel, pause, objectiveDistanceToPlayer, objectiveNearPlayer;
+let vel, pause;
 // const pauseSound = new Sound("../sounds/pause.mp3", 100, true);
 function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 	global.moveDaemonizer = setInterval(function() {
@@ -193,7 +193,18 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 		if (document.getElementById('openModal').innerText === 'false') {
 			// TODO keyHandler out of scope for third party layer group
 			if (global.keymap["open"].includes(document.getElementById('hiddenHandlerKeys').innerText)) {
-				loadPlaceModal(sites, markers);
+				loadPlaceModal(sites, markers, function(updateMarker){
+					markers[updateMarker].setIcon(L.icon({
+						iconUrl: 'style/places/barrier.png',
+						shadowUrl: 'style/shadow.png',
+						iconSize: [48, 48],
+						shadowSize: [48, 48], // size of the shadow
+						iconAnchor: [23, 48],
+						shadowAnchor: [4, 52],  // the same for the shadow
+						popupAnchor: [10, -35]
+					}));
+					markers[updateMarker].update();
+				});
 			}
 			keyHandler(defaultMovementLength);
 		}

@@ -325,6 +325,7 @@ $("#tradeModal").keypress( function(event) {
 });
 $("#tradeModal").on('hide.bs.modal', function(){
   document.getElementById('openModal').innerText = 'false';
+  document.getElementById("tradeTable").getElementsByTagName('tbody')[0].innerText = '';
   //document.getElementById('currentPlace').innerText = 'outside';
   document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
 });
