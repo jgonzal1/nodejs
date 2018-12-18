@@ -11,8 +11,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Darks Game</title>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 4.7.0 4.4.0 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -21,18 +19,43 @@
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css">
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@[VERSION]/dist/L.Control.Locate.min.css">    
-    <link rel="stylesheet" href="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.css">
-    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="style/leaflet.groupedlayercontrol.css">
+    <link rel="stylesheet" href="style/app.css">
     <link rel="stylesheet" href="style/dialog.css">
 
     <!--<link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
     <link rel="stylesheet" href="style/style.css">-->
+    <link rel="apple-touch-icon" sizes="76x76" href="style/favicon-76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="style/favicon-120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="style/favicon-152.png">
+    <link rel="icon" sizes="196x196" href="style/favicon-196.png">
+    <link rel="icon" type="image/x-icon" href="style/favicon.ico">
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+    /* Create two equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 20%;
+      /*padding: 10px;
+      height: 300px; // Should be removed. Only for demonstration */
+    }
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 900px) {
+      .column {
+        width: 100%;
+      }
+    }
+    </style>
 
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon-76.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon-120.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon-152.png">
-    <link rel="icon" sizes="196x196" href="assets/img/favicon-196.png">
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>Darks Game</title>    
 
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
     <script src="https://api.jquery.com/resources/events.js"></script>
@@ -44,21 +67,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js"></script>
-    <!--<script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
-    <script src="assets/js/app.js"></script>-->
   </head>
   <body>
-    <!-- Instances columns --><div class="row" width="100%">
-        <div class="column" style="color:#444444;background:#90cc90;">
-            <div id="logs"></div>
-        </div>
-        <div class="column" style="color:#dddddd">
-            <div id="hiddenHandlerKeys" style="display: none"></div>
-            <div id="hiddenHandlerModeCotND" style="display: none"></div>
-            <div id="hiddenHandlerPos" style="display: none"></div>
-            <div id="keypressReference" style="display: none"></div>
-        </div>         
-    </div>
+    <!-- Handlers -->
+    <!--<div id="logs" style="display: none"></div>-->
+    <div id="keypressReference" style="display: none"></div>
+    <div id="keyChange" style="display: none"></div>
+    <div id="hiddenHandlerKeys" style="display: none"></div>
+    <div id="hiddenHandlerModeCotND" style="display: none"></div>
+    <div id="hiddenHandlerPos" style="display: none"></div>
     <!-- Top Menu --><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header"> <!-- Title & Hidden settings -->
@@ -71,7 +88,8 @@
         <div class="navbar-collapse collapse"> <!-- Horizontal Menu -->
           <ul class="nav navbar-nav">
               <li class="dropdown"> <!-- Info -->
-                  <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('info');"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp; <b class="caret"></b></a>
+                  <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('info');"><i class="fa fa-question-circle white"><span id="helpMenuPlaceholder">&nbsp;</span>
+                  </i><b class="caret"></b></a>
                   <ul class="dropdown-menu" style="width:400px">
                       <div id="info" class="containerTab" style="display:none;background:#90cc90">
                               <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
@@ -96,7 +114,8 @@
                   </ul>
               </li>
               <li class="dropdown"> <!-- Música -->
-                  <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('music');"><i class="fa fa-music white"></i>&nbsp;&nbsp; <b class="caret"></b></a>
+                  <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('music');"><i class="fa fa-music white"><span id="musicMenuPlaceholder">&nbsp;</span>
+                  </i><b class="caret"></b></a>
                   <ul class="dropdown-menu">
                       <div id="music" class="containerTab" style="display:none;background:#cfc999">
                           <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
@@ -133,15 +152,19 @@
                   </ul>
               </li>
               <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="constructions-btn">
-                <i class="fas fa-hammer"></i>&nbsp;&nbsp; </a></li><!--(indev)-->
+                <i class="fas fa-hammer"><span id="buildMenuPlaceholder">&nbsp;</span></i></a></li><!--(indev)-->
               <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="diplomacy-btn">
-                  <i class="fas fa-handshake"></i>&nbsp;&nbsp;</a></li><!--(indev) -->
+                  <i class="fas fa-handshake"><span id="treatsMenuPlaceholder">&nbsp;</span>
+                  </i></a></li><!--(indev) -->
               <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="fleet-btn">
-                  <i class="fas fa-anchor"></i>&nbsp;&nbsp;</a></li><!--(indev) -->
-              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="habilities-btn">
-                  <i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;</a></li><!--(indev) book-dead journal-whills-->
+                  <i class="fas fa-anchor"><span id="fleetMenuPlaceholder">&nbsp;</span>
+                  </i></a></li><!--(indev) -->
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="skills-btn">
+                  <i class="fas fa-graduation-cap"><span id="playerInfoMenuPlaceholder">&nbsp;</span>
+                  </i></a></li><!--(indev) book-dead journal-whills-->
               <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="research-btn">
-                  <i class="fab fa-react"></i>&nbsp;&nbsp;</a></li><!--Investigaciones (indev) atom rocket-->
+                  <i class="fab fa-react"><span id="researchMenuPlaceholder">&nbsp;</span>
+                  </i></a></li><!--Investigaciones (indev) atom rocket-->
               <!-- Misiones -->
               <li>
                 <!--<div class="wrapper">
@@ -150,29 +173,31 @@
                   </button>
                 </div>-->
                 <a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="missions-btn">
-                  <i class="fa fa-globe white"></i>&nbsp;&nbsp;Misiones</a><!-- fa-clipboard-list atlas -->
+                  <i class="fa fa-globe"><span id="journalMenuPlaceholder">&nbsp;Misiones -&nbsp;</span>
+                    </i></a><!-- fa-clipboard-list atlas -->
               </li>
               <!-- Opciones --><li class="dropdown">
-                <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-cog"></i>&nbsp;&nbsp;Opciones <b class="caret"></b></a>
+                <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-cog white"><span id="optionsMenuPlaceholder">&nbsp;Opciones -&nbsp;</span>
+                </i><b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="go-to-spawn-btn">
-                      <i class="fa fa-home"></i>&nbsp;&nbsp;GoTo Spawn</a></li>
+                      <i class="fa fa-home">&nbsp;&nbsp;GoTo Spawn</i></a></li>
                   <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="spells-btn">
-                      <i class="fas fa-flask"></i>&nbsp;&nbsp;Hechizos (indev)</a></li>
+                      <i class="fas fa-flask">&nbsp;&nbsp;Hechizos (indev)</i></a></li>
                   <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="keys-btn">
-                      <i class="fas fa-key"></i>&nbsp;&nbsp;Llaves (indev)</a></li>
+                      <i class="fas fa-key">&nbsp;&nbsp;Llaves (indev)</i></a></li>
                   <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="login-btn">
-                    <i class="fa fa-user"></i>&nbsp;&nbsp;Login (indev)</a></li><!--fa fa-user-->
+                    <i class="fa fa-user">&nbsp;&nbsp;Login (indev)</i></a></li><!--fa fa-user-->
 
-                  <li><a href="data/boroughs.geojson" download="boroughs.geojson" target="_blank"
+                  <li><a href="data/boroughs.geojson" download="boroughs.geojson" id="save-btn" target="_blank"
                     data-toggle="collapse" data-target=".navbar-collapse.in">
-                    <i class="fa fa-download"></i>&nbsp;&nbsp;Save (indev)</a>
+                    <i class="fa fa-download">&nbsp;&nbsp;Save (indev)</i></a>
                   </li><!-- copy of the current game  -->
                   <!--<li class="divider hidden-xs"></li>-->
                 </ul>
               </li>
               <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn">
-                <i class="fa fa-list white"></i>&nbsp;&nbsp;Toggle panel Stats y Objetos</a></li>
+                <i class="fa fa-list white"><span id="toggleStatsMenuPlaceholder">&nbsp;Toggle panel Stats y Objetos -&nbsp;</span></i></a></li>
           </ul>
         </div>
       </div>
@@ -243,11 +268,11 @@
             </tr><tr><!-- Tests -->
               <td><canvas id="floorColorSniffCanvas" width="16" height="16"></canvas></td>
               <td>
-                <!--<div id="logs"></div>--></td>
+                <div id="logs"></div></td>
               <td id="keyhandlerModalTester">
-                <!--<div id="hiddenHandlerKeys"></div>
-                <div id="hiddenHandlerModeCotND" style="display: none"></div>
-                <div id="hiddenHandlerPos" style="display: none"></div>--></td>
+                <!--<div id="keyChange"></div>
+                <div id="hiddenHandlerKeys"></div>-->
+              </td>
             </tr>
             <!--Enfrentándote a: <span id="currentBattle"></span>style="display:none;"-->
           </tbody>
@@ -256,72 +281,185 @@
       <div id="map"></div>
     </div>
 
-	  <!-- Modals -->
-    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog"> 
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Welcome to the BootLeaf template!</h4>
-          </div>
+    <!-- Modals --><div id="templateModal"
+      class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-header"></div><div class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resumeGame()">Close</button>
+      </div>
+    </div>
+    <!-- #region Top_Menu -->
+      <!-- #region build -->
+      <div class="modal fade" id="buildModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Build/Craft</h4></div>
           <div class="modal-body">
-            <ul class="nav nav-tabs nav-justified" id="aboutTabs">
-              <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;About the project</a></li>
-              <li><a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i>&nbsp;Contact us</a></li>
-            </ul>
+            <table class="table table-striped"><tbody>  
+              <tr class="craftOptionRow"><td></td><td></td></tr>
+              <tr class="buildOptionRow"><td></td><td></td></tr>
+            </tbody></table>
+            <span id="bcSelection"></span>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal misiones v1
-      <div class="dialog" role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
-        <h1 id="dialog-title">Site Navigation</h1>
-        <p id="dialog-description" class="sr-only">Description goes here</p>
-        <nav>
-          <ul>
-            <li><a href="one.html">Link One</a></li>
-            <li><a href="two.html">Link Two</a></li>
-            <li><a href="three.html">Link Three</a></li>
-          </ul>
-        </nav>
-        <button type="button" aria-label="Close Navigation" class="close-dialog"> <i class="fa fa-times"></i> </button>
-      </div>--</div><!- /.modal misiones v2
-    <div class="missionOptionOverlay" tabindex="-1">-->
-    <div class="modal fade" id="missionsModal" tabindex="-1" role="dialog">
-      <span id="openModal" style="display: none">false</span>
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="resumeGame()">&times;</button>
-            <h4 class="modal-title">Título</h4>
-          </div>
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div><!-- endregion -->
+      <!-- #region factions -->
+      <div class="modal fade" id="factionsModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Factions & treatments (Diplomacy)</h4></div>
           <div class="modal-body">
-            <table class="table">
-              <tbody>  
-                <tr>
-                  <td class="missionOption">
-                  </td><td></td>
-                </tr>
-              </tbody>
-            </table>
+            <table class="table table-striped"><tbody>  
+              <tr class="factionRow"><td></td><td></td></tr>
+            </tbody></table>
+            <span id="factionSelection"></span>
+          </div>
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div><!-- endregion -->
+      <!-- #region fleet -->
+      <div class="modal fade" id="fleetModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Fleet</h4></div>
+          <div class="modal-body">
+            <table class="table table-striped"><tbody>  
+              <tr class="fleetRow"><td></td><td></td></tr>
+            </tbody></table>
+            <span id="fleetSelection"></span>
+          </div>
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div><!-- endregion -->
+      <!-- #region skills&morale -->
+      <div class="modal fade" id="skillsModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Skills & Morale</h4></div>
+          <div class="modal-body">
+            <table class="table table-striped"><tbody>
+              <tr class="moraleRow"><td></td><td class="moraleState"></td></tr>
+              <tr class="skillsRow"><td></td><td></td></tr>
+            </tbody></table>
+            <span id="skillSelection"></span>
+          </div>
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div><!-- endregion -->
+      <!-- #region research -->
+      <div class="modal fade" id="researchModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Research</h4></div>
+          <div class="modal-body">
+            <table class="table table-striped"><tbody>
+              <tr class="researchRow"><td></td><td></td></tr>
+            </tbody></table>
+            <span id="researchSelection"></span>
+          </div>
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div><!-- endregion -->
+      <!-- #region missions&journal -->
+      <div class="modal fade" id="missionsModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Missions</h4></div>
+          <div class="modal-body">
+            <table class="table table-striped"><tbody><!-- Journal -->
+              <tr class="missionOptionRow"><td></td><td></td></tr>
+            </tbody></table>
             <span id="missionSelection"></span>
           </div>
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div><!-- endregion -->
+      <!-- #region options/sorceries -->
+      <div class="modal fade" id="sorceriesModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Sorceries</h4></div>
+          <div class="modal-body">
+            <table class="table table-striped"><tbody>
+              <tr class="sorceryRow"><td></td><td></td></tr>
+            </tbody></table>
+            <span id="sorcerySelection"></span>
+          </div>
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div><!-- endregion -->
+      <!-- #region options/keys -->
+      <div class="modal fade" id="keysModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Keys</h4></div>
+          <div class="modal-body">
+            <table class="table table-striped"><tbody>
+              <tr class="keyRow"><td></td><td></td></tr>
+            </tbody></table>
+            <span id="keySelection"></span>
+          </div>
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div><!-- endregion -->
+      <!-- #region options/login-->
+      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            &times;</button><h4 class="modal-title">Login</h4></div>
+          <div class="modal-body">
+            <form id="contact-form"><fieldset>
+              <div class="form-group">
+                <label for="name">Username:</label><input type="text" class="form-control" id="username">
+              </div><div class="form-group">
+                <label for="email">Password:</label><input type="password" class="form-control" id="password">
+              </div>
+            </fieldset></form>
+          </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resumeGame()">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary" data-dismiss="modal">Login</button>
           </div>
-        </div> <!-- /.modal-content -->
-      </div> <!-- /.modal-dialog -->
-    </div><!-- /.modal batallas-->
-    <div class="modal fade" id="battleModal" tabindex="-1" role="dialog">
-      <span id="openModal" style="display: none">false</span>
-      <div class="modal-dialog" style="width:720px;height:480px;">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="resumeGame()">&times;</button>
-            <h4 class="modal-title">Battle!</h4>
+        </div></div><!-- </modal-content></modal-dialog> -->
+      </div><!-- endregion -->
+      <!-- #region options/save&quit -->
+      <div class="modal fade" id="saveModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Save & Load & Quit</h4></div>
+          <div class="modal-body">
+            <table class="table table-striped"><tbody>
+              <tr class="loadRow"><td></td><td></td></tr>
+              <tr class="saveAsRow"><td></td><td></td></tr>
+              <tr class="saveAndQuitRow"><td></td><td></td></tr>
+              <tr class="quitRow"><td></td><td></td></tr>
+            </tbody></table>
+            <span id="saveModalSelection"></span>
           </div>
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div>
+      <!-- endregion -->
+    <!-- endregion -->
+    <!-- #region Left_Menu -->
+    <!-- endregion -->
+    <!-- #region Map/ObjectiveInteraction -->
+      <!-- #region battles -->
+      <div class="modal fade" id="battleModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog" style="width:720px;height:480px;"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Battle</h4></div>
           <div class="modal-body">
             <img id="marluxia" src="sprites/player/marluxia.png" style="display:none;">
             <img id="death" src="sprites/enemies-reverse/death.png" style="display:none;">
@@ -336,117 +474,115 @@
             <img id="skeleton" src="sprites/enemies-reverse/skeleton.png" style="display:none;">
             <img id="spider" src="sprites/enemies-reverse/spider.png" style="display:none;">
             <canvas id="fightersCanvas" width="680" height="256" style="border:1px solid #d3d3d3;">
-                Your browser does not support the HTML5 canvas tag.
+              Your browser does not support the HTML5 canvas tag.
             </canvas>
-            <table class="table">
-              <tbody>  
-                <tr>
-                  <td class="fightOption1">
-                    <button type="button" class="btn btn-info" style="width: 100%" onclick="loadTile()">Ataque pred.</button><!--Blue-->
-                  </td><td class="fightOption2">
-                    <button type="button" class="btn btn-success" style="width: 100%">Más ataques</button><!--Green-->
-                  </td>
-                </tr>
-                <tr>
-                  <td class="fightOption3">
-                    <button type="button" class="btn btn-warning" style="width: 100%">Objetos</button><!--Yellow-->
-                  </td><td class="fightOption4">
-                    <button type="button" class="btn btn-danger" style="width: 100%">Intenta huir</button><!--Red-->
-                  </td>
-                  <!--<td class="danger">Red</td>-->
-                </tr>
-              </tbody>
-            </table>
+            <table class="table table-striped"><tbody>  
+              <tr>
+                <td class="fightOption1">
+                  <button type="button" class="btn btn-info" style="width: 100%" onclick="loadTile()">Ataque pred.</button><!--Blue-->
+                </td><td class="fightOption2">
+                  <button type="button" class="btn btn-success" style="width: 100%">Más ataques</button><!--Green-->
+                </td>
+              </tr>
+              <tr>
+                <td class="fightOption3">
+                  <button type="button" class="btn btn-warning" style="width: 100%">Objetos</button><!--Yellow-->
+                </td><td class="fightOption4">
+                  <button type="button" class="btn btn-danger" style="width: 100%">Intenta huir</button><!--Red-->
+                </td>
+              </tr>
+            </tbody></table>
             <div id="battleLogs"></div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resumeGame()">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal comercio-->
-    <div class="modal fade" id="tradeModal" tabindex="-1" role="dialog">
-      <span id="openModal" style="display: none">false</span>
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="resumeGame()">&times;</button>
-            <h4 class="modal-title">intercambio!</h4>
-          </div>
-          <div class="modal-body">
-            <p>El diálogo de intercambios va aquí...</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resumeGame()">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal login-->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Login</h4>
-          </div>
-          <div class="modal-body">
-            <form id="contact-form">
-              <fieldset>
-                <div class="form-group">
-                  <label for="name">Username:</label>
-                  <input type="text" class="form-control" id="username">
-                </div>
-                <div class="form-group">
-                  <label for="email">Password:</label>
-                  <input type="password" class="form-control" id="password">
-                </div>
-              </fieldset>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary" data-dismiss="modal">Login</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!--
-    <div class="modal fade" id="featureModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title text-primary" id="feature-title"></h4>
-          </div>
-          <div class="modal-body" id="feature-info"></div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
+          <div class="modal-footer"></div>
+        </div></div><!-- </modal-content></modal-dialog> -->
       </div>
-    </div>
-    <div class="modal fade" id="attributionModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">
-              Developed by <a href='http://bryanmcbride.com'>bryanmcbride.com</a>
-            </h4>
-          </div>
+      <!-- endregion -->
+      <!-- #region trade -->
+      <div class="modal fade" id="tradeModal" tabindex="-1" role="dialog">
+        <span id="openModal" style="display: none">false</span>
+        <div class="modal-dialog"><div class="modal-content">
+          <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Trade with<!--&nbsp;<span id="currentPlace"></span>--></h4></div>
           <div class="modal-body">
-            <div id="attribution"></div>
+              <div class="row">
+              <div class="column"><img src="sprites/traders/bender.png" width="100%" height="100%"></img></div>
+              <!--TODO que sea el vendedor con más cosas-->
+              <div class="column"><table class="table table-striped" id="tradeTable"><thead>
+              <tr>
+                <th scope="col">Resource&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th scope="col">Quantity here&nbsp;</th>
+                <th scope="col">Sell Price&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th scope="col">Trade&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th scope="col">Buy Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th scope="col">Quantity owned</th>
+              </tr>
+            </thead><tbody>  
+            </tbody></table></div>
+            </div>
+            <div id="tradeSlider" class="slidecontainer" style="display: none">
+              <input type="range" min="-100" max="100" value="0" class="slider" id="tradeRange"><!-- style="display: none "-->
+            </div>
+            <span id="tradeSelectionType"></span>
+            <span id="tradeSelectionN" style="display: none"></span>
+            <span id="tradeSelection"></span>
+            <button id="tradeConfirmation" type="button" class="btn btn-success" style="display: none;width: 100%" onclick="tradeCurrentQuantity()">Trade</button>
           </div>
-        </div>
-      </div>
-    </div>-->
+          <div class="modal-footer"></div>
+        </div></div> <!-- </modal-content></modal-dialog> -->
+      </div>    
+      <!-- endregion -->
+    <!-- endregion -->
 
     <!-- Scripts -->
     <script src="bundle.js"></script>
-    <script src="./style/dialog.js"></script>
-    <script>
-    /**
-     * @param {Number} hp
-     */
+    <script>//src this
+    var slider = document.getElementById("tradeRange");
+    var output = document.getElementById("tradeSelectionN");
+    output.innerHTML = slider.value; // Display the default slider value
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function() {
+      output.innerHTML = Math.abs(this.value);
+      if (this.value < 0) {
+        document.getElementById("tradeSelectionType").innerText = "Sell ";
+        document.getElementById("tradeConfirmation").style.display = 'inline';
+      } else if (this.value > 0) {
+        document.getElementById("tradeSelectionType").innerText = "Buy ";
+        document.getElementById("tradeConfirmation").style.display = 'inline';
+      } else {
+        document.getElementById("tradeSelectionType").innerText = "";
+        document.getElementById("tradeConfirmation").style.display = 'none';
+      }
+    }
+
+    // keyListener
+    let buttonsPushed = 0;
+    $("#map").keypress(
+        function(event) {
+            if(event.which===13) {
+                event.preventDefault();
+            }
+            buttonsPushed++;
+            if (document.getElementById("hiddenHandlerKeys").innerHTML != event.key) {
+              document.getElementById("hiddenHandlerKeys").innerHTML = event.key;
+              document.getElementById("keyChange").innerText = "true";
+            } else {
+              document.getElementById("keyChange").innerText = "false";
+            }
+                // " " + buttonsPushed + "t," + // Times called .keypress() handler
+                // " " + event.key + " key"; // Last pushed key in keyboard
+                // <p> works but is unhidden
+        }
+    );
+    //*/
+    function simulateKeyPress(character) {
+        jQuery.event//('input[type=submit][name=btnK]')
+            .trigger({
+                type: 'keypress',
+                which: character.charCodeAt(65)
+            });
+    }
+    /** @param {Number} hp */
     function healthCanvas(hp) {
         var c = document.getElementById("healthCanvas");
         var ctx = c.getContext("2d");
@@ -484,8 +620,7 @@
         document.getElementById("hiddenHandlerPos").innerHTML = position.coords.latitude + 
         "," + position.coords.longitude;
     }
-    /** @return {Object} a Hides all elements with class="containerTab", except for the one that matches the clickable grid column
-    */
+    /** Hides all class="containerTab", except for the one that matches the clickable grid column */
     function openTab(tabName) {
         var i, x;
         x = document.getElementsByClassName("containerTab");
@@ -498,33 +633,6 @@
       document.getElementById('openModal').innerText = 'false';
       global.battleSound.pause();
     }
-
-    healthCanvas(parseFloat(document.getElementById('health').innerHTML));
-    // getLocation();
-
-    // keyListener
-    let buttonsPushed = 0;
-    $("#map").keypress(
-        function(event) {
-            if(event.which===13) {
-                event.preventDefault();
-            }
-            buttonsPushed++;
-            document.getElementById("hiddenHandlerKeys").innerHTML = event.key;
-                // " " + buttonsPushed + "t," + // Times called .keypress() handler
-                // " " + event.key + " key"; // Last pushed key in keyboard
-                // <p> works but is unhidden
-        }
-    );
-    //*/
-    function simulateKeyPress(character) {
-        jQuery.event//('input[type=submit][name=btnK]')
-            .trigger({
-                type: 'keypress',
-                which: character.charCodeAt(65)
-            });
-    }
-    
     function loadTile() {
       var canvas = document.getElementById("myCanvas");
       var ctx = canvas.getContext("2d");
@@ -550,13 +658,15 @@
         ctx.putImageData(tileData[0], x, y);
       }
     }
-
-    // var navDialogEl = document.querySelector('.missionOption');
+    healthCanvas(parseFloat(document.getElementById('health').innerHTML));
+    // getLocation();
+    // var navDialogEl = document.querySelector('.missionOptionRow');
 		// var dialogOverlay = document.querySelector('.missionOptionOverlay');
 		var myDialog = new Dialog(navDialogEl, dialogOverlay);
 		myDialog.addEventListeners('.open-dialog', '.close-dialog');
     </script>
-    <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
-    <script src="assets/js/bootstrapFunctions.js"></script>
+    <script src="assets/leaflet.groupedlayercontrol.js"></script>
+    <script src="assets/bootstrapFunctions.js"></script>
+    <script src="style/dialog.js"></script>      
   </body>
 </html>

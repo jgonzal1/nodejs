@@ -1,10 +1,14 @@
 //#region Imports
 const enemyMover = require('./assets/enemyMover');
 const keyHandler = require("./assets/keyHandler");
+<<<<<<< HEAD
 // TODO beefy/browserify not working properly in work laptop=
 // TODO >>>>> Working main game key bindings & hints
+=======
+>>>>>>> b3d5e80642122866f923a83f6d265afc790f1d8e
 // TODO Duplicated mH.fcalcDist array on the inside because of async
 // TODO Make attack handler different for all player attack position disruption cases
+const loadPlaceModal = require('./assets/loadPlaceModal');
 const mH = require('./assets/moveHandlers');
 // TODO Not always take out enemy (after battles, it may stay)
 const pushCharacters = require('./assets/pushCharacters');
@@ -15,13 +19,15 @@ const spawnTransports = require('./assets/spawnTransports');
 const getKeymap = require('./data/keymap');
 // TODO To access js variables within bootstrap, load in HTML and charge bootstrap in it afterwards
 global.keymap = getKeymap();
+// TODO arreglar que se pueda clicar o usar teclado (id. unico a eventos)
+// TODO Recover > < keys but for open/close doors
 const spawnRegionsAustria = require('./data/regionsAustria');
 const regionsAustria = spawnRegionsAustria();
 const spawnSites = require('./data/sites');
 const sites = spawnSites.getSites();
 const places = spawnSites.getPlaces();
 const nPlaces = places.length;
-const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasiera"];
+const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasierra"];
 // TODO > Start in player's location (locatePlayer in assets)
 // document.getElementById('hiddenHandlerPos').innerText.split(",")[0]/[1] + redis
 const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
@@ -37,7 +43,7 @@ const geoJsonStylers = require('./style/geoJsonStylers');
 // TODO Trading materials
 // TODO Misiones, traders
 // TODO > Traders objectives
-// TODO >>>>> #FFnn particles, develop in battles modal
+// TODO >>>>> #FFnn particles, develop in battles modal, resumeGame after closing bot only with button
 // TODO #CataclysmDDA
 // TODO #RimWorld
 // TODO #CotND
@@ -47,7 +53,8 @@ const L = require('leaflet');
 global.L = L;
 
 var cryptOfTheNecromancerMode =  'true';
-const velocity = 1/33; // Dµº / ms
+const velocity = 1/33; // Dµº / ms , 80km/h | 12x
+// TODO Velocity within ingame options so anyone can handle and keyHandler is not dependant
 var refreshRate, defaultMovementLength;
 // TODO > Change boolean #CotND
 if (cryptOfTheNecromancerMode === "true") { refreshRate = 460; }
@@ -126,9 +133,7 @@ for (var i in sites) {
 		L.marker(
 			[ sites[i][1], sites[i][2] ],
 			{icon: global.placeIconsArray[element]}
-		).bindPopup(
-			'<b>' + places[element] + '</b>'
-		)
+		).bindPopup( places[element] )
 	);
 }//*/
 //spawnPlaces(sites, L, function(markers){
@@ -192,6 +197,21 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 		}
 		if (!pause) { enemyMover(defaultMovementLength); } // else { pauseSound.start(); }
 		if (document.getElementById('openModal').innerText === 'false') {
+			// TODO keyHandler out of scope for third party layer group
+			if (global.keymap["open"].includes(document.getElementById('hiddenHandlerKeys').innerText)) {
+				loadPlaceModal(sites, markers, function(updateMarker){
+					markers[updateMarker].setIcon(L.icon({
+						iconUrl: 'style/places/barrier.png',
+						shadowUrl: 'style/shadow.png',
+						iconSize: [48, 48],
+						shadowSize: [48, 48], // size of the shadow
+						iconAnchor: [23, 48],
+						shadowAnchor: [4, 52],  // the same for the shadow
+						popupAnchor: [10, -35]
+					}));
+					markers[updateMarker].update();
+				});
+			}
 			keyHandler(defaultMovementLength);
 		}
 		if (global.layerToRemove != undefined) {

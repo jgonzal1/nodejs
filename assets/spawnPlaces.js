@@ -27,34 +27,26 @@ function spawnPlaces() {
     global.placeIconsArray = [
         //lightHouseIcon,
         //portIcon,
-        bankIcon, // money (invest / recover after invest)
-        bank2Icon, // money (take and give loans)
+        bankIcon,
+        bank2Icon,
         blockhousesIcon,
-        // → beer, fish, grain, salt, wool, spices
-        // ← grain, salt (style/trading_materials/)
         castleIcon,
-        // → beer, bricks, fish, gold, meat, salt, wine, wood, wool, spices
-        // ← gold, wine
         breweryIcon,
-        // → grain, wood
-        // ← beer, wine
-        cornshopIcon, // grain
-        gasStationIcon, // tool/gasoline
+        cornshopIcon,
+        gasStationIcon,
         houseIcon,
-        // → beer, fish, grain, salt, wine, wool, spices
-        // ← grain, salt, wool, spices
-        refineryIcon, // tool/gasoline
-        brickbuildingIcon, // bricks
+        refineryIcon,
+        brickbuildingIcon,
         signIcon,
-        store2Icon, // beer, fish, grain, meat, wine, spices
-        store3Icon, // beer, fish, grain, iron, meat, wine, spices
-        tentIcon, // beer, fish, grain, meat, wine, spices
+        store2Icon,
+        store3Icon,
+        tentIcon,
         tree1Icon, // wood
         tree2Icon, // wood
         tree3Icon, // wood
         tree4Icon, // wood
         treesIcon, // wood
-        vendingIcon // wool, tools/compass, tools/goves, tools/map2
+        vendingIcon
     ];
 }
 

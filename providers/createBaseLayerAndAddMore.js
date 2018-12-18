@@ -14,8 +14,8 @@ function createBaseLayerAndAddMore(baseMap, L) {
         { minZoom: 2, maxZoom: 19 }
     );
     return {
+        "Mapa nocturno": hellMap,
         "Mapa juego": baseMap,
-        "Mapa nocturno": hellMap,	
         "Mapa descriptivo": osmMap,
         "Mapa satélite": satelliteMap,
     };

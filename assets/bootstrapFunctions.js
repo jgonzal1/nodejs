@@ -1,4 +1,6 @@
-var keypressMap, map, featureList, boroughSearch = [], theaterSearch = [], museumSearch = [];
+//#region Bootstrap initial settings and configs
+var map, featureList, boroughSearch = [], theaterSearch = [], museumSearch = [];
+var keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
 
 $(window).resize(function() {
   sizeLayerControl();
@@ -16,61 +18,243 @@ if ( !("ontouchstart" in window) ) {
 }
 
 $(document).on("mouseout", ".feature-row", clearHighlight);
+//#endregion
 
-$("#about-btn").click(function() {
-  $("#aboutModal").modal("show");
-  $(".navbar-collapse.in").collapse("hide");
-  return false;
-});
+//#region Top_Menu modal handlers
+/*["help"][0]
+["help"][1]
+["help"][2]
 
-$("#go-to-spawn-btn").click(function() {
-  map.setView([40.4942011, -3.71013], 16);
-  // map.fitBounds(boroughs.getBounds());
-  $(".navbar-collapse.in").collapse("hide");
-  return false;
-});
+["music"][0]
+["music"][1]*/
 
-$("#missions-btn").click(function() {
-  $("#missionsModal").modal("show");
-  $("#missionsModal").keypress( function(event) {
-    keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
+$("#constructions-btn").click(function() {
+  $("#buildModal").modal("show");
+  $("#buildModal").keypress( function(event) {
     document.getElementById("keyhandlerModalTester").innerText = event.which;
     switch(event.which) {
-    case keypressMap["attack1"][0]: // Q
-    case keypressMap["attack1"][1]:
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
       break;
-    case keypressMap["attack2"][0]: // W
-    case keypressMap["attack2"][1]:
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
       break;
-    case keypressMap["attack3"][0]: // E
-    case keypressMap["attack3"][1]:
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
       break;
-    case keypressMap["attack4"][0]: // R
-    case keypressMap["attack4"][1]:
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
       break;
     }
   });
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
+$("#buildModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
 
-$("#battleModal").keypress( function(event) {
-  keypressMap = JSON.parse(document.getElementById("keypressReference").innerText);
-  switch(event.which) {
-  case keypressMap["attack1"][0]: // Q
-  case keypressMap["attack1"][1]:
-    document.getElementById("battleLogs").innerHTML = "¡Marluxa usó ataque básico!";
-    break;
-  case keypressMap["attack2"][0]: // W
-  case keypressMap["attack2"][1]:
-    break;
-  case keypressMap["attack3"][0]: // E
-  case keypressMap["attack3"][1]:
-    break;
-  case keypressMap["attack4"][0]: // R
-  case keypressMap["attack4"][1]:
-    break;
-  }
+$("#diplomacy-btn").click(function() {
+  $("#factionsModal").modal("show");
+  $("#factionsModal").keypress( function(event) {
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
+  });
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+$("#factionsModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
+
+$("#fleet-btn").click(function() {
+  $("#fleetModal").modal("show");
+  $("#fleetModal").keypress( function(event) {
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
+  });
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+$("#fleetModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
+
+$("#skills-btn").click(function() {
+  $("#skillsModal").modal("show");
+  $("#skillsModal").keypress( function(event) {
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
+  });
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+$("#skillsModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
+
+$("#research-btn").click(function() {
+  $("#researchModal").modal("show");
+  $("#researchModal").keypress( function(event) {
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
+  });
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+$("#researchModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
+
+$("#missions-btn").click(function() {
+  $("#missionsModal").modal("show");
+  $("#missionsModal").keypress( function(event) {
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
+  });
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+$("#missionsModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
+
+/*["options"][0]
+
+["toggleStats"][0]*/
+//#endregion
+
+//#region Top_Menu/Options modal handlers
+$("#go-to-spawn-btn").click(function() {
+  map.setView([40.4942011, -3.71013], 16);
+  // map.fitBounds(boroughs.getBounds());
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+// ["goToSpawn"][0]
+
+$("#spells-btn").click(function() {
+  $("#sorceriesModal").modal("show");
+  $("#sorceriesModal").keypress( function(event) {
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
+  });
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+$("#sorceriesModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
+$("#keys-btn").click(function() {
+  $("#keysModal").modal("show");
+  $("#keysModal").keypress( function(event) {
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
+  });
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+$("#keysModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
 });
 
 $("#login-btn").click(function() {
@@ -78,7 +262,84 @@ $("#login-btn").click(function() {
   $(".navbar-collapse.in").collapse("hide");
   return false;
 });
+$("#loginModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
 
+// save-btn
+// ["saveQuit"][0]
+//#endregion
+
+//#region Left_Menu modal handlers
+/*["inventory"][0]
+
+["leaveItem"][0]
+
+["manageInventory"][0]
+
+["swapInventoryLetters"][0]
+
+["takeOut"][0]*/
+//#endregion
+
+//#region Map/ObjectiveInteraction modal handlers
+$("#battleModal").keypress( function(event) {
+  switch(event.which) {
+  case keypressMap["option1"][0]: // Q
+  case keypressMap["option1"][1]:
+    document.getElementById("battleLogs").innerHTML = "¡Marluxa usó ataque básico!";
+    break;
+  case keypressMap["option2"][0]: // W
+  case keypressMap["option2"][1]:
+    break;
+  case keypressMap["option3"][0]: // E
+  case keypressMap["option3"][1]:
+    break;
+  case keypressMap["option4"][0]: // R
+  case keypressMap["option4"][1]:
+    break;
+  }
+});
+$("#battleModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
+
+$("#tradeModal").keypress( function(event) {
+  switch(event.which) {
+  case keypressMap["option1"][0]: // Q
+  case keypressMap["option1"][1]:
+    document.getElementById("tradeSelection").innerHTML = "¡Has elegido el primer elemento!";
+    break;
+  case keypressMap["option2"][0]: // W
+  case keypressMap["option2"][1]:
+    break;
+  case keypressMap["option3"][0]: // E
+  case keypressMap["option3"][1]:
+    break;
+  case keypressMap["option4"][0]: // R
+  case keypressMap["option4"][1]:
+    break;
+  }
+});
+$("#tradeModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById("tradeTable").getElementsByTagName('tbody')[0].innerText = '';
+  //document.getElementById('currentPlace').innerText = 'outside';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
+
+/*["open"][0]
+["read"][0]
+["wear"][0]
+["examine"][0]
+["examine"][1]
+["use"][0]
+["vehicleHandbrake"][0]*/
+//#endregion
+
+//#region Other Bootstrap+jQuery Functions
 $("#list-btn").click(function() {
   animateSidebar();
   return false;
@@ -133,7 +394,7 @@ function syncSidebar() {
   theaters.eachLayer(function (layer) {
     if (map.hasLayer(theaterLayer)) {
       if (map.getBounds().contains(layer.getLatLng())) {
-        $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="assets/img/theater.png"></td><td class="feature-name">' + layer.feature.properties.NAME + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
+        $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="style/theater.png"></td><td class="feature-name">' + layer.feature.properties.NAME + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
       }
     }
   });
@@ -141,7 +402,7 @@ function syncSidebar() {
   museums.eachLayer(function (layer) {
     if (map.hasLayer(museumLayer)) {
       if (map.getBounds().contains(layer.getLatLng())) {
-        $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="assets/img/museum.png"></td><td class="feature-name">' + layer.feature.properties.NAME + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
+        $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="style/museum.png"></td><td class="feature-name">' + layer.feature.properties.NAME + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
       }
     }
   });
@@ -153,11 +414,9 @@ function syncSidebar() {
     order: "asc"
   });
 }
+//#endregion
 
-function instanceKeymap() {
-
-}
-
+//#region Bootstrap Leaflet Handlers
 /* Basemap Layers */
 // map.setView([40.4942011, -3.71013], 16);
 var cartoLight = L.tileLayer(
@@ -272,7 +531,7 @@ var theaters = L.geoJson(null, {
   pointToLayer: function (feature, latlng) {
     return L.marker(latlng, {
       icon: L.icon({
-        iconUrl: "assets/img/theater.png",
+        iconUrl: "style/theater.png",
         iconSize: [24, 28],
         iconAnchor: [12, 28],
         popupAnchor: [0, -25]
@@ -292,7 +551,7 @@ var theaters = L.geoJson(null, {
           highlight.clearLayers().addLayer(L.circleMarker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], highlightStyle));
         }
       });
-      $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="assets/img/theater.png"></td><td class="feature-name">' + layer.feature.properties.NAME + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
+      $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="style/theater.png"></td><td class="feature-name">' + layer.feature.properties.NAME + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
       theaterSearch.push({
         name: layer.feature.properties.NAME,
         address: layer.feature.properties.ADDRESS1,
@@ -304,7 +563,7 @@ var theaters = L.geoJson(null, {
     }
   }
 });
-$.getJSON("data/100913Theater.geojson", function (data) {
+$.getJSON("data/theater.geojson", function (data) {
   theaters.addData(data);
   map.addLayer(theaterLayer);
 });
@@ -315,7 +574,7 @@ var museums = L.geoJson(null, {
   pointToLayer: function (feature, latlng) {
     return L.marker(latlng, {
       icon: L.icon({
-        iconUrl: "assets/img/museum.png",
+        iconUrl: "style/museum.png",
         iconSize: [24, 28],
         iconAnchor: [12, 28],
         popupAnchor: [0, -25]
@@ -335,7 +594,7 @@ var museums = L.geoJson(null, {
           highlight.clearLayers().addLayer(L.circleMarker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], highlightStyle));
         }
       });
-      $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="assets/img/museum.png"></td><td class="feature-name">' + layer.feature.properties.NAME + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
+      $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="style/museum.png"></td><td class="feature-name">' + layer.feature.properties.NAME + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
       museumSearch.push({
         name: layer.feature.properties.NAME,
         address: layer.feature.properties.ADRESS1,
@@ -347,7 +606,7 @@ var museums = L.geoJson(null, {
     }
   }
 });
-$.getJSON("data/100913Museums.geojson", function (data) {
+$.getJSON("data/museums.geojson", function (data) {
   museums.addData(data);
 });
 
@@ -463,8 +722,8 @@ var baseLayers = {
 
 var groupedOverlays = {
   "Points of Interest": {
-    "<img src='assets/img/theater.png' width='24' height='28'>&nbsp;Theaters": theaterLayer,
-    "<img src='assets/img/museum.png' width='24' height='28'>&nbsp;Museums": museumLayer
+    "<img src='style/theater.png' width='24' height='28'>&nbsp;Theaters": theaterLayer,
+    "<img src='style/museum.png' width='24' height='28'>&nbsp;Museums": museumLayer
   },
   "Reference": {
     "Boroughs": boroughs,
@@ -583,7 +842,7 @@ $(document).one("ajaxStop", function () {
     displayKey: "name",
     source: theatersBH.ttAdapter(),
     templates: {
-      header: "<h4 class='typeahead-header'><img src='assets/img/theater.png' width='24' height='28'>&nbsp;Theaters</h4>",
+      header: "<h4 class='typeahead-header'><img src='style/theater.png' width='24' height='28'>&nbsp;Theaters</h4>",
       suggestion: Handlebars.compile(["{{name}}<br>&nbsp;<small>{{address}}</small>"].join(""))
     }
   }, {
@@ -591,7 +850,7 @@ $(document).one("ajaxStop", function () {
     displayKey: "name",
     source: museumsBH.ttAdapter(),
     templates: {
-      header: "<h4 class='typeahead-header'><img src='assets/img/museum.png' width='24' height='28'>&nbsp;Museums</h4>",
+      header: "<h4 class='typeahead-header'><img src='style/museum.png' width='24' height='28'>&nbsp;Museums</h4>",
       suggestion: Handlebars.compile(["{{name}}<br>&nbsp;<small>{{address}}</small>"].join(""))
     }
   }, {
@@ -599,7 +858,7 @@ $(document).one("ajaxStop", function () {
     displayKey: "name",
     source: geonamesBH.ttAdapter(),
     templates: {
-      header: "<h4 class='typeahead-header'><img src='assets/img/globe.png' width='25' height='25'>&nbsp;GeoNames</h4>"
+      header: "<h4 class='typeahead-header'><img src='style/globe.png' width='25' height='25'>&nbsp;GeoNames</h4>"
     }
   }).on("typeahead:selected", function (obj, datum) {
     if (datum.source === "Boroughs") {
@@ -649,3 +908,4 @@ if (!L.Browser.touch) {
 } else {
   L.DomEvent.disableClickPropagation(container);
 }
+//#endregion

@@ -7,7 +7,6 @@
 >>>>> #FFnn particles, develop in battles modal (15., From file:///e%3A/nodejs/game.js#38)
 >>>>> Colores Tileset (21., From file:///e%3A/nodejs/game.js#85)
 >>>>> Modal things in places (9., From file:///e%3A/nodejs/game.js#32)
->>>>> Working main game key bindings & hints (1., From file:///e%3A/nodejs/game.js#4)
 > Change boolean #CotND (19., From file:///e%3A/nodejs/game.js#50)
 > Personalize character #CataclysmDDA + playerIcon "duplicado": imagemagick (22., From file:///e%3A/nodejs/game.js#97)
 > Spawn con lng correction (20., From file:///e%3A/nodejs/game.js#84)
