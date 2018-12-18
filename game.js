@@ -1,11 +1,6 @@
 //#region Imports
 const enemyMover = require('./assets/enemyMover');
 const keyHandler = require("./assets/keyHandler");
-<<<<<<< HEAD
-// TODO beefy/browserify not working properly in work laptop=
-// TODO >>>>> Working main game key bindings & hints
-=======
->>>>>>> b3d5e80642122866f923a83f6d265afc790f1d8e
 // TODO Duplicated mH.fcalcDist array on the inside because of async
 // TODO Make attack handler different for all player attack position disruption cases
 const loadPlaceModal = require('./assets/loadPlaceModal');
