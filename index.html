@@ -30,6 +30,30 @@
     <link rel="apple-touch-icon" sizes="152x152" href="style/favicon-152.png">
     <link rel="icon" sizes="196x196" href="style/favicon-196.png">
     <link rel="icon" type="image/x-icon" href="style/favicon.ico">
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+    /* Create two equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 20%;
+      /*padding: 10px;
+      height: 300px; // Should be removed. Only for demonstration */
+    }
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 900px) {
+      .column {
+        width: 100%;
+      }
+    }
+    </style>
 
     <title>Darks Game</title>    
 
@@ -481,7 +505,10 @@
           <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
             onclick="resumeGame()">&times;</button><h4 class="modal-title">Trade with<!--&nbsp;<span id="currentPlace"></span>--></h4></div>
           <div class="modal-body">
-            <table class="table table-striped" id="tradeTable"><thead>
+              <div class="row">
+              <div class="column"><img src="sprites/traders/bender.png" width="100%" height="100%"></img></div>
+              <!--TODO que sea el vendedor con más cosas-->
+              <div class="column"><table class="table table-striped" id="tradeTable"><thead>
               <tr>
                 <th scope="col">Resource&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
                 <th scope="col">Quantity here&nbsp;</th>
@@ -491,7 +518,8 @@
                 <th scope="col">Quantity owned</th>
               </tr>
             </thead><tbody>  
-            </tbody></table>
+            </tbody></table></div>
+            </div>
             <div id="tradeSlider" class="slidecontainer" style="display: none">
               <input type="range" min="-100" max="100" value="0" class="slider" id="tradeRange"><!-- style="display: none "-->
             </div>
