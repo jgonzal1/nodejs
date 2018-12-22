@@ -99,9 +99,6 @@ function keyHandler(velocity) {
 		//*/
 		//#endregion
 		//#region Map/ObjectiveInteraction
-		case global.keymap["open"][0]:
-			// TODO game is dealing with this out of scope layers reference
-			break;
 		case global.keymap["read"][0]:
 		case global.keymap["wear"][0]:
 		case global.keymap["examine"][0]:

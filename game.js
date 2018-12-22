@@ -194,6 +194,8 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 			// TODO keyHandler out of scope for third party layer group
 			if (global.keymap["open"].includes(document.getElementById('hiddenHandlerKeys').innerText)) {
 				loadPlaceModal(sites, markers, function(updateMarker){
+					// TODO tradeRange min depending on how much user has
+					// TODO vendedor con mas cosas en el index (bajo tradeModal) y que lo ponga el modal
 					markers[updateMarker].setIcon(L.icon({
 						iconUrl: 'style/places/barrier.png',
 						shadowUrl: 'style/shadow.png',
