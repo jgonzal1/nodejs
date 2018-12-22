@@ -12,6 +12,7 @@ const spawnObjectives = require('./assets/spawnObjectives');
 const spawnPlaces = require('./assets/spawnPlaces');
 const spawnTransports = require('./assets/spawnTransports');
 const getKeymap = require('./data/keymap');
+// TODO To access js variables within bootstrap, load in HTML and charge bootstrap in it afterwards
 global.keymap = getKeymap();
 // TODO arreglar que se pueda clicar o usar teclado (id. unico a eventos)
 // TODO Recover > < keys but for open/close doors
