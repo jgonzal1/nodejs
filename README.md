@@ -5,7 +5,6 @@
 #Risk (9., From file:///e%3A/nodejs/game.js#32)
 >>>>> #FFnn particles, develop in battles modal, resumeGame after closing but only with button (17., From file:///e%3A/nodejs/game.js#41)
 >>>>> Colores Tileset (24., From file:///e%3A/nodejs/game.js#89)
->>>>> Modal things in places (11., From file:///e%3A/nodejs/game.js#35)
 > Change boolean #CotND (22., From file:///e%3A/nodejs/game.js#54)
 > Personalize character #CataclysmDDA + playerIcon "duplicado": imagemagick (25., From file:///e%3A/nodejs/game.js#101)
 > Spawn con lng correction (23., From file:///e%3A/nodejs/game.js#88)

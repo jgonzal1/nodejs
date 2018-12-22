@@ -32,7 +32,6 @@ const geoJsonStylers = require('./style/geoJsonStylers');
 // TODO #Risk
 
 // TODO #Patrician When collide
-// TODO >>>>> Modal things in places
 // TODO > Transports change velocity & zoom
 // TODO Objectives
 // TODO Trading materials
