@@ -38,7 +38,7 @@ const geoJsonStylers = require('./style/geoJsonStylers');
 // TODO Trading materials
 // TODO Misiones, traders
 // TODO > Traders objectives
-// TODO >>>>> #FFnn particles, develop in battles modal, resumeGame after closing bot only with button
+// TODO >>>>> #FFnn particles, develop in battles modal, resumeGame after closing but only with button
 // TODO #CataclysmDDA
 // TODO #RimWorld
 // TODO #CotND
