@@ -1,5 +1,5 @@
 const createIcon = require('../style/createIcon');
-const cercania = 2;
+const cercania = 10;
 
 function spawnTransports() {
 	const balloonIcon		= L.icon(createIcon('sprites/map-transports/balloon.png'));
@@ -24,7 +24,7 @@ function spawnTransports() {
 	global.balloon		= spawnTransport(balloonIcon);
 	global.bike			= spawnTransport(bikeIcon);
 	global.bus			= spawnTransport(busIcon);
-	global.schoolbus		= spawnTransport(schoolbusIcon);
+	global.schoolbus	= spawnTransport(schoolbusIcon);
 	global.taxi 		= spawnTransport(taxiIcon);
 	global.train		= spawnTransport(trainIcon);
 }

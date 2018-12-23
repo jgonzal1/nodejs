@@ -1,6 +1,6 @@
 const createLargeIcon = require('../style/createLargeIcon');
 
-function spawnPlaces() {
+function createPlacesIcons() {
     // const lightHouseIcon = L.icon(createLargeIcon('style/places/light_house.png'));
     // const portIcon = L.icon(createLargeIcon('style/places/port.png'));
     global.bankIcon = L.icon(createLargeIcon('style/places/bank.png'));
@@ -50,4 +50,4 @@ function spawnPlaces() {
     ];
 }
 
-module.exports = spawnPlaces;
+module.exports = createPlacesIcons;

@@ -4,6 +4,7 @@ const tradePrices = getTradePrices();
 
 let playerComparer, coordsDiff, distancesArray, nearestObjective, nearestPlaceIndex, place;
 const tradeMatrix = {};
+
 /*tradeMatrix["goldSellPrice"] = 3900000;
 tradeMatrix["goldBuyPrice"] = 4100000*/
 function loadPlaceModal(sites, markers, callback) {
@@ -132,6 +133,7 @@ function loadPlaceModal(sites, markers, callback) {
         alert('¡Necesitas una mochila para comerciar!');
     }
 }
+
 /** @typedef HTML.table @type {object} @type {HTML.table} */
 /**
  * @param {HTML.table} tradeTable

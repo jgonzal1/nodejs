@@ -9,7 +9,7 @@ const mH = require('./assets/moveHandlers');
 const pushCharacters = require('./assets/pushCharacters');
 const spawnEnemies = require('./assets/spawnEnemies'); // TODO Enemies properties + battler hearths
 const spawnObjectives = require('./assets/spawnObjectives');
-const spawnPlaces = require('./assets/spawnPlaces');
+const createPlacesIcons = require('./assets/createPlacesIcons');
 const spawnTransports = require('./assets/spawnTransports');
 const getKeymap = require('./data/keymap');
 // TODO To access js variables within bootstrap, load in HTML and charge bootstrap in it afterwards
@@ -118,7 +118,7 @@ global.mCharacters = [];
 pushCharacters();
 const characters = L.layerGroup(global.mCharacters).addTo(global.map);
 
-spawnPlaces(L);
+createPlacesIcons(L);
 var markers = [];
 let element;
 for (var i in sites) {
@@ -130,7 +130,7 @@ for (var i in sites) {
 		).bindPopup( places[element] )
 	);
 }//*/
-//spawnPlaces(sites, L, function(markers){
+//createPlacesIcons(sites, L, function(markers){
 const layers = L.layerGroup(
 	markers
 ).addTo(global.map);

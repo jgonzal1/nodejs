@@ -135,18 +135,6 @@ function moveCharacter(character, velocity, forceDirection) { // 80km/h | 12x
 	}
 }
 
-/** @typedef L.marker @type {object} @type {L.marker} */
-/**@param {L.marker} m1 
- * @param {L.marker} m2 defaults player
- * @returns {number} a fast calculation distance number
- */
-function fcalcDist(m1, m2) {
-	m2 = (m2 || global.player);
-	const latDiff = m1.getLatLng().lat - m2.getLatLng().lat;
-	const lngDiff = m1.getLatLng().lng - m2.getLatLng().lng;
-	return Math.abs(latDiff)+Math.abs(lngDiff);
-}
-
 // unused
 function onMapClick(e) {
 	if (mouseMoved !== true) {
@@ -182,7 +170,6 @@ function getLngCorrectionArr() {
 module.exports.targetFleeFromPlayer = targetFleeFromPlayer;
 module.exports.targetGoToPlayer = targetGoToPlayer;
 module.exports.goToPlayer = goToPlayer;
-module.exports.fcalcDist = fcalcDist;
 module.exports.moveCharacter = moveCharacter;
 module.exports.onMapClick = onMapClick;
 module.exports.getLngCorrectionArr = getLngCorrectionArr;
