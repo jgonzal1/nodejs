@@ -38,7 +38,20 @@ function pushCharacters() {
         global.bus,
         global.schoolbus,	
         global.taxi,
-        global.train
+        global.train,
+
+        /*global.bart,
+        global.lisa,
+        global.mickeymouse,
+        global.pedobear,
+        global.toad,
+        global.tom,
+        global.ashketchum,
+        global.fox,
+        global.mario,
+        global.naruto,
+        global.pikachu,
+        global.toadette*/
     );
 }
 

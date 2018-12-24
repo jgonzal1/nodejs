@@ -8,6 +8,7 @@ const mH = require('./assets/moveHandlers');
 // TODO Not always take out enemy (after battles, it may stay)
 const pushCharacters = require('./assets/pushCharacters');
 const spawnEnemies = require('./assets/spawnEnemies'); // TODO Enemies properties + battler hearths
+// const spawnMissionPeople = require('./assets/spawnMissionPeople');
 const spawnObjectives = require('./assets/spawnObjectives');
 const createPlacesIcons = require('./assets/createPlacesIcons');
 const spawnTransports = require('./assets/spawnTransports');
@@ -101,8 +102,8 @@ L.control.scale({imperial:false}).addTo(global.map);
 const nAvailableAvatars = 39;
 // const files = fs.readdirSync('./sprites/player');
 // alert(files[Math.ceil(nAvailableAvatars*Math.random())]);
-const playerIcon	= L.icon(createLargeIcon('sprites/player/' +
-	'marluxia.png'
+const playerIcon	= L.icon(createLargeIcon('sprites/map-player/' +
+	'toad.png'
 	// files[Math.ceil(nAvailableAvatars*Math.random())]
 ));
 const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
@@ -113,6 +114,7 @@ global.player = player;
 
 spawnEnemies(L, lat, long);
 spawnObjectives(L, lat, long); // TODO > Thirst, hunger & vol
+// spawnMissionPeople(L, lat, long);
 spawnTransports(L, lat, long);
 global.mCharacters = [];
 pushCharacters();
