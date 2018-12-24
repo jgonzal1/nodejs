@@ -3,7 +3,7 @@
 #Patrician When collide (10., From file:///e%3A/nodejs/game.js#34)
 #RimWorld (19., From file:///e%3A/nodejs/game.js#43)
 #Risk (9., From file:///e%3A/nodejs/game.js#32)
->>>>> #FFnn particles, develop in battles modal, resumeGame after closing but only with button (17., From file:///e%3A/nodejs/game.js#41)
+>>>>> #FFnn particles, develop in battles modal (buttons===keys), resumeGame after closing but only with button (17., From file:///e%3A/nodejs/game.js#41)
 >>>>> Colores Tileset (24., From file:///e%3A/nodejs/game.js#89)
 > Change boolean #CotND (22., From file:///e%3A/nodejs/game.js#54)
 > Personalize character #CataclysmDDA + playerIcon "duplicado": imagemagick (25., From file:///e%3A/nodejs/game.js#101)

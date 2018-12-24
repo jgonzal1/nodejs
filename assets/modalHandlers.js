@@ -9,171 +9,171 @@ var keypressMap = JSON.parse(document.getElementById("keypressReference").innerT
 ["music"][1]*/
 
 $("#constructions-btn").click(function() {
-    $("#buildModal").modal("show");
-    $("#buildModal").keypress( function(event) {
-      document.getElementById("keyhandlerModalTester").innerText = event.which;
-      switch(event.which) {
-      case keypressMap["option1"][0]: // Q
-      case keypressMap["option1"][1]:
-        break;
-      case keypressMap["option2"][0]: // W
-      case keypressMap["option2"][1]:
-        break;
-      case keypressMap["option3"][0]: // E
-      case keypressMap["option3"][1]:
-        break;
-      case keypressMap["option4"][0]: // R
-      case keypressMap["option4"][1]:
-        break;
-      }
-    });
-    $(".navbar-collapse.in").collapse("hide");
-    return false;
+  $("#buildModal").modal("show");
+  $("#buildModal").keypress( function(event) {
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
   });
-  $("#buildModal").on('hide.bs.modal', function(){
-    document.getElementById('openModal').innerText = 'false';
-    document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+$("#buildModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
+
+$("#diplomacy-btn").click(function() {
+  $("#factionsModal").modal("show");
+  $("#factionsModal").keypress( function(event) {
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
   });
-  
-  $("#diplomacy-btn").click(function() {
-    $("#factionsModal").modal("show");
-    $("#factionsModal").keypress( function(event) {
-      document.getElementById("keyhandlerModalTester").innerText = event.which;
-      switch(event.which) {
-      case keypressMap["option1"][0]: // Q
-      case keypressMap["option1"][1]:
-        break;
-      case keypressMap["option2"][0]: // W
-      case keypressMap["option2"][1]:
-        break;
-      case keypressMap["option3"][0]: // E
-      case keypressMap["option3"][1]:
-        break;
-      case keypressMap["option4"][0]: // R
-      case keypressMap["option4"][1]:
-        break;
-      }
-    });
-    $(".navbar-collapse.in").collapse("hide");
-    return false;
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+$("#factionsModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
+
+$("#fleet-btn").click(function() {
+  $("#fleetModal").modal("show");
+  $("#fleetModal").keypress( function(event) {
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
   });
-  $("#factionsModal").on('hide.bs.modal', function(){
-    document.getElementById('openModal').innerText = 'false';
-    document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+$("#fleetModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
+
+$("#skills-btn").click(function() {
+  $("#skillsModal").modal("show");
+  $("#skillsModal").keypress( function(event) {
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
   });
-  
-  $("#fleet-btn").click(function() {
-    $("#fleetModal").modal("show");
-    $("#fleetModal").keypress( function(event) {
-      document.getElementById("keyhandlerModalTester").innerText = event.which;
-      switch(event.which) {
-      case keypressMap["option1"][0]: // Q
-      case keypressMap["option1"][1]:
-        break;
-      case keypressMap["option2"][0]: // W
-      case keypressMap["option2"][1]:
-        break;
-      case keypressMap["option3"][0]: // E
-      case keypressMap["option3"][1]:
-        break;
-      case keypressMap["option4"][0]: // R
-      case keypressMap["option4"][1]:
-        break;
-      }
-    });
-    $(".navbar-collapse.in").collapse("hide");
-    return false;
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+$("#skillsModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
+
+$("#research-btn").click(function() {
+  $("#researchModal").modal("show");
+  $("#researchModal").keypress( function(event) {
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
   });
-  $("#fleetModal").on('hide.bs.modal', function(){
-    document.getElementById('openModal').innerText = 'false';
-    document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+$("#researchModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
+
+$("#missions-btn").click(function() {
+  $("#missionsModal").modal("show");
+  $("#missionsModal").keypress( function(event) {
+    document.getElementById("keyhandlerModalTester").innerText = event.which;
+    switch(event.which) {
+    case keypressMap["option1"][0]: // Q
+    case keypressMap["option1"][1]:
+      break;
+    case keypressMap["option2"][0]: // W
+    case keypressMap["option2"][1]:
+      break;
+    case keypressMap["option3"][0]: // E
+    case keypressMap["option3"][1]:
+      break;
+    case keypressMap["option4"][0]: // R
+    case keypressMap["option4"][1]:
+      break;
+    }
   });
-  
-  $("#skills-btn").click(function() {
-    $("#skillsModal").modal("show");
-    $("#skillsModal").keypress( function(event) {
-      document.getElementById("keyhandlerModalTester").innerText = event.which;
-      switch(event.which) {
-      case keypressMap["option1"][0]: // Q
-      case keypressMap["option1"][1]:
-        break;
-      case keypressMap["option2"][0]: // W
-      case keypressMap["option2"][1]:
-        break;
-      case keypressMap["option3"][0]: // E
-      case keypressMap["option3"][1]:
-        break;
-      case keypressMap["option4"][0]: // R
-      case keypressMap["option4"][1]:
-        break;
-      }
-    });
-    $(".navbar-collapse.in").collapse("hide");
-    return false;
-  });
-  $("#skillsModal").on('hide.bs.modal', function(){
-    document.getElementById('openModal').innerText = 'false';
-    document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
-  });
-  
-  $("#research-btn").click(function() {
-    $("#researchModal").modal("show");
-    $("#researchModal").keypress( function(event) {
-      document.getElementById("keyhandlerModalTester").innerText = event.which;
-      switch(event.which) {
-      case keypressMap["option1"][0]: // Q
-      case keypressMap["option1"][1]:
-        break;
-      case keypressMap["option2"][0]: // W
-      case keypressMap["option2"][1]:
-        break;
-      case keypressMap["option3"][0]: // E
-      case keypressMap["option3"][1]:
-        break;
-      case keypressMap["option4"][0]: // R
-      case keypressMap["option4"][1]:
-        break;
-      }
-    });
-    $(".navbar-collapse.in").collapse("hide");
-    return false;
-  });
-  $("#researchModal").on('hide.bs.modal', function(){
-    document.getElementById('openModal').innerText = 'false';
-    document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
-  });
-  
-  $("#missions-btn").click(function() {
-    $("#missionsModal").modal("show");
-    $("#missionsModal").keypress( function(event) {
-      document.getElementById("keyhandlerModalTester").innerText = event.which;
-      switch(event.which) {
-      case keypressMap["option1"][0]: // Q
-      case keypressMap["option1"][1]:
-        break;
-      case keypressMap["option2"][0]: // W
-      case keypressMap["option2"][1]:
-        break;
-      case keypressMap["option3"][0]: // E
-      case keypressMap["option3"][1]:
-        break;
-      case keypressMap["option4"][0]: // R
-      case keypressMap["option4"][1]:
-        break;
-      }
-    });
-    $(".navbar-collapse.in").collapse("hide");
-    return false;
-  });
-  $("#missionsModal").on('hide.bs.modal', function(){
-    document.getElementById('openModal').innerText = 'false';
-    document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
-  });
-  
-  /*["options"][0]
-  
-  ["toggleStats"][0]*/
-  //#endregion
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+$("#missionsModal").on('hide.bs.modal', function(){
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+});
+
+/*["options"][0]
+
+["toggleStats"][0]*/
+//#endregion
 
 //#region Top_Menu/Options modal handlers
 $("#go-to-spawn-btn").click(function() {
@@ -268,10 +268,15 @@ $("#battleModal").keypress( function(event) {
 switch(event.which) {
 case keypressMap["option1"][0]: // Q
 case keypressMap["option1"][1]:
-    document.getElementById("battleLogs").innerHTML = "¡Marluxa usó ataque básico!";
+    document.getElementById("battleLogs").innerHTML += "Toad usó ataque básico!<br>";
     break;
 case keypressMap["option2"][0]: // W
 case keypressMap["option2"][1]:
+    if (parseFloat(document.getElementById('atk').innerHTML) > 0) {
+      document.getElementById("battleLogs").innerHTML += "Toad atacó con un arma!<br>";
+    } else {
+      document.getElementById("battleLogs").innerHTML += "Toad intentó atacar con un arma, ¡pero no tiene!<br>";
+    }
     break;
 case keypressMap["option3"][0]: // E
 case keypressMap["option3"][1]:

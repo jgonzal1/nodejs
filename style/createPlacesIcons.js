@@ -1,4 +1,4 @@
-const createLargeIcon = require('../style/createLargeIcon');
+const createLargeIcon = require('./createLargeIcon');
 
 function createPlacesIcons() {
     // const lightHouseIcon = L.icon(createLargeIcon('style/places/light_house.png'));

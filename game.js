@@ -10,7 +10,7 @@ const pushCharacters = require('./assets/pushCharacters');
 const spawnEnemies = require('./assets/spawnEnemies'); // TODO Enemies properties + battler hearths
 // const spawnMissionPeople = require('./assets/spawnMissionPeople');
 const spawnObjectives = require('./assets/spawnObjectives');
-const createPlacesIcons = require('./assets/createPlacesIcons');
+const createPlacesIcons = require('./style/createPlacesIcons');
 const spawnTransports = require('./assets/spawnTransports');
 const getKeymap = require('./data/keymap');
 // TODO To access js variables within bootstrap, load in HTML and charge bootstrap in it afterwards
@@ -38,7 +38,7 @@ const geoJsonStylers = require('./style/geoJsonStylers');
 // TODO Trading materials
 // TODO Misiones, traders
 // TODO > Traders objectives
-// TODO >>>>> #FFnn particles, develop in battles modal, resumeGame after closing but only with button
+// TODO >>>>> #FFnn particles, develop in battles modal (buttons===keys), resumeGame after closing but only with button
 // TODO #CataclysmDDA
 // TODO #RimWorld
 // TODO #CotND
