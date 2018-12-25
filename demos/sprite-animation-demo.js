@@ -70,7 +70,7 @@ function animateSprite(canvasHtmlId, imageSpritePath, height, numberOfFrames) {
         };
 		that.render = function () {
 			that.context.clearRect(0, 0, that.width, that.height);
-			//that.context.fillStyle = "#444444";
+			// that.context.fillStyle = "#444444";
 			that.context.drawImage(
 				that.image,
 				frameIndex * that.width / numberOfFrames,
@@ -98,7 +98,6 @@ function animateSprite(canvasHtmlId, imageSpritePath, height, numberOfFrames) {
 	imageSpriteImage.addEventListener("load", gameLoop); // Load sprite sheet
 	imageSpriteImage.src = imageSpritePath;
 }
-//animateSprite("coinAnimation","images/!BasicAttack.png", 30, 3);
-animateSprite("coinAnimation","images/coin-sprite-animation.png", 100, 10);
+animateSprite("battleAnimation","images/!ExplosionBiggest.png", 250, 15);
 
 module.exports = animateSprite;
