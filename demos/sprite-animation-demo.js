@@ -1,31 +1,25 @@
 // Copyright 2013 William Malone (www.williammalone.com)
 // Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//   http://www.apache.org/licenses/LICENSE-2.0
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-(function() {
+function browserHandler() {
 	// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
 	// http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
 	// requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
 	// MIT license
     var lastTime = 0;
     var vendors = ['ms', 'moz', 'webkit', 'o'];
-    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+    for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
         window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
         window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
                                    || window[vendors[x]+'CancelRequestAnimationFrame'];
     }
     if (!window.requestAnimationFrame) {
-        window.requestAnimationFrame = function(callback, element) {
+        window.requestAnimationFrame = function(callback) { // callback, element
             var currTime = new Date().getTime();
             var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
-              timeToCall);
+            var id = window.setTimeout(
+				function() { callback(currTime + timeToCall); },
+				timeToCall
+			);
             lastTime = currTime + timeToCall;
             return id;
 		};
@@ -35,15 +29,23 @@
             clearTimeout(id);
 		};
 	}
-}());
-(function () {
-	var coin,
-		coinImage,
+}
+browserHandler();
+
+/**
+ * @param {string} canvasHtmlId
+ * @param {string} imageSpritePath
+ * @param {number} height
+ * @param {number} numberOfFrames
+ */
+function animateSprite(canvasHtmlId, imageSpritePath, height, numberOfFrames) {
+	var imageSprite,
+		imageSpriteImage,
 		canvas;
 	function gameLoop () {
 		window.requestAnimationFrame(gameLoop);
-		coin.update();
-		coin.render();
+		imageSprite.update();
+		imageSprite.render();
 	}
 	function sprite (options) {
 		var that = {},
@@ -59,48 +61,44 @@
             tickCount += 1;
             if (tickCount > ticksPerFrame) {
 				tickCount = 0;
-                // If the current frame index is in range
-                if (frameIndex < numberOfFrames - 1) {	
-                    // Go to the next frame
-                    frameIndex += 1;
+                if (frameIndex < numberOfFrames - 1) { // The current frame index is in range
+                    frameIndex += 1; // Go to the next frame
                 } else {
                     frameIndex = 0;
                 }
             }
         };
 		that.render = function () {
-			// Clear the canvas
 			that.context.clearRect(0, 0, that.width, that.height);
-			// Draw the animation
+			//that.context.fillStyle = "#444444";
 			that.context.drawImage(
-			that.image,
-			frameIndex * that.width / numberOfFrames,
-			0,
-			that.width / numberOfFrames,
-			that.height,
-			0,
-			0,
-			that.width / numberOfFrames,
-			that.height);
+				that.image,
+				frameIndex * that.width / numberOfFrames,
+				0,
+				that.width / numberOfFrames,
+				that.height,
+				0,
+				0,
+				that.width / numberOfFrames,
+				that.height
+			);
 		};
 		return that;
 	}
-	// Get canvas
-	canvas = document.getElementById("coinAnimation");
-	canvas.width = 100;
-	canvas.height = 100;
-	// Create sprite sheet
-	coinImage = new Image();
-	// Create sprite
-	coin = sprite({
+	canvas = document.getElementById(canvasHtmlId);
+	imageSpriteImage = new Image(); // Create sprite sheet
+	imageSprite = sprite({ // Create sprite
 		context: canvas.getContext("2d"),
-		width: 1000,
-		height: 100,
-		image: coinImage,
-		numberOfFrames: 10,
+		height: height,
+		image: imageSpriteImage,
+		numberOfFrames: numberOfFrames,
+		width: height*numberOfFrames,		
 		ticksPerFrame: 4
 	});
-	// Load sprite sheet
-	coinImage.addEventListener("load", gameLoop);
-	coinImage.src = "images/coin-sprite-animation.png";
-} ());
+	imageSpriteImage.addEventListener("load", gameLoop); // Load sprite sheet
+	imageSpriteImage.src = imageSpritePath;
+}
+//animateSprite("coinAnimation","images/!BasicAttack.png", 30, 3);
+animateSprite("coinAnimation","images/coin-sprite-animation.png", 100, 10);
+
+module.exports = animateSprite;
