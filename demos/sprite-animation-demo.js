@@ -98,6 +98,6 @@ function animateSprite(canvasHtmlId, imageSpritePath, height, numberOfFrames) {
 	imageSpriteImage.addEventListener("load", gameLoop); // Load sprite sheet
 	imageSpriteImage.src = imageSpritePath;
 }
-animateSprite("battleAnimation","images/!ExplosionBiggest.png", 250, 15);
+animateSprite("battleAnimation","images/!Explosion.png", 100, 50);
 
 module.exports = animateSprite;
