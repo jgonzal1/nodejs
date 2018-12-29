@@ -93,11 +93,29 @@ function animateSprite(canvasHtmlId, imageSpritePath, height, numberOfFrames) {
 		image: imageSpriteImage,
 		numberOfFrames: numberOfFrames,
 		width: height*numberOfFrames,		
-		ticksPerFrame: 4
+		ticksPerFrame: Math.round(40/numberOfFrames)
 	});
 	imageSpriteImage.addEventListener("load", gameLoop); // Load sprite sheet
 	imageSpriteImage.src = imageSpritePath;
 }
-animateSprite("battleAnimation","images/!Explosion.png", 100, 50);
+
+   animateSprite("battleAnimation","sprites/visual-effects/!ElectricLvl3.png",                    200, 11 );
+// animateSprite("battleAnimation","sprites/visual-effects/!FightShortTargetLvl1.png",            192, 5  );
+// animateSprite("battleAnimation","sprites/visual-effects/!FightShotgunTargetExplosionLvl2.png", 100, 36 );
+// animateSprite("battleAnimation","sprites/visual-effects/!FightShotgunTargetExplosionLvl3.png", 250, 15 );
+// animateSprite("battleAnimation","sprites/visual-effects/!FightTargetLvl2.png",                 192, 22 );
+// animateSprite("battleAnimation","sprites/visual-effects/!FireLvl2.png",                        160, 10 );
+// animateSprite("battleAnimation","sprites/visual-effects/!FireTargetBurnt.png",                 120, 6  );
+// animateSprite("battleAnimation","sprites/visual-effects/!FlyingLvl1.png",                      110, 14 );
+// animateSprite("battleAnimation","sprites/visual-effects/!FlyingLvl1Enemy.png",                 110, 14 );
+// animateSprite("battleAnimation","sprites/visual-effects/!GrassTargetLvl2.png",                 140, 12 ); // cut in E+S
+// animateSprite("battleAnimation","sprites/visual-effects/!IceLvl1.png",                         140, 12 ); // rolls
+// animateSprite("battleAnimation","sprites/visual-effects/!IceTargetFrozen.png",                 192, 15 );
+// animateSprite("battleAnimation","sprites/visual-effects/!NormalBasicAttackLvl1.png",            30, 9  );
+// animateSprite("battleAnimation","sprites/visual-effects/!PoisonLvl1.png",                      192, 15 );
+// animateSprite("battleAnimation","sprites/visual-effects/!RockLvl1.png",                        192, 5  ); // cut in E
+// animateSprite("battleAnimation","sprites/visual-effects/!RockLvl2.png",                        192, 7  );
+// animateSprite("battleAnimation","sprites/visual-effects/!SteelTargetLvl2.png",                 192, 22 );
+// animateSprite("battleAnimation","sprites/visual-effects/!WaterBasicAttackLvl1.png",             60, 13 );
 
 module.exports = animateSprite;
