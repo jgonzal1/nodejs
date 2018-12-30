@@ -269,6 +269,7 @@ switch(event.which) {
 case keypressMap["option1"][0]: // Q
 case keypressMap["option1"][1]:
     document.getElementById("battleLogs").innerHTML += "Toad usó ataque básico!<br>";
+    document.getElementById("battleAnimation").style.display = 'inline'; //'none'
     break;
 case keypressMap["option2"][0]: // W
 case keypressMap["option2"][1]:

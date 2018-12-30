@@ -28,7 +28,7 @@ const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasierra"]
 // document.getElementById('hiddenHandlerPos').innerText.split(",")[0]/[1] + redis
 const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
 const createLargeIcon = require('./style/createLargeIcon');
-const createBattlerIcon = require('./style/createBattlerIcon');
+// const createBattlerIcon = require('./style/createBattlerIcon');
 const geoJsonStylers = require('./style/geoJsonStylers');
 // TODO #Risk
 
@@ -38,7 +38,9 @@ const geoJsonStylers = require('./style/geoJsonStylers');
 // TODO Trading materials
 // TODO Misiones, traders
 // TODO > Traders objectives
-// TODO >>>>> #FFnn particles, develop in battles modal (buttons===keys), resumeGame after closing but only with button
+// TODO >>>>> #FFnn particles
+// TODO >>>>> Trade
+// TODO > Develop in battles modal (buttons===keys): resumeGame after closing but only with button
 // TODO #CataclysmDDA
 // TODO #RimWorld
 // TODO #CotND

@@ -90,26 +90,25 @@
               <li class="dropdown"> <!-- Info -->
                   <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('info');"><i class="fa fa-question-circle white"><span id="helpMenuPlaceholder">&nbsp;</span>
                   </i><b class="caret"></b></a>
-                  <ul class="dropdown-menu" style="width:400px">
-                      <div id="info" class="containerTab" style="display:none;background:#90cc90">
-                              <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-                              <!--<input type="checkbox" id="checkInfoDiv" onclick="showInfo()">-->
-                              <h4 style="text-align:center;"><b>Ayuda</b><br><br>
-                                ¡Bienvenido a DarksGeim!</h4>
-                              <p style="text-align:center;">Controles básicos:<br>
-                              WASD para moverte,<br>
-                              BarraEspaciadora para recoger objetos<br>
-                              (o recibir una pista sobre el más cercano).<br>
-                              P para pausar,<br>
-                              
-                              Controles avanzados:<br>
-                              E para atacar (si tienes arma),<br>
-                              RuedaRatón para el zoom,<br>
-                              ←↑↓→ para mover el mapa,<br>
-                              e Y para testear la última funcionalidad.</p>
-                              <div id="infoDiv"></div>
-                              <!--<input type="checkbox" id="checkModeCotND" onclick="modeCotND()"> Modo 30FPS
-                              <p id="text" style="display:none">Checkbox is CHECKED!</p>-->
+                  <ul class="dropdown-menu" style="width:320px">
+                      <div id="info" class="containerTab" style="display:non">
+                          <!--<span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+                          <input type="checkbox" id="checkInfoDiv" onclick="showInfo()">-->
+                          <p style="text-align:center; font-size: larger; font-weight: bold">¡Bienvenido a DarksGeim!</p>
+                          <p style="font-weight: bold">Controles básicos:</p><!-- style="text-align:center;" -->
+                          &nbsp;&nbsp;<img src="style/interface/p-button.png" style="width:16px;height:16px;">&nbsp;&nbsp;&nbsp; para pausar,<br><br>
+                          <img src="style/interface/wasd-buttons.png" style="width:32px;height:32px;"> para moverte,<br>
+                          <img src="style/interface/spacebar-icon-red.png" style="width:32px;height:32px;"> para recoger objetos o pista sobre el más cercano,<br>
+                          <br><p style="font-weight: bold">Controles avanzados:</p>
+                          <img src="style/interface/mousescroll-button.png" style="width:32px;height:32px;"> para el zoom,<br>
+                          <img src="style/interface/arrow-buttons.png" style="width:32px;height:32px;"> para mover el mapa, e<br>
+                          &nbsp;&nbsp;<img src="style/interface/e-button.png" style="width:16px;height:16px;">&nbsp;&nbsp;&nbsp; para atacar (si tienes arma),<br>
+                          &nbsp;&nbsp;<img src="style/interface/y-button.png" style="width:16px;height:16px;">&nbsp;&nbsp;&nbsp; para testear la última funcionalidad.</p>
+                          <button type="button" class="btn btn-danger" style="width: 100%" data-dismiss="modal" aria-hidden="true"
+                            onclick="resumeGame()">Cerrar</button>
+                          <div id="infoDiv"></div>
+                          <!--<input type="checkbox" id="checkModeCotND" onclick="modeCotND()"> Modo 30FPS
+                          <p id="text" style="display:none">Checkbox is CHECKED!</p>-->
                       </div> 
                   </ul>
               </li>
@@ -117,37 +116,39 @@
                   <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown" onclick="openTab('music');"><i class="fa fa-music white"><span id="musicMenuPlaceholder">&nbsp;</span>
                   </i><b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                      <div id="music" class="containerTab" style="display:none;background:#cfc999">
-                          <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-                          <div class="row">
-                              <div class="column" onclick="openTab('music');">
-                                  <p>Música predefinida</p>
-                                  <!-- 120BPM -->
-                                  <iframe
-                                  width="560" height="315"
-                                  src="https://www.youtube.com/embed/90ELxgNoxTs"
-                                  frameborder="0" allow="autoplay;encrypted-media" allowfullscreen>
-                                  <!--
-                                    https://youtu.be/FYH8DsU2WCk?t=21
-                                    videoseries?list=PLHeTSqyMs2Xbsn_LFYNFUZNDQf3ZalUpz&autoplay=1
-                                    allow="autoplay;   embed/0IT9A9GvjWo"
-                                  -->
-                                  </iframe>
-                                  <!-- Lista Lo-Fi
-                                  <iframe
-                                      src="https://open.spotify.com/embed/user/foilism/playlist/0xzpsVjnE6OSjdBC4iIzqe"
-                                      width="auto" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media">
-                                  </iframe>
-                                  -->
-                                  <!-- Lista 8Bit
-                                  <iframe
-                                      src="https://www.youtube.com/embed/LQmi1GaQH2o"
-                                      width="auto" height="200" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-                                  </iframe> -->                   </div>
-                              <div class="column"> <p>Género:</p>(aleatorio, 120 BPM) </div>
+                      <div id="music" class="containerTab" style="width:500px;display:none">
+                          <div class="row" style="padding-left: 25px">
+                              <div class="column" style="width:33%" onclick="openTab('music');">
+                                <p>Música predefinida</p> <!-- 120BPM -->
+                              </div>
+                              <div class="column" style="width:33%"> <p>Género: (aleatorio, 120 BPM) </div>
                               <!-- chiptune, lo-fi, instrumental-->
-                              <div class="column"> <p>Artistas:</p>(aleatorio) </div>
+                              <div class="column" style="width:33%"> <p>Artistas: (aleatorio) </div>
+
+                              <iframe
+                                width="480px" height="315" left="20px"
+                                src="https://www.youtube.com/embed/90ELxgNoxTs"
+                                frameborder="10" allow="autoplay;encrypted-media" allowfullscreen><!--width="520px"-->
+                              <!--
+                                https://youtu.be/FYH8DsU2WCk?t=21
+                                videoseries?list=PLHeTSqyMs2Xbsn_LFYNFUZNDQf3ZalUpz&autoplay=1
+                                allow="autoplay;   embed/0IT9A9GvjWo"
+                              -->
+                              </iframe>
+                              <!-- Lista Lo-Fi
+                              <iframe
+                                  src="https://open.spotify.com/embed/user/foilism/playlist/0xzpsVjnE6OSjdBC4iIzqe"
+                                  width="auto" height="200" frameborder="0" allowtransparency="true" allow="encrypted-media">
+                              </iframe>
+                              -->
+                              <!-- Lista 8Bit
+                              <iframe
+                                  src="https://www.youtube.com/embed/LQmi1GaQH2o"
+                                  width="auto" height="200" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                              </iframe> -->
                           </div>
+                          <button type="button" class="btn btn-danger" style="width: 100%" data-dismiss="modal" aria-hidden="true"
+                            onclick="resumeGame()">Cerrar</button>
                       </div>
                   </ul>
               </li>
@@ -252,7 +253,7 @@
             </tr><tr><!-- Defensa -->
               <td><img src="style/interface/defense.png" style="width:16px;height:16px;"></td>
               <td>Defensa</td>
-              <td align="right"><span id="def">0</span> <img src="style/interface/def-point.gif"></td>
+              <td align="right"><span id="def">0</span> <img src="style/interface/armor16.png"></td>
             </tr><tr><!-- Velocidad -->
               <td><img src="style/interface/run.png" style="width:16px;height:16px;"></td>
               <td>Velocidad (indev)</td>
@@ -473,10 +474,12 @@
             <img id="phantom" src="sprites/enemies-reverse/phantom.png" style="display:none;">
             <img id="skeleton" src="sprites/enemies-reverse/skeleton.png" style="display:none;">
             <img id="spider" src="sprites/enemies-reverse/spider.png" style="display:none;">
-            <canvas id="fightersCanvas" width="680" height="256" style="border:1px solid #d3d3d3;">
+            <canvas id="fightersCanvas" width="680" height="256" style="border:1px solid #d3d3d3; left: 0; top: 0; z-index: 0;">
               Your browser does not support the HTML5 canvas tag.
             </canvas>
-            <canvas id="battleAnimation" width="256" height="256"></canvas>
+            <canvas id="battleAnimation" width="256" height="256" style="display: none; position: absolute; left: 0; top: 0; z-index: 1;">
+             <!--display: none;-->
+            </canvas>
             <table class="table table-striped"><tbody>  
               <tr>
                 <td class="fightOption1">
@@ -551,6 +554,16 @@
     var output = document.getElementById("tradeSelectionN");
     output.innerHTML = slider.value; // Display the default slider value
     // Update the current slider value (each time you drag the slider handle)
+
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutationRecord) {
+            attackAnimator("battleAnimation","sprites/visual-effects/!ElectricLvl3.png", 200, 11 );
+        });    
+    });
+
+    var target = document.getElementById('battleAnimation');
+    observer.observe(target, { attributes : true, attributeFilter : ['style'] });
+
     slider.oninput = function() {
       output.innerHTML = Math.abs(this.value);
       if (this.value < 0) {
