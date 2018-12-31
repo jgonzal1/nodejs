@@ -3,7 +3,7 @@ let deathSound;
 
 function checkPlayerDeath(health) {
     if (health<1) {
-        deathSound = new Audio("../sounds/death"+Math.ceil(nDeathSounds*Math.random())+".wav");
+        deathSound = new Audio("../sounds/battlers/playerMakeDeath"+Math.ceil(nDeathSounds*Math.random())+".wav");
         deathSound.play();
         alert('Game Over');
     }

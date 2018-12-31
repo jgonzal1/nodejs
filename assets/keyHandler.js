@@ -2,7 +2,7 @@ const getColor = require('./getColor');
 const mH = require("./moveHandlers");
 const objectiveInteractor = require("./objectiveInteractor");
 
-const nStepSounds = 9, nAttackSounds = 2;
+const nStepSounds = 9, nAttackSounds = 8;
 let stepSound, attackSound;
 
 function keyHandler(velocity) {
@@ -167,7 +167,7 @@ function keyHandler(velocity) {
 				alert('¡Necesitas un arma para activar la posición de ataque!');		
 			} else {
 				if (document.getElementById('openModal').innerText === 'false') {
-					attackSound = new Audio("../sounds/attack"+Math.ceil(nAttackSounds*Math.random())+".wav");
+					attackSound = new Audio("../sounds/battle/steelswordMiss"+Math.ceil(nAttackSounds*Math.random())+".wav");
 					attackSound.play();
 				}
 				if (displayAttackPositionAlert === true) {

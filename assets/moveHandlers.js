@@ -84,7 +84,7 @@ function goToPlayer(target, velocity) {
 			// document.getElementById('currentBattle').innerText = targetName;
 			loadEnemyBattle(targetName);
 			document.getElementById('openModal').innerText = 'true';
-			global.battleSound = new Audio("../sounds/wildpokemon.wav");
+			global.battleSound = new Audio("../sounds/battlers/"+targetName+"1.wav");
 			global.battleSound.play();
 			$("#battleModal").modal("show");
 			$(".navbar-collapse.in").collapse("hide");			
