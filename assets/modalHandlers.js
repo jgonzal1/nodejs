@@ -291,6 +291,7 @@ case keypressMap["option4"][1]:
 $("#battleModal").on('hide.bs.modal', function(){
 document.getElementById('openModal').innerText = 'false';
 document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+document.getElementById('battleLogs').innerText = "";
 });
 
 $("#tradeModal").keypress( function(event) {

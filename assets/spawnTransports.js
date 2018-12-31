@@ -2,7 +2,7 @@ const createIcon = require('../style/createIcon');
 const cercania = 10;
 
 function spawnTransports() {
-	const balloonIcon		= L.icon(createIcon('sprites/map-transports/balloon.png'));
+	const balloonIcon		= L.icon(createIcon('sprites/map-transports/balloon.png',50));
 	const bikeIcon			= L.icon(createIcon('sprites/map-transports/bike.png'));
 	const busIcon			= L.icon(createIcon('sprites/map-transports/bus.png'));
 	const schoolbusIcon		= L.icon(createIcon('sprites/map-transports/schoolbus.png'));

@@ -5,7 +5,7 @@ function enemyStatsHandler(objective) {
     health = parseFloat(document.getElementById('health').innerHTML);
     vel = parseFloat(document.getElementById('vel').innerHTML);
     switch (objective) {
-    case "bloodyeye":
+    case "bloodyeye": //
         health -= 1;
         healthHandler(health);
         break;
@@ -41,7 +41,7 @@ function enemyStatsHandler(objective) {
         health -= 1;
         healthHandler(health);
         break;
-    case "owl": // invierte movimiento
+    case "owl": // invierte movimiento //
         health -= 1;
         healthHandler(health);
         break;
@@ -49,7 +49,7 @@ function enemyStatsHandler(objective) {
         health -= 1;
         healthHandler(health);
         break;
-    case "pirateskull":
+    case "pirateskull": //
         health -= 2;
         healthHandler(health);
         break;
@@ -61,11 +61,7 @@ function enemyStatsHandler(objective) {
         health -= 1;
         healthHandler(health);
         break;
-    case "undeadhand":
-        health -= 1;
-        healthHandler(health);
-        break;
-    case "vampire": // chupa % vida
+    case "undeadhand": //
         health -= 1;
         healthHandler(health);
         break;

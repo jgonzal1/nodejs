@@ -1,7 +1,8 @@
-function createIcon(path) {
+function createIcon(path, size) {
+    size = (size | 39);
     return {
         iconUrl: path,
-        iconSize: [39, 39],
+        iconSize: [size, size],
         iconAnchor: [18, 39],
         popupAnchor: [10, -35]
     };
