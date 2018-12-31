@@ -41,7 +41,6 @@ const geoJsonStylers = require('./style/geoJsonStylers');
 // TODO >>>>> #FFnn health after attack
 // TODO >>>>> #FFnn attack back
 // TODO >>>>> Trade contents and limitations
-// TODO >>>>> Sounds
 // TODO > Develop in battles modal (buttons===keys): resumeGame after closing but only with button
 // TODO #CataclysmDDA
 // TODO #RimWorld

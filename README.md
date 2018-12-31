@@ -6,7 +6,6 @@
 >>>>> #FFnn health after attack (17., From file:///e%3A/nodejs/game.js#41)
 >>>>> #FFnn attack back (17., From file:///e%3A/nodejs/game.js#42)
 >>>>> Trade contents and limitations (17., From file:///e%3A/nodejs/game.js#43)
->>>>> Sounds (17., From file:///e%3A/nodejs/game.js#44)
 >>>>> Trade (17., From file:///e%3A/nodejs/game.js#42)
 >>>>> Colores Tileset (24., From file:///e%3A/nodejs/game.js#89)
 > Change boolean #CotND (22., From file:///e%3A/nodejs/game.js#54)

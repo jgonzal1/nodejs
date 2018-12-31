@@ -1,5 +1,5 @@
 function createIcon(path, size) {
-    size = (size | 39);
+    size = (size || 39);
     return {
         iconUrl: path,
         iconSize: [size, size],
