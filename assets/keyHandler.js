@@ -2,7 +2,7 @@ const getColor = require('./getColor');
 const mH = require("./moveHandlers");
 const objectiveInteractor = require("./objectiveInteractor");
 
-const nStepSounds = 2, nAttackSounds = 2;
+const nStepSounds = 9, nAttackSounds = 2;
 let stepSound, attackSound;
 
 function keyHandler(velocity) {
@@ -154,7 +154,7 @@ function keyHandler(velocity) {
 		case global.keymap["moveWest"][0]:
 		case global.keymap["moveWest"][1]:
 		case global.keymap["moveWest"][2]:
-			stepSound = new Audio("../sounds/step"+Math.ceil(nStepSounds*Math.random())+".wav");
+			stepSound = new Audio("../sounds/step/step"+Math.ceil(nStepSounds*Math.random())+".wav");
 			stepSound.play();
 			mH.moveCharacter(global.player, velocity, pressedKey);
 			break;
