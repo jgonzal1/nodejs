@@ -269,8 +269,26 @@ switch(event.which) {
 case keypressMap["option1"][0]: // Q
 case keypressMap["option1"][1]:
     document.getElementById("battleLogs").innerHTML += "Toad usó ataque básico!<br>";
-    document.getElementById("battleAnimation").style.display = 'inline'; //'none'
-    document.getElementById("attackAnimation").show = "electric";
+    document.getElementById("battleAnimation").style.display = 'inline';
+    document.getElementById("attackAnimation").show = ["ElectricLvl3", 200, 11];
+    // ["ElectricLvl3",                    200, 11];
+    // ["FightShortTargetLvl1",            192, 5 ];
+    // ["FightShotgunTargetExplosionLvl2", 100, 36];
+    // ["FightShotgunTargetExplosionLvl3", 250, 15];
+    // ["FightTargetLvl2",                 192, 22];
+    // ["FireLvl2",                        160, 10];
+    // ["FireTargetBurnt",                 120, 6 ];
+    // ["FlyingLvl1",                      110, 14];
+    // ["FlyingLvl1Enemy",                 110, 14];
+    // ["GrassTargetLvl2",                 140, 12]; // cut in E+S
+    // ["IceLvl1",                         140, 12]; // rolls
+    // ["IceTargetFrozen",                 192, 15];
+    // ["NormalBasicAttackLvl1",            30, 9 ];
+    // ["PoisonLvl1",                      192, 15];
+    // ["RockLvl1",                        192, 5 ]; // cut in E
+    // ["RockLvl2",                        192, 7 ];
+    // ["SteelTargetLvl2",                 192, 22];
+    // ["WaterBasicAttackLvl1",             60, 13];
     break;
 case keypressMap["option2"][0]: // W
 case keypressMap["option2"][1]:

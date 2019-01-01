@@ -460,26 +460,27 @@
         <div class="modal-dialog" style="width:720px;height:480px;"><div class="modal-content">
           <div class="modal-header"><h4 class="modal-title">Battle</h4></div>
           <div class="modal-body">
-            <img id="health-bar" src="style/interface/health-bar.png" style="display:none;">
-            <img id="health-none" src="style/interface/health-none.png" style="display:none;">
-            <img id="health-min" src="style/interface/health-min.png" style="display:none;">
+            <img id="health-bar"   src="style/interface/health-bar.png"   style="display:none;">
+            <img id="health-none"  src="style/interface/health-none.png"  style="display:none;">
+            <img id="health-min"   src="style/interface/health-min.png"   style="display:none;">
             <img id="health-chunk" src="style/interface/health-chunk.png" style="display:none;">
-            <img id="toad" src="sprites/player/toad.png" style="display:none;">
-            <img id="death" src="sprites/enemies-reverse/death.png" style="display:none;">
-            <img id="dracula" src="sprites/enemies-reverse/dracula.png" style="display:none;">
-            <img id="empire1" src="sprites/enemies-reverse/empire1.png" style="display:none;">
-            <img id="empire2" src="sprites/enemies-reverse/empire2.png" style="display:none;">
-            <img id="gollum" src="sprites/enemies-reverse/gollum.png" style="display:none;">
-            <img id="jabba" src="sprites/enemies-reverse/jabba.png" style="display:none;">
-            <img id="joker" src="sprites/enemies-reverse/joker.png" style="display:none;">
-            <img id="mummy" src="sprites/enemies-reverse/mummy.png" style="display:none;">
-            <img id="phantom" src="sprites/enemies-reverse/phantom.png" style="display:none;">
+            <img id="toad"     src="sprites/player/toad.png"              style="display:none;">
+            <img id="death"    src="sprites/enemies-reverse/death.png"    style="display:none;">
+            <img id="dracula"  src="sprites/enemies-reverse/dracula.png"  style="display:none;">
+            <img id="empire1"  src="sprites/enemies-reverse/empire1.png"  style="display:none;">
+            <img id="empire2"  src="sprites/enemies-reverse/empire2.png"  style="display:none;">
+            <img id="gollum"   src="sprites/enemies-reverse/gollum.png"   style="display:none;">
+            <img id="jabba"    src="sprites/enemies-reverse/jabba.png"    style="display:none;">
+            <img id="joker"    src="sprites/enemies-reverse/joker.png"    style="display:none;">
+            <img id="mummy"    src="sprites/enemies-reverse/mummy.png"    style="display:none;">
+            <img id="phantom"  src="sprites/enemies-reverse/phantom.png"  style="display:none;">
             <img id="skeleton" src="sprites/enemies-reverse/skeleton.png" style="display:none;">
-            <img id="spider" src="sprites/enemies-reverse/spider.png" style="display:none;">
+            <img id="spider"   src="sprites/enemies-reverse/spider.png"   style="display:none;">
+            <span id="opponentHealth" style="display: none">5</span>
             <canvas id="fightersCanvas" width="680" height="256" style="border:1px solid #d3d3d3; left: 0; top: 0; z-index: 0;">
               Your browser does not support the HTML5 canvas tag.
             </canvas>
-            <canvas id="battleAnimation" width="256" height="256" style="display: none; position: absolute; left: 0; top: 0; z-index: 1;">
+            <canvas id="battleAnimation" width="256" height="256" style="display: none; position: absolute; left: 300; top: 0; z-index: 1;">
              <!--display: none;-->
             </canvas>
             <span id="attackAnimation"></span>
@@ -670,26 +671,9 @@
       imageSpriteImage.src = imageSpritePath;
     }
     var attackAnimation = document.getElementById("attackAnimation");
-    attackAnimation.watch("show", function (identificador,valorViejo,valorNuevo) {
-      animateSprite("battleAnimation","sprites/visual-effects/!ElectricLvl3.png",                    200, 11 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!FightShortTargetLvl1.png",            192, 5  );
-      // animateSprite("battleAnimation","sprites/visual-effects/!FightShotgunTargetExplosionLvl2.png", 100, 36 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!FightShotgunTargetExplosionLvl3.png", 250, 15 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!FightTargetLvl2.png",                 192, 22 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!FireLvl2.png",                        160, 10 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!FireTargetBurnt.png",                 120, 6  );
-      // animateSprite("battleAnimation","sprites/visual-effects/!FlyingLvl1.png",                      110, 14 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!FlyingLvl1Enemy.png",                 110, 14 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!GrassTargetLvl2.png",                 140, 12 ); // cut in E+S
-      // animateSprite("battleAnimation","sprites/visual-effects/!IceLvl1.png",                         140, 12 ); // rolls
-      // animateSprite("battleAnimation","sprites/visual-effects/!IceTargetFrozen.png",                 192, 15 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!NormalBasicAttackLvl1.png",            30, 9  );
-      // animateSprite("battleAnimation","sprites/visual-effects/!PoisonLvl1.png",                      192, 15 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!RockLvl1.png",                        192, 5  ); // cut in E
-      // animateSprite("battleAnimation","sprites/visual-effects/!RockLvl2.png",                        192, 7  );
-      // animateSprite("battleAnimation","sprites/visual-effects/!SteelTargetLvl2.png",                 192, 22 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!WaterBasicAttackLvl1.png",             60, 13 );
-      // alert(identificador + " ha cambiado de " + valorViejo + " a " + valorNuevo); return valorNuevo;
+    attackAnimation.watch("show", function (watched,oldAnim,animation) {
+      animateSprite("battleAnimation","sprites/visual-effects/!"+animation[0]+".png",animation[1],animation[2]);
+      // alert(identificador + " ha cambiado de " + valorViejo + " a " + valorNuevo); // return valorNuevo;
     });
 
     // attackAnimator("battleAnimation","sprites/visual-effects/!ElectricLvl3.png", 200, 11 );

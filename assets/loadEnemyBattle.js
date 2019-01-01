@@ -14,8 +14,9 @@ function loadEnemyBattle(enemyName) {
     eCtx.drawImage(healthBar, global.hblp, 0);
     eCtx.drawImage(healthBar, global.hbrp, 0);
     var health = parseFloat(document.getElementById('health').innerHTML);
+    var opponentHealth = parseFloat(document.getElementById('opponentHealth').innerHTML);
     healthHandler(health);
-
+    healthHandler(opponentHealth,'r');
     // eCtx.drawImage(healthMin, global.hbrp+healthBarLifePos[0], 0+healthBarLifePos[1]);
     // eCtx.drawImage(healthChunk, global.hbrp+10+healthBarLifePos[0], 0+healthBarLifePos[1]);
 }

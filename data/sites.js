@@ -13,9 +13,10 @@ var austrianCapitals = [
 var initialCoords = {
     "Austria.Oberösterreich.Linz":      [48.303360 , 14.30187 , 17],
     "Austria.SanktGallen.Altenmarkt":   [47.70     , 14.74    ,  8],
-    "EEUU.NewYork.Manhattan":           [40.702222, -73.979378, 10],
+    "EEUU.NewYork.Manhattan":           [40.702222 ,-73.979378, 10],
     "España.Almería.Pescadería":        [36.836223 , -2.466880, 15],
-    "España.Madrid.Mirasierra":         [40.4942011, -3.71013 , 16],
+    "España.Madrid.Mirasierra":         [40.4942011, -3.71013 , 16], // places 40.485, -3.69
+    "GoT":                              [ 0.06     ,  0.06    , 15],
     "Nigeria.Laos":                     [ 6.509594 ,  3.37033 , 15],
     "Noruega.Svalbard.Longyearbyen":    [78.223331 , 15.646849, 16]
 };
@@ -84,12 +85,12 @@ function getPlaces() {
 }
 
 const sites = [], closeness = 20;
-function getSites() {
+function getSites(coords) {
     for (let k = 0; k < 100; k++) {
         sites.push([
             '', // places[Math.floor(Math.random()*nPlaces)],
-            40.485+(Math.random()-0.5)/closeness,
-            -3.69+(Math.random()-0.5)*1.5/closeness
+            coords[0]+(Math.random()-0.5)/closeness,
+            coords[1]+(Math.random()-0.5)*1.5/closeness
         ]);
         if (k == 99) {
             return sites;

@@ -20,10 +20,10 @@ global.keymap = getKeymap();
 const spawnRegionsAustria = require('./data/regionsAustria');
 const regionsAustria = spawnRegionsAustria();
 const spawnSites = require('./data/sites');
-const sites = spawnSites.getSites();
+const initialCoords = spawnSites.getInitialCoords()["GoT"]; // España.Madrid.Mirasierra
+const sites = spawnSites.getSites(initialCoords);
 const places = spawnSites.getPlaces();
 const nPlaces = places.length;
-const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasierra"];
 // TODO > Start in player's location (locatePlayer in assets)
 // document.getElementById('hiddenHandlerPos').innerText.split(",")[0]/[1] + redis
 const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
@@ -71,6 +71,7 @@ var gameTimeStamp = new Date(1262304000000);
 global.map = L.map(
 	'map',
 	{
+		crs: L.CRS.Simple,
 		inertia: true, inertiaMaxSpeed: 1000,
 		tilt: true, // moves map
 		// w/ mobiles giroscope(deviceOrientation)
@@ -83,8 +84,10 @@ const lat  = initialCoords[0]; global.lat = lat; // y
 const long = initialCoords[1]; global.long = long; // x
 const zoom = initialCoords[2]; // z
 global.map.setView([lat, long], zoom);
-global.artisticMap = L.tileLayer(
-	'http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
+const bounds = [[0,0],[0.2346, 0.1215]];
+global.artisticMap = L.
+	imageOverlay('gotRisk.jpg', bounds
+	// tileLayer('http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
 ).addTo(global.map);
 const baseLayers = createBaseLayerAndAddMore(global.artisticMap, L);
 L.control.scale({imperial:false}).addTo(global.map);
