@@ -37,7 +37,7 @@ const geoJsonStylers = require('./style/geoJsonStylers');
 // TODO Trading materials
 // TODO Misiones, traders
 // TODO > Traders objectives
-// TODO @ Attack image character movement
+// TODO @ Implement Attack image character movement
 // TODO >>>>> #FFnn health after attack
 // TODO >>>>> #FFnn attack back
 // TODO >>>>> Trade contents and limitations
