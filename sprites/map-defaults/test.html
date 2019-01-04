@@ -47,14 +47,14 @@
           that.context.clearRect(0, 0, that.width, that.height);
           // that.context.fillStyle = "#444444";
           var xDash, yDash, backwardFrameIndex;
-          var backwardFrameInit = 2*numberOfFrames/3;
+          var backwardFrameInit = Math.round(3*numberOfFrames/5);
           if (frameIndex <= backwardFrameInit) {
             xDash = frameIndex
-            yDash = (frameIndex-20)*frameIndex/10;
+            yDash = (frameIndex-18)*frameIndex/12;
           } else {
             backwardFrameIndex = frameIndex - backwardFrameInit;
             xDash = numberOfFrames - frameIndex
-            yDash = (backwardFrameIndex-10)*backwardFrameIndex/5;
+            yDash = (backwardFrameIndex-12)*backwardFrameIndex/8;
           }
           that.context.drawImage(
             that.image,                    // image, canvas, or video element to use	
@@ -77,7 +77,7 @@
         image: imageSpriteImage,
         numberOfFrames: numberOfFrames,
         width: height*numberOfFrames,
-        ticksPerFrame: Math.round(10/numberOfFrames)
+        ticksPerFrame: Math.round(12/numberOfFrames)
       });
       imageSpriteImage.addEventListener("load", gameLoop); // Load sprite sheet
       imageSpriteImage.src = imageSpritePath;
