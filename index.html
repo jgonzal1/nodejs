@@ -609,9 +609,9 @@
      * @param {number} numberOfFrames
      */
     function animateSprite(canvasHtmlId, imageSpritePath, height, numberOfFrames) {
+      var canvas = document.getElementById(canvasHtmlId);
       var imageSprite,
-        imageSpriteImage,
-        canvas;
+        imageSpriteImage;
       function gameLoop () {
         window.requestAnimationFrame(gameLoop);
         imageSprite.update();
@@ -641,7 +641,12 @@
           }
         };
         that.render = function () {
-          that.context.clearRect(0, 0, that.width, that.height);
+          that.context.clearRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+          ); // 0, 0
           // that.context.fillStyle = "#444444";
           that.context.drawImage(
             that.image,
@@ -657,7 +662,6 @@
         };
         return that;
       }
-      canvas = document.getElementById(canvasHtmlId);
       imageSpriteImage = new Image(); // Create sprite sheet
       imageSprite = sprite({ // Create sprite
         context: canvas.getContext("2d"),
