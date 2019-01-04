@@ -13,9 +13,8 @@ const spawnObjectives = require('./assets/spawnObjectives');
 const createPlacesIcons = require('./style/createPlacesIcons');
 const spawnTransports = require('./assets/spawnTransports');
 const getKeymap = require('./data/keymap');
-// TODO To access js variables within bootstrap, load in HTML and charge bootstrap in it afterwards
 global.keymap = getKeymap();
-// TODO arreglar que se pueda clicar o usar teclado (id. unico a eventos)
+// TODO Arreglar que se pueda clicar o usar teclado (id. unico a eventos)
 // TODO Recover > < keys but for open/close doors
 const spawnRegionsAustria = require('./data/regionsAustria');
 const regionsAustria = spawnRegionsAustria();
@@ -30,7 +29,7 @@ const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore
 const createLargeIcon = require('./style/createLargeIcon');
 // const createBattlerIcon = require('./style/createBattlerIcon');
 const geoJsonStylers = require('./style/geoJsonStylers');
-// TODO #Risk
+// TODO @ Risk
 
 // TODO #Patrician When collide
 // TODO > Transports change velocity & zoom
@@ -38,6 +37,7 @@ const geoJsonStylers = require('./style/geoJsonStylers');
 // TODO Trading materials
 // TODO Misiones, traders
 // TODO > Traders objectives
+// TODO @ Implement Attack image character movement
 // TODO >>>>> #FFnn health after attack
 // TODO >>>>> #FFnn attack back
 // TODO >>>>> Trade contents and limitations
@@ -116,7 +116,7 @@ const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 	'<b>Tú (Meme rookie, lvl. 1)</b>'
 );
 global.player = player;
-// TODO Multiplayer MongoDB or Redis
+// TODO @ Multiplayer MongoDB or Redis
 
 spawnEnemies(L, lat, long);
 spawnObjectives(L, lat, long); // TODO > Thirst, hunger & vol
@@ -172,7 +172,7 @@ if (navigator.userAgent.match('Android|X11') !== null){ // X11 es mi redmi note 
 }//*/
 // let moveDaemonizer;
 setInterval(function() {
-	// TODO Daemonizer in legend for weather; on add: timeLegend();
+	// TODO @ Daemonizer in legend for weather; on add: timeLegend();
 	gameTimeStamp += 36000;
 	timeLegend();
 	/*if (cryptOfTheNecromancerMode !== document.getElementById('hiddenHandlerModeCotND').innerText) {
@@ -203,7 +203,7 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 			if (global.keymap["open"].includes(document.getElementById('hiddenHandlerKeys').innerText)) {
 				loadPlaceModal(sites, markers, function(updateMarker){
 					// TODO tradeRange min depending on how much user has
-					// TODO vendedor con mas cosas en el index (bajo tradeModal) y que lo ponga el modal
+					// TODO Vendedor con mas cosas en el index (bajo tradeModal) y que lo ponga el modal
 					markers[updateMarker].setIcon(L.icon({
 						iconUrl: 'style/places/barrier.png',
 						shadowUrl: 'style/shadow.png',
