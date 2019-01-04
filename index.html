@@ -68,14 +68,16 @@
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js"></script>
   </head>
   <body>
-    <!-- Handlers -->
+    <!-- #region Handlers -->
     <!--<div id="logs" style="display: none"></div>-->
     <div id="keypressReference" style="display: none"></div>
     <div id="keyChange" style="display: none"></div>
     <div id="hiddenHandlerKeys" style="display: none"></div>
     <div id="hiddenHandlerModeCotND" style="display: none"></div>
     <div id="hiddenHandlerPos" style="display: none"></div>
-    <!-- Top Menu --><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- #endregion -->
+    <!-- #region Top Menu -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header"> <!-- Title & Hidden settings -->
           <a class="navbar-brand" href="#">Darks Game</a>
@@ -202,7 +204,9 @@
         </div>
       </div>
     </div>
-    <!-- Left Menu & Map --><div id="container">
+    <!-- #endregion -->
+    <!-- #region Left Menu & Map -->
+    <div id="container">
       <div id="sidebar"><div class="sidebar-wrapper"><div class="panel panel-default" id="features">
         <div class="panel-heading">
           <h3 class="panel-title">
@@ -280,8 +284,9 @@
       </div></div></div>
       <div id="map"></div>
     </div>
-
-    <!-- Modals --><div id="templateModal"
+    <!-- #endregion -->
+    <!-- #region Modals -->
+    <div id="templateModal"
       class="modal fade" tabindex="-1" role="dialog">
       <div class="modal-header"></div><div class="modal-body"></div>
       <div class="modal-footer">
@@ -550,267 +555,346 @@
       </div>    
       <!-- endregion -->
     <!-- endregion -->
-
-    <!-- Scripts -->
+    <!-- #endregion -->
+    <!-- #region Scripts -->
     <script src="bundle.js"></script>
     <script>//src this
-    var slider = document.getElementById("tradeRange");
-    var output = document.getElementById("tradeSelectionN");
-    output.innerHTML = slider.value; // Display the default slider value
-    // Update the current slider value (each time you drag the slider handle)
-
-    // object.watch By Eli Grey (2012), public Domain.
-    if (!Object.prototype.watch) {
-      Object.defineProperty(Object.prototype, "watch", {
-          enumerable: false
-        , configurable: true
-        , writable: false
-        , value: function (prop, handler) {
-          var
-            oldval = this[prop]
-          , newval = oldval
-          , getter = function () {
-              return newval;
-          }
-          , setter = function (val) {
-              oldval = newval;
-              return newval = handler.call(this, prop, oldval, val);
-          }
-          ;
-
-          if (delete this[prop]) { // can't watch constants
-            Object.defineProperty(this, prop, {
-                get: getter
-              , set: setter
-              , enumerable: true
-              , configurable: true
-            });
-          }
-        }
-      });
-    }
-    // object.unwatch
-    if (!Object.prototype.unwatch) {
-        Object.defineProperty(Object.prototype, "unwatch", {
-              enumerable: false
-            , configurable: true
-            , writable: false
-            , value: function (prop) {
-                var val = this[prop];
-                delete this[prop]; // remove accessors
-                this[prop] = val;
-            }
-        });
-    }
-    /**
-     * @param {string} canvasHtmlId
-     * @param {string} imageSpritePath
-     * @param {number} height
-     * @param {number} numberOfFrames
-     */
-    function animateSprite(canvasHtmlId, imageSpritePath, height, numberOfFrames) {
-      var canvas = document.getElementById(canvasHtmlId);
-      var imageSprite,
-        imageSpriteImage;
-      function gameLoop () {
-        window.requestAnimationFrame(gameLoop);
-        imageSprite.update();
-        imageSprite.render();
-      }
-      function sprite (options) {
-        var that = {},
-          frameIndex = 0,
-          tickCount = 0,
-          ticksPerFrame = options.ticksPerFrame || 0,
-          numberOfFrames = options.numberOfFrames || 1;
-        that.context = options.context;
-        that.width = options.width;
-        that.height = options.height;
-        that.image = options.image;
-        that.update = function () {
-          tickCount += 1;
-          if (tickCount > ticksPerFrame) {
-            tickCount = 0;
-            if (frameIndex < numberOfFrames - 1) { // The current frame index is in range
-              frameIndex += 1; // Go to the next frame
-            } else {
-              // frameIndex = 0;
-              that.context = null;
-              that.image = null;
-            }
-          }
-        };
-        that.render = function () {
-          that.context.clearRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-          ); // 0, 0
-          // that.context.fillStyle = "#444444";
-          that.context.drawImage(
-            that.image,
-            frameIndex * that.width / numberOfFrames,
-            0,
-            that.width / numberOfFrames,
-            that.height,
-            80 + frameIndex*25, // 0,
-            80, // 0,
-            that.width / numberOfFrames,
-            that.height
-          );
-        };
-        return that;
-      }
-      imageSpriteImage = new Image(); // Create sprite sheet
-      imageSprite = sprite({ // Create sprite
-        context: canvas.getContext("2d"),
-        height: height,
-        image: imageSpriteImage,
-        numberOfFrames: numberOfFrames,
-        width: height*numberOfFrames,		
-        ticksPerFrame: Math.round(40/numberOfFrames)
-      });
-      imageSpriteImage.addEventListener("load", gameLoop); // Load sprite sheet
-      imageSpriteImage.src = imageSpritePath;
-    }
-    var attackAnimation = document.getElementById("attackAnimation");
-    attackAnimation.watch("show", function (watched,oldAnim,animation) {
-      animateSprite("battleAnimation","sprites/visual-effects/!"+animation[0]+".png",animation[1],animation[2]);
-      // alert(identificador + " ha cambiado de " + valorViejo + " a " + valorNuevo); // return valorNuevo;
-    });
-
-    // attackAnimator("battleAnimation","sprites/visual-effects/!ElectricLvl3.png", 200, 11 );
-
-    slider.oninput = function() {
-      output.innerHTML = Math.abs(this.value);
-      if (this.value < 0) {
-        document.getElementById("tradeSelectionType").innerText = "Sell ";
-        document.getElementById("tradeConfirmation").style.display = 'inline';
-      } else if (this.value > 0) {
-        document.getElementById("tradeSelectionType").innerText = "Buy ";
-        document.getElementById("tradeConfirmation").style.display = 'inline';
-      } else {
-        document.getElementById("tradeSelectionType").innerText = "";
-        document.getElementById("tradeConfirmation").style.display = 'none';
-      }
-    }
-
-    // keyListener
-    let buttonsPushed = 0;
-    $("#map").keypress(
-        function(event) {
-            if(event.which===13) {
-                event.preventDefault();
-            }
-            buttonsPushed++;
-            if (document.getElementById("hiddenHandlerKeys").innerHTML != event.key) {
-              document.getElementById("hiddenHandlerKeys").innerHTML = event.key;
-              document.getElementById("keyChange").innerText = "true";
-            } else {
-              document.getElementById("keyChange").innerText = "false";
-            }
-                // " " + buttonsPushed + "t," + // Times called .keypress() handler
-                // " " + event.key + " key"; // Last pushed key in keyboard
-                // <p> works but is unhidden
-        }
-    );
-    //*/
-    function simulateKeyPress(character) {
-        jQuery.event//('input[type=submit][name=btnK]')
-            .trigger({
-                type: 'keypress',
-                which: character.charCodeAt(65)
-            });
-    }
-    /** @param {Number} hp */
-    function healthCanvas(hp) {
-        var c = document.getElementById("healthCanvas");
-        var ctx = c.getContext("2d");
-        var fh = document.getElementById("fh");
-        // var hh = document.getElementById("hh");
-        var lh = document.getElementById("lh");
-        ctx.drawImage(hp<1?lh:fh,0,0);
-        ctx.drawImage(hp<2?lh:fh,16,0);
-        ctx.drawImage(hp<3?lh:fh,32,0);
-        ctx.drawImage(hp<4?lh:fh,48,0);
-        ctx.drawImage(hp<5?lh:fh,64,0);
-    }
-    function showInfo() {
-        document.getElementById("infoDiv").innerHTML = global.points
-    }
-    function modeCotND() {
-        var checkBox = document.getElementById("checkModeCotND");
-        // var text = document.getElementById("text");
-        if (checkBox.checked == true){
-            document.getElementById("hiddenHandlerModeCotND").innerHTML = "false";
-            // text.style.display = "block";
+      //#region tradeSlider
+      var slider = document.getElementById("tradeRange");
+      var output = document.getElementById("tradeSelectionN");
+      output.innerHTML = slider.value; // Display the default slider value
+      // Update the current slider value (each time you drag the slider handle)
+      slider.oninput = function() {
+        output.innerHTML = Math.abs(this.value);
+        if (this.value < 0) {
+          document.getElementById("tradeSelectionType").innerText = "Sell ";
+          document.getElementById("tradeConfirmation").style.display = 'inline';
+        } else if (this.value > 0) {
+          document.getElementById("tradeSelectionType").innerText = "Buy ";
+          document.getElementById("tradeConfirmation").style.display = 'inline';
         } else {
-            document.getElementById("hiddenHandlerModeCotND").innerHTML = "true";
-            text.style.display = "none";
+          document.getElementById("tradeSelectionType").innerText = "";
+          document.getElementById("tradeConfirmation").style.display = 'none';
         }
-    }
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else { 
-            document.getElementById("hiddenHandlerPos").innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
-    function showPosition(position) {
-        document.getElementById("hiddenHandlerPos").innerHTML = position.coords.latitude + 
-        "," + position.coords.longitude;
-    }
-    /** Hides all class="containerTab", except for the one that matches the clickable grid column */
-    function openTab(tabName) {
-        var i, x;
-        x = document.getElementsByClassName("containerTab");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        document.getElementById(tabName).style.display = "block";
-    }
-    function resumeGame() {
-      document.getElementById('openModal').innerText = 'false';
-      global.battleSound.pause();
-    }
-    function loadTile() {
-      var canvas = document.getElementById("myCanvas");
-      var ctx = canvas.getContext("2d");
-      var imageObj = new Image();
-      imageObj.src = "style/visual-effects/!Explosion.png";
-
-      imageObj.onload = function() {
-        ctx.drawImage(imageObj, 0, 0);
-
-        var tilesX = 3; // 96 / 32; // imageWidth / tileWidth;
-        var tilesY = 1; // 32 / 32; // imageHeight / tileHeight;
-        var totalTiles = tilesX * tilesY;        
-        var tileData = new Array();
-        for(var i=0; i<tilesY; i++) {
-          for(var j=0; j<tilesX; j++) {           
-            // Store the image data of each tile in the array.
-            tileData.push(
-              ctx.getImageData(j*tileWidth, i*tileHeight, tileWidth, tileHeight)
-            );
-          }
-        }
-        //From here you should be able to draw your images back into a canvas like so:
-        ctx.putImageData(tileData[0], x, y);
       }
-    }
-    healthCanvas(parseFloat(document.getElementById('health').innerHTML));
-    // getLocation();
-    // var navDialogEl = document.querySelector('.missionOptionRow');
-		// var dialogOverlay = document.querySelector('.missionOptionOverlay');
-		var myDialog = new Dialog(navDialogEl, dialogOverlay);
-		myDialog.addEventListeners('.open-dialog', '.close-dialog');
+      //#endregion
+      //#region battleAnimators
+      if (!Object.prototype.watch) { // object.watch By Eli Grey (2012), public Domain.
+        Object.defineProperty(Object.prototype, "watch", {
+            enumerable: false
+          , configurable: true
+          , writable: false
+          , value: function (prop, handler) {
+            var
+              oldval = this[prop]
+            , newval = oldval
+            , getter = function () {
+                return newval;
+            }
+            , setter = function (val) {
+                oldval = newval;
+                return newval = handler.call(this, prop, oldval, val);
+            }
+            ;
+
+            if (delete this[prop]) { // can't watch constants
+              Object.defineProperty(this, prop, {
+                  get: getter
+                , set: setter
+                , enumerable: true
+                , configurable: true
+              });
+            }
+          }
+        });
+      }
+      if (!Object.prototype.unwatch) { // object.unwatch
+        Object.defineProperty(Object.prototype, "unwatch", {
+                enumerable: false
+              , configurable: true
+              , writable: false
+              , value: function (prop) {
+                  var val = this[prop];
+                  delete this[prop]; // remove accessors
+                  this[prop] = val;
+              }
+          });
+      }
+      /** animateSprite jsDoc
+       * @param {string} canvasHtmlId
+       * @param {string} imageSpritePath
+       * @param {number} height
+       * @param {number} numberOfFrames
+       */
+      function animateSprite(canvasHtmlId, imageSpritePath, height, numberOfFrames) {
+        var canvas = document.getElementById(canvasHtmlId);
+        var imageSprite,
+          imageSpriteImage;
+        function gameLoop () {
+          window.requestAnimationFrame(gameLoop);
+          imageSprite.update();
+          imageSprite.render();
+        }
+        function sprite (options) {
+          var that = {},
+            frameIndex = 0,
+            tickCount = 0,
+            ticksPerFrame = options.ticksPerFrame || 0,
+            numberOfFrames = options.numberOfFrames || 1;
+          that.context = options.context;
+          that.width = options.width;
+          that.height = options.height;
+          that.image = options.image;
+          that.update = function () {
+            tickCount += 1;
+            if (tickCount > ticksPerFrame) {
+              tickCount = 0;
+              if (frameIndex < numberOfFrames - 1) { // The current frame index is in range
+                frameIndex += 1; // Go to the next frame
+              } else {
+                // frameIndex = 0;
+                that.context = null;
+                that.image = null;
+              }
+            }
+          };
+          that.render = function () {
+            that.context.clearRect(
+              0,
+              0,
+              canvas.width,
+              canvas.height
+            ); // 0, 0
+            // that.context.fillStyle = "#444444";
+            that.context.drawImage(
+              that.image,
+              frameIndex * that.width / numberOfFrames,
+              0,
+              that.width / numberOfFrames,
+              that.height,
+              80 + frameIndex*25, // 0,
+              80, // 0,
+              that.width / numberOfFrames,
+              that.height
+            );
+          };
+          return that;
+        }
+        imageSpriteImage = new Image(); // Create sprite sheet
+        imageSprite = sprite({ // Create sprite
+          context: canvas.getContext("2d"),
+          height: height,
+          image: imageSpriteImage,
+          numberOfFrames: numberOfFrames,
+          width: height*numberOfFrames,		
+          ticksPerFrame: Math.round(40/numberOfFrames)
+        });
+        imageSpriteImage.addEventListener("load", gameLoop); // Load sprite sheet
+        imageSpriteImage.src = imageSpritePath;
+      }
+      /** dash jsDoc
+       * @param {string} canvasHtmlId
+       * @param {string} imageSpritePath
+       * @param {number} height must be the same of the  width of each the sprite
+       * @param {number} numberOfFrames
+       */ 
+      function dash(canvasHtmlId, imageSpritePath, height, numberOfFrames) {
+        var canvas = document.getElementById(canvasHtmlId);
+        var imageSprite,
+          imageSpriteImage;
+        function gameLoop () {
+          window.requestAnimationFrame(gameLoop);
+          imageSprite.update();
+          imageSprite.render();
+        }
+        function sprite (options) {
+          var that = {},
+              frameIndex = 0,
+              tickCount = 0,
+              ticksPerFrame = options.ticksPerFrame || 0,
+              numberOfFrames = options.numberOfFrames || 1;
+          that.context = options.context;
+          that.width = options.width;
+          that.height = options.height;
+          that.image = options.image;
+          that.update = function () {
+            tickCount += 1;
+            if (tickCount > ticksPerFrame) {
+              tickCount = 0;
+              if (frameIndex < numberOfFrames - 1) { // The current frame index is in range
+                frameIndex += 1; // Go to the next frame
+              } else {
+                // frameIndex = 0;
+                that.context = null;
+                that.image = null;
+              }
+            }
+          };
+          that.render = function () {
+            that.context.clearRect(0, 0, that.width, that.height);
+            // that.context.fillStyle = "#444444";
+            var xDash, yDash, backwardFrameIndex;
+            var backwardFrameInit = Math.round(3*numberOfFrames/5);
+            if (frameIndex <= backwardFrameInit) {
+              xDash = frameIndex
+              yDash = (frameIndex-18)*frameIndex/12;
+            } else {
+              backwardFrameIndex = frameIndex - backwardFrameInit;
+              xDash = numberOfFrames - frameIndex
+              yDash = (backwardFrameIndex-12)*backwardFrameIndex/8;
+            }
+            that.context.drawImage(
+              that.image,                    // image, canvas, or video element to use	
+              0,                             // image x coordinate where to start clipping
+              0,                             // that.height-canvas.height image y coordinate where to start clipping
+              that.width,                    // width of the clipped image on the canvas
+              that.height,                   // height of the clipped image on the canvas
+              xDash,                         // x coordinate where to place the clipped image on the canvas
+              yDash,                         // y coordinate where to place the clipped image on the canvas
+              that.width,                    // image to use width (to stretch or reduce it)
+              that.height                    // image to use height (to stretch or reduce it)
+            );
+          };
+          return that;
+        }
+        imageSpriteImage = new Image(); // Create sprite sheet
+        imageSprite = sprite({ // Create sprite
+          context: canvas.getContext("2d"),
+          height: height,
+          image: imageSpriteImage,
+          numberOfFrames: numberOfFrames,
+          width: height*numberOfFrames,
+          ticksPerFrame: Math.round(12/numberOfFrames)
+        });
+        imageSpriteImage.addEventListener("load", gameLoop); // Load sprite sheet
+        imageSpriteImage.src = imageSpritePath;
+      }
+      var attackAnimation = document.getElementById("attackAnimation");
+      attackAnimation.watch("show", function (watched,oldAnim,animation) {
+        animateSprite("battleAnimation","sprites/visual-effects/!"+animation[0]+".png",animation[1],animation[2]);
+        dash("battleModal","sprites/player/toad.png", 290, 30);
+        // alert(identificador + " ha cambiado de " + valorViejo + " a " + valorNuevo); // return valorNuevo;
+      });
+      //#endregion
+      //#region keyListener
+      let buttonsPushed = 0;
+      $("#map").keypress(
+        function(event) {
+          if(event.which===13) {
+            event.preventDefault();
+          }
+          buttonsPushed++;
+          if (document.getElementById("hiddenHandlerKeys").innerHTML != event.key) {
+            document.getElementById("hiddenHandlerKeys").innerHTML = event.key;
+            document.getElementById("keyChange").innerText = "true";
+          } else {
+            document.getElementById("keyChange").innerText = "false";
+          }
+          // " " + buttonsPushed + "t," + // Times called .keypress() handler
+          // " " + event.key + " key"; // Last pushed key in keyboard
+          // <p> works but is unhidden
+        }
+      );
+      function simulateKeyPress(character) {
+        jQuery.event//('input[type=submit][name=btnK]')
+          .trigger({
+            type: 'keypress',
+            which: character.charCodeAt(65)
+          });
+      }      
+      //#endregion
+      //#region front-end functions
+      /** @param {Number} hp */
+      function healthCanvas(hp) {
+          var c = document.getElementById("healthCanvas");
+          var ctx = c.getContext("2d");
+          var fh = document.getElementById("fh");
+          // var hh = document.getElementById("hh");
+          var lh = document.getElementById("lh");
+          ctx.drawImage(hp<1?lh:fh,0,0);
+          ctx.drawImage(hp<2?lh:fh,16,0);
+          ctx.drawImage(hp<3?lh:fh,32,0);
+          ctx.drawImage(hp<4?lh:fh,48,0);
+          ctx.drawImage(hp<5?lh:fh,64,0);
+      }
+      function showInfo() {
+          document.getElementById("infoDiv").innerHTML = global.points
+      }
+      function modeCotND() {
+          var checkBox = document.getElementById("checkModeCotND");
+          // var text = document.getElementById("text");
+          if (checkBox.checked == true){
+              document.getElementById("hiddenHandlerModeCotND").innerHTML = "false";
+              // text.style.display = "block";
+          } else {
+              document.getElementById("hiddenHandlerModeCotND").innerHTML = "true";
+              text.style.display = "none";
+          }
+      }
+      function getLocation() {
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+          } else { 
+              document.getElementById("hiddenHandlerPos").innerHTML = "Geolocation is not supported by this browser.";
+          }
+      }
+      function showPosition(position) {
+          document.getElementById("hiddenHandlerPos").innerHTML = position.coords.latitude + 
+          "," + position.coords.longitude;
+      }
+      /** Hides all class="containerTab", except for the one that matches the clickable grid column */
+      function openTab(tabName) {
+          var i, x;
+          x = document.getElementsByClassName("containerTab");
+          for (i = 0; i < x.length; i++) {
+              x[i].style.display = "none";
+          }
+          document.getElementById(tabName).style.display = "block";
+      }
+      function resumeGame() {
+        document.getElementById('openModal').innerText = 'false';
+        global.battleSound.pause();
+      }
+      function loadTile() {
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        var imageObj = new Image();
+        imageObj.src = "style/visual-effects/!Explosion.png";
+        imageObj.onload = function() {
+          ctx.drawImage(imageObj, 0, 0);
+
+          var tilesX = 3; // 96 / 32; // imageWidth / tileWidth;
+          var tilesY = 1; // 32 / 32; // imageHeight / tileHeight;
+          var totalTiles = tilesX * tilesY;        
+          var tileData = new Array();
+          for(var i=0; i<tilesY; i++) {
+            for(var j=0; j<tilesX; j++) {           
+              // Store the image data of each tile in the array.
+              tileData.push(
+                ctx.getImageData(j*tileWidth, i*tileHeight, tileWidth, tileHeight)
+              );
+            }
+          }
+          //From here you should be able to draw your images back into a canvas like so:
+          ctx.putImageData(tileData[0], x, y);
+        }
+      }
+      // getLocation();
+      // var navDialogEl = document.querySelector('.missionOptionRow');
+      // var dialogOverlay = document.querySelector('.missionOptionOverlay');      
+      //#endregion
+      //#region responsive function calls
+      healthCanvas(parseFloat(document.getElementById('health').innerHTML));
+      var myDialog = new Dialog(navDialogEl, dialogOverlay);
+      myDialog.addEventListeners('.open-dialog', '.close-dialog');
+      //#endregion
     </script>
     <script src="assets/leaflet.groupedlayercontrol.js"></script>
     <!-- To access js variables within bootstrap, load in HTML and charge bootstrap in it afterwards -->
     <script src="assets/bootstrapFunctions.js"></script>
     <script src="assets/modalHandlers.js"></script>
     <script src="assets/browserHandler.js"></script>
-    <script src="style/dialog.js"></script>      
+    <script src="style/dialog.js"></script>
+    <!-- #endregion -->
   </body>
 </html>
