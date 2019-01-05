@@ -785,10 +785,8 @@
       attackAnimation.watch("show", function (watched,oldAnim,animation) {
         animateSprite("battleAnimation","sprites/visual-effects/!"+animation[0]+".png",animation[1],animation[2]);
         dash("leftFighterCanvas","sprites/player/toad.png", 290, 30);
-        /*setTimeout(function () {
-          document.getElementById("battleAnimation").style.display = 'none';
-          document.getElementById("leftFighterCanvas").style.display = 'none';
-        }, 3000);*/
+        let attackSound = new Audio("sounds/battle/shot"+animation[0]+"1.wav");
+        attackSound.play();
         // alert(identificador + " ha cambiado de " + valorViejo + " a " + valorNuevo); // return valorNuevo;
       });
       //#endregion
