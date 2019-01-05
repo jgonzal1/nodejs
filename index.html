@@ -66,6 +66,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js"></script>
+    <script type="text/javascript" src='test.js'></script>
   </head>
   <body>
     <!-- #region Handlers -->
@@ -782,12 +783,13 @@
         imageSpriteImage.src = imageSpritePath;
       }
       var attackAnimation = document.getElementById("attackAnimation");
-      attackAnimation.watch("show", function (watched,oldAnim,animation) {
-        animateSprite("battleAnimation","sprites/visual-effects/!"+animation[0]+".png",animation[1],animation[2]);
-        dash("leftFighterCanvas","sprites/player/toad.png", 290, 30);
-        let attackSound = new Audio("sounds/battle/shot"+animation[0]+"1.wav");
+      attackAnimation.watch("show", function (watched, oldAnim, animation) {
+        animateSprite("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2]);
+        dash("leftFighterCanvas", "sprites/player/toad.png", 290, 30);
+        let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
         attackSound.play();
-        // alert(identificador + " ha cambiado de " + valorViejo + " a " + valorNuevo); // return valorNuevo;
+        a();           
+        // alert(watched + " ha cambiado de " + oldAnim + " a " + animation);
       });
       //#endregion
       //#region keyListener

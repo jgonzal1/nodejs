@@ -24,6 +24,7 @@ function fromEndpointUnscapedQuery(endpoint, callback) {
 
 if (require.main === module) {
   fromEndpointUnscapedQuery(process.argv[2]);
+  // https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/a1824845-0fc1-440e-bc4d-7c5d3d3e46d8?subscription-key=a019fe1742d6487dad3787006cb2b967&verbose=true&timezoneOffset=0&q=la+bolsa
 }
 
 module.exports = fromEndpointUnscapedQuery;
