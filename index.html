@@ -731,7 +731,7 @@
             }
           };
           that.render = function () {
-            that.context.clearRect(0, 0, that.width, that.height);
+            that.context.clearRect(0, 0, Math.round(that.width/2), that.height);
             // that.context.fillStyle = "#444444";
             var xDash, yDash, backwardFrameIndex;
             var backwardFrameInit = Math.round(3*numberOfFrames/5);
@@ -772,7 +772,7 @@
       var attackAnimation = document.getElementById("attackAnimation");
       attackAnimation.watch("show", function (watched,oldAnim,animation) {
         animateSprite("battleAnimation","sprites/visual-effects/!"+animation[0]+".png",animation[1],animation[2]);
-        dash("battleModal","sprites/player/toad.png", 290, 30);
+        dash("fightersCanvas","sprites/player/toad.png", 290, 30);
         // alert(identificador + " ha cambiado de " + valorViejo + " a " + valorNuevo); // return valorNuevo;
       });
       //#endregion
