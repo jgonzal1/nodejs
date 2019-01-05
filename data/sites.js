@@ -16,7 +16,8 @@ var initialCoords = {
     "EEUU.NewYork.Manhattan":           [40.702222 ,-73.979378, 10],
     "España.Almería.Pescadería":        [36.836223 , -2.466880, 15],
     "España.Madrid.Mirasierra":         [40.4942011, -3.71013 , 16], // places 40.485, -3.69
-    "GoT":                              [ 0.06     ,  0.06    , 15],
+    "Mirasierra.Offline":               [ 0.17     ,  0.08    , 16],
+    "GoT":                              [ 0.06     ,  0.06    , 16],
     "Nigeria.Laos":                     [ 6.509594 ,  3.37033 , 15],
     "Noruega.Svalbard.Longyearbyen":    [78.223331 , 15.646849, 16]
 };

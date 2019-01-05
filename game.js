@@ -10,6 +10,7 @@ const pushCharacters = require('./assets/pushCharacters');
 const spawnEnemies = require('./assets/spawnEnemies'); // TODO Enemies properties + battler hearths
 // const spawnMissionPeople = require('./assets/spawnMissionPeople');
 const spawnObjectives = require('./assets/spawnObjectives');
+// TODO >>>>> Cosas mochila
 const createPlacesIcons = require('./style/createPlacesIcons');
 const spawnTransports = require('./assets/spawnTransports');
 const getKeymap = require('./data/keymap');
@@ -19,7 +20,7 @@ global.keymap = getKeymap();
 const spawnRegionsAustria = require('./data/regionsAustria');
 const regionsAustria = spawnRegionsAustria();
 const spawnSites = require('./data/sites');
-const initialCoords = spawnSites.getInitialCoords()["GoT"]; // España.Madrid.Mirasierra
+const initialCoords = spawnSites.getInitialCoords()["Mirasierra.Offline"]; // España.Madrid.Mirasierra
 const sites = spawnSites.getSites(initialCoords);
 const places = spawnSites.getPlaces();
 const nPlaces = places.length;
@@ -37,7 +38,7 @@ const geoJsonStylers = require('./style/geoJsonStylers');
 // TODO Trading materials
 // TODO Misiones, traders
 // TODO > Traders objectives
-// TODO @ Implement Attack image character movement
+// TODO >>>>> Implement Attack image character movement without enemy elimination
 // TODO >>>>> #FFnn health after attack
 // TODO >>>>> #FFnn attack back
 // TODO >>>>> Trade contents and limitations
@@ -76,7 +77,8 @@ global.map = L.map(
 		tilt: true, // moves map
 		// w/ mobiles giroscope(deviceOrientation)
 		scrollWheelZoom: true, wheelPxPerZoomLevel: 150,
-		minZoom: 2, maxZoom: 17
+		minZoom: 13, // 2 in online tile
+		maxZoom: 15 // 17 in online tile
 	}
 );
 global.map.zoomControl.setPosition("bottomright");
@@ -84,9 +86,14 @@ const lat  = initialCoords[0]; global.lat = lat; // y
 const long = initialCoords[1]; global.long = long; // x
 const zoom = initialCoords[2]; // z
 global.map.setView([lat, long], zoom);
-const bounds = [[0,0],[0.2346, 0.1215]];
+const bounds = [
+	[0,0],
+	[0.2, 0.2] // watercolor
+	// [0.2346, 0.1215] // gotRisk
+];
 global.artisticMap = L.
-	imageOverlay('gotRisk.jpg', bounds
+	imageOverlay('style/watercolor_6OMYHFBaY_I.jpeg', bounds
+	// imageOverlay('style/gotRisk.jpg', bounds
 	// tileLayer('http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
 ).addTo(global.map);
 const baseLayers = createBaseLayerAndAddMore(global.artisticMap, L);
@@ -119,7 +126,7 @@ global.player = player;
 // TODO @ Multiplayer MongoDB or Redis
 
 spawnEnemies(L, lat, long);
-spawnObjectives(L, lat, long); // TODO > Thirst, hunger & vol
+spawnObjectives(L, lat, long); // TODO > Thirst, hunger
 // spawnMissionPeople(L, lat, long);
 spawnTransports(L, lat, long);
 global.mCharacters = [];
@@ -158,12 +165,12 @@ if (navigator.userAgent.match('Android|X11') !== null){ // X11 es mi redmi note 
 } else {
 	global.map.on('zoomend', function() {
 		const currentZoom = global.map.getZoom();
-		if (currentZoom < 15) { // hide places
+		if (currentZoom < 9) { // 15 in online tile; hide places
 			if (global.map.hasLayer(layers)) { global.map.removeLayer(layers); }
 		} else {
 			if (global.map.hasLayer(layers) === false) { global.map.addLayer(layers); }
 		}
-		if (currentZoom < 12) { // hide characters
+		if (currentZoom < 6) { // 12 in online tile; hide characters
 			if (global.map.hasLayer(characters)) { global.map.removeLayer(characters); }
 		} else {
 			if (global.map.hasLayer(characters) === false) { global.map.addLayer(characters); }

@@ -731,7 +731,12 @@
             }
           };
           that.render = function () {
-            that.context.clearRect(0, 0, Math.round(that.width/2), that.height);
+            /*that.context.clearRect(
+              0,
+              0,
+              Math.round(that.width/2),
+              that.height
+            );*/
             // that.context.fillStyle = "#444444";
             var xDash, yDash, backwardFrameIndex;
             var backwardFrameInit = Math.round(3*numberOfFrames/5);
@@ -744,15 +749,15 @@
               yDash = (backwardFrameIndex-12)*backwardFrameIndex/8;
             }
             that.context.drawImage(
-              that.image,                    // image, canvas, or video element to use	
-              0,                             // image x coordinate where to start clipping
-              0,                             // that.height-canvas.height image y coordinate where to start clipping
-              that.width,                    // width of the clipped image on the canvas
-              that.height,                   // height of the clipped image on the canvas
-              xDash,                         // x coordinate where to place the clipped image on the canvas
-              yDash,                         // y coordinate where to place the clipped image on the canvas
-              that.width,                    // image to use width (to stretch or reduce it)
-              that.height                    // image to use height (to stretch or reduce it)
+              that.image,  // image, canvas, or video element to use	
+              0,           // image x coordinate where to start clipping
+              0,           // that.height-canvas.height image y coordinate where to start clipping
+              that.width,  // width of the clipped image on the canvas
+              that.height, // height of the clipped image on the canvas
+              xDash,       // x coordinate where to place the clipped image on the canvas
+              yDash,       // y coordinate where to place the clipped image on the canvas
+              that.width,  // image to use width (to stretch or reduce it)
+              that.height  // image to use height (to stretch or reduce it)
             );
           };
           return that;
