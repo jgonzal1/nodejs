@@ -484,7 +484,9 @@
             <span id="opponentHealth" style="display: none">5</span>
             <canvas id="fightersCanvas" width="680" height="256" style="border:1px solid #d3d3d3; position: absolute; left: 0; top: 0; z-index: 0;">
             </canvas>
-            <canvas id="battleAnimation" width="512" height="256" style="display: none; position: absolute; left: 200; top: 0; z-index: 1;">
+            <canvas id="leftFighterCanvas" width="320" height="256" style="display: none; position: absolute; left: 0; top: 0; z-index: 0;">
+            </canvas>
+            <canvas id="battleAnimation" width="680" height="256" style="display: none; position: absolute; left: 200; top: 0; z-index: 1;">
              <!--display: none;-->
             </canvas>
             <canvas id="battleBorder" width="680", height="256">Your browser does not support the HTML5 canvas tag.</canvas>
@@ -651,8 +653,10 @@
               tickCount = 0;
               if (frameIndex < numberOfFrames - 1) { // The current frame index is in range
                 frameIndex += 1; // Go to the next frame
+                document.getElementById("battleAnimation").style.display = 'inline';
               } else {
                 // frameIndex = 0;
+                document.getElementById("battleAnimation").style.display = 'none';
                 that.context = null;
                 that.image = null;
               }
@@ -725,22 +729,25 @@
                 frameIndex += 1; // Go to the next frame
               } else {
                 // frameIndex = 0;
+                document.getElementById("leftFighterCanvas").style.display = 'none';
                 that.context = null;
                 that.image = null;
               }
             }
           };
           that.render = function () {
-            /*that.context.clearRect(
+            that.context.clearRect(
               0,
               0,
-              Math.round(that.width/2),
+              that.width,
               that.height
-            );*/
-            // that.context.fillStyle = "#444444";
+            );
             var xDash, yDash, backwardFrameIndex;
             var backwardFrameInit = Math.round(3*numberOfFrames/5);
             if (frameIndex <= backwardFrameInit) {
+              if (frameIndex === 1) {
+                document.getElementById("leftFighterCanvas").style.display = 'inline';
+              }
               xDash = frameIndex
               yDash = (frameIndex-18)*frameIndex/12;
             } else {
@@ -777,7 +784,11 @@
       var attackAnimation = document.getElementById("attackAnimation");
       attackAnimation.watch("show", function (watched,oldAnim,animation) {
         animateSprite("battleAnimation","sprites/visual-effects/!"+animation[0]+".png",animation[1],animation[2]);
-        dash("fightersCanvas","sprites/player/toad.png", 290, 30);
+        dash("leftFighterCanvas","sprites/player/toad.png", 290, 30);
+        /*setTimeout(function () {
+          document.getElementById("battleAnimation").style.display = 'none';
+          document.getElementById("leftFighterCanvas").style.display = 'none';
+        }, 3000);*/
         // alert(identificador + " ha cambiado de " + valorViejo + " a " + valorNuevo); // return valorNuevo;
       });
       //#endregion
