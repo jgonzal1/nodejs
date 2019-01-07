@@ -66,7 +66,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js"></script>
-    <script type="text/javascript" src='test.js'></script>
+    <script type="text/javascript" src='assets/animateImage.js'></script>
   </head>
   <body>
     <!-- #region Handlers -->
@@ -279,7 +279,7 @@
                 <div id="hiddenHandlerKeys"></div>-->
               </td>
             </tr>
-            <!--Enfrentándote a: <span id="currentBattle"></span>style="display:none;"-->
+            <!--Enfrentándote a: -->
           </tbody>
         </table></div>
       </div></div></div>
@@ -482,10 +482,13 @@
             <img id="phantom"  src="sprites/enemies-reverse/phantom.png"  style="display:none;">
             <img id="skeleton" src="sprites/enemies-reverse/skeleton.png" style="display:none;">
             <img id="spider"   src="sprites/enemies-reverse/spider.png"   style="display:none;">
+            <span id="currentBattle" style="display: none"></span>
             <span id="opponentHealth" style="display: none">5</span>
             <canvas id="fightersCanvas" width="680" height="256" style="border:1px solid #d3d3d3; position: absolute; left: 0; top: 0; z-index: 0;">
             </canvas>
             <canvas id="leftFighterCanvas" width="320" height="256" style="display: none; position: absolute; left: 0; top: 0; z-index: 0;">
+            </canvas>
+            <canvas id="rightFighterCanvas" width="680" height="256" style="display: none; position: absolute; left: 0; top: 0; z-index: 0;">
             </canvas>
             <canvas id="battleAnimation" width="680" height="256" style="display: none; position: absolute; left: 200; top: 0; z-index: 1;">
              <!--display: none;-->
@@ -623,172 +626,17 @@
               }
           });
       }
-      /** animateSprite jsDoc
-       * @param {string} canvasHtmlId
-       * @param {string} imageSpritePath
-       * @param {number} height
-       * @param {number} numberOfFrames
-       */
-      function animateSprite(canvasHtmlId, imageSpritePath, height, numberOfFrames) {
-        var canvas = document.getElementById(canvasHtmlId);
-        var imageSprite,
-          imageSpriteImage;
-        function gameLoop () {
-          window.requestAnimationFrame(gameLoop);
-          imageSprite.update();
-          imageSprite.render();
-        }
-        function sprite (options) {
-          var that = {},
-            frameIndex = 0,
-            tickCount = 0,
-            ticksPerFrame = options.ticksPerFrame || 0,
-            numberOfFrames = options.numberOfFrames || 1;
-          that.context = options.context;
-          that.width = options.width;
-          that.height = options.height;
-          that.image = options.image;
-          that.update = function () {
-            tickCount += 1;
-            if (tickCount > ticksPerFrame) {
-              tickCount = 0;
-              if (frameIndex < numberOfFrames - 1) { // The current frame index is in range
-                frameIndex += 1; // Go to the next frame
-                document.getElementById("battleAnimation").style.display = 'inline';
-              } else {
-                // frameIndex = 0;
-                document.getElementById("battleAnimation").style.display = 'none';
-                that.context = null;
-                that.image = null;
-              }
-            }
-          };
-          that.render = function () {
-            that.context.clearRect(
-              0,
-              0,
-              canvas.width,
-              canvas.height
-            ); // 0, 0
-            // that.context.fillStyle = "#444444";
-            that.context.drawImage(
-              that.image,
-              frameIndex * that.width / numberOfFrames,
-              0,
-              that.width / numberOfFrames,
-              that.height,
-              80 + frameIndex*25, // 0,
-              80, // 0,
-              that.width / numberOfFrames,
-              that.height
-            );
-          };
-          return that;
-        }
-        imageSpriteImage = new Image(); // Create sprite sheet
-        imageSprite = sprite({ // Create sprite
-          context: canvas.getContext("2d"),
-          height: height,
-          image: imageSpriteImage,
-          numberOfFrames: numberOfFrames,
-          width: height*numberOfFrames,		
-          ticksPerFrame: Math.round(40/numberOfFrames)
-        });
-        imageSpriteImage.addEventListener("load", gameLoop); // Load sprite sheet
-        imageSpriteImage.src = imageSpritePath;
-      }
-      /** dash jsDoc
-       * @param {string} canvasHtmlId
-       * @param {string} imageSpritePath
-       * @param {number} height must be the same of the  width of each the sprite
-       * @param {number} numberOfFrames
-       */ 
-      function dash(canvasHtmlId, imageSpritePath, height, numberOfFrames) {
-        var canvas = document.getElementById(canvasHtmlId);
-        var imageSprite,
-          imageSpriteImage;
-        function gameLoop () {
-          window.requestAnimationFrame(gameLoop);
-          imageSprite.update();
-          imageSprite.render();
-        }
-        function sprite (options) {
-          var that = {},
-              frameIndex = 0,
-              tickCount = 0,
-              ticksPerFrame = options.ticksPerFrame || 0,
-              numberOfFrames = options.numberOfFrames || 1;
-          that.context = options.context;
-          that.width = options.width;
-          that.height = options.height;
-          that.image = options.image;
-          that.update = function () {
-            tickCount += 1;
-            if (tickCount > ticksPerFrame) {
-              tickCount = 0;
-              if (frameIndex < numberOfFrames - 1) { // The current frame index is in range
-                frameIndex += 1; // Go to the next frame
-              } else {
-                // frameIndex = 0;
-                document.getElementById("leftFighterCanvas").style.display = 'none';
-                that.context = null;
-                that.image = null;
-              }
-            }
-          };
-          that.render = function () {
-            that.context.clearRect(
-              0,
-              0,
-              that.width,
-              that.height
-            );
-            var xDash, yDash, backwardFrameIndex;
-            var backwardFrameInit = Math.round(3*numberOfFrames/5);
-            if (frameIndex <= backwardFrameInit) {
-              if (frameIndex === 1) {
-                document.getElementById("leftFighterCanvas").style.display = 'inline';
-              }
-              xDash = frameIndex
-              yDash = (frameIndex-18)*frameIndex/12;
-            } else {
-              backwardFrameIndex = frameIndex - backwardFrameInit;
-              xDash = numberOfFrames - frameIndex
-              yDash = (backwardFrameIndex-12)*backwardFrameIndex/8;
-            }
-            that.context.drawImage(
-              that.image,  // image, canvas, or video element to use	
-              0,           // image x coordinate where to start clipping
-              0,           // that.height-canvas.height image y coordinate where to start clipping
-              that.width,  // width of the clipped image on the canvas
-              that.height, // height of the clipped image on the canvas
-              xDash,       // x coordinate where to place the clipped image on the canvas
-              yDash,       // y coordinate where to place the clipped image on the canvas
-              that.width,  // image to use width (to stretch or reduce it)
-              that.height  // image to use height (to stretch or reduce it)
-            );
-          };
-          return that;
-        }
-        imageSpriteImage = new Image(); // Create sprite sheet
-        imageSprite = sprite({ // Create sprite
-          context: canvas.getContext("2d"),
-          height: height,
-          image: imageSpriteImage,
-          numberOfFrames: numberOfFrames,
-          width: height*numberOfFrames,
-          ticksPerFrame: Math.round(12/numberOfFrames)
-        });
-        imageSpriteImage.addEventListener("load", gameLoop); // Load sprite sheet
-        imageSpriteImage.src = imageSpritePath;
-      }
       var attackAnimation = document.getElementById("attackAnimation");
       attackAnimation.watch("show", function (watched, oldAnim, animation) {
-        animateSprite("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2]);
-        dash("leftFighterCanvas", "sprites/player/toad.png", 290, 30);
+        animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "L");
+        dash("leftFighterCanvas", "sprites/player/toad.png", 290, 30, "L");
         let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
-        attackSound.play();
-        a();           
+        attackSound.play();//*/
+        /*let currentBattle = document.getElementById("currentBattle").innerText;
+        animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "R");
+        dash("rightFighterCanvas", "sprites/enemies-reverse/"+currentBattle+".png", 290, 30, "R");//*/
+        // let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
+        // attackSound.play();
         // alert(watched + " ha cambiado de " + oldAnim + " a " + animation);
       });
       //#endregion

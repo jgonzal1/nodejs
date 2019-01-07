@@ -1,5 +1,5 @@
 function a() {
-    alert("a");
+    alert("prov/a");
 }
 function b() {
     alert("b");
