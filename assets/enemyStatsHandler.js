@@ -4,67 +4,53 @@ let health,atk,def,vel,btc;
 function enemyStatsHandler(objective) {
     health = parseFloat(document.getElementById('health').innerHTML);
     vel = parseFloat(document.getElementById('vel').innerHTML);
+    alert("enemyStatsHandler");
     switch (objective) {
     case "bloodyeye": //
         health -= 1;
-        healthHandler(health);
-        break;
+        return health;
     case "death":
         health -= 2;
-        healthHandler(health);
-        break;
+        return health;
     case "dracula": // chupa vida
         health -= 2;
-        healthHandler(health);
-        break;
+        return health;
     case "empire1":
         health -= 1;
-        healthHandler(health);
-        break;
+        return health;
     case "empire2":
         health -= 1;
-        healthHandler(health);
-        break;
+        return health;
     case "gollum": // roba 1 oro
         health -= 1;
-        healthHandler(health);
-        break;
+        return health;
     case "jabba": // roba comida
         health -= 1;
-        healthHandler(health);
-        break;
+        return health;
     case "joker": // asusta
         health -= 3;
-        healthHandler(health);
-        break;
+        return health;
     case "mummy": // ralentiza
         health -= 1;
-        healthHandler(health);
-        break;
+        return health;
     case "owl": // invierte movimiento //
         health -= 1;
-        healthHandler(health);
-        break;
+        return health;
     case "phantom": // randomiza movimiento
         health -= 1;
-        healthHandler(health);
-        break;
+        return health;
     case "pirateskull": //
         health -= 2;
-        healthHandler(health);
-        break;
+        return health;
     case "skeleton":
         health -= 2;
-        healthHandler(health);
-        break;
+        return health;
     case "spider": // ralentiza
         health -= 1;
-        healthHandler(health);
-        break;
+        return health;
     case "undeadhand": //
         health -= 1;
-        healthHandler(health);
-        break;
+        return health;
     }
 }
 

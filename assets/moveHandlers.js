@@ -1,4 +1,5 @@
 const enemyStatsHandler = require('./enemyStatsHandler');
+const healthHandler = require('./healthHandler');
 const loadEnemyBattle = require('./loadEnemyBattle');
 
 const lngCorrectionArr = [ // Corrección calculada de la distorsión angular de la longitud con respecto a su latiitud
@@ -56,7 +57,7 @@ function goToPlayer(target, velocity) {
 	velocity = ( velocity || 1 );
 	const latDiff = global.player.getLatLng().lat - target.getLatLng().lat;
 	const lngDiff = global.player.getLatLng().lng - target.getLatLng().lng;
-	let forcedDirection, btc, targetName;
+	let forcedDirection, btc, targetName, health;
 	if (Math.abs(latDiff) > Math.abs(lngDiff)) {
 		if (latDiff>0) {forcedDirection='w';} else {forcedDirection='s';}
 	} else {
@@ -64,7 +65,11 @@ function goToPlayer(target, velocity) {
 	}
 	moveCharacter(target, velocity, forcedDirection);
 	if (0.0002 > Math.max(Math.abs(latDiff), Math.abs(lngDiff))) {
-		enemyStatsHandler(target.getAttribution());
+		healthHandler(
+			enemyStatsHandler(
+				target.getAttribution()
+			)
+		);
 		if (
 			( document.getElementById('hiddenHandlerKeys').innerText === global.keymap["wield"][0] ||
 			document.getElementById('hiddenHandlerKeys').innerText === global.keymap["wield"][1] ) &&

@@ -67,6 +67,8 @@
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js"></script>
     <script type="text/javascript" src='assets/animateImage.js'></script>
+    <script type="text/javascript" src='assets/enemyStatsHandler.js'></script>
+    <script type="text/javascript" src='assets/healthHandler.js'></script>
   </head>
   <body>
     <!-- #region Handlers -->
@@ -485,16 +487,18 @@
             <img id="spider"   src="sprites/enemies-reverse/spider.png"   style="display:none;">
             <span id="currentBattle" style="display: none"></span>
             <span id="opponentHealth" style="display: none">5</span>
-            <canvas id="fightersCanvas" width="680" height="256" style="border:1px solid #d3d3d3; position: absolute; left: 0; top: 0; z-index: 0;">
-            </canvas>
-            <canvas id="leftFighterCanvas" width="320" height="256" style="display: none; position: absolute; left: 0; top: 0; z-index: 0;">
-            </canvas>
-            <canvas id="rightFighterCanvas" width="680" height="256" style="display: none; position: absolute; left: 0; top: 0; z-index: 0;">
-            </canvas>
-            <canvas id="battleAnimation" width="680" height="256" style="display: none; position: absolute; left: 200; top: 0; z-index: 1;">
-             <!--display: none;-->
-            </canvas>
-            <canvas id="battleBorder" width="680", height="256">Your browser does not support the HTML5 canvas tag.</canvas>
+            <canvas id="fightersCanvas" width="680" height="256" style=
+              "border:1px solid #d3d3d3; position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+            <span id="hblp" style="display: none">0</span>
+            <canvas id="leftFighterCanvas" width="320" height="256" style=
+              "display: none; position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+            <span id="hbrp" style="display: none">0</span>
+            <canvas id="rightFighterCanvas" width="680" height="256" style=
+              "display: none; position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+            <span id="hbrpw" style="display: none">0</span><span id="hbrph" style="display: none">0</span>
+            <canvas id="battleAnimation" width="680" height="256" style=
+              "display: none; position: absolute; left: 200; top: 0; z-index: 1;"></canvas>
+            <canvas id="battleBorder" width="680", height="256"></canvas>
             <span id="attackAnimation"></span>
             <table class="table table-striped"><tbody>  
               <tr>
@@ -633,10 +637,15 @@
           setTimeout(() => {
             let currentBattle = document.getElementById("currentBattle").innerText;
             document.getElementById("battleLogs").innerHTML += currentBattle+" used basic attack!<br>";
-            animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "R");
             dash("rightFighterCanvas", "sprites/enemies-reverse/"+currentBattle+".png", 290, 30, "R");
+            animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "R");
             let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
             attackSound.play();
+            healthHandler(
+              enemyStatsHandler(
+                currentBattle
+              )
+            );
             resolve(animation);
           }, 1500);
         });
@@ -645,8 +654,8 @@
         var animationDone = await resolveAfterUserAttack(animation);
       }
       attackAnimation.watch("show", function (watched, oldAnim, animation) {
-        animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "L");
         dash("leftFighterCanvas", "sprites/player/toad.png", 290, 30, "L");
+        animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "L");
         let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
         attackSound.play();
         attackBack(animation);

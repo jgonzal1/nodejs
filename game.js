@@ -120,7 +120,7 @@ const playerIcon = L.icon(createLargeIcon('sprites/map-player/' + document.getEl
 	// files[Math.ceil(nAvailableAvatars*Math.random())]
 ));
 const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
-	'<b>Tú (Meme rookie, lvl. 1)</b>'
+	'<b>Tú ('+document.getElementById('playerName').innerText+' rookie, lvl. 1)</b>'
 );
 global.player = player;
 // TODO @ Multiplayer MongoDB or Redis
