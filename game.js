@@ -115,8 +115,8 @@ L.control.scale({imperial:false}).addTo(global.map);
 const nAvailableAvatars = 39;
 // const files = fs.readdirSync('./sprites/player');
 // alert(files[Math.ceil(nAvailableAvatars*Math.random())]);
-const playerIcon	= L.icon(createLargeIcon('sprites/map-player/' +
-	'toad.png'
+document.getElementById('playerName').innerText = "toad";
+const playerIcon = L.icon(createLargeIcon('sprites/map-player/' + document.getElementById('playerName').innerText + '.png'
 	// files[Math.ceil(nAvailableAvatars*Math.random())]
 ));
 const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(

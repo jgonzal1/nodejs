@@ -346,7 +346,8 @@
         <span id="openModal" style="display: none">false</span>
         <div class="modal-dialog"><div class="modal-content">
           <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-            onclick="resumeGame()">&times;</button><h4 class="modal-title">Skills & Morale</h4></div>
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Skills & Morale</h4>
+            <span id="playerName"></span></div>
           <div class="modal-body">
             <table class="table table-striped"><tbody>
               <tr class="moraleRow"><td></td><td class="moraleState"></td></tr>
@@ -627,16 +628,28 @@
           });
       }
       var attackAnimation = document.getElementById("attackAnimation");
+      function resolveAfterUserAttack(animation) { 
+        return new Promise(resolve => {
+          setTimeout(() => {
+            let currentBattle = document.getElementById("currentBattle").innerText;
+            document.getElementById("battleLogs").innerHTML += currentBattle+" used basic attack!<br>";
+            animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "R");
+            dash("rightFighterCanvas", "sprites/enemies-reverse/"+currentBattle+".png", 290, 30, "R");
+            let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
+            attackSound.play();
+            resolve(animation);
+          }, 1500);
+        });
+      }
+      async function attackBack(animation) {
+        var animationDone = await resolveAfterUserAttack(animation);
+      }
       attackAnimation.watch("show", function (watched, oldAnim, animation) {
         animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "L");
         dash("leftFighterCanvas", "sprites/player/toad.png", 290, 30, "L");
         let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
-        attackSound.play();//*/
-        /*let currentBattle = document.getElementById("currentBattle").innerText;
-        animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "R");
-        dash("rightFighterCanvas", "sprites/enemies-reverse/"+currentBattle+".png", 290, 30, "R");//*/
-        // let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
-        // attackSound.play();
+        attackSound.play();
+        attackBack(animation);
         // alert(watched + " ha cambiado de " + oldAnim + " a " + animation);
       });
       //#endregion

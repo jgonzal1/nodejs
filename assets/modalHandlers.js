@@ -268,8 +268,8 @@ $("#battleModal").keypress( function(event) {
 switch(event.which) {
 case keypressMap["option1"][0]: // Q
 case keypressMap["option1"][1]:
-    document.getElementById("battleLogs").innerHTML += "Toad usó ataque básico!<br>";
-    document.getElementById("battleAnimation").style.display = 'inline';
+    document.getElementById("battleLogs").innerHTML += document.getElementById('playerName').innerText + " used basic attack!<br>";
+    // document.getElementById("battleAnimation").style.display = 'inline';
     document.getElementById("attackAnimation").show = ["ElectricLvl3", 200, 11];
     // ["ElectricLvl3",                    200, 11];
     // ["FightShortTargetLvl1",            192, 5 ];
