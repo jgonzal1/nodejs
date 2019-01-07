@@ -1,7 +1,12 @@
 const nDeathSounds = 6;
-global.hblp = 110; // healthBarLeftPos
-global.hbrp = 490; // healthBarRightPos
-global.hbhp = [26, 12]; // healthBarHpPos
+const hblp = 110;
+const hbrp = 490;
+const hbhpw = 26;
+const hbhph = 12;
+document.getElementById("hblp").innerText  = hblp;  // healthBarLeftPos
+document.getElementById("hbrp").innerText  = hbrp;  // healthBarRightPos
+document.getElementById("hbhpw").innerText = hbhpw; // hbhp = [26, 12];
+document.getElementById("hbhph").innerText = hbhph; // healthBarHpPos↑
 let deathSound;
 
 function checkPlayerDeath(health) {
@@ -37,11 +42,12 @@ function healthHandler(hp, side) {
     var hn = document.getElementById('health-none');
     var hm = document.getElementById('health-min');
     var hc = document.getElementById('health-chunk');
-    eCtx.drawImage(hp<1?hn:hm, global["hb"+side+"p"]   +global.hbhp[0], 0+global.hbhp[1]);
-    eCtx.drawImage(hp<2?hn:hc, global["hb"+side+"p"]+10+global.hbhp[0], 0+global.hbhp[1]);
-    eCtx.drawImage(hp<3?hn:hc, global["hb"+side+"p"]+20+global.hbhp[0], 0+global.hbhp[1]);
-    eCtx.drawImage(hp<4?hn:hc, global["hb"+side+"p"]+30+global.hbhp[0], 0+global.hbhp[1]);
-    eCtx.drawImage(hp<5?hn:hc, global["hb"+side+"p"]+40+global.hbhp[0], 0+global.hbhp[1]);
+    eCtx.drawImage(hp<1?hn:hm, /*(side=='l'?*/hblp/*:hbrp)*/   +hbhpw, 0+hbhph);
+    eCtx.drawImage(hp<2?hn:hc, /*(side=='l'?*/hblp/*:hbrp)*/+10+hbhpw, 0+hbhph);
+    eCtx.drawImage(hp<3?hn:hc, /*(side=='l'?*/hblp/*:hbrp)*/+20+hbhpw, 0+hbhph);
+    eCtx.drawImage(hp<4?hn:hc, /*(side=='l'?*/hblp/*:hbrp)*/+30+hbhpw, 0+hbhph);
+    eCtx.drawImage(hp<5?hn:hc, /*(side=='l'?*/hblp/*:hbrp)*/+40+hbhpw, 0+hbhph);
+
 
     if (side === "l") {
         checkPlayerDeath(hp);
@@ -49,6 +55,7 @@ function healthHandler(hp, side) {
     } else if (side === "r") {
         document.getElementById('opponentHealth').innerText = hp;
     }
+    alert("healthHandler");
 }
 
 module.exports = healthHandler;
