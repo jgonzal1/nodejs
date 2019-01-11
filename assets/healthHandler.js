@@ -2,6 +2,7 @@ const nDeathSounds = 6;
 global.hblp = 110; // healthBarLeftPos
 global.hbrp = 490; // healthBarRightPos
 global.hbhp = [26, 12]; // healthBarHpPos
+document.getElementById('hblp').innerText = global.hblp;
 let deathSound;
 
 function checkPlayerDeath(health) {
