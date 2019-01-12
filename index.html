@@ -641,10 +641,10 @@
             animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "R");
             let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
             attackSound.play();
-            healthHandler(
-              enemyStatsHandler(
-                currentBattle
-              )
+            enemyStatsHandler(
+              currentBattle, function(health) {
+                healthHandler(health);
+              }
             );
             resolve(animation);
           }, 1500);

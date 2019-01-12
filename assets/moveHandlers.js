@@ -65,10 +65,10 @@ function goToPlayer(target, velocity) {
 	}
 	moveCharacter(target, velocity, forcedDirection);
 	if (0.0002 > Math.max(Math.abs(latDiff), Math.abs(lngDiff))) {
-		healthHandler(
-			enemyStatsHandler(
-				target.getAttribution()
-			)
+		enemyStatsHandler(
+			target.getAttribution(), function(health) {
+				healthHandler(health);
+			}
 		);
 		if (
 			( document.getElementById('hiddenHandlerKeys').innerText === global.keymap["wield"][0] ||
