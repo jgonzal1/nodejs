@@ -1,4 +1,5 @@
 const healthHandler = require("./healthHandler");
+const checkPlayerDeath = require("./checkPlayerDeath");
 
 function loadEnemyBattle(enemyName) {
     var ec = document.getElementById("fightersCanvas");
@@ -16,6 +17,7 @@ function loadEnemyBattle(enemyName) {
     var health = parseFloat(document.getElementById('health').innerHTML);
     var opponentHealth = parseFloat(document.getElementById('opponentHealth').innerHTML);
     healthHandler(health);
+    checkPlayerDeath(health);
     healthHandler(opponentHealth,'r');
     // eCtx.drawImage(healthMin, global.hbrp+healthBarLifePos[0], 0+healthBarLifePos[1]);
     // eCtx.drawImage(healthChunk, global.hbrp+10+healthBarLifePos[0], 0+healthBarLifePos[1]);

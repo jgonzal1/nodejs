@@ -1,5 +1,6 @@
 const enemyStatsHandler = require('./enemyStatsHandler');
 const healthHandler = require('./healthHandler');
+const checkPlayerDeath = require('./checkPlayerDeath');
 const loadEnemyBattle = require('./loadEnemyBattle');
 
 const lngCorrectionArr = [ // Corrección calculada de la distorsión angular de la longitud con respecto a su latiitud
@@ -68,6 +69,7 @@ function goToPlayer(target, velocity) {
 		enemyStatsHandler(
 			target.getAttribution(), function(health) {
 				healthHandler(health);
+				checkPlayerDeath(health);
 			}
 		);
 		if (

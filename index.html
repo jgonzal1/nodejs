@@ -69,6 +69,7 @@
     <script type="text/javascript" src='assets/animateImage.js'></script>
     <script type="text/javascript" src='assets/enemyStatsHandler.js'></script>
     <script type="text/javascript" src='assets/healthHandler.js'></script>
+    <script type="text/javascript" src='assets/checkPlayerDeath.js'></script>
   </head>
   <body>
     <!-- #region Handlers -->
@@ -466,13 +467,15 @@
       <!-- #region battles -->
       <div class="modal fade" id="battleModal" tabindex="-1" role="dialog">
         <span id="openModal" style="display: none">false</span>
-        <div class="modal-dialog" style="width:720px;height:480px;"><div class="modal-content">
+        <div class="modal-dialog" style="width:720px;height:480px;" role="document"><div class="modal-content">
           <div class="modal-header"><h4 class="modal-title">Battle</h4></div>
           <div class="modal-body">
             <img id="health-bar"   src="style/interface/health-bar.png"   style="display:none;">
             <img id="health-none"  src="style/interface/health-none.png"  style="display:none;">
             <img id="health-min"   src="style/interface/health-min.png"   style="display:none;">
             <img id="health-chunk" src="style/interface/health-chunk.png" style="display:none;">
+            <img id="7x10"         src="style/interface/7x10.png"         style="display:none;">
+            <img id="7x10i"        src="style/interface/7x10i.png"        style="display:none;">
             <img id="toad"     src="sprites/player/toad.png"              style="display:none;">
             <img id="death"    src="sprites/enemies-reverse/death.png"    style="display:none;">
             <img id="dracula"  src="sprites/enemies-reverse/dracula.png"  style="display:none;">
@@ -643,7 +646,8 @@
             attackSound.play();
             enemyStatsHandler(
               currentBattle, function(health) {
-                healthHandler(health);
+                healthHandler(health, "l");
+                checkPlayerDeath(health);
               }
             );
             resolve(animation);
@@ -690,19 +694,6 @@
       }      
       //#endregion
       //#region front-end functions
-      /** @param {Number} hp */
-      function healthCanvas(hp) {
-          var c = document.getElementById("healthCanvas");
-          var ctx = c.getContext("2d");
-          var fh = document.getElementById("fh");
-          // var hh = document.getElementById("hh");
-          var lh = document.getElementById("lh");
-          ctx.drawImage(hp<1?lh:fh,0,0);
-          ctx.drawImage(hp<2?lh:fh,16,0);
-          ctx.drawImage(hp<3?lh:fh,32,0);
-          ctx.drawImage(hp<4?lh:fh,48,0);
-          ctx.drawImage(hp<5?lh:fh,64,0);
-      }
       function showInfo() {
           document.getElementById("infoDiv").innerHTML = global.points
       }
@@ -770,7 +761,8 @@
       // var dialogOverlay = document.querySelector('.missionOptionOverlay');      
       //#endregion
       //#region responsive function calls
-      healthCanvas(parseFloat(document.getElementById('health').innerHTML));
+      healthHandler(parseFloat(document.getElementById('health').innerHTML), "l");
+      checkPlayerDeath(parseFloat(document.getElementById('health').innerHTML));
       var myDialog = new Dialog(navDialogEl, dialogOverlay);
       myDialog.addEventListeners('.open-dialog', '.close-dialog');
       //#endregion
