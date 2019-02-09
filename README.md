@@ -1,4 +1,4 @@
-'''
+´´´
 @ Daemonizer in legend for weather; on add: timeLegend(); (28., From file:///e%3A/nodejs/game.js#168)
 @ Multiplayer MongoDB or Redis (26., From file:///e%3A/nodejs/game.js#113)
 @ Risk (9., From file:///e%3A/nodejs/game.js#32)
@@ -38,4 +38,4 @@ Velocity within ingame options so anyone can handle and keyHandler is not depend
 Vendedor con mas cosas en el index (bajo tradeModal) y que lo ponga el modal (31., From file:///e%3A/nodejs/game.js#199)
 Virtual assistant in help / how to play (35., From file:///e%3A/nodejs/game.js#370)
 Weather and region dependencies in legend? (34., From file:///e%3A/nodejs/game.js#367)
-'''
+´´´
