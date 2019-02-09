@@ -38,9 +38,7 @@ const geoJsonStylers = require('./style/geoJsonStylers');
 // TODO Trading materials
 // TODO Misiones, traders
 // TODO > Traders objectives
-// TODO >>>>> Implement Attack image character movement without enemy elimination
-// TODO >>>>> #FFnn health after attack
-// TODO >>>>> #FFnn attack back
+// TODO >>>>> #FFnn attack enemy health in index 663
 // TODO >>>>> Trade contents and limitations
 // TODO > Develop in battles modal (buttons===keys): resumeGame after closing but only with button
 // TODO #CataclysmDDA

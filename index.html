@@ -474,8 +474,6 @@
             <img id="health-none"  src="style/interface/health-none.png"  style="display:none;">
             <img id="health-min"   src="style/interface/health-min.png"   style="display:none;">
             <img id="health-chunk" src="style/interface/health-chunk.png" style="display:none;">
-            <img id="7x10"         src="style/interface/7x10.png"         style="display:none;">
-            <img id="7x10i"        src="style/interface/7x10i.png"        style="display:none;">
             <img id="toad"     src="sprites/player/toad.png"              style="display:none;">
             <img id="death"    src="sprites/enemies-reverse/death.png"    style="display:none;">
             <img id="dracula"  src="sprites/enemies-reverse/dracula.png"  style="display:none;">
@@ -662,6 +660,7 @@
         animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "L");
         let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
         attackSound.play();
+        healthHandler(5, "r") //TODO function of atk, total health of the enemy and a callback before to amke
         attackBack(animation);
         // alert(watched + " ha cambiado de " + oldAnim + " a " + animation);
       });
