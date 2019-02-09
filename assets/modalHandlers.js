@@ -177,10 +177,10 @@ $("#missionsModal").on('hide.bs.modal', function(){
 
 //#region Top_Menu/Options modal handlers
 $("#go-to-spawn-btn").click(function() {
-map.setView([40.4942011, -3.71013], 16);
-// map.fitBounds(boroughs.getBounds());
-$(".navbar-collapse.in").collapse("hide");
-return false;
+  map.setView([40.4942011, -3.71013], 16);
+  // map.fitBounds(boroughs.getBounds());
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
 });
 // ["goToSpawn"][0]
 
@@ -204,47 +204,47 @@ $("#sorceriesModal").keypress( function(event) {
     }
 });
 $(".navbar-collapse.in").collapse("hide");
-return false;
+  return false;
 });
 $("#sorceriesModal").on('hide.bs.modal', function(){
-document.getElementById('openModal').innerText = 'false';
-document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
 });
 $("#keys-btn").click(function() {
 $("#keysModal").modal("show");
 $("#keysModal").keypress( function(event) {
-    document.getElementById("keyhandlerModalTester").innerText = event.which;
-    switch(event.which) {
-    case keypressMap["option1"][0]: // Q
-    case keypressMap["option1"][1]:
+  document.getElementById("keyhandlerModalTester").innerText = event.which;
+  switch(event.which) {
+  case keypressMap["option1"][0]: // Q
+  case keypressMap["option1"][1]:
     break;
-    case keypressMap["option2"][0]: // W
-    case keypressMap["option2"][1]:
+  case keypressMap["option2"][0]: // W
+  case keypressMap["option2"][1]:
     break;
-    case keypressMap["option3"][0]: // E
-    case keypressMap["option3"][1]:
+  case keypressMap["option3"][0]: // E
+  case keypressMap["option3"][1]:
     break;
-    case keypressMap["option4"][0]: // R
-    case keypressMap["option4"][1]:
+  case keypressMap["option4"][0]: // R
+  case keypressMap["option4"][1]:
     break;
-    }
+  }
 });
 $(".navbar-collapse.in").collapse("hide");
-return false;
+  return false;
 });
 $("#keysModal").on('hide.bs.modal', function(){
-document.getElementById('openModal').innerText = 'false';
-document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
 });
 
 $("#login-btn").click(function() {
 $("#loginModal").modal("show");
 $(".navbar-collapse.in").collapse("hide");
-return false;
+  return false;
 });
 $("#loginModal").on('hide.bs.modal', function(){
-document.getElementById('openModal').innerText = 'false';
-document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
 });
 
 // save-btn
@@ -265,56 +265,75 @@ document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0]
 
 //#region Map/ObjectiveInteraction modal handlers
 $("#battleModal").keypress( function(event) {
-switch(event.which) {
-case keypressMap["option1"][0]: // Q
-case keypressMap["option1"][1]:
-    document.getElementById("battleLogs").innerHTML += "Toad usó ataque básico!<br>";
-    document.getElementById("battleAnimation").style.display = 'inline'; //'none'
-    document.getElementById("attackAnimation").show = "electric";
+  switch(event.which) {
+  case keypressMap["option1"][0]: // Q
+  case keypressMap["option1"][1]:
+    document.getElementById("battleLogs").innerHTML += document.getElementById('playerName').innerText + " used basic attack!<br>";
+    // document.getElementById("battleAnimation").style.display = 'inline';
+    document.getElementById("attackAnimation").show = ["ElectricLvl3", 200, 11];
+    // ["ElectricLvl3",                    200, 11];
+    // ["FightShortTargetLvl1",            192, 5 ];
+    // ["FightShotgunTargetExplosionLvl2", 100, 36];
+    // ["FightShotgunTargetExplosionLvl3", 250, 15];
+    // ["FightTargetLvl2",                 192, 22];
+    // ["FireLvl2",                        160, 10];
+    // ["FireTargetBurnt",                 120, 6 ];
+    // ["FlyingLvl1",                      110, 14];
+    // ["FlyingLvl1Enemy",                 110, 14];
+    // ["GrassTargetLvl2",                 140, 12]; // cut in E+S
+    // ["IceLvl1",                         140, 12]; // rolls
+    // ["IceTargetFrozen",                 192, 15];
+    // ["NormalBasicAttackLvl1",            30, 9 ];
+    // ["PoisonLvl1",                      192, 15];
+    // ["RockLvl1",                        192, 5 ]; // cut in E
+    // ["RockLvl2",                        192, 7 ];
+    // ["SteelTargetLvl2",                 192, 22];
+    // ["WaterBasicAttackLvl1",             60, 13];
     break;
-case keypressMap["option2"][0]: // W
-case keypressMap["option2"][1]:
+  case keypressMap["option2"][0]: // W
+  case keypressMap["option2"][1]:
     if (parseFloat(document.getElementById('atk').innerHTML) > 0) {
       document.getElementById("battleLogs").innerHTML += "Toad atacó con un arma!<br>";
     } else {
       document.getElementById("battleLogs").innerHTML += "Toad intentó atacar con un arma, ¡pero no tiene!<br>";
     }
     break;
-case keypressMap["option3"][0]: // E
-case keypressMap["option3"][1]:
+  case keypressMap["option3"][0]: // E
+  case keypressMap["option3"][1]:
     break;
-case keypressMap["option4"][0]: // R
-case keypressMap["option4"][1]:
+  case keypressMap["option4"][0]: // R
+  case keypressMap["option4"][1]:
     break;
 }
 });
 $("#battleModal").on('hide.bs.modal', function(){
-document.getElementById('openModal').innerText = 'false';
-document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+  document.getElementById('battleLogs').innerText = "";
 });
 
 $("#tradeModal").keypress( function(event) {
-switch(event.which) {
-case keypressMap["option1"][0]: // Q
-case keypressMap["option1"][1]:
+  switch(event.which) {
+  case keypressMap["option1"][0]: // Q
+  case keypressMap["option1"][1]:
     document.getElementById("tradeSelection").innerHTML = "¡Has elegido el primer elemento!";
     break;
-case keypressMap["option2"][0]: // W
-case keypressMap["option2"][1]:
+  case keypressMap["option2"][0]: // W
+  case keypressMap["option2"][1]:
     break;
-case keypressMap["option3"][0]: // E
-case keypressMap["option3"][1]:
+  case keypressMap["option3"][0]: // E
+  case keypressMap["option3"][1]:
     break;
-case keypressMap["option4"][0]: // R
-case keypressMap["option4"][1]:
+  case keypressMap["option4"][0]: // R
+  case keypressMap["option4"][1]:
     break;
-}
+  }
 });
 $("#tradeModal").on('hide.bs.modal', function(){
-document.getElementById('openModal').innerText = 'false';
-document.getElementById("tradeTable").getElementsByTagName('tbody')[0].innerText = '';
-//document.getElementById('currentPlace').innerText = 'outside';
-document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
+  document.getElementById('openModal').innerText = 'false';
+  document.getElementById("tradeTable").getElementsByTagName('tbody')[0].innerText = '';
+  //document.getElementById('currentPlace').innerText = 'outside';
+  document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
 });
 
 /*["open"][0]

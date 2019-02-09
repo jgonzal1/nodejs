@@ -10,27 +10,27 @@ const pushCharacters = require('./assets/pushCharacters');
 const spawnEnemies = require('./assets/spawnEnemies'); // TODO Enemies properties + battler hearths
 // const spawnMissionPeople = require('./assets/spawnMissionPeople');
 const spawnObjectives = require('./assets/spawnObjectives');
+// TODO >>>>> Cosas mochila
 const createPlacesIcons = require('./style/createPlacesIcons');
 const spawnTransports = require('./assets/spawnTransports');
 const getKeymap = require('./data/keymap');
-// TODO To access js variables within bootstrap, load in HTML and charge bootstrap in it afterwards
 global.keymap = getKeymap();
-// TODO arreglar que se pueda clicar o usar teclado (id. unico a eventos)
+// TODO Arreglar que se pueda clicar o usar teclado (id. unico a eventos)
 // TODO Recover > < keys but for open/close doors
 const spawnRegionsAustria = require('./data/regionsAustria');
 const regionsAustria = spawnRegionsAustria();
 const spawnSites = require('./data/sites');
-const sites = spawnSites.getSites();
+const initialCoords = spawnSites.getInitialCoords()["Mirasierra.Offline"]; // España.Madrid.Mirasierra
+const sites = spawnSites.getSites(initialCoords);
 const places = spawnSites.getPlaces();
 const nPlaces = places.length;
-const initialCoords = spawnSites.getInitialCoords()["España.Madrid.Mirasierra"];
 // TODO > Start in player's location (locatePlayer in assets)
 // document.getElementById('hiddenHandlerPos').innerText.split(",")[0]/[1] + redis
 const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
 const createLargeIcon = require('./style/createLargeIcon');
 // const createBattlerIcon = require('./style/createBattlerIcon');
 const geoJsonStylers = require('./style/geoJsonStylers');
-// TODO #Risk
+// TODO @ Risk
 
 // TODO #Patrician When collide
 // TODO > Transports change velocity & zoom
@@ -38,10 +38,10 @@ const geoJsonStylers = require('./style/geoJsonStylers');
 // TODO Trading materials
 // TODO Misiones, traders
 // TODO > Traders objectives
+// TODO >>>>> Implement Attack image character movement without enemy elimination
 // TODO >>>>> #FFnn health after attack
 // TODO >>>>> #FFnn attack back
 // TODO >>>>> Trade contents and limitations
-// TODO >>>>> Sounds
 // TODO > Develop in battles modal (buttons===keys): resumeGame after closing but only with button
 // TODO #CataclysmDDA
 // TODO #RimWorld
@@ -72,11 +72,13 @@ var gameTimeStamp = new Date(1262304000000);
 global.map = L.map(
 	'map',
 	{
+		crs: L.CRS.Simple,
 		inertia: true, inertiaMaxSpeed: 1000,
 		tilt: true, // moves map
 		// w/ mobiles giroscope(deviceOrientation)
 		scrollWheelZoom: true, wheelPxPerZoomLevel: 150,
-		minZoom: 2, maxZoom: 17
+		minZoom: 13, // 2 in online tile
+		maxZoom: 15 // 17 in online tile
 	}
 );
 global.map.zoomControl.setPosition("bottomright");
@@ -84,8 +86,15 @@ const lat  = initialCoords[0]; global.lat = lat; // y
 const long = initialCoords[1]; global.long = long; // x
 const zoom = initialCoords[2]; // z
 global.map.setView([lat, long], zoom);
-global.artisticMap = L.tileLayer(
-	'http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
+const bounds = [
+	[0,0],
+	[0.2, 0.2] // watercolor
+	// [0.2346, 0.1215] // gotRisk
+];
+global.artisticMap = L.
+	imageOverlay('style/watercolor_6OMYHFBaY_I.jpeg', bounds
+	// imageOverlay('style/gotRisk.jpg', bounds
+	// tileLayer('http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
 ).addTo(global.map);
 const baseLayers = createBaseLayerAndAddMore(global.artisticMap, L);
 L.control.scale({imperial:false}).addTo(global.map);
@@ -106,18 +115,18 @@ L.control.scale({imperial:false}).addTo(global.map);
 const nAvailableAvatars = 39;
 // const files = fs.readdirSync('./sprites/player');
 // alert(files[Math.ceil(nAvailableAvatars*Math.random())]);
-const playerIcon	= L.icon(createLargeIcon('sprites/map-player/' +
-	'toad.png'
+document.getElementById('playerName').innerText = "toad";
+const playerIcon = L.icon(createLargeIcon('sprites/map-player/' + document.getElementById('playerName').innerText + '.png'
 	// files[Math.ceil(nAvailableAvatars*Math.random())]
 ));
 const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
-	'<b>Tú (Meme rookie, lvl. 1)</b>'
+	'<b>Tú ('+document.getElementById('playerName').innerText+' rookie, lvl. 1)</b>'
 );
 global.player = player;
-// TODO Multiplayer MongoDB or Redis
+// TODO @ Multiplayer MongoDB or Redis
 
 spawnEnemies(L, lat, long);
-spawnObjectives(L, lat, long); // TODO > Thirst, hunger & vol
+spawnObjectives(L, lat, long); // TODO > Thirst, hunger
 // spawnMissionPeople(L, lat, long);
 spawnTransports(L, lat, long);
 global.mCharacters = [];
@@ -156,12 +165,12 @@ if (navigator.userAgent.match('Android|X11') !== null){ // X11 es mi redmi note 
 } else {
 	global.map.on('zoomend', function() {
 		const currentZoom = global.map.getZoom();
-		if (currentZoom < 15) { // hide places
+		if (currentZoom < 9) { // 15 in online tile; hide places
 			if (global.map.hasLayer(layers)) { global.map.removeLayer(layers); }
 		} else {
 			if (global.map.hasLayer(layers) === false) { global.map.addLayer(layers); }
 		}
-		if (currentZoom < 12) { // hide characters
+		if (currentZoom < 6) { // 12 in online tile; hide characters
 			if (global.map.hasLayer(characters)) { global.map.removeLayer(characters); }
 		} else {
 			if (global.map.hasLayer(characters) === false) { global.map.addLayer(characters); }
@@ -170,7 +179,7 @@ if (navigator.userAgent.match('Android|X11') !== null){ // X11 es mi redmi note 
 }//*/
 // let moveDaemonizer;
 setInterval(function() {
-	// TODO Daemonizer in legend for weather; on add: timeLegend();
+	// TODO @ Daemonizer in legend for weather; on add: timeLegend();
 	gameTimeStamp += 36000;
 	timeLegend();
 	/*if (cryptOfTheNecromancerMode !== document.getElementById('hiddenHandlerModeCotND').innerText) {
@@ -201,7 +210,7 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
 			if (global.keymap["open"].includes(document.getElementById('hiddenHandlerKeys').innerText)) {
 				loadPlaceModal(sites, markers, function(updateMarker){
 					// TODO tradeRange min depending on how much user has
-					// TODO vendedor con mas cosas en el index (bajo tradeModal) y que lo ponga el modal
+					// TODO Vendedor con mas cosas en el index (bajo tradeModal) y que lo ponga el modal
 					markers[updateMarker].setIcon(L.icon({
 						iconUrl: 'style/places/barrier.png',
 						shadowUrl: 'style/shadow.png',

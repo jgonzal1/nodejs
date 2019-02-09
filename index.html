@@ -12,7 +12,6 @@
     <meta name="author" content="">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 4.7.0 4.4.0 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css">
@@ -67,16 +66,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js"></script>
+    <script type="text/javascript" src='assets/animateImage.js'></script>
+    <script type="text/javascript" src='assets/enemyStatsHandler.js'></script>
+    <script type="text/javascript" src='assets/healthHandler.js'></script>
+    <script type="text/javascript" src='assets/checkPlayerDeath.js'></script>
   </head>
   <body>
-    <!-- Handlers -->
+    <!-- #region Handlers -->
     <!--<div id="logs" style="display: none"></div>-->
     <div id="keypressReference" style="display: none"></div>
     <div id="keyChange" style="display: none"></div>
     <div id="hiddenHandlerKeys" style="display: none"></div>
     <div id="hiddenHandlerModeCotND" style="display: none"></div>
     <div id="hiddenHandlerPos" style="display: none"></div>
-    <!-- Top Menu --><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- #endregion -->
+    <!-- #region Top Menu -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header"> <!-- Title & Hidden settings -->
           <a class="navbar-brand" href="#">Darks Game</a>
@@ -203,7 +208,9 @@
         </div>
       </div>
     </div>
-    <!-- Left Menu & Map --><div id="container">
+    <!-- #endregion -->
+    <!-- #region Left Menu & Map -->
+    <div id="container">
       <div id="sidebar"><div class="sidebar-wrapper"><div class="panel panel-default" id="features">
         <div class="panel-heading">
           <h3 class="panel-title">
@@ -275,14 +282,15 @@
                 <div id="hiddenHandlerKeys"></div>-->
               </td>
             </tr>
-            <!--Enfrentándote a: <span id="currentBattle"></span>style="display:none;"-->
+            <!--Enfrentándote a: -->
           </tbody>
         </table></div>
       </div></div></div>
       <div id="map"></div>
     </div>
-
-    <!-- Modals --><div id="templateModal"
+    <!-- #endregion -->
+    <!-- #region Modals -->
+    <div id="templateModal"
       class="modal fade" tabindex="-1" role="dialog">
       <div class="modal-header"></div><div class="modal-body"></div>
       <div class="modal-footer">
@@ -341,7 +349,8 @@
         <span id="openModal" style="display: none">false</span>
         <div class="modal-dialog"><div class="modal-content">
           <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-            onclick="resumeGame()">&times;</button><h4 class="modal-title">Skills & Morale</h4></div>
+            onclick="resumeGame()">&times;</button><h4 class="modal-title">Skills & Morale</h4>
+            <span id="playerName"></span></div>
           <div class="modal-body">
             <table class="table table-striped"><tbody>
               <tr class="moraleRow"><td></td><td class="moraleState"></td></tr>
@@ -458,28 +467,41 @@
       <!-- #region battles -->
       <div class="modal fade" id="battleModal" tabindex="-1" role="dialog">
         <span id="openModal" style="display: none">false</span>
-        <div class="modal-dialog" style="width:720px;height:480px;"><div class="modal-content">
+        <div class="modal-dialog" style="width:720px;height:480px;" role="document"><div class="modal-content">
           <div class="modal-header"><h4 class="modal-title">Battle</h4></div>
           <div class="modal-body">
-            <img id="health-bar" src="style/interface/health-bar.png" style="display:none;">
-            <img id="toad" src="sprites/player/toad.png" style="display:none;">
-            <img id="death" src="sprites/enemies-reverse/death.png" style="display:none;">
-            <img id="dracula" src="sprites/enemies-reverse/dracula.png" style="display:none;">
-            <img id="empire1" src="sprites/enemies-reverse/empire1.png" style="display:none;">
-            <img id="empire2" src="sprites/enemies-reverse/empire2.png" style="display:none;">
-            <img id="gollum" src="sprites/enemies-reverse/gollum.png" style="display:none;">
-            <img id="jabba" src="sprites/enemies-reverse/jabba.png" style="display:none;">
-            <img id="joker" src="sprites/enemies-reverse/joker.png" style="display:none;">
-            <img id="mummy" src="sprites/enemies-reverse/mummy.png" style="display:none;">
-            <img id="phantom" src="sprites/enemies-reverse/phantom.png" style="display:none;">
+            <img id="health-bar"   src="style/interface/health-bar.png"   style="display:none;">
+            <img id="health-none"  src="style/interface/health-none.png"  style="display:none;">
+            <img id="health-min"   src="style/interface/health-min.png"   style="display:none;">
+            <img id="health-chunk" src="style/interface/health-chunk.png" style="display:none;">
+            <img id="7x10"         src="style/interface/7x10.png"         style="display:none;">
+            <img id="7x10i"        src="style/interface/7x10i.png"        style="display:none;">
+            <img id="toad"     src="sprites/player/toad.png"              style="display:none;">
+            <img id="death"    src="sprites/enemies-reverse/death.png"    style="display:none;">
+            <img id="dracula"  src="sprites/enemies-reverse/dracula.png"  style="display:none;">
+            <img id="empire1"  src="sprites/enemies-reverse/empire1.png"  style="display:none;">
+            <img id="empire2"  src="sprites/enemies-reverse/empire2.png"  style="display:none;">
+            <img id="gollum"   src="sprites/enemies-reverse/gollum.png"   style="display:none;">
+            <img id="jabba"    src="sprites/enemies-reverse/jabba.png"    style="display:none;">
+            <img id="joker"    src="sprites/enemies-reverse/joker.png"    style="display:none;">
+            <img id="mummy"    src="sprites/enemies-reverse/mummy.png"    style="display:none;">
+            <img id="phantom"  src="sprites/enemies-reverse/phantom.png"  style="display:none;">
             <img id="skeleton" src="sprites/enemies-reverse/skeleton.png" style="display:none;">
-            <img id="spider" src="sprites/enemies-reverse/spider.png" style="display:none;">
-            <canvas id="fightersCanvas" width="680" height="256" style="border:1px solid #d3d3d3; left: 0; top: 0; z-index: 0;">
-              Your browser does not support the HTML5 canvas tag.
-            </canvas>
-            <canvas id="battleAnimation" width="256" height="256" style="display: none; position: absolute; left: 0; top: 0; z-index: 1;">
-             <!--display: none;-->
-            </canvas>
+            <img id="spider"   src="sprites/enemies-reverse/spider.png"   style="display:none;">
+            <span id="currentBattle" style="display: none"></span>
+            <span id="opponentHealth" style="display: none">5</span>
+            <canvas id="fightersCanvas" width="680" height="256" style=
+              "border:1px solid #d3d3d3; position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+            <span id="hblp" style="display: none">0</span>
+            <canvas id="leftFighterCanvas" width="320" height="256" style=
+              "display: none; position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+            <span id="hbrp" style="display: none">0</span>
+            <canvas id="rightFighterCanvas" width="680" height="256" style=
+              "display: none; position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+            <span id="hbrpw" style="display: none">0</span><span id="hbrph" style="display: none">0</span>
+            <canvas id="battleAnimation" width="680" height="256" style=
+              "display: none; position: absolute; left: 200; top: 0; z-index: 1;"></canvas>
+            <canvas id="battleBorder" width="680", height="256"></canvas>
             <span id="attackAnimation"></span>
             <table class="table table-striped"><tbody>  
               <tr>
@@ -547,279 +569,210 @@
       </div>    
       <!-- endregion -->
     <!-- endregion -->
-
-    <!-- Scripts -->
+    <!-- #endregion -->
+    <!-- #region Scripts -->
     <script src="bundle.js"></script>
     <script>//src this
-    var slider = document.getElementById("tradeRange");
-    var output = document.getElementById("tradeSelectionN");
-    output.innerHTML = slider.value; // Display the default slider value
-    // Update the current slider value (each time you drag the slider handle)
-
-    // object.watch By Eli Grey (2012), public Domain.
-    if (!Object.prototype.watch) {
-      Object.defineProperty(Object.prototype, "watch", {
-          enumerable: false
-        , configurable: true
-        , writable: false
-        , value: function (prop, handler) {
-          var
-            oldval = this[prop]
-          , newval = oldval
-          , getter = function () {
-              return newval;
-          }
-          , setter = function (val) {
-              oldval = newval;
-              return newval = handler.call(this, prop, oldval, val);
-          }
-          ;
-
-          if (delete this[prop]) { // can't watch constants
-            Object.defineProperty(this, prop, {
-                get: getter
-              , set: setter
-              , enumerable: true
-              , configurable: true
-            });
-          }
-        }
-      });
-    }
-    // object.unwatch
-    if (!Object.prototype.unwatch) {
-        Object.defineProperty(Object.prototype, "unwatch", {
-              enumerable: false
-            , configurable: true
-            , writable: false
-            , value: function (prop) {
-                var val = this[prop];
-                delete this[prop]; // remove accessors
-                this[prop] = val;
-            }
-        });
-    }
-    /**
-     * @param {string} canvasHtmlId
-     * @param {string} imageSpritePath
-     * @param {number} height
-     * @param {number} numberOfFrames
-     */
-    function animateSprite(canvasHtmlId, imageSpritePath, height, numberOfFrames) {
-      var imageSprite,
-        imageSpriteImage,
-        canvas;
-      function gameLoop () {
-        window.requestAnimationFrame(gameLoop);
-        imageSprite.update();
-        imageSprite.render();
-      }
-      function sprite (options) {
-        var that = {},
-          frameIndex = 0,
-          tickCount = 0,
-          ticksPerFrame = options.ticksPerFrame || 0,
-          numberOfFrames = options.numberOfFrames || 1;
-        that.context = options.context;
-        that.width = options.width;
-        that.height = options.height;
-        that.image = options.image;
-        that.update = function () {
-                tickCount += 1;
-                if (tickCount > ticksPerFrame) {
-            tickCount = 0;
-                    if (frameIndex < numberOfFrames - 1) { // The current frame index is in range
-                        frameIndex += 1; // Go to the next frame
-            } else {
-              // frameIndex = 0;
-              that.context = null;
-              that.image = null;
-                    }
-                }
-            };
-        that.render = function () {
-          that.context.clearRect(0, 0, that.width, that.height);
-          // that.context.fillStyle = "#444444";
-          that.context.drawImage(
-            that.image,
-            frameIndex * that.width / numberOfFrames,
-            0,
-            that.width / numberOfFrames,
-            that.height,
-            0,
-            0,
-            that.width / numberOfFrames,
-            that.height
-          );
-        };
-        return that;
-      }
-      canvas = document.getElementById(canvasHtmlId);
-      imageSpriteImage = new Image(); // Create sprite sheet
-      imageSprite = sprite({ // Create sprite
-        context: canvas.getContext("2d"),
-        height: height,
-        image: imageSpriteImage,
-        numberOfFrames: numberOfFrames,
-        width: height*numberOfFrames,		
-        ticksPerFrame: Math.round(40/numberOfFrames)
-      });
-      imageSpriteImage.addEventListener("load", gameLoop); // Load sprite sheet
-      imageSpriteImage.src = imageSpritePath;
-    }
-    var attackAnimation = document.getElementById("attackAnimation");
-    attackAnimation.watch("show", function (identificador,valorViejo,valorNuevo) {
-      animateSprite("battleAnimation","sprites/visual-effects/!ElectricLvl3.png",                    200, 11 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!FightShortTargetLvl1.png",            192, 5  );
-      // animateSprite("battleAnimation","sprites/visual-effects/!FightShotgunTargetExplosionLvl2.png", 100, 36 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!FightShotgunTargetExplosionLvl3.png", 250, 15 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!FightTargetLvl2.png",                 192, 22 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!FireLvl2.png",                        160, 10 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!FireTargetBurnt.png",                 120, 6  );
-      // animateSprite("battleAnimation","sprites/visual-effects/!FlyingLvl1.png",                      110, 14 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!FlyingLvl1Enemy.png",                 110, 14 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!GrassTargetLvl2.png",                 140, 12 ); // cut in E+S
-      // animateSprite("battleAnimation","sprites/visual-effects/!IceLvl1.png",                         140, 12 ); // rolls
-      // animateSprite("battleAnimation","sprites/visual-effects/!IceTargetFrozen.png",                 192, 15 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!NormalBasicAttackLvl1.png",            30, 9  );
-      // animateSprite("battleAnimation","sprites/visual-effects/!PoisonLvl1.png",                      192, 15 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!RockLvl1.png",                        192, 5  ); // cut in E
-      // animateSprite("battleAnimation","sprites/visual-effects/!RockLvl2.png",                        192, 7  );
-      // animateSprite("battleAnimation","sprites/visual-effects/!SteelTargetLvl2.png",                 192, 22 );
-      // animateSprite("battleAnimation","sprites/visual-effects/!WaterBasicAttackLvl1.png",             60, 13 );
-      // alert(identificador + " ha cambiado de " + valorViejo + " a " + valorNuevo); return valorNuevo;
-    });
-
-    // attackAnimator("battleAnimation","sprites/visual-effects/!ElectricLvl3.png", 200, 11 );
-
-    slider.oninput = function() {
-      output.innerHTML = Math.abs(this.value);
-      if (this.value < 0) {
-        document.getElementById("tradeSelectionType").innerText = "Sell ";
-        document.getElementById("tradeConfirmation").style.display = 'inline';
-      } else if (this.value > 0) {
-        document.getElementById("tradeSelectionType").innerText = "Buy ";
-        document.getElementById("tradeConfirmation").style.display = 'inline';
-      } else {
-        document.getElementById("tradeSelectionType").innerText = "";
-        document.getElementById("tradeConfirmation").style.display = 'none';
-      }
-    }
-
-    // keyListener
-    let buttonsPushed = 0;
-    $("#map").keypress(
-        function(event) {
-            if(event.which===13) {
-                event.preventDefault();
-            }
-            buttonsPushed++;
-            if (document.getElementById("hiddenHandlerKeys").innerHTML != event.key) {
-              document.getElementById("hiddenHandlerKeys").innerHTML = event.key;
-              document.getElementById("keyChange").innerText = "true";
-            } else {
-              document.getElementById("keyChange").innerText = "false";
-            }
-                // " " + buttonsPushed + "t," + // Times called .keypress() handler
-                // " " + event.key + " key"; // Last pushed key in keyboard
-                // <p> works but is unhidden
-        }
-    );
-    //*/
-    function simulateKeyPress(character) {
-        jQuery.event//('input[type=submit][name=btnK]')
-            .trigger({
-                type: 'keypress',
-                which: character.charCodeAt(65)
-            });
-    }
-    /** @param {Number} hp */
-    function healthCanvas(hp) {
-        var c = document.getElementById("healthCanvas");
-        var ctx = c.getContext("2d");
-        var fh = document.getElementById("fh");
-        // var hh = document.getElementById("hh");
-        var lh = document.getElementById("lh");
-        ctx.drawImage(hp<1?lh:fh,0,0);
-        ctx.drawImage(hp<2?lh:fh,16,0);
-        ctx.drawImage(hp<3?lh:fh,32,0);
-        ctx.drawImage(hp<4?lh:fh,48,0);
-        ctx.drawImage(hp<5?lh:fh,64,0);
-    }
-    function showInfo() {
-        document.getElementById("infoDiv").innerHTML = global.points
-    }
-    function modeCotND() {
-        var checkBox = document.getElementById("checkModeCotND");
-        // var text = document.getElementById("text");
-        if (checkBox.checked == true){
-            document.getElementById("hiddenHandlerModeCotND").innerHTML = "false";
-            // text.style.display = "block";
+      //#region tradeSlider
+      var slider = document.getElementById("tradeRange");
+      var output = document.getElementById("tradeSelectionN");
+      output.innerHTML = slider.value; // Display the default slider value
+      // Update the current slider value (each time you drag the slider handle)
+      slider.oninput = function() {
+        output.innerHTML = Math.abs(this.value);
+        if (this.value < 0) {
+          document.getElementById("tradeSelectionType").innerText = "Sell ";
+          document.getElementById("tradeConfirmation").style.display = 'inline';
+        } else if (this.value > 0) {
+          document.getElementById("tradeSelectionType").innerText = "Buy ";
+          document.getElementById("tradeConfirmation").style.display = 'inline';
         } else {
-            document.getElementById("hiddenHandlerModeCotND").innerHTML = "true";
-            text.style.display = "none";
+          document.getElementById("tradeSelectionType").innerText = "";
+          document.getElementById("tradeConfirmation").style.display = 'none';
         }
-    }
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else { 
-            document.getElementById("hiddenHandlerPos").innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
-    function showPosition(position) {
-        document.getElementById("hiddenHandlerPos").innerHTML = position.coords.latitude + 
-        "," + position.coords.longitude;
-    }
-    /** Hides all class="containerTab", except for the one that matches the clickable grid column */
-    function openTab(tabName) {
-        var i, x;
-        x = document.getElementsByClassName("containerTab");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        document.getElementById(tabName).style.display = "block";
-    }
-    function resumeGame() {
-      document.getElementById('openModal').innerText = 'false';
-      global.battleSound.pause();
-    }
-    function loadTile() {
-      var canvas = document.getElementById("myCanvas");
-      var ctx = canvas.getContext("2d");
-      var imageObj = new Image();
-      imageObj.src = "style/visual-effects/!Explosion.png";
-
-      imageObj.onload = function() {
-        ctx.drawImage(imageObj, 0, 0);
-
-        var tilesX = 3; // 96 / 32; // imageWidth / tileWidth;
-        var tilesY = 1; // 32 / 32; // imageHeight / tileHeight;
-        var totalTiles = tilesX * tilesY;        
-        var tileData = new Array();
-        for(var i=0; i<tilesY; i++) {
-          for(var j=0; j<tilesX; j++) {           
-            // Store the image data of each tile in the array.
-            tileData.push(
-              ctx.getImageData(j*tileWidth, i*tileHeight, tileWidth, tileHeight)
-            );
-          }
-        }
-        //From here you should be able to draw your images back into a canvas like so:
-        ctx.putImageData(tileData[0], x, y);
       }
-    }
-    healthCanvas(parseFloat(document.getElementById('health').innerHTML));
-    // getLocation();
-    // var navDialogEl = document.querySelector('.missionOptionRow');
-		// var dialogOverlay = document.querySelector('.missionOptionOverlay');
-		var myDialog = new Dialog(navDialogEl, dialogOverlay);
-		myDialog.addEventListeners('.open-dialog', '.close-dialog');
+      //#endregion
+      //#region battleAnimators
+      if (!Object.prototype.watch) { // object.watch By Eli Grey (2012), public Domain.
+        Object.defineProperty(Object.prototype, "watch", {
+            enumerable: false
+          , configurable: true
+          , writable: false
+          , value: function (prop, handler) {
+            var
+              oldval = this[prop]
+            , newval = oldval
+            , getter = function () {
+                return newval;
+            }
+            , setter = function (val) {
+                oldval = newval;
+                return newval = handler.call(this, prop, oldval, val);
+            }
+            ;
+
+            if (delete this[prop]) { // can't watch constants
+              Object.defineProperty(this, prop, {
+                  get: getter
+                , set: setter
+                , enumerable: true
+                , configurable: true
+              });
+            }
+          }
+        });
+      }
+      if (!Object.prototype.unwatch) { // object.unwatch
+        Object.defineProperty(Object.prototype, "unwatch", {
+                enumerable: false
+              , configurable: true
+              , writable: false
+              , value: function (prop) {
+                  var val = this[prop];
+                  delete this[prop]; // remove accessors
+                  this[prop] = val;
+              }
+          });
+      }
+      var attackAnimation = document.getElementById("attackAnimation");
+      function resolveAfterUserAttack(animation) { 
+        return new Promise(resolve => {
+          setTimeout(() => {
+            let currentBattle = document.getElementById("currentBattle").innerText;
+            document.getElementById("battleLogs").innerHTML += currentBattle+" used basic attack!<br>";
+            dash("rightFighterCanvas", "sprites/enemies-reverse/"+currentBattle+".png", 290, 30, "R");
+            animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "R");
+            let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
+            attackSound.play();
+            enemyStatsHandler(
+              currentBattle, function(health) {
+                healthHandler(health, "l");
+                checkPlayerDeath(health);
+              }
+            );
+            resolve(animation);
+          }, 1500);
+        });
+      }
+      async function attackBack(animation) {
+        var animationDone = await resolveAfterUserAttack(animation);
+      }
+      attackAnimation.watch("show", function (watched, oldAnim, animation) {
+        dash("leftFighterCanvas", "sprites/player/toad.png", 290, 30, "L");
+        animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "L");
+        let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
+        attackSound.play();
+        attackBack(animation);
+        // alert(watched + " ha cambiado de " + oldAnim + " a " + animation);
+      });
+      //#endregion
+      //#region keyListener
+      let buttonsPushed = 0;
+      $("#map").keypress(
+        function(event) {
+          if(event.which===13) {
+            event.preventDefault();
+          }
+          buttonsPushed++;
+          if (document.getElementById("hiddenHandlerKeys").innerHTML != event.key) {
+            document.getElementById("hiddenHandlerKeys").innerHTML = event.key;
+            document.getElementById("keyChange").innerText = "true";
+          } else {
+            document.getElementById("keyChange").innerText = "false";
+          }
+          // " " + buttonsPushed + "t," + // Times called .keypress() handler
+          // " " + event.key + " key"; // Last pushed key in keyboard
+          // <p> works but is unhidden
+        }
+      );
+      function simulateKeyPress(character) {
+        jQuery.event//('input[type=submit][name=btnK]')
+          .trigger({
+            type: 'keypress',
+            which: character.charCodeAt(65)
+          });
+      }      
+      //#endregion
+      //#region front-end functions
+      function showInfo() {
+          document.getElementById("infoDiv").innerHTML = global.points
+      }
+      function modeCotND() {
+          var checkBox = document.getElementById("checkModeCotND");
+          // var text = document.getElementById("text");
+          if (checkBox.checked == true){
+              document.getElementById("hiddenHandlerModeCotND").innerHTML = "false";
+              // text.style.display = "block";
+          } else {
+              document.getElementById("hiddenHandlerModeCotND").innerHTML = "true";
+              text.style.display = "none";
+          }
+      }
+      function getLocation() {
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+          } else { 
+              document.getElementById("hiddenHandlerPos").innerHTML = "Geolocation is not supported by this browser.";
+          }
+      }
+      function showPosition(position) {
+          document.getElementById("hiddenHandlerPos").innerHTML = position.coords.latitude + 
+          "," + position.coords.longitude;
+      }
+      /** Hides all class="containerTab", except for the one that matches the clickable grid column */
+      function openTab(tabName) {
+          var i, x;
+          x = document.getElementsByClassName("containerTab");
+          for (i = 0; i < x.length; i++) {
+              x[i].style.display = "none";
+          }
+          document.getElementById(tabName).style.display = "block";
+      }
+      function resumeGame() {
+        document.getElementById('openModal').innerText = 'false';
+        global.battleSound.pause();
+      }
+      function loadTile() {
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        var imageObj = new Image();
+        imageObj.src = "style/visual-effects/!Explosion.png";
+        imageObj.onload = function() {
+          ctx.drawImage(imageObj, 0, 0);
+
+          var tilesX = 3; // 96 / 32; // imageWidth / tileWidth;
+          var tilesY = 1; // 32 / 32; // imageHeight / tileHeight;
+          var totalTiles = tilesX * tilesY;        
+          var tileData = new Array();
+          for(var i=0; i<tilesY; i++) {
+            for(var j=0; j<tilesX; j++) {           
+              // Store the image data of each tile in the array.
+              tileData.push(
+                ctx.getImageData(j*tileWidth, i*tileHeight, tileWidth, tileHeight)
+              );
+            }
+          }
+          //From here you should be able to draw your images back into a canvas like so:
+          ctx.putImageData(tileData[0], x, y);
+        }
+      }
+      // getLocation();
+      // var navDialogEl = document.querySelector('.missionOptionRow');
+      // var dialogOverlay = document.querySelector('.missionOptionOverlay');      
+      //#endregion
+      //#region responsive function calls
+      healthHandler(parseFloat(document.getElementById('health').innerHTML), "l");
+      checkPlayerDeath(parseFloat(document.getElementById('health').innerHTML));
+      var myDialog = new Dialog(navDialogEl, dialogOverlay);
+      myDialog.addEventListeners('.open-dialog', '.close-dialog');
+      //#endregion
     </script>
     <script src="assets/leaflet.groupedlayercontrol.js"></script>
+    <!-- To access js variables within bootstrap, load in HTML and charge bootstrap in it afterwards -->
     <script src="assets/bootstrapFunctions.js"></script>
     <script src="assets/modalHandlers.js"></script>
     <script src="assets/browserHandler.js"></script>
-    <script src="style/dialog.js"></script>      
+    <script src="style/dialog.js"></script>
+    <!-- #endregion -->
   </body>
 </html>

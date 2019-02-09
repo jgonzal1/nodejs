@@ -1,4 +1,6 @@
 const enemyStatsHandler = require('./enemyStatsHandler');
+const healthHandler = require('./healthHandler');
+const checkPlayerDeath = require('./checkPlayerDeath');
 const loadEnemyBattle = require('./loadEnemyBattle');
 
 const lngCorrectionArr = [ // Corrección calculada de la distorsión angular de la longitud con respecto a su latiitud
@@ -56,7 +58,7 @@ function goToPlayer(target, velocity) {
 	velocity = ( velocity || 1 );
 	const latDiff = global.player.getLatLng().lat - target.getLatLng().lat;
 	const lngDiff = global.player.getLatLng().lng - target.getLatLng().lng;
-	let forcedDirection, btc, targetName;
+	let forcedDirection, btc, targetName, health;
 	if (Math.abs(latDiff) > Math.abs(lngDiff)) {
 		if (latDiff>0) {forcedDirection='w';} else {forcedDirection='s';}
 	} else {
@@ -64,7 +66,12 @@ function goToPlayer(target, velocity) {
 	}
 	moveCharacter(target, velocity, forcedDirection);
 	if (0.0002 > Math.max(Math.abs(latDiff), Math.abs(lngDiff))) {
-		enemyStatsHandler(target.getAttribution());
+		enemyStatsHandler(
+			target.getAttribution(), function(health) {
+				healthHandler(health);
+				checkPlayerDeath(health);
+			}
+		);
 		if (
 			( document.getElementById('hiddenHandlerKeys').innerText === global.keymap["wield"][0] ||
 			document.getElementById('hiddenHandlerKeys').innerText === global.keymap["wield"][1] ) &&
@@ -81,10 +88,10 @@ function goToPlayer(target, velocity) {
 			));
 		} else {
 			targetName = target.getAttribution();
-			// document.getElementById('currentBattle').innerText = targetName;
+			document.getElementById('currentBattle').innerText = targetName;
 			loadEnemyBattle(targetName);
 			document.getElementById('openModal').innerText = 'true';
-			global.battleSound = new Audio("../sounds/wildpokemon.wav");
+			global.battleSound = new Audio("../sounds/battlers/"+targetName+"1.wav");
 			global.battleSound.play();
 			$("#battleModal").modal("show");
 			$(".navbar-collapse.in").collapse("hide");			
