@@ -5,7 +5,7 @@ let itemDescription;
 let displayAttackPositionAlert = true;
 
 function pickOrSearchNearest() {
-    //alert('Calculando distancia...');
+    // alert('Calculando distancia...');
     const distancesArray = [
         fcalcDist(global.backpack),
         fcalcDist(global.burger),

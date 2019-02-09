@@ -161,7 +161,7 @@ function onMapClick(e) {
 			if (document.getElementById('openModal').innerText === 'false') {
 				moveCharacter(global.player, vel, forcedDirection);
 			}
-			//alert(vars + "strings"); works
+			// alert(vars + "strings"); works
 			if (defaultMovementLength/50000 > Math.max(latDiffAbs, lngDiffAbs)) {
 				clearInterval(mouseClickDaemonizer);
 				mouseMoved = false;

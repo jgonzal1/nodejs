@@ -1,3 +1,5 @@
+ToDo list:
+```
 @ Daemonizer in legend for weather; on add: timeLegend(); (28., From file:///e%3A/nodejs/game.js#168)
 @ Multiplayer MongoDB or Redis (26., From file:///e%3A/nodejs/game.js#113)
 @ Risk (9., From file:///e%3A/nodejs/game.js#32)
@@ -13,8 +15,7 @@
 > Thirst, hunger (27., From file:///e%3A/nodejs/game.js#116)
 > Traders objectives (16., From file:///e%3A/nodejs/game.js#40)
 > Transports change velocity & zoom (12., From file:///e%3A/nodejs/game.js#36)
->>>>> #FFnn attack back (17., From file:///e%3A/nodejs/game.js#42)
->>>>> #FFnn health after attack (17., From file:///e%3A/nodejs/game.js#41)
+>>>>> #FFnn attack enemy health in index 663 (17., From file:///e%3A/nodejs/game.js#41)
 >>>>> Attack image character movement without enemy elimination (18., From file:///e%3A/nodejs/game.js#40)
 >>>>> Colores Tileset (24., From file:///e%3A/nodejs/game.js#89)
 >>>>> Cosas mochila (17., From file:///e%3A/nodejs/game.js#13)
@@ -37,3 +38,4 @@ Velocity within ingame options so anyone can handle and keyHandler is not depend
 Vendedor con mas cosas en el index (bajo tradeModal) y que lo ponga el modal (31., From file:///e%3A/nodejs/game.js#199)
 Virtual assistant in help / how to play (35., From file:///e%3A/nodejs/game.js#370)
 Weather and region dependencies in legend? (34., From file:///e%3A/nodejs/game.js#367)
+```
