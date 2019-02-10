@@ -666,7 +666,7 @@
         attackSound.play();
         document.getElementById('opponentHealth').innerHTML -= atk;
         const opponentHealthAfterPlayerHit = opponentHealth - atk;
-        healthHandler(opponentHealthAfterPlayerHit, "r", maxOpponentHealth) //TODO function of atk, total health of the enemy and a callback before to amke
+        healthHandler(opponentHealthAfterPlayerHit, "r", maxOpponentHealth);
         attackBack(animation);
         // alert(watched + " ha cambiado de " + oldAnim + " a " + animation);
       });
