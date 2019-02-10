@@ -42,7 +42,7 @@ function targetFleeFromPlayer(target, velocity, player) {
 }
 
 function targetGoToPlayer(target, velocity, player) {
-	velocity = ( velocity || 1 );
+	velocity = ( velocity || 2 );
 	const latDiff = player.getLatLng().lat - target.getLatLng().lat;
 	const lngDiff = player.getLatLng().lng - target.getLatLng().lng;
 	let forcedDirection;
@@ -55,7 +55,7 @@ function targetGoToPlayer(target, velocity, player) {
 }
 
 function goToPlayer(target, velocity) {
-	velocity = ( velocity || 1 );
+	velocity = ( velocity || 2 );
 	const latDiff = global.player.getLatLng().lat - target.getLatLng().lat;
 	const lngDiff = global.player.getLatLng().lng - target.getLatLng().lng;
 	let forcedDirection, btc, targetName, health;
@@ -104,7 +104,7 @@ function goToPlayer(target, velocity) {
 }
 
 function moveCharacter(character, velocity, forceDirection) { // 80km/h | 12x
-	velocity = ( velocity || 1 );
+	velocity = ( velocity || 2 );
 	velLng = velocity*lngCorrectionArr[Math.round(global.lat)];
 	switch (forceDirection) { //forceDirection
 	case global.keymap["moveNorth"][0]:

@@ -1,6 +1,6 @@
 const createIcon = require('../style/createIcon');
 const createBattlerIcon = require('../style/createBattlerIcon');
-const cercania = 60; // 70 online
+const cercania = 30; // 70 online
 
 /**
  * @param {string} name 

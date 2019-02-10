@@ -57,7 +57,7 @@ var refreshRate, defaultMovementLength;
 if (cryptOfTheNecromancerMode === "true") { refreshRate = 460; }
 // 500 asume <5ms delays! // 500 w/ 120 BPM music
 else { refreshRate = 33; } // 30+ FPS
-defaultMovementLength = refreshRate * velocity;
+defaultMovementLength = refreshRate * velocity * 2;
 var mouseMoved; // = false;
 global.layerToRemove = undefined;
 global.points = 0;
@@ -185,7 +185,7 @@ setInterval(function() {
 		if (typeof(cryptOfTheNecromancerMode) === 'string') {clearInterval(moveDaemonizer);}
 		if (cryptOfTheNecromancerMode === "true") { refreshRate = 500; } // 120 BPM
 		else { refreshRate = 33; } // 30+ FPS
-		defaultMovementLength = refreshRate * velocity;
+		defaultMovementLength = refreshRate * velocity * 2;
 	}*/
 }, 3000); // globalEventsDaemonizer*/
 
