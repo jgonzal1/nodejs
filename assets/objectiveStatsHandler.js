@@ -12,7 +12,10 @@ function objectiveStatsHandler(objective) {
     case "backpack":
         // room += 8;
         // document.getElementById('room').innerHTML = room;
-        document.getElementById('backpack').style = "";
+        document.getElementById('storageMethodDisplay').src = "style/interface/equipment.png";
+        document.getElementById('storageMethodDisplay').style.height = "32px";
+        document.getElementById('storageMethod').innerText = "Backpack";
+        document.getElementById('storageRoom').style.display = "";
         return "8L de almacenamiento de un objeto de 4L";
     case "burger":
         health += 4;

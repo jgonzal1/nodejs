@@ -270,10 +270,15 @@
               <td><img src="style/interface/batcoin.png" style="width:16px;height:16px;"></td>
               <td>BatCoins</td>
               <td align="right"><span id="btc">0</span> <img src="style/interface/coin-point.png"></td>
-            </tr><tr id="backpack" style="display:none;">
-              <td><img src="style/interface/equipment.png" style="width:32px;height:32px;"></td>
-              <td>Mochila</td>
-              <td align="right"><span id="room">0</span>/8L <img src="style/interface/space.gif"></td>
+            </tr><tr>
+              <td colspan="3"> <table border="3" cellpadding="3" cellspacing="3" style="width:100%">
+                <tr id="storage">
+                  <td><img id="storageMethodDisplay" src="style/interface/hand.png" style="width:32px;height:12px;"></td>
+                  <td id="storageMethod">Bare hands</td>
+                  <td align="right"><span id="storageRoom" style="display: none"><span id="room">0</span>/8L <img src="style/interface/space.gif"></span></td>
+                </tr>
+                <tr style="display: none"> <td><!--img-->&nbsp;</td>  <td><!--descr-->&nbsp;</td>  <td align="right"><!--quant-->&nbsp;</td> </tr>
+              </table> </td>
             </tr><tr><!-- Tests -->
               <td><canvas id="floorColorSniffCanvas" width="16" height="16"></canvas></td>
               <td>

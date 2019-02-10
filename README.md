@@ -1,7 +1,5 @@
 ToDo list:
 ```
->>>>> #FFnn #FFnn kill enemy after attack below 0 (17., From file:///e%3A/nodejs/game.js#41)
-
 >>> Cosas mochila (17., From file:///e%3A/nodejs/game.js#13)
 >>> Trade contents and limitations (17., From file:///e%3A/nodejs/game.js#43)
 

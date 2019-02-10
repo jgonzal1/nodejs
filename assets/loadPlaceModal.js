@@ -25,8 +25,8 @@ function loadPlaceModal(sites, markers, callback) {
     place = markers[nearestPlaceIndex].getPopup().getContent();
     //document.getElementById('currentPlace').innerText = place;
     // document.getElementById('logs').innerText = Math.round(Math.random()*100).toString() + ' ' ;
-    if (document.getElementById("backpack").style.display !== 'none') {
-        if (nearestObjective < 0.0002) {
+    if (document.getElementById("storageMethod").innerText === "Backpack") {
+        if (nearestObjective < 0.0004) {
             var tradeTable = document.getElementById("tradeTable").getElementsByTagName('tbody')[0];
             switch (place) {
             case 'blockhouses':
