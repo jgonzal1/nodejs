@@ -272,6 +272,7 @@ $("#battleModal").keypress( function(event) {
   case keypressMap["option1"][1]:
     document.getElementById("battleLogs").innerHTML += playerName + " used basic attack!<br>";
     // document.getElementById("battleAnimation").style.display = 'inline';
+    // animation source
     document.getElementById("attackAnimation").show = ["ElectricLvl3", 200, 11];
     // ["ElectricLvl3",                    200, 11];
     // ["FightShortTargetLvl1",            192, 5 ];
@@ -312,6 +313,7 @@ $("#battleModal").on('hide.bs.modal', function(){
   document.getElementById('openModal').innerText = 'false';
   document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
   document.getElementById('battleLogs').innerText = "";
+  document.getElementById("btnEscapeBattle").textContent = "Intenta huir";
 });
 
 $("#tradeModal").keypress( function(event) {

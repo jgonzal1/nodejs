@@ -5,6 +5,7 @@ function checkEnemyDeathOnModal(health) {
             var ec = document.getElementById("fightersCanvas");
             var eCtx = ec.getContext("2d");
             eCtx.clearRect(320, 0, ec.width, ec.height);
+            document.getElementById("btnEscapeBattle").textContent = "Cerrar";
         } catch (e) { // HTML
             alert(e);
         }

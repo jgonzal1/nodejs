@@ -519,7 +519,7 @@
                   <!--warning Yellow-->
                 </td><td class="fightOption4">
                   <button type="button" class="btn btn-danger" style="width: 100%" data-dismiss="modal" aria-hidden="true"
-                    onclick="resumeGame()">Intenta huir</button>
+                    onclick="resumeGame()" id="btnEscapeBattle">Intenta huir</button>
                 </td>
               </tr>
             </tbody></table>
@@ -635,28 +635,30 @@
           });
       }
       var attackAnimation = document.getElementById("attackAnimation");
-      function resolveAfterUserAttack(animation) { 
+      function resolveAfterUserAttack(animation, opponentHealthAfterPlayerHit) {
         return new Promise(resolve => {
           setTimeout(() => {
-            let currentEnemyBattler = document.getElementById("currentEnemyBattler").innerText;
-            const currentEnemyBattlerProper = currentEnemyBattler.charAt(0).toUpperCase() + currentEnemyBattler.substr(1).toLowerCase();
-            document.getElementById("battleLogs").innerHTML += currentEnemyBattlerProper+" used basic attack!<br>";
-            dash("rightFighterCanvas", "sprites/enemies-reverse/"+currentEnemyBattler+".png", 290, 30, "R");
-            animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "R");
-            let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
-            attackSound.play();
-            enemyStatsHandler(
-              currentEnemyBattler, function(health) {
-                healthHandler(health, "l");
-                checkPlayerDeath(health);
-              }
-            );
+            if (opponentHealthAfterPlayerHit > 0) {
+              let currentEnemyBattler = document.getElementById("currentEnemyBattler").innerText;
+              const currentEnemyBattlerProper = currentEnemyBattler.charAt(0).toUpperCase() + currentEnemyBattler.substr(1).toLowerCase();
+              document.getElementById("battleLogs").innerHTML += currentEnemyBattlerProper+" used basic attack!<br>";
+              dash("rightFighterCanvas", "sprites/enemies-reverse/"+currentEnemyBattler+".png", 290, 30, "R");
+              animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "R");
+              let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
+              attackSound.play();
+              enemyStatsHandler(
+                currentEnemyBattler, function(health) {
+                  healthHandler(health, "l");
+                  checkPlayerDeath(health);
+                }
+              );
+            }
             resolve(animation);
           }, 1500);
         });
       }
-      async function attackBack(animation) {
-        var animationDone = await resolveAfterUserAttack(animation);
+      async function attackBack(animation, opponentHealthAfterPlayerHit) {
+        var animationDone = await resolveAfterUserAttack(animation, opponentHealthAfterPlayerHit);
       }
       attackAnimation.watch("show", function (watched, oldAnim, animation) {
         const atk = parseFloat(document.getElementById('atk').innerHTML);
@@ -670,7 +672,7 @@
         const opponentHealthAfterPlayerHit = opponentHealth - atk;
         healthHandler(opponentHealthAfterPlayerHit, "r", maxOpponentHealth);
         checkEnemyDeathOnModal(opponentHealthAfterPlayerHit);
-        attackBack(animation);
+        attackBack(animation, opponentHealthAfterPlayerHit);
         // alert(watched + " ha cambiado de " + oldAnim + " a " + animation);
       });
       //#endregion
