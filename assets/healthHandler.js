@@ -10,8 +10,9 @@ document.getElementById('hbrph').innerText = hbhp[1];
 /** @param {number} hp 
  *  @param {l_OR_r} side 
  */
-function healthHandler(hp, side) {
+function healthHandler(hp, side, maxHp) {
     side = side || "l";
+    maxHp = maxHp || 5;
     var healthBarPointerInCanvas;
     var ec = document.getElementById("fightersCanvas");
     var eCtx = ec.getContext("2d");
@@ -53,7 +54,6 @@ function healthHandler(hp, side) {
 
         document.getElementById('health').innerText = hp;
     } else if (side === "r") {
-
         healthBarPointerInCanvas = 490;
 
         // drawImage (img, cnv_x_i, cnv_y_i, img_w, img_h)
@@ -62,18 +62,16 @@ function healthHandler(hp, side) {
             hc,
             healthBarPointerInCanvas+hbhp[0],
             hbhp[1],
-            ( hp>5 ? 50 : (hp<0 ? 0 : 10*hp) ),
+            (hp<0 ? 0 : Math.round(50*hp/maxHp)),
             7
         );
         eCtx.drawImage( // void health
             hn,
-            ( hp>5 ? 50+healthBarPointerInCanvas+hbhp[0] : (10*hp)+healthBarPointerInCanvas+hbhp[0] ),
+            Math.round(50*hp/maxHp) + healthBarPointerInCanvas+hbhp[0],
             hbhp[1],
-            ( hp>5 ? 0                                   : 50-10*hp ),
+            Math.round(50*(1-hp/maxHp)),
             7
         );
-
-        document.getElementById('opponentHealth').innerText = hp;
     }
 }
 
