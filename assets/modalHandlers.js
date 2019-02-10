@@ -265,10 +265,12 @@ $("#loginModal").on('hide.bs.modal', function(){
 
 //#region Map/ObjectiveInteraction modal handlers
 $("#battleModal").keypress( function(event) {
+  const playerNameLower = document.getElementById('playerName').innerText;
+  const playerName = playerNameLower.charAt(0).toUpperCase() + playerNameLower.substr(1).toLowerCase();
   switch(event.which) {
   case keypressMap["option1"][0]: // Q
   case keypressMap["option1"][1]:
-    document.getElementById("battleLogs").innerHTML += document.getElementById('playerName').innerText + " used basic attack!<br>";
+    document.getElementById("battleLogs").innerHTML += playerName + " used basic attack!<br>";
     // document.getElementById("battleAnimation").style.display = 'inline';
     document.getElementById("attackAnimation").show = ["ElectricLvl3", 200, 11];
     // ["ElectricLvl3",                    200, 11];
@@ -292,7 +294,7 @@ $("#battleModal").keypress( function(event) {
     break;
   case keypressMap["option2"][0]: // W
   case keypressMap["option2"][1]:
-    if (parseFloat(document.getElementById('atk').innerHTML) > 0) {
+    if (parseFloat(document.getElementById('atk').innerHTML) > 1) {
       document.getElementById("battleLogs").innerHTML += "Toad atacó con un arma!<br>";
     } else {
       document.getElementById("battleLogs").innerHTML += "Toad intentó atacar con un arma, ¡pero no tiene!<br>";

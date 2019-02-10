@@ -70,6 +70,7 @@
     <script type="text/javascript" src='assets/enemyStatsHandler.js'></script>
     <script type="text/javascript" src='assets/healthHandler.js'></script>
     <script type="text/javascript" src='assets/checkPlayerDeath.js'></script>
+    <script type="text/javascript" src='assets/checkEnemyDeathOnModal.js'></script>
   </head>
   <body>
     <!-- #region Handlers -->
@@ -638,7 +639,8 @@
         return new Promise(resolve => {
           setTimeout(() => {
             let currentEnemyBattler = document.getElementById("currentEnemyBattler").innerText;
-            document.getElementById("battleLogs").innerHTML += currentEnemyBattler+" used basic attack!<br>";
+            const currentEnemyBattlerProper = currentEnemyBattler.charAt(0).toUpperCase() + currentEnemyBattler.substr(1).toLowerCase();
+            document.getElementById("battleLogs").innerHTML += currentEnemyBattlerProper+" used basic attack!<br>";
             dash("rightFighterCanvas", "sprites/enemies-reverse/"+currentEnemyBattler+".png", 290, 30, "R");
             animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "R");
             let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
@@ -667,6 +669,7 @@
         document.getElementById('opponentHealth').innerHTML -= atk;
         const opponentHealthAfterPlayerHit = opponentHealth - atk;
         healthHandler(opponentHealthAfterPlayerHit, "r", maxOpponentHealth);
+        checkEnemyDeathOnModal(opponentHealthAfterPlayerHit);
         attackBack(animation);
         // alert(watched + " ha cambiado de " + oldAnim + " a " + animation);
       });

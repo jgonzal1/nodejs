@@ -163,7 +163,7 @@ function keyHandler(velocity) {
 		case global.keymap["wield"][0]:
 		case global.keymap["wield"][1]:
 			atk = parseFloat(document.getElementById('atk').innerHTML);
-			if (atk === 0) {
+			if (atk < 2) {
 				alert('¡Necesitas un arma para activar la posición de ataque!');		
 			} else {
 				if (document.getElementById('openModal').innerText === 'false') {

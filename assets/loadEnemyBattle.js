@@ -1,5 +1,6 @@
 const healthHandler = require("./healthHandler");
 const checkPlayerDeath = require("./checkPlayerDeath");
+const checkEnemyDeathOnModal = require("./checkEnemyDeathOnModal");
 
 const enemySelfHitpoints = {
     "death":       9, 
@@ -38,6 +39,7 @@ function loadEnemyBattle(enemyName) {
     healthHandler(health);
     checkPlayerDeath(health);
     healthHandler(opponentHealth,'r',opponentHealth);
+    checkEnemyDeathOnModal(opponentHealth);
     // eCtx.drawImage(healthMin, global.hbrp+healthBarLifePos[0], 0+healthBarLifePos[1]);
     // eCtx.drawImage(healthChunk, global.hbrp+10+healthBarLifePos[0], 0+healthBarLifePos[1]);
 }
