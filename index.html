@@ -70,6 +70,7 @@
     <script type="text/javascript" src='assets/enemyStatsHandler.js'></script>
     <script type="text/javascript" src='assets/healthHandler.js'></script>
     <script type="text/javascript" src='assets/checkPlayerDeath.js'></script>
+    <script type="text/javascript" src='assets/checkEnemyDeathOnModal.js'></script>
   </head>
   <body>
     <!-- #region Handlers -->
@@ -269,10 +270,15 @@
               <td><img src="style/interface/batcoin.png" style="width:16px;height:16px;"></td>
               <td>BatCoins</td>
               <td align="right"><span id="btc">0</span> <img src="style/interface/coin-point.png"></td>
-            </tr><tr id="backpack" style="display:none;">
-              <td><img src="style/interface/equipment.png" style="width:32px;height:32px;"></td>
-              <td>Mochila</td>
-              <td align="right"><span id="room">0</span>/8L <img src="style/interface/space.gif"></td>
+            </tr><tr><!-- Storage -->
+              <td colspan="3"> <table border="3" cellpadding="3" cellspacing="3" style="width:100%">
+                <tr id="storage">
+                  <td><img id="storageMethodDisplay" src="style/interface/hand.png" style="width:32px;height:12px;"></td>
+                  <td id="storageMethod">Bare hands</td>
+                  <td align="right"><span id="storageRoom" style="display: none"><span id="room">0</span>/8L <img src="style/interface/space.gif"></span></td>
+                </tr>
+                <tr style="display: none"> <td><!--img-->&nbsp;</td>  <td><!--descr-->&nbsp;</td>  <td align="right"><!--quant-->&nbsp;</td> </tr>
+              </table> </td>
             </tr><tr><!-- Tests -->
               <td><canvas id="floorColorSniffCanvas" width="16" height="16"></canvas></td>
               <td>
@@ -518,7 +524,7 @@
                   <!--warning Yellow-->
                 </td><td class="fightOption4">
                   <button type="button" class="btn btn-danger" style="width: 100%" data-dismiss="modal" aria-hidden="true"
-                    onclick="resumeGame()">Intenta huir</button>
+                    onclick="resumeGame()" id="btnEscapeBattle">Intenta huir</button>
                 </td>
               </tr>
             </tbody></table>
@@ -634,27 +640,30 @@
           });
       }
       var attackAnimation = document.getElementById("attackAnimation");
-      function resolveAfterUserAttack(animation) { 
+      function resolveAfterUserAttack(animation, opponentHealthAfterPlayerHit) {
         return new Promise(resolve => {
           setTimeout(() => {
-            let currentEnemyBattler = document.getElementById("currentEnemyBattler").innerText;
-            document.getElementById("battleLogs").innerHTML += currentEnemyBattler+" used basic attack!<br>";
-            dash("rightFighterCanvas", "sprites/enemies-reverse/"+currentEnemyBattler+".png", 290, 30, "R");
-            animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "R");
-            let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
-            attackSound.play();
-            enemyStatsHandler(
-              currentEnemyBattler, function(health) {
-                healthHandler(health, "l");
-                checkPlayerDeath(health);
-              }
-            );
+            if (opponentHealthAfterPlayerHit > 0) {
+              let currentEnemyBattler = document.getElementById("currentEnemyBattler").innerText;
+              const currentEnemyBattlerProper = currentEnemyBattler.charAt(0).toUpperCase() + currentEnemyBattler.substr(1).toLowerCase();
+              document.getElementById("battleLogs").innerHTML += currentEnemyBattlerProper+" used basic attack!<br>";
+              dash("rightFighterCanvas", "sprites/enemies-reverse/"+currentEnemyBattler+".png", 290, 30, "R");
+              animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "R");
+              let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
+              attackSound.play();
+              enemyStatsHandler(
+                currentEnemyBattler, function(health) {
+                  healthHandler(health, "l");
+                  checkPlayerDeath(health);
+                }
+              );
+            }
             resolve(animation);
           }, 1500);
         });
       }
-      async function attackBack(animation) {
-        var animationDone = await resolveAfterUserAttack(animation);
+      async function attackBack(animation, opponentHealthAfterPlayerHit) {
+        var animationDone = await resolveAfterUserAttack(animation, opponentHealthAfterPlayerHit);
       }
       attackAnimation.watch("show", function (watched, oldAnim, animation) {
         const atk = parseFloat(document.getElementById('atk').innerHTML);
@@ -667,7 +676,8 @@
         document.getElementById('opponentHealth').innerHTML -= atk;
         const opponentHealthAfterPlayerHit = opponentHealth - atk;
         healthHandler(opponentHealthAfterPlayerHit, "r", maxOpponentHealth);
-        attackBack(animation);
+        checkEnemyDeathOnModal(opponentHealthAfterPlayerHit);
+        attackBack(animation, opponentHealthAfterPlayerHit);
         // alert(watched + " ha cambiado de " + oldAnim + " a " + animation);
       });
       //#endregion

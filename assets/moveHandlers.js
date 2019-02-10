@@ -75,7 +75,7 @@ function goToPlayer(target, velocity) {
 		if (
 			( document.getElementById('hiddenHandlerKeys').innerText === global.keymap["wield"][0] ||
 			document.getElementById('hiddenHandlerKeys').innerText === global.keymap["wield"][1] ) &&
-			parseFloat(document.getElementById('atk').innerHTML) > 0
+			parseFloat(document.getElementById('atk').innerHTML) > 1
 		) {
 			// global.layerToRemove = target.getAttribution();
 			btc = parseFloat(document.getElementById('btc').innerHTML);

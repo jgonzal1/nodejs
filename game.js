@@ -38,7 +38,6 @@ const geoJsonStylers = require('./style/geoJsonStylers');
 // TODO Trading materials
 // TODO Misiones, traders
 // TODO > Traders objectives
-// TODO >>>>> #FFnn kill enemy after attack below 0
 // TODO >>> Trade contents and limitations
 // TODO > Develop in battles modal (buttons===keys): resumeGame after closing but only with button
 // TODO #CataclysmDDA
@@ -95,7 +94,7 @@ global.artisticMap = L.
 	// tileLayer('http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
 ).addTo(global.map);
 const baseLayers = createBaseLayerAndAddMore(global.artisticMap, L);
-L.control.scale({imperial:false}).addTo(global.map);
+// L.control.scale({imperial:false}).addTo(global.map); // Only in online
 // TODO > Spawn con lng correction
 // TODO > Colores Tileset
 // Blanco: mover 1x;
