@@ -10,8 +10,8 @@ tradeMatrix["goldBuyPrice"] = 4100000*/
 function loadPlaceModal(sites, markers, callback) {
     playerComparer = 
         math.zeros(1, sites.length).valueOf() .concat(
-        math.multiply( math.ones( 1,  sites.length ), global.player.getLatLng().lat ).valueOf() ,
-        math.multiply( math.ones( 1,  sites.length ), global.player.getLatLng().lng ).valueOf() )
+        math.multiply( math.ones( 1, sites.length ), global.player.getLatLng().lat ).valueOf() ,
+        math.multiply( math.ones( 1, sites.length ), global.player.getLatLng().lng ).valueOf() )
     ;
     coordsDiff =
         math.abs( math.subtract(
@@ -137,10 +137,13 @@ function loadPlaceModal(sites, markers, callback) {
 /** @typedef HTML.table @type {object} @type {HTML.table} */
 /**
  * @param {HTML.table} tradeTable
- * @param {string} tradeType
+ * document.getElementById("tradeTable").getElementsByTagName('tbody')[0];
+ * @param {string} tradeType 'buy' | 'change' | 'sell'
  * @param {string} tradingMaterial
+ * 'beer' | 'bricks' | 'fish'   | 'gold' | 'grain' | 'iron' |
+ * 'meat' | 'salt'   | 'spices' | 'wine' | 'wood'  | 'wool
  * @param {number} quantity
- * @param {string} price
+ * @param {string} price 'Delux' | 'Cheap' | 'Norml'
  */
 function setTradingMaterialRow(tradeTable, tradeType, tradingMaterial, quantity, price) {
     /*Cell(c)
