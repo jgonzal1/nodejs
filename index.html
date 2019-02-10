@@ -256,7 +256,7 @@
             </tr><tr><!-- Ataque -->
               <td><img src="style/interface/attack.png" style="width:16px;height:16px;"></td>
               <td>Ataque</td>
-              <td align="right"><span id="atk">0</span> <img src="style/interface/atk-point.png"></td>
+              <td align="right"><span id="atk">1</span> <img src="style/interface/atk-point.png"></td>
             </tr><tr><!-- Defensa -->
               <td><img src="style/interface/defense.png" style="width:16px;height:16px;"></td>
               <td>Defensa</td>
@@ -264,7 +264,7 @@
             </tr><tr><!-- Velocidad -->
               <td><img src="style/interface/run.png" style="width:16px;height:16px;"></td>
               <td>Velocidad (indev)</td>
-              <td align="right"><span id="vel">1</span> <img src="style/interface/velocity.png"></td>
+              <td align="right"><span id="vel">2</span> <img src="style/interface/velocity.png"></td>
             </tr><tr><!-- BatCoins -->
               <td><img src="style/interface/batcoin.png" style="width:16px;height:16px;"></td>
               <td>BatCoins</td>
@@ -486,8 +486,9 @@
             <img id="phantom"  src="sprites/enemies-reverse/phantom.png"  style="display:none;">
             <img id="skeleton" src="sprites/enemies-reverse/skeleton.png" style="display:none;">
             <img id="spider"   src="sprites/enemies-reverse/spider.png"   style="display:none;">
-            <span id="currentBattle" style="display: none"></span>
-            <span id="opponentHealth" style="display: none">5</span>
+            <span id="currentEnemyBattler" style="display: none"></span>
+            <span id="opponentHealth" style="display: none"></span>
+            <span id="maxOpponentHealth" style="display: none"></span>
             <canvas id="fightersCanvas" width="680" height="256" style=
               "border:1px solid #d3d3d3; position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
             <span id="hblp" style="display: none">0</span>
@@ -636,14 +637,14 @@
       function resolveAfterUserAttack(animation) { 
         return new Promise(resolve => {
           setTimeout(() => {
-            let currentBattle = document.getElementById("currentBattle").innerText;
-            document.getElementById("battleLogs").innerHTML += currentBattle+" used basic attack!<br>";
-            dash("rightFighterCanvas", "sprites/enemies-reverse/"+currentBattle+".png", 290, 30, "R");
+            let currentEnemyBattler = document.getElementById("currentEnemyBattler").innerText;
+            document.getElementById("battleLogs").innerHTML += currentEnemyBattler+" used basic attack!<br>";
+            dash("rightFighterCanvas", "sprites/enemies-reverse/"+currentEnemyBattler+".png", 290, 30, "R");
             animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "R");
             let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
             attackSound.play();
             enemyStatsHandler(
-              currentBattle, function(health) {
+              currentEnemyBattler, function(health) {
                 healthHandler(health, "l");
                 checkPlayerDeath(health);
               }
@@ -656,11 +657,16 @@
         var animationDone = await resolveAfterUserAttack(animation);
       }
       attackAnimation.watch("show", function (watched, oldAnim, animation) {
+        const atk = parseFloat(document.getElementById('atk').innerHTML);
+        const opponentHealth = parseFloat(document.getElementById('opponentHealth').innerHTML);
+        const maxOpponentHealth = parseFloat(document.getElementById('maxOpponentHealth').innerHTML);
         dash("leftFighterCanvas", "sprites/player/toad.png", 290, 30, "L");
         animateAttack("battleAnimation", "sprites/visual-effects/!" + animation[0] + ".png", animation[1], animation[2], "L");
         let attackSound = new Audio("sounds/battle/shot" + animation[0] + "1.wav");
         attackSound.play();
-        healthHandler(5, "r") //TODO function of atk, total health of the enemy and a callback before to amke
+        document.getElementById('opponentHealth').innerHTML -= atk;
+        const opponentHealthAfterPlayerHit = opponentHealth - atk;
+        healthHandler(opponentHealthAfterPlayerHit, "r", maxOpponentHealth);
         attackBack(animation);
         // alert(watched + " ha cambiado de " + oldAnim + " a " + animation);
       });

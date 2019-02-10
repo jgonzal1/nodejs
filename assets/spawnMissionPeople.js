@@ -1,5 +1,5 @@
 const createLargeIcon = require('../style/createLargeIcon');
-const cercania = 300;
+const cercania = 10;
 
 /** @typedef L.icon @type {object} @type {L.icon} */
 function spawnMissionPeople() {

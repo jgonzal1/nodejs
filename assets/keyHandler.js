@@ -6,7 +6,7 @@ const nStepSounds = 9, nAttackSounds = 8;
 let stepSound, attackSound;
 
 function keyHandler(velocity) {
-	velocity = ( velocity || 1 );
+	velocity = ( velocity || 2 );
     let atk;
 	const pressedKey = document.getElementById('hiddenHandlerKeys').innerText;
 	if (document.getElementById("keyChange").innerText != "false") { switch (pressedKey) {

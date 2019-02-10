@@ -1,5 +1,5 @@
 const createIcon = require('../style/createIcon');
-const cercania = 80; // 600 para tests, 40 normal
+const cercania = 60; // 100 para tests, 40 normal
 
 /** @typedef L.icon @type {object} @type {L.icon} */
 function spawnObjectives() {

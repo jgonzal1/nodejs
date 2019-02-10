@@ -1,5 +1,5 @@
 const createIcon = require('../style/createIcon');
-const cercania = 10;
+const cercania = 5; // 20 online
 
 function spawnTransports() {
 	const balloonIcon		= L.icon(createIcon('sprites/map-transports/balloon.png',50));
