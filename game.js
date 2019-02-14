@@ -123,7 +123,7 @@ const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
 	'<b>Tú ('+document.getElementById('playerName').innerText+' rookie, lvl. 1)</b>'
 );
 global.player = player;
-// TODO @ Multiplayer MongoDB or Redis
+// TODO @ Multiplayer on Redis
 
 spawnEnemies(L, lat, long);
 spawnObjectives(L, lat, long); // TODO > Thirst, hunger

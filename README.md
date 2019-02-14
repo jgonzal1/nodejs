@@ -1,5 +1,5 @@
 @ Daemonizer in legend for weather; on add: timeLegend(); (28., From file:///e%3A/nodejs/game.js#168)
-@ Multiplayer MongoDB or Redis (26., From file:///e%3A/nodejs/game.js#113)
+@ Multiplayer Redis (26., From file:///e%3A/nodejs/game.js#113)
 @ Risk (9., From file:///e%3A/nodejs/game.js#32)
 #CataclysmDDA (18., From file:///e%3A/nodejs/game.js#42)
 #CotND (20., From file:///e%3A/nodejs/game.js#44)
