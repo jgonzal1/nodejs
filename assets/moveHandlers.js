@@ -42,7 +42,7 @@ function targetFleeFromPlayer(target, velocity, player) {
 }
 
 function targetGoToPlayer(target, velocity, player) {
-	velocity = ( velocity || 1 );
+	velocity = ( velocity || 2 );
 	const latDiff = player.getLatLng().lat - target.getLatLng().lat;
 	const lngDiff = player.getLatLng().lng - target.getLatLng().lng;
 	let forcedDirection;
@@ -55,7 +55,7 @@ function targetGoToPlayer(target, velocity, player) {
 }
 
 function goToPlayer(target, velocity) {
-	velocity = ( velocity || 1 );
+	velocity = ( velocity || 2 );
 	const latDiff = global.player.getLatLng().lat - target.getLatLng().lat;
 	const lngDiff = global.player.getLatLng().lng - target.getLatLng().lng;
 	let forcedDirection, btc, targetName, health;
@@ -75,7 +75,7 @@ function goToPlayer(target, velocity) {
 		if (
 			( document.getElementById('hiddenHandlerKeys').innerText === global.keymap["wield"][0] ||
 			document.getElementById('hiddenHandlerKeys').innerText === global.keymap["wield"][1] ) &&
-			parseFloat(document.getElementById('atk').innerHTML) > 0
+			parseFloat(document.getElementById('atk').innerHTML) > 1
 		) {
 			// global.layerToRemove = target.getAttribution();
 			btc = parseFloat(document.getElementById('btc').innerHTML);
@@ -88,7 +88,7 @@ function goToPlayer(target, velocity) {
 			));
 		} else {
 			targetName = target.getAttribution();
-			document.getElementById('currentBattle').innerText = targetName;
+			document.getElementById('currentEnemyBattler').innerText = targetName;
 			loadEnemyBattle(targetName);
 			document.getElementById('openModal').innerText = 'true';
 			global.battleSound = new Audio("../sounds/battlers/"+targetName+"1.wav");
@@ -104,7 +104,7 @@ function goToPlayer(target, velocity) {
 }
 
 function moveCharacter(character, velocity, forceDirection) { // 80km/h | 12x
-	velocity = ( velocity || 1 );
+	velocity = ( velocity || 2 );
 	velLng = velocity*lngCorrectionArr[Math.round(global.lat)];
 	switch (forceDirection) { //forceDirection
 	case global.keymap["moveNorth"][0]:
@@ -161,7 +161,7 @@ function onMapClick(e) {
 			if (document.getElementById('openModal').innerText === 'false') {
 				moveCharacter(global.player, vel, forcedDirection);
 			}
-			//alert(vars + "strings"); works
+			// alert(vars + "strings"); works
 			if (defaultMovementLength/50000 > Math.max(latDiffAbs, lngDiffAbs)) {
 				clearInterval(mouseClickDaemonizer);
 				mouseMoved = false;

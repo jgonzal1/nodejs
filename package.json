@@ -49,7 +49,7 @@
   },
   "scripts": {
     "start2": "node game.js",
-    "start": "beefy ./game.js:bundle.js 80 --live",
+    "start": "beefy ./game.js:bundle.js 9966 --live",
     "bundle": "browserify ./game.js -o bundle.js"
   }
 }

@@ -1,5 +1,5 @@
 const createIcon = require('../style/createIcon');
-const cercania = 80; // 600 para tests, 40 normal
+const cercania = 60; // 100 para tests, 40 normal
 
 /** @typedef L.icon @type {object} @type {L.icon} */
 function spawnObjectives() {
@@ -31,7 +31,11 @@ function spawnObjectives() {
 		;
 	}
 
-	global.backpack		= spawnObjective('Mochila', backpackIcon);
+	global.backpack		= L.marker(
+		[lat+(Math.random()-0.5)/10/cercania, long+(Math.random()-0.5)/10/cercania],
+		{title: name + ' (Objetivo)', icon: backpackIcon}
+	)
+	//spawnObjective('Mochila', backpackIcon);
 	global.burger		= spawnObjective('Hamburguesa', burgerIcon);
 	global.banana		= spawnObjective('Plátano', bananaIcon);
 	global.blackberry	= spawnObjective('Mora', blackberryIcon);

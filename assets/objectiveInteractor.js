@@ -5,7 +5,7 @@ let itemDescription;
 let displayAttackPositionAlert = true;
 
 function pickOrSearchNearest() {
-    //alert('Calculando distancia...');
+    // alert('Calculando distancia...');
     const distancesArray = [
         fcalcDist(global.backpack),
         fcalcDist(global.burger),
@@ -37,7 +37,7 @@ function pickOrSearchNearest() {
         fcalcDist(global.water)//*/
     );
     const nearestObjectiveIndex = distancesArray.indexOf(Math.min(...distancesArray));
-    if (nearestObjective < 0.0002) {
+    if (nearestObjective < 0.0004) {
         itemDescription = objectiveStatsHandler(objectives[nearestObjectiveIndex]);
         alert('¡Has conseguido ' + itemDescription + ', al recoger ' + objectives[nearestObjectiveIndex] +'!');
         global.layerToRemove = objectives[nearestObjectiveIndex];

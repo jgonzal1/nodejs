@@ -10,7 +10,7 @@ const pushCharacters = require('./assets/pushCharacters');
 const spawnEnemies = require('./assets/spawnEnemies'); // TODO Enemies properties + battler hearths
 // const spawnMissionPeople = require('./assets/spawnMissionPeople');
 const spawnObjectives = require('./assets/spawnObjectives');
-// TODO >>>>> Cosas mochila
+// TODO >>> Cosas mochila
 const createPlacesIcons = require('./style/createPlacesIcons');
 const spawnTransports = require('./assets/spawnTransports');
 const getKeymap = require('./data/keymap');
@@ -38,10 +38,7 @@ const geoJsonStylers = require('./style/geoJsonStylers');
 // TODO Trading materials
 // TODO Misiones, traders
 // TODO > Traders objectives
-// TODO >>>>> Implement Attack image character movement without enemy elimination
-// TODO >>>>> #FFnn health after attack
-// TODO >>>>> #FFnn attack back
-// TODO >>>>> Trade contents and limitations
+// TODO >>> Trade contents and limitations
 // TODO > Develop in battles modal (buttons===keys): resumeGame after closing but only with button
 // TODO #CataclysmDDA
 // TODO #RimWorld
@@ -59,7 +56,7 @@ var refreshRate, defaultMovementLength;
 if (cryptOfTheNecromancerMode === "true") { refreshRate = 460; }
 // 500 asume <5ms delays! // 500 w/ 120 BPM music
 else { refreshRate = 33; } // 30+ FPS
-defaultMovementLength = refreshRate * velocity;
+defaultMovementLength = refreshRate * velocity * 2;
 var mouseMoved; // = false;
 global.layerToRemove = undefined;
 global.points = 0;
@@ -97,9 +94,9 @@ global.artisticMap = L.
 	// tileLayer('http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
 ).addTo(global.map);
 const baseLayers = createBaseLayerAndAddMore(global.artisticMap, L);
-L.control.scale({imperial:false}).addTo(global.map);
+// L.control.scale({imperial:false}).addTo(global.map); // Only in online
 // TODO > Spawn con lng correction
-// TODO >>>>> Colores Tileset
+// TODO > Colores Tileset
 // Blanco: mover 1x;
 // si no, reducir multiplicador de velocidad y:
 //  Menos opacidad (fantasmas) o
@@ -187,7 +184,7 @@ setInterval(function() {
 		if (typeof(cryptOfTheNecromancerMode) === 'string') {clearInterval(moveDaemonizer);}
 		if (cryptOfTheNecromancerMode === "true") { refreshRate = 500; } // 120 BPM
 		else { refreshRate = 33; } // 30+ FPS
-		defaultMovementLength = refreshRate * velocity;
+		defaultMovementLength = refreshRate * velocity * 2;
 	}*/
 }, 3000); // globalEventsDaemonizer*/
 
