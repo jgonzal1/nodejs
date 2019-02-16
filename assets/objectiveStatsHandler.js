@@ -15,6 +15,7 @@ function objectiveStatsHandler(objective) {
         document.getElementById('storageMethodDisplay').src = "style/interface/equipment.png";
         document.getElementById('storageMethodDisplay').style.height = "32px";
         document.getElementById('storageMethod').innerText = "Backpack";
+        document.getElementById('availableRoom').innerHTML = "true";
         document.getElementById('storageRoom').style.display = "";
         return "8L de almacenamiento de un objeto de 4L";
     case "burger":

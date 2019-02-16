@@ -12,40 +12,40 @@
 function itemStorageHandler(objectiveItem, quantity) {
     switch (objectiveItem) {
     case "burger":
-        document.getElementById('room').innerHTML = parseFloat(document.getElementById('room').innerHTML)+0.6;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.6)*10)/10;
         break;
     case "banana":
-        document.getElementById('room').innerHTML = parseFloat(document.getElementById('room').innerHTML)+0.2;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.2)*10)/10;
         break;
     case "blackberry":
-        document.getElementById('room').innerHTML = parseFloat(document.getElementById('room').innerHTML)+0.4;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.4)*10)/10;
         break;
     case "boots":
-        document.getElementById('room').innerHTML = parseFloat(document.getElementById('room').innerHTML)+0.8;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.8)*10)/10;
         break;
     case "chicken":
-        document.getElementById('room').innerHTML = parseFloat(document.getElementById('room').innerHTML)+0.5;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.5)*10)/10;
         break;
     case "healthpotion":
-        document.getElementById('room').innerHTML = parseFloat(document.getElementById('room').innerHTML)+0.5;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.5)*10)/10;
         break;
     case "knife":
-        document.getElementById('room').innerHTML = parseFloat(document.getElementById('room').innerHTML)+0.2;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.2)*10)/10;
         break;
     case "pizza":
-        document.getElementById('room').innerHTML = parseFloat(document.getElementById('room').innerHTML)+0.8;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.8)*10)/10;
         break;
     case "rice":
-        document.getElementById('room').innerHTML = parseFloat(document.getElementById('room').innerHTML)+0.3;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.3)*10)/10;
         break;
     case "steelaxe":
-        document.getElementById('room').innerHTML = parseFloat(document.getElementById('room').innerHTML)+1;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+1  )*10)/10;
         break;
     case "sword":
-        document.getElementById('room').innerHTML = parseFloat(document.getElementById('room').innerHTML)+3;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+3  )*10)/10;
         break;
     case "water":
-        document.getElementById('room').innerHTML = parseFloat(document.getElementById('room').innerHTML)+1;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+1  )*10)/10;
         break;
     }
 
