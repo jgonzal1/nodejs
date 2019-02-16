@@ -1,6 +1,12 @@
 ToDo list:
 ```
 >>> Cosas mochila (17., From file:///e%3A/nodejs/game.js#13)
+    Sólo un consumo
+    Consumo si no bare hands
+    Mandar a almacenamiento
+
+Teclas o clicks tmb para telefono
+
 >>> Trade contents and limitations (17., From file:///e%3A/nodejs/game.js#43)
 
 > Change boolean #CotND (22., From file:///e%3A/nodejs/game.js#54)

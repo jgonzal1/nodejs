@@ -1,3 +1,4 @@
+const itemStorageHandler = require('./itemStorageHandler');
 const objectiveStatsHandler = require('./objectiveStatsHandler');
 const cL = require('../data/charactersList');
 const objectives = cL.getObjectives();
@@ -38,10 +39,25 @@ function pickOrSearchNearest() {
     );
     const nearestObjectiveIndex = distancesArray.indexOf(Math.min(...distancesArray));
     if (nearestObjective < 0.0004) {
-        itemDescription = objectiveStatsHandler(objectives[nearestObjectiveIndex]);
-        alert('¡Has conseguido ' + itemDescription + ', al recoger ' + objectives[nearestObjectiveIndex] +'!');
+        if (
+            document.getElementById('availableRoom').innerHTML == "true" &&
+            objectives[nearestObjectiveIndex] != "backpack"
+        ) {
+            alert(document.getElementById('room').innerHTML+" "+document.getElementById('availableRoom').innerHTML);
+            itemStorageHandler(objectives[nearestObjectiveIndex]);
+            // ToDo volume
+            if (
+                document.getElementById('storageMethod').innerHTML == "Bare hands" ||
+                parseFloat(document.getElementById('room').innerHTML) >= 8
+            ) {
+                document.getElementById('availableRoom').innerHTML = "false";
+            }
+        } else {
+            itemDescription = objectiveStatsHandler(objectives[nearestObjectiveIndex]);
+            alert('¡Has conseguido ' + itemDescription + ', al recoger ' + objectives[nearestObjectiveIndex] +'!');
+        }
         global.layerToRemove = objectives[nearestObjectiveIndex];
-        global.points += 1;			
+        global.points += 1;
     } else {
         alert(
             '¡Tu objetivo más cercano aún está a ' + Math.round(5000*nearestObjective) + ' pasos y\n' +
