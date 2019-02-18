@@ -144,16 +144,11 @@ function loadPlaceModal(sites, markers, callback) {
  * 'meat' | 'salt'   | 'spices' | 'wine' | 'wood'  | 'wool
  * @param {number} quantity
  * @param {string} price 'Delux' | 'Cheap' | 'Norml'
+ * @returns (c)ell;       resource(i);     quantity (h)ere;
+ *          (p)rice;      (s)ell price;    (t)rade;
+ *          (b)uy price;  quantity (o)wned
  */
 function setTradingMaterialRow(tradeTable, tradeType, tradingMaterial, quantity, price) {
-    /*Cell(c)
-    >Resource(i)
-    >Quantity here(h)
-    Price(p)
-    >Sell Price(s)
-    >Trade(t)
-    >Buy Price(b)
-    Quantity owned(o)*/
     var rowTM = tradeTable.insertRow(tradeTable.rows.length);
     var ciTM = rowTM.insertCell(0); var iTM = document.createElement('img');
     iTM.src = 'style/trading_materials/'+tradingMaterial+'.png'; iTM.width = 32; iTM.height = 32;
