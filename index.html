@@ -77,6 +77,7 @@
     <!--<div id="logs" style="display: none"></div>-->
     <div id="keypressReference" style="display: none"></div>
     <div id="keyChange" style="display: none"></div>
+    <div id="currentCoords" style="display: none"></div>
     <div id="hiddenHandlerKeys" style="display: none"></div>
     <div id="hiddenHandlerModeCotND" style="display: none"></div>
     <div id="hiddenHandlerPos" style="display: none"></div>
@@ -270,15 +271,23 @@
               <td><img src="style/interface/batcoin.png" style="width:16px;height:16px;"></td>
               <td>BatCoins</td>
               <td align="right"><span id="btc">0</span> <img src="style/interface/coin-point.png"></td>
-            </tr><tr><!-- Storage -->
-              <td colspan="3"> <table border="3" cellpadding="3" cellspacing="3" style="width:100%">
-                <tr id="storage">
-                  <td><img id="storageMethodDisplay" src="style/interface/hand.png" style="width:32px;height:12px;"></td>
-                  <td id="storageMethod">Bare hands</td>
-                  <td align="right"><span id="storageRoom" style="display: none"><span id="room">0</span>/8L <img src="style/interface/space.gif"></span></td>
-                </tr>
-                <tr style="display: none"> <td><!--img-->&nbsp;</td>  <td><!--descr-->&nbsp;</td>  <td align="right"><!--quant-->&nbsp;</td> </tr>
+            </tr><tr rowspan="2" id="storage">
+              <th scope="col"><img id="storageMethodDisplay" src="style/interface/hand.png" style="width:32px;height:12px;"></th>
+              <th scope="col" id="storageMethod">Bare hands</th><!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+              <th scope="col" align="right"><span id="storageRoom" style="display: none">
+                <span id="room">0</span>/8L <img src="style/interface/space.gif"></span>
+                <span id="availableRoom" style="display: none">true</span>
+              </th>
+            </tr><tr>  <!--Storage Contents -->
+              <td scope="col" colspan="3"><table class="table table-striped" id="itemStorageTable" style="width:100%">
+                <!-- border="1" cellpadding="1" cellspacing="1" --><tbody></tbody></table>
+                <!--<tr style="display: none">
+                  <td>img&nbsp;&nbsp;</td>
+                  <td>descr</td>
+                  <td align="right">quant</td>
+                </tr>-->
               </table> </td>
+
             </tr><tr><!-- Tests -->
               <td><canvas id="floorColorSniffCanvas" width="16" height="16"></canvas></td>
               <td>
@@ -558,7 +567,7 @@
                                               </th>
                 <th scope="col">Quantity owned</th>
               </tr>
-            </thead><tbody>  
+            </thead><tbody>
             </tbody></table></div>
             </div>
             <div id="tradeSlider" class="slidecontainer" style="display: none">

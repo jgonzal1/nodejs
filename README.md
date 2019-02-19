@@ -1,11 +1,19 @@
 ToDo list:
 ```
 >>> Cosas mochila (17., From file:///e%3A/nodejs/game.js#13)
+    Uso de items almacenamiento y bajado volumen storage
+    Ataque no stack (equipar max)
+
+>>>> Teclas o clicks tmb para telefono
+
 >>> Trade contents and limitations (17., From file:///e%3A/nodejs/game.js#43)
+   En la mochila
+
+>>> Misiones
 
 > Change boolean #CotND (22., From file:///e%3A/nodejs/game.js#54)
 > Colores Tileset (24., From file:///e%3A/nodejs/game.js#89)
-> Develop in battles modal (buttons===keys): resumeGame after closing but only with button (17., From file:///e%3A/nodejs/game.js#43)
+> Develop in battles modal (buttons===keys) (17., From file:///e%3A/nodejs/game.js#43)
 > Personalize character #CataclysmDDA + playerIcon "duplicado": imagemagick (25., From file:///e%3A/nodejs/game.js#101)
 > Spawn con lng correction (23., From file:///e%3A/nodejs/game.js#88)
 > Start in player's location (locatePlayer in assets) (8., From file:///e%3A/nodejs/game.js#26)

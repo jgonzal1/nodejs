@@ -48,7 +48,6 @@
     "url": "https://github.com/jgonzal1/nodejs"
   },
   "scripts": {
-    "start2": "node game.js",
     "start": "beefy ./game.js:bundle.js 9966 --live",
     "bundle": "browserify ./game.js -o bundle.js"
   }
