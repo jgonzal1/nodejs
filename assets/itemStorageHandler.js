@@ -10,6 +10,9 @@
  *          (d)escription; quantity (h)ere;
  */
 function itemStorageHandler(objectiveItem, quantity) {
+
+    // objectiveItem = "burger"; //(y cambiar la variable que importamos arriba quitandole la m por ejemplo)
+
     switch (objectiveItem) {
     case "burger":
         document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.6)*10)/10;
@@ -50,20 +53,41 @@ function itemStorageHandler(objectiveItem, quantity) {
     }
 
     quantity = ( quantity || 1);
+
     var storageTable = document.getElementById("itemStorageTable").getElementsByTagName('tbody')[0];
 
-    var rowTM = storageTable.insertRow(storageTable.rows.length);
-    var ciTM = rowTM.insertCell(0); var iTM = document.createElement('img');
-    iTM.src = 'style/objectives/'+objectiveItem+'.png'; iTM.width = 32; iTM.height = 32;
-    ciTM.appendChild(iTM);
+    if (document.getElementById(objectiveItem+"Stack")==null) {
+        var rowTM = storageTable.insertRow(storageTable.rows.length);
+        rowTM.id = objectiveItem+"Stack";
 
-    var cdTM = rowTM.insertCell(1);
-    var dTM = document.createTextNode( objectiveItem );
-    cdTM.appendChild(dTM);
+        var ciTM = rowTM.insertCell(0); var iTM = document.createElement('img');
+        iTM.src = 'style/objectives/'+objectiveItem+'.png'; iTM.width = 32; iTM.height = 32;
+        iTM.addEventListener("click", function(){
+            var item = document.getElementById(objectiveItem+"Stack");
+            if (document.getElementById(objectiveItem+"Quantity")==null) {
+                item.parentNode.removeChild(item);
+            } else {
+                if (parseFloat(document.getElementById(objectiveItem+"Quantity").innerHTML) < 2) {
+                    item.parentNode.removeChild(item);
+                } else {
+                    document.getElementById(objectiveItem+"Quantity").innerHTML = parseFloat(document.getElementById(objectiveItem+"Quantity").innerHTML)-1;
+                }
+            }
+        }, false);
+        ciTM.appendChild(iTM);
 
-    var chTM = rowTM.insertCell(2);
-    var hTM = document.createTextNode( quantity );
-    chTM.appendChild(hTM);
+        var cdTM = rowTM.insertCell(1);
+        var dTM = document.createTextNode( objectiveItem );
+        cdTM.appendChild(dTM);
+
+        var chTM = rowTM.insertCell(2);
+        chTM.id = objectiveItem+"Quantity";        
+        var hTM = document.createTextNode( quantity );
+        chTM.appendChild(hTM);
+    } else {
+        document.getElementById(objectiveItem+"Quantity").innerHTML = parseFloat(document.getElementById(objectiveItem+"Quantity").innerHTML)+1;
+    }
+    alert(document.getElementById(objectiveItem+"Quantity").outerHTML);
 }
 
 module.exports = itemStorageHandler;

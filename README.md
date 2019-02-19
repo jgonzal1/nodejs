@@ -1,7 +1,7 @@
 ToDo list:
 ```
 >>> Cosas mochila (17., From file:///e%3A/nodejs/game.js#13)
-    Uso de items almacenamiento
+    Uso de items almacenamiento y bajado volumen storage
     Ataque no stack (equipar max)
 
 >>>> Teclas o clicks tmb para telefono
