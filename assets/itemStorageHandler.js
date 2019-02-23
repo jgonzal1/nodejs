@@ -85,7 +85,7 @@ function itemStorageHandler(objectiveItem, quantity) {
 
         var ciTM = rowTM.insertCell(0); var iTM = document.createElement('img');
         iTM.src = 'style/objectives/'+objectiveItem+'.png'; iTM.width = 32; iTM.height = 32;
-        iTM.addEventListener("click", function(){
+        iTM.addEventListener("click", function() {
             var item = document.getElementById(objectiveItem+"Stack");
             objectiveStatsHandler(objectiveItem);
             itemRoomHandler(objectiveItem, false);

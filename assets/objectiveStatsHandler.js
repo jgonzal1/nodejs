@@ -1,4 +1,5 @@
 const healthHandler = require('./healthHandler');
+const attackHandler = require('./attackHandler');
 let health,atk,def,vel,btc,room;
 
 function objectiveStatsHandler(objective) {
@@ -44,7 +45,7 @@ function objectiveStatsHandler(objective) {
         return "4 HP / h sin hambre y sed";
     case "knife":
         atk += 1;
-        document.getElementById('atk').innerHTML = atk; 
+        attackHandler(atk);
         return "+1 atk";
     case "pizza":
         health += 4;
@@ -56,11 +57,11 @@ function objectiveStatsHandler(objective) {
         return "2 HP / h sin hambre";
     case "steelaxe":
         atk += 2;
-        document.getElementById('atk').innerHTML = atk; 
+        attackHandler(atk);
         return "+2 atk";
     case "sword":
         atk += 3;
-        document.getElementById('atk').innerHTML = atk;
+        attackHandler(atk);
         return "+3 atk de un objeto que te ocupa ambas manos";
     case "water":
         health += 1;
