@@ -1,3 +1,4 @@
+const objectiveStatsHandler = require("./objectiveStatsHandler");
 /**
  * @param {string} objectiveItem
  *   'backpack,      'banana',   'blackberry',
@@ -86,6 +87,7 @@ function itemStorageHandler(objectiveItem, quantity) {
         iTM.src = 'style/objectives/'+objectiveItem+'.png'; iTM.width = 32; iTM.height = 32;
         iTM.addEventListener("click", function(){
             var item = document.getElementById(objectiveItem+"Stack");
+            objectiveStatsHandler(objectiveItem);
             itemRoomHandler(objectiveItem, false);
             if (document.getElementById(objectiveItem+"Quantity")==null) {
                 item.parentNode.removeChild(item);
