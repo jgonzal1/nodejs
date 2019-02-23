@@ -5,55 +5,77 @@
  *   'healthpotion', 'knife',    'pizza',
  *   'rice',         'steelaxe', 'sword',
  *   'water'
+ * @param {boolean} ioItem TRUE (+) FALSE (-)
+ * @returns 'room' modified
+ */
+function itemRoomHandler(objectiveItem, ioItem) {
+    let room = 0; if (ioItem) {room = 1;} else {room = -1;}
+    switch (objectiveItem) {
+    case "burger":
+        room *= 0.6;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.6)*10)/10;
+        break;
+    case "banana":
+        room *= 0.2;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+room)*10)/10;
+        break;
+    case "blackberry":
+        room *= 0.4;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+room)*10)/10;
+        break;
+    case "boots":
+        room *= 0.8;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+room)*10)/10;
+        break;
+    case "chicken":
+        room *= 0.5;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+room)*10)/10;
+        break;
+    case "healthpotion":
+        room *= 0.5;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+room)*10)/10;
+        break;
+    case "knife":
+        room *= 0.2;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+room)*10)/10;
+        break;
+    case "pizza":
+        room *= 0.8;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+room)*10)/10;
+        break;
+    case "rice":
+        room *= 0.3;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+room)*10)/10;
+        break;
+    case "steelaxe":
+        room *= 1  ;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+room)*10)/10;
+        break;
+    case "sword":
+        room *= 3  ;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+room)*10)/10;
+        break;
+    case "water":
+        room *= 1  ;
+        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+room)*10)/10;
+        break;
+    }
+}
+/**
+ * @param {string} objectiveItem
+ *   'backpack,      'banana',   'blackberry',
+ *   'boots',        'burger',   'chicken',
+ *   'healthpotion', 'knife',    'pizza',
+ *   'rice',         'steelaxe', 'sword',
+ *   'water'
  * @param {number} quantity
  * @returns (c)ell;        resource(i);
  *          (d)escription; quantity (h)ere;
  */
 function itemStorageHandler(objectiveItem, quantity) {
-
     // objectiveItem = "burger"; //(y cambiar la variable que importamos arriba quitandole la m por ejemplo)
-
-    switch (objectiveItem) {
-    case "burger":
-        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.6)*10)/10;
-        break;
-    case "banana":
-        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.2)*10)/10;
-        break;
-    case "blackberry":
-        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.4)*10)/10;
-        break;
-    case "boots":
-        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.8)*10)/10;
-        break;
-    case "chicken":
-        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.5)*10)/10;
-        break;
-    case "healthpotion":
-        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.5)*10)/10;
-        break;
-    case "knife":
-        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.2)*10)/10;
-        break;
-    case "pizza":
-        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.8)*10)/10;
-        break;
-    case "rice":
-        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.3)*10)/10;
-        break;
-    case "steelaxe":
-        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+1  )*10)/10;
-        break;
-    case "sword":
-        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+3  )*10)/10;
-        break;
-    case "water":
-        document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+1  )*10)/10;
-        break;
-    }
-
+    itemRoomHandler(objectiveItem, true);
     quantity = ( quantity || 1);
-
     var storageTable = document.getElementById("itemStorageTable").getElementsByTagName('tbody')[0];
 
     if (document.getElementById(objectiveItem+"Stack")==null) {
@@ -64,6 +86,7 @@ function itemStorageHandler(objectiveItem, quantity) {
         iTM.src = 'style/objectives/'+objectiveItem+'.png'; iTM.width = 32; iTM.height = 32;
         iTM.addEventListener("click", function(){
             var item = document.getElementById(objectiveItem+"Stack");
+            itemRoomHandler(objectiveItem, false);
             if (document.getElementById(objectiveItem+"Quantity")==null) {
                 item.parentNode.removeChild(item);
             } else {
