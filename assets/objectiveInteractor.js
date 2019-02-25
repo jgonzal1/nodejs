@@ -42,7 +42,7 @@ function pickOrSearchNearest() {
         const currentCoords = (Math.round(global.player.getLatLng().lat*10000)/10000).toString() + (Math.round(global.player.getLatLng().lng*10000)/10000).toString();
         if (document.getElementById('currentCoords').innerHTML === currentCoords) {
             document.getElementById('hiddenHandlerKeys').innerText = keypressMap["pause"][0];
-            alert("mismo item");
+            // alert("mismo item");
         } else {
             document.getElementById('currentCoords').innerHTML = currentCoords;
             if (
@@ -64,7 +64,7 @@ function pickOrSearchNearest() {
             }
             global.layerToRemove = objectives[nearestObjectiveIndex];
             global.points += 1;
-            alert("item diferente");
+            // alert("item diferente");
         }
     } else {
         alert(

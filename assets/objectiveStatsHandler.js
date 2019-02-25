@@ -44,8 +44,9 @@ function objectiveStatsHandler(objective) {
         healthHandler(health);
         return "4 HP / h sin hambre y sed";
     case "knife":
-        atk += 1;
-        attackHandler(atk);
+        //atk += 1;
+        //document.getElementById("atkWieldedItem").innerText = "knife";
+        attackHandler(2, objective);
         return "+1 atk";
     case "pizza":
         health += 4;
@@ -56,12 +57,14 @@ function objectiveStatsHandler(objective) {
         healthHandler(health);
         return "2 HP / h sin hambre";
     case "steelaxe":
-        atk += 2;
-        attackHandler(atk);
+        //atk += 2;
+        //document.getElementById("atkWieldedItem").innerText = "steelaxe";
+        attackHandler(3, objective);
         return "+2 atk";
     case "sword":
-        atk += 3;
-        attackHandler(atk);
+        //atk += 3;
+        //document.getElementById("atkWieldedItem").innerText = "sword";
+        attackHandler(4, objective);
         return "+3 atk de un objeto que te ocupa ambas manos";
     case "water":
         health += 1;
