@@ -1,7 +1,7 @@
 ToDo list:
 ```
 >>> Cosas mochila (17., From file:///e%3A/nodejs/game.js#13)
-    Ataque no stack (equipar max)
+    Ataque no cambia
 
 >>>> Teclas o clicks tmb para telefono
 

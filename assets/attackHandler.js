@@ -11,9 +11,9 @@ function attackHandler(atk, itemToWield) {
     var atkWieldedItemOuter = document.getElementById("atkWieldedItem").outerHTML;
     var oldAtk = parseFloat(document.getElementById('atk').innerHTML);
     // if (atk > oldAtk) {
-    alert("atkWieldedItem" + atkWieldedItemOuter);
     if (atkWieldedItem!="") {
-        itemRoomHandler(objectiveItem, true);
+        //alert("atkWieldedItem" + atkWieldedItemOuter);
+        itemRoomHandler(atkWieldedItem, true);
         var quantity = 1;
         var storageTable = document.getElementById("itemStorageTable").getElementsByTagName('tbody')[0];
         
@@ -25,8 +25,22 @@ function attackHandler(atk, itemToWield) {
         iTM.addEventListener("click", function() {
             atkWieldedItem = document.getElementById("atkWieldedItem").innerHTML;
             var item = document.getElementById(atkWieldedItem+"Stack");
-            objectiveStatsHandler(atkWieldedItem);
-            itemRoomHandler(atkWieldedItem, false);
+            //alert("click ataque1");
+            atk = parseFloat(document.getElementById('atk').innerHTML);
+            switch (atkWieldedItem) {
+            case "knife":
+                document.getElementById('atk').innerHTML = 2;
+                document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)-0.2)*10)/10;
+                break;
+            case "steelaxe":
+                document.getElementById('atk').innerHTML = 3;
+                document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)-  1)*10)/10;
+                break;
+            case "sword":
+                document.getElementById('atk').innerHTML = 4;
+                document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)-  3)*10)/10;
+                break;
+            }
             if (document.getElementById(atkWieldedItem+"Quantity")==null) {
                 item.parentNode.removeChild(item);
             } else {
