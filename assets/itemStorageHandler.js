@@ -29,14 +29,13 @@ function itemStorageHandler(objectiveItem, quantity) {
             var item = document.getElementById(objectiveItem+"Stack");
             objectiveStatsHandler(objectiveItem);
             itemRoomHandler(objectiveItem, false);
-            if (document.getElementById(objectiveItem+"Quantity")==null) {
+            if (document.getElementById(objectiveItem+"Quantity")==null) { //should never be
                 item.parentNode.removeChild(item);
             } else {
                 if (parseFloat(document.getElementById(objectiveItem+"Quantity").innerHTML) < 2) {
                     item.parentNode.removeChild(item);
-                } else {
-                    document.getElementById(objectiveItem+"Quantity").innerHTML = parseFloat(document.getElementById(objectiveItem+"Quantity").innerHTML)-1;
                 }
+                document.getElementById(objectiveItem+"Quantity").innerHTML = parseFloat(document.getElementById(objectiveItem+"Quantity").innerHTML)-1;
             }
         }, false);
         ciTM.appendChild(iTM);
@@ -46,7 +45,7 @@ function itemStorageHandler(objectiveItem, quantity) {
         cdTM.appendChild(dTM);
 
         var chTM = rowTM.insertCell(2);
-        chTM.id = objectiveItem+"Quantity";        
+        chTM.id = objectiveItem+"Quantity";
         var hTM = document.createTextNode( quantity );
         chTM.appendChild(hTM);
     } else {

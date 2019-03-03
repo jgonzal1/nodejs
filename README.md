@@ -1,7 +1,7 @@
 ToDo list:
 ```
 >>> Cosas mochila (17., From file:///e%3A/nodejs/game.js#13)
-    Ataque no cambia
+    Tras primer cambio, solo se reduce tamaño y cambia ataque pero no permite cambios subsiguientes
 
 >>>> Teclas o clicks tmb para telefono
 
