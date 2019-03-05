@@ -42,10 +42,18 @@ function spawnObjectives() {
 	global.boots		= spawnObjective('Zapatos', bootsIcon);
 	global.chicken		= spawnObjective('Pollo frito', chickenIcon);
 	global.healthpotion	= spawnObjective('Poción de salud', healthpotionIcon);
-	global.knife		= spawnObjective('Cuchilo', knifeIcon);
+	global.knife		= L.marker(
+		[lat+(Math.random()-0.5)/7/cercania, long+(Math.random()-0.5)/7/cercania],
+		{title: name + ' (Objetivo)', icon: knifeIcon}
+	);
+	//spawnObjective('Cuchilo', knifeIcon);
 	global.pizza		= spawnObjective('Pizza', pizzaIcon);
 	global.rice			= spawnObjective('Arroz', riceIcon);
-	global.steelaxe		= spawnObjective('Hacha de acero', steelaxeIcon);
+	global.steelaxe		= L.marker(
+		[lat+(Math.random()-0.5)/7/cercania, long+(Math.random()-0.5)/7/cercania],
+		{title: name + ' (Objetivo)', icon: steelaxeIcon}
+	);
+	//spawnObjective('Hacha de acero', steelaxeIcon);
 	global.sword		= spawnObjective('Espada', swordIcon);
 	global.water		= spawnObjective('Agua', waterIcon);
 }
