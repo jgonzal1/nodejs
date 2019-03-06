@@ -15,7 +15,7 @@ function attackHandler(atk, itemToWield) {
         //alert("atkWieldedItem" + atkWieldedItemOuter);
         document.getElementById("itemToWield").innerHTML = itemToWield;
         itemRoomHandler(atkWieldedItem, true);
-        itemRoomHandler(itemToWield, false);
+        //itemRoomHandler(itemToWield, false); //ToDo check room
         var quantity = 1;
         var storageTable = document.getElementById("itemStorageTable").getElementsByTagName('tbody')[0];
         //if (document.getElementById(itemToWield+"Stack")==null) {
@@ -40,17 +40,12 @@ function attackHandler(atk, itemToWield) {
 
             rowTM.addEventListener("click", function() {
                 atkWieldedItem = document.getElementById("atkWieldedItem").innerText;
-                
-                rowTM.firstChild.src = 'style/objectives/'+atkWieldedItem+'.png';
-                
-                // var itemToWieldStackName = iTM.parentNode.id;
-                // var item = document.getElementById(itemToWieldStackName);
-                // var item = iTM.parentNode;
-                _cdTM = rowTM.firstChild.nextSibling.firstChild;
+                _cdTM = rowTM.firstChild.nextSibling;
                 itemToWield = _cdTM.innerHTML;
+                //alert("atkWieldedItem:"+atkWieldedItem+",itemToWield:"+itemToWield+",image:"+rowTM.firstChild.firstChild.outerHTML);
+                rowTM.firstChild.firstChild.src = 'style/objectives/'+atkWieldedItem+'.png';
                 _cdTM.innerHTML = atkWieldedItem;
-                // document.getElementById(atkWieldedItem+"Name").innerHTML = atkWieldedItem;
-                
+
                 switch (atkWieldedItem) {
                 case "knife":
                     document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.2)*10)/10;
@@ -79,8 +74,20 @@ function attackHandler(atk, itemToWield) {
                 }
                 
                 document.getElementById("atkWieldedItem").innerText = itemToWield;
-                document.getElementById('atk').innerHTML = atk+Math.round(Math.ceil(10*Math.random())/10);
+                //document.getElementById('atk').innerHTML = atk;
             }, false);
+
+            switch (atkWieldedItem) {
+            case "knife":
+                document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+0.2)*10)/10;
+                break;
+            case "steelaxe":
+                document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+  1)*10)/10;
+                break;
+            case "sword":
+                document.getElementById('room').innerHTML = Math.round((parseFloat(document.getElementById('room').innerHTML)+  3)*10)/10;
+                break;
+            }
         //} else {
         //    alert("Al cambiar objetos, del que se va a equipar hay más de uno. ToDo");
         //}
