@@ -89,6 +89,13 @@
           this.style.backgroundColor = "white";
           this.style.color = "black";
         })
+        span.addEventListener("click",function(){
+          let currentIndex = funList.indexOf(this);
+          console.log(currentIndex);
+          let tempRemove = funList.splice(currentIndex, 1);
+          console.log(tempRemove);
+          myFunctionList.removeChild(this);
+        })
         //#endregion
         myFunctionList.appendChild(span);
         funList.push(span);
