@@ -1,8 +1,5 @@
 ToDo list:
 ```
->>> Cosas mochila (17., From file:///e%3A/nodejs/game.js#13)
-    Tras primer cambio, solo se reduce tamaño y cambia ataque pero no permite cambios subsiguientes
-
 >>>> Teclas o clicks tmb para telefono
 
 >>> Trade contents and limitations (17., From file:///e%3A/nodejs/game.js#43)

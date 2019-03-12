@@ -10,7 +10,6 @@ const pushCharacters = require('./assets/pushCharacters');
 const spawnEnemies = require('./assets/spawnEnemies'); // TODO Enemies properties + battler hearths
 // const spawnMissionPeople = require('./assets/spawnMissionPeople');
 const spawnObjectives = require('./assets/spawnObjectives');
-// TODO >>> Cosas mochila
 const createPlacesIcons = require('./style/createPlacesIcons');
 const spawnTransports = require('./assets/spawnTransports');
 const getKeymap = require('./data/keymap');
@@ -67,16 +66,16 @@ var gameTimeStamp = new Date(1262304000000);
 //#region Create Base Layers
 // const map = L.map('map', { scrollWheelZoom: true } );
 global.map = L.map(
-	'map',
-	{
-		crs: L.CRS.Simple,
-		inertia: true, inertiaMaxSpeed: 1000,
-		tilt: true, // moves map
-		// w/ mobiles giroscope(deviceOrientation)
-		scrollWheelZoom: true, wheelPxPerZoomLevel: 150,
-		minZoom: 13, // 2 in online tile
-		maxZoom: 15 // 17 in online tile
-	}
+    'map',
+    {
+        crs: L.CRS.Simple,
+        inertia: true, inertiaMaxSpeed: 1000,
+        tilt: true, // moves map
+        // w/ mobiles giroscope(deviceOrientation)
+        scrollWheelZoom: true, wheelPxPerZoomLevel: 150,
+        minZoom: 13, // 2 in online tile
+        maxZoom: 15 // 17 in online tile
+    }
 );
 global.map.zoomControl.setPosition("bottomright");
 const lat  = initialCoords[0]; global.lat = lat; // y
@@ -84,14 +83,14 @@ const long = initialCoords[1]; global.long = long; // x
 const zoom = initialCoords[2]; // z
 global.map.setView([lat, long], zoom);
 const bounds = [
-	[0,0],
-	[0.2, 0.2] // watercolor
-	// [0.2346, 0.1215] // gotRisk
+    [0,0],
+    [0.2, 0.2] // watercolor
+    // [0.2346, 0.1215] // gotRisk
 ];
 global.artisticMap = L.
-	imageOverlay('style/watercolor_6OMYHFBaY_I.jpeg', bounds
-	// imageOverlay('style/gotRisk.jpg', bounds
-	// tileLayer('http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
+    imageOverlay('style/watercolor_6OMYHFBaY_I.jpeg', bounds
+    // imageOverlay('style/gotRisk.jpg', bounds
+    // tileLayer('http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
 ).addTo(global.map);
 const baseLayers = createBaseLayerAndAddMore(global.artisticMap, L);
 // L.control.scale({imperial:false}).addTo(global.map); // Only in online
@@ -114,10 +113,10 @@ const nAvailableAvatars = 39;
 // alert(files[Math.ceil(nAvailableAvatars*Math.random())]);
 document.getElementById('playerName').innerText = "toad";
 const playerIcon = L.icon(createLargeIcon('sprites/map-player/' + document.getElementById('playerName').innerText + '.png'
-	// files[Math.ceil(nAvailableAvatars*Math.random())]
+    // files[Math.ceil(nAvailableAvatars*Math.random())]
 ));
-const player 		= L.marker([lat, long], {icon: playerIcon}).bindPopup(
-	'<b>Tú ('+document.getElementById('playerName').innerText+' rookie, lvl. 1)</b>'
+const player         = L.marker([lat, long], {icon: playerIcon}).bindPopup(
+    '<b>Tú ('+document.getElementById('playerName').innerText+' rookie, lvl. 1)</b>'
 );
 global.player = player;
 // TODO @ Multiplayer on Redis
@@ -134,17 +133,17 @@ createPlacesIcons(L);
 var markers = [];
 let element;
 for (var i in sites) {
-	element = Math.floor(nPlaces*Math.random());
-	markers.push(
-		L.marker(
-			[ sites[i][1], sites[i][2] ],
-			{icon: global.placeIconsArray[element]}
-		).bindPopup( places[element] )
-	);
+    element = Math.floor(nPlaces*Math.random());
+    markers.push(
+        L.marker(
+            [ sites[i][1], sites[i][2] ],
+            {icon: global.placeIconsArray[element]}
+        ).bindPopup( places[element] )
+    );
 }//*/
 //createPlacesIcons(sites, L, function(markers){
 const layers = L.layerGroup(
-	markers
+    markers
 ).addTo(global.map);
 //});
 //}); //*/
@@ -155,83 +154,83 @@ const layers = L.layerGroup(
 // let counter = 1;
 // Moving with mouse or keypad
 if (navigator.userAgent.match('Android|X11') !== null){ // X11 es mi redmi note 3
-	alert('¡Bienvenido a DarksGeim! Haz tap para moverte.\n' +
-	'No podrás volver a moverte hasta llegar a tu destino, así que...\n' +
-	'¡Piensa poco a poco tu jugada!');//*/
-	global.map.on('click', onMapClick);//*
+    alert('¡Bienvenido a DarksGeim! Haz tap para moverte.\n' +
+    'No podrás volver a moverte hasta llegar a tu destino, así que...\n' +
+    '¡Piensa poco a poco tu jugada!');//*/
+    global.map.on('click', onMapClick);//*
 } else {
-	global.map.on('zoomend', function() {
-		const currentZoom = global.map.getZoom();
-		if (currentZoom < 9) { // 15 in online tile; hide places
-			if (global.map.hasLayer(layers)) { global.map.removeLayer(layers); }
-		} else {
-			if (global.map.hasLayer(layers) === false) { global.map.addLayer(layers); }
-		}
-		if (currentZoom < 6) { // 12 in online tile; hide characters
-			if (global.map.hasLayer(characters)) { global.map.removeLayer(characters); }
-		} else {
-			if (global.map.hasLayer(characters) === false) { global.map.addLayer(characters); }
-		}
-	});
+    global.map.on('zoomend', function() {
+        const currentZoom = global.map.getZoom();
+        if (currentZoom < 9) { // 15 in online tile; hide places
+            if (global.map.hasLayer(layers)) { global.map.removeLayer(layers); }
+        } else {
+            if (global.map.hasLayer(layers) === false) { global.map.addLayer(layers); }
+        }
+        if (currentZoom < 6) { // 12 in online tile; hide characters
+            if (global.map.hasLayer(characters)) { global.map.removeLayer(characters); }
+        } else {
+            if (global.map.hasLayer(characters) === false) { global.map.addLayer(characters); }
+        }
+    });
 }//*/
 // let moveDaemonizer;
 setInterval(function() {
-	// TODO @ Daemonizer in legend for weather; on add: timeLegend();
-	gameTimeStamp += 36000;
-	timeLegend();
-	/*if (cryptOfTheNecromancerMode !== document.getElementById('hiddenHandlerModeCotND').innerText) {
-		cryptOfTheNecromancerMode = document.getElementById('hiddenHandlerModeCotND').innerText;
-		if (typeof(cryptOfTheNecromancerMode) === 'string') {clearInterval(moveDaemonizer);}
-		if (cryptOfTheNecromancerMode === "true") { refreshRate = 500; } // 120 BPM
-		else { refreshRate = 33; } // 30+ FPS
-		defaultMovementLength = refreshRate * velocity * 2;
-	}*/
+    // TODO @ Daemonizer in legend for weather; on add: timeLegend();
+    gameTimeStamp += 36000;
+    timeLegend();
+    /*if (cryptOfTheNecromancerMode !== document.getElementById('hiddenHandlerModeCotND').innerText) {
+        cryptOfTheNecromancerMode = document.getElementById('hiddenHandlerModeCotND').innerText;
+        if (typeof(cryptOfTheNecromancerMode) === 'string') {clearInterval(moveDaemonizer);}
+        if (cryptOfTheNecromancerMode === "true") { refreshRate = 500; } // 120 BPM
+        else { refreshRate = 33; } // 30+ FPS
+        defaultMovementLength = refreshRate * velocity * 2;
+    }*/
 }, 3000); // globalEventsDaemonizer*/
 
 let vel, pause;
 // const pauseSound = new Sound("../sounds/pause.mp3", 100, true);
 function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
-	global.moveDaemonizer = setInterval(function() {
-		if (document.getElementById('openModal').innerText === 'true') {
-			pause = true;
-		} else {
-			pause = (
-				global.keymap["pause"].includes(
-					document.getElementById('hiddenHandlerKeys').innerText
-				)
-			);
-		}
-		if (!pause) { enemyMover(defaultMovementLength); } // else { pauseSound.start(); }
-		if (document.getElementById('openModal').innerText === 'false') {
-			// TODO keyHandler out of scope for third party layer group
-			if (global.keymap["open"].includes(document.getElementById('hiddenHandlerKeys').innerText)) {
-				loadPlaceModal(sites, markers, function(updateMarker){
-					// TODO tradeRange min depending on how much user has
-					// TODO Vendedor con mas cosas en el index (bajo tradeModal) y que lo ponga el modal
-					markers[updateMarker].setIcon(L.icon({
-						iconUrl: 'style/places/barrier.png',
-						shadowUrl: 'style/shadow.png',
-						iconSize: [48, 48],
-						shadowSize: [48, 48], // size of the shadow
-						iconAnchor: [23, 48],
-						shadowAnchor: [4, 52],  // the same for the shadow
-						popupAnchor: [10, -35]
-					}));
-					markers[updateMarker].update();
-				});
-			}
-			keyHandler(defaultMovementLength);
-		}
-		if (global.layerToRemove != undefined) {
-			global.map.removeLayer( global[layerToRemove] );
-			global.layerToRemove = undefined;
-		}
-		// counter++;
-	}, refreshRate);
+    global.moveDaemonizer = setInterval(function() {
+        if (document.getElementById('openModal').innerText === 'true') {
+            pause = true;
+        } else {
+            pause = (
+                global.keymap["pause"].includes(
+                    document.getElementById('hiddenHandlerKeys').innerText
+                )
+            );
+        }
+        if (!pause) { enemyMover(defaultMovementLength); } // else { pauseSound.start(); }
+        if (document.getElementById('openModal').innerText === 'false') {
+            // TODO keyHandler out of scope for third party layer group
+            if (global.keymap["open"].includes(document.getElementById('hiddenHandlerKeys').innerText)) {
+                loadPlaceModal(sites, markers, function(updateMarker){
+                    // TODO tradeRange min depending on how much user has
+                    // TODO Vendedor con mas cosas en el index (bajo tradeModal) y que lo ponga el modal
+                    markers[updateMarker].setIcon(L.icon({
+                        iconUrl: 'style/places/barrier.png',
+                        shadowUrl: 'style/shadow.png',
+                        iconSize: [48, 48],
+                        shadowSize: [48, 48], // size of the shadow
+                        iconAnchor: [23, 48],
+                        shadowAnchor: [4, 52],  // the same for the shadow
+                        popupAnchor: [10, -35]
+                    }));
+                    markers[updateMarker].update();
+                });
+            }
+            keyHandler(defaultMovementLength);
+        }
+        if (global.layerToRemove != undefined) {
+            global.map.removeLayer( global[layerToRemove] );
+            global.layerToRemove = undefined;
+        }
+        // counter++;
+    }, refreshRate);
 }
 keyListener(
-	refreshRate,defaultMovementLength
-	//*parseFloat(document.getElementById('health').innerHTML)
+    refreshRate,defaultMovementLength
+    //*parseFloat(document.getElementById('health').innerHTML)
 ); // private params
 //#endregion
 
@@ -245,76 +244,76 @@ keyListener(
 
 // TODO Migrate onMapClick
 function onMapClick(e) {
-	if (mouseMoved !== true) {
-		const mouseClickDaemonizer = setInterval(function() {
-			mouseMoved = true;
-			vel = defaultMovementLength;
-			const latDiff = e.latlng.lat - global.player.getLatLng().lat;
-			const lngDiff = e.latlng.lng - global.player.getLatLng().lng;
-			let forcedDirection;
-			const latDiffAbs = Math.abs(latDiff);
-			const lngDiffAbs = Math.abs(lngDiff);
-			if (latDiffAbs > lngDiffAbs) {
-				if (latDiff>0) {forcedDirection='w';} else {forcedDirection='s';}
-			} else {
-				if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
-			}
-			mH.moveCharacter(global.player, vel, forcedDirection); //movePlayer
-			// alert(vars + "strings"); works
-			if (defaultMovementLength/50000 > Math.max(latDiffAbs, lngDiffAbs)) {
-				clearInterval(mouseClickDaemonizer);
-				mouseMoved = false;
-			}
-		}, refreshRate);
-	}
+    if (mouseMoved !== true) {
+        const mouseClickDaemonizer = setInterval(function() {
+            mouseMoved = true;
+            vel = defaultMovementLength;
+            const latDiff = e.latlng.lat - global.player.getLatLng().lat;
+            const lngDiff = e.latlng.lng - global.player.getLatLng().lng;
+            let forcedDirection;
+            const latDiffAbs = Math.abs(latDiff);
+            const lngDiffAbs = Math.abs(lngDiff);
+            if (latDiffAbs > lngDiffAbs) {
+                if (latDiff>0) {forcedDirection='w';} else {forcedDirection='s';}
+            } else {
+                if (lngDiff>0) {forcedDirection='d';} else {forcedDirection='a';}
+            }
+            mH.moveCharacter(global.player, vel, forcedDirection); //movePlayer
+            // alert(vars + "strings"); works
+            if (defaultMovementLength/50000 > Math.max(latDiffAbs, lngDiffAbs)) {
+                clearInterval(mouseClickDaemonizer);
+                mouseMoved = false;
+            }
+        }, refreshRate);
+    }
 }
 //#endregion
 
 //#region geoJson Overlays
 const geojson = L.geoJSON(
-	regionsAustria,
-	{ style: geoJsonStylers.style, onEachFeature: onEachFeature }
+    regionsAustria,
+    { style: geoJsonStylers.style, onEachFeature: onEachFeature }
 );//.addTo(global.map); // Not showing it at start
 const overlays = {
     'Regiones': geojson,
-	'Puntos de interés': layers,
-	'Personajes': characters
+    'Puntos de interés': layers,
+    'Personajes': characters
 };
 L.control.layers(baseLayers, overlays).addTo(global.map);
 function addGeoJson(jsonPolygonFeature) {
-	geojson.addData(jsonPolygonFeature);
+    geojson.addData(jsonPolygonFeature);
 }
 //#endregion
 
 //#region geoJson Hovering Information show
 const info = L.control({position:'topright'});
 info.onAdd = function() {
-	this._div = L.DomUtil.create('div', 'info');
-	this.update();
-	return this._div;
+    this._div = L.DomUtil.create('div', 'info');
+    this.update();
+    return this._div;
 };
 info.update = function(props) {
-	this._div.innerHTML = '' + (props ?
-		'<p><b>Population Density</b></p>' + '<b>' + props.name + '</b><br/>' + props.density + ' people / km<sup>2</sup>' :
-		'') // 'Hover over a state' + '<p>' + document.getElementById('hiddenHandlerKeys').innerText + '</p>'
-	;
+    this._div.innerHTML = '' + (props ?
+        '<p><b>Population Density</b></p>' + '<b>' + props.name + '</b><br/>' + props.density + ' people / km<sup>2</sup>' :
+        '') // 'Hover over a state' + '<p>' + document.getElementById('hiddenHandlerKeys').innerText + '</p>'
+    ;
 };
 // let infoUpdaterCounter = 1;
 function backgroundInfoUpdater(milliseconds) {
-	setInterval(function() {
-		let boolChecker;
-		boolChecker==null ? boolChecker = true : boolChecker = false;
-		info.update = function() {
-			this._div.innerHTML = // +=
-				'<div class="backendlogs">' +
-				'<p><b>Key' + document.getElementById('hiddenHandlerKeys').innerText + '</b></p>';
-				'<b>' + boolChecker + '<br/>' + '</b>';
-				// infoUpdaterCounter.toString()
-				'</div>'
-			;
-		};
-		// infoUpdaterCounter++;
-	}, milliseconds);
+    setInterval(function() {
+        let boolChecker;
+        boolChecker==null ? boolChecker = true : boolChecker = false;
+        info.update = function() {
+            this._div.innerHTML = // +=
+                '<div class="backendlogs">' +
+                '<p><b>Key' + document.getElementById('hiddenHandlerKeys').innerText + '</b></p>';
+                '<b>' + boolChecker + '<br/>' + '</b>';
+                // infoUpdaterCounter.toString()
+                '</div>'
+            ;
+        };
+        // infoUpdaterCounter++;
+    }, milliseconds);
 }
 // BackgroundInfoUpdater(3000);
 info.addTo(global.map);
@@ -322,60 +321,60 @@ info.addTo(global.map);
 
 //#region geoJson Hovering Visual effects
 function highlightFeature(e) {
-	const layer = e.target;
+    const layer = e.target;
 
-	layer.setStyle({
-		weight: 5,
-		color: '#277FCA',
-		dashArray: '',
-		fillOpacity: 0.7
-	});
+    layer.setStyle({
+        weight: 5,
+        color: '#277FCA',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
 
-	if(!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-		layer.bringToFront();
-	}
+    if(!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
 
-	info.update(layer.feature.properties);
+    info.update(layer.feature.properties);
 }
 function resetHighlight(e) {
-	geojson.resetStyle(e.target);
-	info.update();
+    geojson.resetStyle(e.target);
+    info.update();
 }
 function zoomToFeature(e) {
-	global.map.fitBounds(e.target.getBounds());
+    global.map.fitBounds(e.target.getBounds());
 }
 function onEachFeature(feature, layer) {
-	layer.on({
-		mouseover: highlightFeature,
-		mouseout: resetHighlight,
-		click: zoomToFeature
-	});
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
 }
 //#endregion
 
 //#region Legend
 const legend = L.control({position: 'bottomright'});
 legend.onAdd = function() {
-	const div = L.DomUtil.create('div', 'info legend');
-	return div;
+    const div = L.DomUtil.create('div', 'info legend');
+    return div;
 };
 function formatDate(date) {
-	var monthNames = [
-		"E", "F", "Mz",
-		"Ab", "My", "Jn",
-		"Jl", "Ag", "S",
-		"O", "N", "D"
-	];
-	var year = date.getFullYear()%2000;
-	var monthIndex = date.getMonth();
-	var day = date.getDate();
-	var hours = date.getHours();
-	var mins = date.getMinutes();
+    var monthNames = [
+        "E", "F", "Mz",
+        "Ab", "My", "Jn",
+        "Jl", "Ag", "S",
+        "O", "N", "D"
+    ];
+    var year = date.getFullYear()%2000;
+    var monthIndex = date.getMonth();
+    var day = date.getDate();
+    var hours = date.getHours();
+    var mins = date.getMinutes();
 
-	return year + '/' + monthNames[monthIndex] + '/' + day + ' ' + hours + ':' + mins;
+    return year + '/' + monthNames[monthIndex] + '/' + day + ' ' + hours + ':' + mins;
 }
 function timeLegend(){
-	const labels = [formatDate(gameTimeStamp)]; // TODO Weather and region dependencies in legend?
+    const labels = [formatDate(gameTimeStamp)]; // TODO Weather and region dependencies in legend?
 }
 legend.addTo(global.map);
 // TODO Virtual assistant in help / how to play
