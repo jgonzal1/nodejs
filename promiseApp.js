@@ -48,7 +48,13 @@ const promiseExample2 = new Promise(
     }
   }
 );
-promiseExample2.then(handleSuccess, handleFailure);
+promiseExample2
+  .then((resolvedValue) => {
+    console.log(resolvedValue);
+  })
+  .catch((rejectionReason) => {
+    console.log(rejectionReason);
+  });
 // Prints: 'onResolvePrint after ".then"' if resolve
 
 const usingSTO = () => {
