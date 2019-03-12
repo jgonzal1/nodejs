@@ -4,6 +4,8 @@
       let myBlock; // global
       let myFunctionList;
       let funList = [];
+      const movementArray = ["right", "left", "up", "down"];
+      
       document.addEventListener("DOMContentLoaded", function() {
         console.log("Ready");
         myBlock = document.createElement("div");
@@ -30,22 +32,21 @@
         let keyC = e.keyCode;
         if (keyC === 37) {
           addFun("right"); // goRight();
-        }
-        else if (keyC === 39) {
+        } else if (keyC === 39) {
           addFun("left"); // goLeft();
-        }
-        else if (keyC === 38) {
+        } else if (keyC === 38) {
           addFun("up"); // goUp();
-        }
-        else if (keyC === 40) {
+        } else if (keyC === 40) {
           addFun("down"); // goDown();
-        }
-        else if (keyC === 67) { // c
+        } else if (keyC === 67) { // c
           myBlock.style.backgroundColor = randomColor();
-        }
-        else if (keyC === 13 || keyC === 32) { // Enter or Space
+        } else if (keyC === 82) { // r
+          let randomMover = movementArray[Math.floor(Math.random()*movementArray.length)];
+          addFun(randomMover);
+        } else if (keyC === 13 || keyC === 32) { // Enter or Space
           mover();
         }
+
         console.log(keyC);
       })
 
@@ -56,7 +57,7 @@
           myFunctionList.removeChild(element);
 
           let item = element.textContent.replace("+","");
-          myBlock.innerHTML = "Move: "+item;
+          myBlock.innerHTML = "Move "+item;
           console.log(item);
           if (item == "left") {
             myBlock.style.left = currentPosition.left + currentPosition.width + "px";
@@ -68,6 +69,9 @@
             myBlock.style.top = currentPosition.top + currentPosition.height + "px";
           }
           setTimeout(mover,300);
+        } else {
+          myBlock.innerHTML = "Set Path";
+          return; //opcional(?)
         }
       }
 
