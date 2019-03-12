@@ -19,18 +19,18 @@ var enemies = [
 
 var objectives = [
     "backpack",
-	"burger",
-	"banana",
-	"blackberry",
-	"boots",
-	"chicken",
-	"healthpotion",
-	"knife",
-	"pizza",
-	"rice",
-	"steelaxe",
-	"sword",
-	"water"
+    "burger",
+    "banana",
+    "blackberry",
+    "boots",
+    "chicken",
+    "healthpotion",
+    "knife",
+    "pizza",
+    "rice",
+    "steelaxe",
+    "sword",
+    "water"
 ];
 
 var transports = [

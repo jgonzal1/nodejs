@@ -36,7 +36,7 @@ function pushCharacters() {
         global.balloon,
         global.bike,
         global.bus,
-        global.schoolbus,	
+        global.schoolbus,
         global.taxi,
         global.train,
 

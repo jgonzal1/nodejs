@@ -83,10 +83,10 @@ function pickOrSearchNearest() {
  * @returns {number} a fast calculation distance number
  */
 function fcalcDist(m1, m2) {
-	m2 = (m2 || global.player);
-	const latDiff = m1.getLatLng().lat - m2.getLatLng().lat;
-	const lngDiff = m1.getLatLng().lng - m2.getLatLng().lng;
-	return Math.abs(latDiff)+Math.abs(lngDiff);
+    m2 = (m2 || global.player);
+    const latDiff = m1.getLatLng().lat - m2.getLatLng().lat;
+    const lngDiff = m1.getLatLng().lng - m2.getLatLng().lng;
+    return Math.abs(latDiff)+Math.abs(lngDiff);
 }
 
 module.exports = pickOrSearchNearest;

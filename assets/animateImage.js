@@ -171,7 +171,7 @@ function dash(canvasHtmlId, imageSpritePath, height, numberOfFrames, side) {
                 yDash = (backwardFrameIndex-12)*backwardFrameIndex/8;
             }
             that.context.drawImage(
-                that.image,  // image, canvas, or video element to use	
+                that.image,  // image, canvas, or video element to use
                 0,           // image x coordinate where to start clipping
                 0,           // that.height-canvas.height image y coordinate where to start clipping
                 that.width,  // width of the clipped image on the canvas

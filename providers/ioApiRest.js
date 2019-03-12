@@ -40,7 +40,7 @@ function setIOEndpoint(input, output) {
 }
 
 function getRandomInt(max) {
-	return Math.floor(Math.random() * Math.floor(max));
+  return Math.floor(Math.random() * Math.floor(max));
 }
 
 if (require.main === module) {

@@ -16,20 +16,20 @@ function spawnMissionPeople() {
     const pikachuIcon = L.icon(createLargeIcon('sprites/map-player/pikachu.png'));
     const toadetteIcon = L.icon(createLargeIcon('sprites/map-player/toadette.png'));
 
-	/**
-	 * @param {string} name 
-	 * @param {L.icon} personIcon 
-	 */
-	function spawnObjective(name, personIcon) {
-		return L.marker(
-			[lat+(Math.random()-0.5)/cercania, long+(Math.random()-0.5)/cercania],
-			{title: name + ' (Mission assigner)', icon: personIcon}
-		)
-		//.bindPopup( '<color="green"><b>Person</b></color>')
-		;
-	}
+    /**
+     * @param {string} name 
+     * @param {L.icon} personIcon 
+     */
+    function spawnObjective(name, personIcon) {
+        return L.marker(
+            [lat+(Math.random()-0.5)/cercania, long+(Math.random()-0.5)/cercania],
+            {title: name + ' (Mission assigner)', icon: personIcon}
+        )
+        //.bindPopup( '<color="green"><b>Person</b></color>')
+        ;
+    }
 
-	global.bart = spawnObjective('Person', bartIcon);
+    global.bart = spawnObjective('Person', bartIcon);
     global.lisa = spawnObjective('Person', lisaIcon);
     global.mickeymouse = spawnObjective('Person', mickeymouseIcon);
     global.pedobear = spawnObjective('Person', pedobearIcon);
