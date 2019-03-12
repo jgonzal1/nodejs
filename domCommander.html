@@ -1,13 +1,123 @@
 <html>
   <head>
     <script>
-      let myBlock;
-      document.addEventListener("DOMContentLoaded",function(){
+      let myBlock; // global
+      let myFunctionList;
+      let funList = [];
+      document.addEventListener("DOMContentLoaded", function() {
         console.log("Ready");
         myBlock = document.createElement("div");
         myBlock.textContent = "Hello World";
+        myBlock.style.width = "100px";
+        myBlock.style.height = "100px";
+        myBlock.style.backgroundColor = "red";
+        myBlock.style.color = "white"; //text
+        myBlock.style.lineHeight = "100px"; //posición vertical centrada si la altura es 100
+        myBlock.style.textAlign = "center"; //posición horizontal
+
+        myBlock.style.position = "absolute";
+        myBlock.style.top = "20px"; // posición vertical donde empoieza el bloque; myBlock.offsetTop
+        myBlock.style.left = "20px"; // se obtiene en la consola del navegador con myBlock.offsetLeft
+
         document.body.appendChild(myBlock);
+
+        myFunctionList = document.createElement("div");
+        document.body.appendChild(myFunctionList);
       })
+
+      document.addEventListener("keydown", function(e) {
+        e.preventDefault(); //?
+        let keyC = e.keyCode;
+        if (keyC === 37) {
+          addFun("right"); // goRight();
+        }
+        else if (keyC === 39) {
+          addFun("left"); // goLeft();
+        }
+        else if (keyC === 38) {
+          addFun("up"); // goUp();
+        }
+        else if (keyC === 40) {
+          addFun("down"); // goDown();
+        }
+        else if (keyC === 67) { // c
+          myBlock.style.backgroundColor = randomColor();
+        }
+        else if (keyC === 13 || keyC === 32) { // Enter or Space
+          mover();
+        }
+        console.log(keyC);
+      })
+
+      function mover() { //usa objetos globales
+        if(funList.length>0) {
+          let currentPosition = myBlock.getBoundingClientRect();
+          let element = funList.shift();
+          myFunctionList.removeChild(element);
+
+          let item = element.textContent.replace("+","");
+          myBlock.innerHTML = "Move: "+item;
+          console.log(item);
+          if (item == "left") {
+            myBlock.style.left = currentPosition.left + currentPosition.width + "px";
+          } else if (item == "right") {
+            myBlock.style.left = currentPosition.left - currentPosition.width + "px";
+          } else if (item == "up") {
+            myBlock.style.top = currentPosition.top - currentPosition.height + "px";
+          } else if (item == "down") {
+            myBlock.style.top = currentPosition.top + currentPosition.height + "px";
+          }
+          setTimeout(mover,300);
+        }
+      }
+
+      function addFun(val) {
+        let span = document.createElement("span");
+        span.textContent = "+"+val;
+        span.style.padding = "10px";
+        span.style.border ="1px solid #ddd";
+        //#region selectionHoverStyling
+        span.addEventListener("mouseover",function(){
+          this.style.backgroundColor = "red";
+          this.style.color = "white";
+        })
+        span.addEventListener("mouseout",function(){
+          this.style.backgroundColor = "white";
+          this.style.color = "black";
+        })
+        //#endregion
+        myFunctionList.appendChild(span);
+        funList.push(span);
+        console.log(funList);
+      }
+
+      function randomColor() {
+        return "#"+Math.random()
+            .toString(16) // Crea un decimal aleatorio de hexadecimales
+            .substr(-6)   // toma los 6 últimos caracteres        
+      }
+
+      function goLeft() {
+        let temp = myBlock.offsetLeft;
+        temp+=50;
+        myBlock.style.left = temp + "px";
+      }
+      function goRight() {
+        let temp = myBlock.offsetLeft;
+        temp-=50;
+        myBlock.style.left = temp + "px";
+      }
+      function goUp() {
+        let temp = myBlock.offsetTop;
+        temp-=50;
+        myBlock.style.top = temp + "px";
+      }
+      function goDown() {
+        let temp = myBlock.offsetTop;
+        temp+=50;
+        myBlock.style.top = temp + "px";
+      }
+
     </script>  
   </head>
   <body>
