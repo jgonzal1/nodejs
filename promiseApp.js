@@ -1,11 +1,21 @@
 console.log("This is the first line code in app.js.");
-// Keep the line above as the first line of code
-// Write your code here:
 
 const inventory = {
   sunglasses: 1900,
   pants: 1088,
   bags: 1344
+};
+const checkInventory = (order) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const inStock = order.every(item => inventory[item[0]] >= item[1]);
+      if (inStock) {
+        resolve(`Thank you. Your order was successful.`);
+      } else {
+        reject(`We're sorry. Your order could not be completed because some items are sold out.`);
+      }
+    }, 500);
+  });
 };
 const sunglassesOrderExecutor = (resolve, reject) => {
   if (inventory["sunglasses"] > 0) {
@@ -19,11 +29,31 @@ function orderSunglasses() {
 }
 const orderPromise = orderSunglasses();
 console.log(orderPromise);
+const handleSuccess = (resolvedValue) => {
+  console.log(resolvedValue);
+};
+const handleFailure = (rejectionReason) => {
+  console.log(rejectionReason);
+};
+const order = [['sunglasses', 1], ['bags', 2]];
+checkInventory(order).then(handleSuccess,handleFailure);
+
+const promiseExample2 = new Promise(
+  (resolve, reject) => {
+    const num = Math.random();
+    if (num > .5 ){
+      resolve('onResolvePrint after ".then" when random > .5');
+    } else {
+      reject('onRejectPrint after ".then" when random < .5');
+    }
+  }
+);
+promiseExample2.then(handleSuccess, handleFailure);
+// Prints: 'onResolvePrint after ".then"' if resolve
 
 const usingSTO = () => {
   console.log("Delayed print");
 };
-setTimeout(usingSTO, 2999);
+setTimeout(usingSTO, 1000); // 1s
 
-// Keep the line below as the last line of code:
-console.log("This is the last line of code in app.js.");
+console.log("This is the last line of synchronous code in app.js.");
