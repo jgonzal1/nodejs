@@ -3,8 +3,8 @@ const {checkInventory, processPayment, shipOrder} = require('./promiseStoreLibra
 
 const inventory = {
   sunglasses: 1900,
-  pants: 1088,
-  bags: 1344
+  pants:      1088,
+  bags:       1344
 };
 const sunglassesOrderExecutor = (resolve, reject) => {
   if (inventory["sunglasses"] > 0) {
@@ -25,8 +25,8 @@ const handleFailure = (rejectionReason) => {
   console.log(rejectionReason);
 };
 const order1 = [['sunglasses', 1], ['bags', 2]];
-checkInventory(order1).then(handleSuccess,handleFailure);
-
+checkInventory(order1)
+.then(handleSuccess,handleFailure);
 
 const promiseExample2 = new Promise(
   (resolve, reject) => {
@@ -39,12 +39,12 @@ const promiseExample2 = new Promise(
   }
 );
 promiseExample2
-  .then((resolvedValue) => {
-    console.log(resolvedValue);
-  })
-  .catch((rejectionReason) => {
-    console.log(rejectionReason);
-  });
+.then((resolvedValue) => {
+  console.log(resolvedValue);
+})
+.catch((rejectionReason) => {
+  console.log(rejectionReason);
+});
 // Prints: 'onResolvePrint after ".then"' if resolve
 
 const order3 = {
@@ -68,6 +68,6 @@ checkInventory(order3)
 const usingSTO = () => {
   console.log("Delayed print");
 };
-setTimeout(usingSTO, 1000); // 1s
+setTimeout(usingSTO, 1000); // ms
 
 console.log("This is the last line of synchronous code in app.js.");
