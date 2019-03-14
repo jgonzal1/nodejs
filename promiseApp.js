@@ -65,9 +65,23 @@ checkInventory(order3)
   console.log(errorMessage);
 });
 
+const checkSunglasses = checkAvailability('sunglasses', 'Favorite Supply Co.');
+
+const checkPants = checkAvailability('pants', 'Favorite Supply Co.');
+
+const checkBags = checkAvailability('bags', 'Favorite Supply Co.');
+
+const myPromises = Promise.all([checkSunglasses, checkPants, checkBags])
+ .then((arrayOfValues) => {
+  handleSuccess(arrayOfValues);
+ })
+ .catch((rejectionReason) => {
+  handleFailure(rejectionReason);
+ });
+
 const usingSTO = () => {
   console.log("Delayed print");
 };
-setTimeout(usingSTO, 1000); // ms
+setTimeout(usingSTO, 1500); // ms
 
 console.log("This is the last line of synchronous code in app.js.");
