@@ -31,29 +31,21 @@ function spawnObjectives() {
         ;
     }
 
-    global.backpack        = L.marker(
-        [lat+(Math.random()-0.5)/10/cercania, long+(Math.random()-0.5)/10/cercania],
+    global.backpack     = L.marker(
+        [lat+(Math.random()-0.5)/10/cercania, long+(Math.random()-0.5)/10/cercania], //7
         {title: name + ' (Objetivo)', icon: backpackIcon}
     );
     //spawnObjective('Mochila', backpackIcon);
-    global.burger        = spawnObjective('Hamburguesa', burgerIcon);
-    global.banana        = spawnObjective('Plátano', bananaIcon);
-    global.blackberry    = spawnObjective('Mora', blackberryIcon);
+    global.burger       = spawnObjective('Hamburguesa', burgerIcon);
+    global.banana       = spawnObjective('Plátano', bananaIcon);
+    global.blackberry   = spawnObjective('Mora', blackberryIcon);
     global.boots        = spawnObjective('Zapatos', bootsIcon);
-    global.chicken        = spawnObjective('Pollo frito', chickenIcon);
-    global.healthpotion    = spawnObjective('Poción de salud', healthpotionIcon);
-    global.knife        = L.marker(
-        [lat+(Math.random()-0.5)/7/cercania, long+(Math.random()-0.5)/7/cercania],
-        {title: name + ' (Objetivo)', icon: knifeIcon}
-    );
-    //spawnObjective('Cuchilo', knifeIcon);
+    global.chicken      = spawnObjective('Pollo frito', chickenIcon);
+    global.healthpotion = spawnObjective('Poción de salud', healthpotionIcon);
+    global.knife        = spawnObjective('Cuchilo', knifeIcon);
     global.pizza        = spawnObjective('Pizza', pizzaIcon);
-    global.rice            = spawnObjective('Arroz', riceIcon);
-    global.steelaxe        = L.marker(
-        [lat+(Math.random()-0.5)/7/cercania, long+(Math.random()-0.5)/7/cercania],
-        {title: name + ' (Objetivo)', icon: steelaxeIcon}
-    );
-    //spawnObjective('Hacha de acero', steelaxeIcon);
+    global.rice         = spawnObjective('Arroz', riceIcon);
+    global.steelaxe     = spawnObjective('Hacha de acero', steelaxeIcon);
     global.sword        = spawnObjective('Espada', swordIcon);
     global.water        = spawnObjective('Agua', waterIcon);
 }
