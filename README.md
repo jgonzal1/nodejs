@@ -1,11 +1,18 @@
 ToDo list:
 ```
 >>> Trade contents and limitations (17., From file:///e%3A/nodejs/game.js#43)
-   On slider trade click
-   Limitar compra tmb a almacenamiento y dinero (min)
-   Cambios en la mochila
-   Cambiar dinero
-   Refrescar slider después de cerrar
+tradeCurrentQuantity.js:
+  Crear id de objeto a intercambiar en el tr del modal de intercambios
+  Trazar el precio de la cantidad que se quiere comprar
+  Evaluarlo
+  Comprar todo lo que se pueda de lo indicado: limita compra tmb a almacenamiento y dinero (min) Esto aplicaría a tradeRange en futuras versiones
+  Ventas
+  Cambiar dinero
+
+  Refrescar slider después de cerrar
+
+  Pasar a una sola función la creación de elementos en la mochila con su función de eliminado
+  Cambios en la mochila
 
 >>> Misiones
 

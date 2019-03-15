@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css">
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css">
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@[VERSION]/dist/L.Control.Locate.min.css">    
     <link rel="stylesheet" href="style/leaflet.groupedlayercontrol.css">
     <link rel="stylesheet" href="style/app.css">
     <link rel="stylesheet" href="style/dialog.css">
@@ -54,7 +53,7 @@
     }
     </style>
 
-    <title>Darks Game</title>    
+    <title>Darks Game</title>
 
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
     <script src="https://api.jquery.com/resources/events.js"></script>
@@ -67,10 +66,11 @@
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js"></script>
     <script type="text/javascript" src='assets/animateImage.js'></script>
-    <script type="text/javascript" src='assets/enemyStatsHandler.js'></script>
-    <script type="text/javascript" src='assets/healthHandler.js'></script>
     <script type="text/javascript" src='assets/checkPlayerDeath.js'></script>
     <script type="text/javascript" src='assets/checkEnemyDeathOnModal.js'></script>
+    <script type="text/javascript" src='assets/enemyStatsHandler.js'></script>
+    <script type="text/javascript" src='assets/healthHandler.js'></script>
+    <script type="text/javascript" src='assets/tradeCurrentQuantity.js'></script>
   </head>
   <body>
     <!-- #region Handlers -->
@@ -290,7 +290,9 @@
             </tr><tr><!-- Tests -->
               <td><canvas id="floorColorSniffCanvas" width="16" height="16"></canvas></td>
               <td>
-                <div id="logs"></div></td>
+                <div id="logs"></div>
+                <div id="tradeResultLog"></div>
+              </td>
               <td id="keyhandlerModalTester">
                 <!--<div id="keyChange"></div>
                 <div id="hiddenHandlerKeys"></div>-->
@@ -589,7 +591,7 @@
             <div id="tradeSlider" class="slidecontainer" style="display: none">
               <input type="range" min="-100" max="100" value="0" class="slider" id="tradeRange"><!-- style="display: none "-->
             </div>
-            <span id="tradeSelectionType"></span>
+            <span id="tradeSelectionType"></span>&nbsp;
             <span id="tradeSelectionN" style="display: none"></span>
             <span id="tradeSelection"></span>
             <button id="tradeConfirmation" type="button" class="btn btn-success" style="display: none;width: 100%" onclick="tradeCurrentQuantity()">Trade</button>
@@ -611,10 +613,10 @@
       slider.oninput = function() {
         output.innerHTML = Math.abs(this.value);
         if (this.value < 0) {
-          document.getElementById("tradeSelectionType").innerText = "Sell ";
+          document.getElementById("tradeSelectionType").innerText = "Sell";
           document.getElementById("tradeConfirmation").style.display = 'inline';
         } else if (this.value > 0) {
-          document.getElementById("tradeSelectionType").innerText = "Buy ";
+          document.getElementById("tradeSelectionType").innerText = "Buy";
           document.getElementById("tradeConfirmation").style.display = 'inline';
         } else {
           document.getElementById("tradeSelectionType").innerText = "";
