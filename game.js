@@ -112,17 +112,18 @@ const nAvailableAvatars = 39;
 // const files = fs.readdirSync('./sprites/player');
 // alert(files[Math.ceil(nAvailableAvatars*Math.random())]);
 document.getElementById('playerName').innerText = "toad";
-const playerIcon = L.icon(createLargeIcon('sprites/map-'+ 'mission-people/3.png'
-//player/' + document.getElementById('playerName').innerText + '.png'
+const playerIcon = L.icon(createLargeIcon('sprites/map-'+
+    //'mission-people/3.png'
+    'player/' + document.getElementById('playerName').innerText + '.png'
     // files[Math.ceil(nAvailableAvatars*Math.random())]
 ));
-const player         = L.marker([lat, long], {icon: playerIcon}).bindPopup(
+const player = L.marker([lat, long], {icon: playerIcon}).bindPopup(
     '<b>Tú ('+document.getElementById('playerName').innerText+' rookie, lvl. 1)</b>'
 );
 global.player = player;
 // TODO @ Multiplayer on Redis
 
-// spawnEnemies(L, lat, long);
+spawnEnemies(L, lat, long);
 spawnObjectives(L, lat, long); // TODO > Thirst, hunger
 // spawnMissionPeople(L, lat, long);
 spawnTransports(L, lat, long);
