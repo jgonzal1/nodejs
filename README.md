@@ -1,7 +1,7 @@
 ToDo list:
 ```
 >>> Trade contents and limitations (17., From file:///e%3A/nodejs/game.js#43)
-tradeCurrentQuantity.js:
+tradeCurrentQuantity.js (+ index.html, loadPlaceModal.js):
   Crear id de objeto a intercambiar en el tr del modal de intercambios
   Trazar el precio de la cantidad que se quiere comprar
   Evaluarlo
