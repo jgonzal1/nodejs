@@ -1,9 +1,11 @@
 ToDo list:
 ```
->>>> Teclas o clicks tmb para telefono
-
 >>> Trade contents and limitations (17., From file:///e%3A/nodejs/game.js#43)
-   En la mochila
+   On slider trade click
+   Limitar compra tmb a almacenamiento y dinero (min)
+   Cambios en la mochila
+   Cambiar dinero
+   Refrescar slider después de cerrar
 
 >>> Misiones
 
@@ -16,6 +18,7 @@ ToDo list:
 > Thirst, hunger (27., From file:///e%3A/nodejs/game.js#116)
 > Traders objectives (16., From file:///e%3A/nodejs/game.js#40)
 > Transports change velocity & zoom (12., From file:///e%3A/nodejs/game.js#36)
+> Teclas o clicks tmb para telefono
 
 @ Daemonizer in legend for weather; on add: timeLegend(); (28., From file:///e%3A/nodejs/game.js#168)
 @ Multiplayer MongoDB or Redis (26., From file:///e%3A/nodejs/game.js#113)

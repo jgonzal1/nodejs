@@ -1,3 +1,6 @@
+const lngCorrector = require('./lngCorrector');
+const lngCorrectionArr = lngCorrector();
+
 var austrianCapitals = [
     [46.623997, 14.307812, 'pinkIcon', '<b>Klagenfurt, Kärnten</b>'],
     [47.070762, 15.438698, 'pinkIcon', '<b>Graz, Steiermark</b>'],
@@ -86,13 +89,13 @@ function getPlaces() {
     return places;
 }
 
-const sites = [], closeness = 7;
+const sites = [], closeness = 30; //7
 function getSites(coords) {
     for (let k = 0; k < 100; k++) {
         sites.push([
             '', // places[Math.floor(Math.random()*nPlaces)],
-            coords[0]+(Math.random()-0.5)/closeness,
-            coords[1]+(Math.random()-0.5)*1.5/closeness
+            coords[0]+(Math.random()-0.5)*lngCorrectionArr[40]/closeness, //TODO fuerzo lo de Madrid proque noa cede a global.lat
+            coords[1]+(Math.random()-0.5)/closeness
         ]);
         if (k == 99) {
             return sites;
