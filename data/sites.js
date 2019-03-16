@@ -94,7 +94,7 @@ function getSites(coords) {
     for (let k = 0; k < 100; k++) {
         sites.push([
             '', // places[Math.floor(Math.random()*nPlaces)],
-            coords[0]+(Math.random()-0.5)*lngCorrectionArr[40]/closeness, //TODO fuerzo lo de Madrid proque noa cede a global.lat
+            coords[0]+(Math.random()-0.5)*lngCorrectionArr[40]/closeness, // ToDo fuerzo lo de Madrid proque noa cede a global.lat
             coords[1]+(Math.random()-0.5)/closeness
         ]);
         if (k == 99) {

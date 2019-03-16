@@ -12,26 +12,23 @@ const itemRoomHandler = require("./itemRoomHandler");
  * @returns (c)ell;        resource(i);
  *          (d)escription; quantity (h)ere;
  */
-function itemStorageHandler(objectiveItem, quantity) {
-    // objectiveItem = "burger"; //(y cambiar la variable que importamos arriba quitandole la m por ejemplo)
+function itemStorageHandler(folder, objectiveItem, quantity) {
     itemRoomHandler(objectiveItem, true);
     quantity = ( quantity || 1);
     var storageTable = document.getElementById("itemStorageTable").getElementsByTagName('tbody')[0];
 
     if (document.getElementById(objectiveItem+"Stack")==null) {
         alert("objectiveItem en itemStorageHandler " + objectiveItem);
+        
         var rowTM = storageTable.insertRow(storageTable.rows.length);
         rowTM.id = objectiveItem+"Stack";
-
         var ciTM = rowTM.insertCell(0); var iTM = document.createElement('img');
-        iTM.src = 'style/objectives/'+objectiveItem+'.png'; iTM.width = 32; iTM.height = 32;
+        iTM.src = 'style/'+folder+'/'+objectiveItem+'.png'; iTM.width = 32; iTM.height = 32;
         ciTM.appendChild(iTM);
-
         var cdTM = rowTM.insertCell(1);
         var dTM = document.createTextNode( objectiveItem );
         dTM.id = objectiveItem+"Name";
         cdTM.appendChild(dTM);
-
         var chTM = rowTM.insertCell(2);
         chTM.id = objectiveItem+"Quantity";
         var hTM = document.createTextNode( quantity );
@@ -53,7 +50,6 @@ function itemStorageHandler(objectiveItem, quantity) {
     } else {
         document.getElementById(objectiveItem+"Quantity").innerHTML = parseFloat(document.getElementById(objectiveItem+"Quantity").innerHTML)+1;
     }
-    // alert(document.getElementById(objectiveItem+"Quantity").outerHTML);
 }
 
 module.exports = itemStorageHandler;

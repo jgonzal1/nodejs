@@ -238,7 +238,7 @@ keyListener(
 
 //#region Move handlers
 // TODO Own music
-// > TODO Añadir series taylor; correcciones angulares al habilitar ratón
+// TODO > Añadir series taylor; correcciones angulares al habilitar ratón
 // (x - (x^3 / 6 )) aproxs sin(x) max 7% err
 // (1 - x^2 / 2) aproxs cos(x) hasta 60ª
 // (1 - x^2 / 2 + x^4 / 24) aproxs cos(x) de 60 a 85º

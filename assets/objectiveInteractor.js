@@ -50,7 +50,7 @@ function pickOrSearchNearest() {
                 objectives[nearestObjectiveIndex] != "backpack"
             ) {
                 // alert(document.getElementById('room').innerHTML+" "+document.getElementById('availableRoom').innerHTML);
-                itemStorageHandler(objectives[nearestObjectiveIndex]);
+                itemStorageHandler('objectives',objectives[nearestObjectiveIndex]);
                 // ToDo volume
                 if (
                     document.getElementById('storageMethod').innerHTML == "Bare hands" ||

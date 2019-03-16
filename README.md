@@ -2,25 +2,19 @@ ToDo list:
 ```
 >>> Trade contents and limitations (17., From file:///e%3A/nodejs/game.js#43)
 tradeCurrentQuantity.js (+ index.html, loadPlaceModal.js):
-  Crear id de objeto a intercambiar en el tr del modal de intercambios
   Trazar el precio de la cantidad que se quiere comprar
   Evaluarlo
   Comprar todo lo que se pueda de lo indicado: limita compra tmb a almacenamiento y dinero (min) Esto aplicaría a tradeRange en futuras versiones
   Ventas
   Cambiar dinero
-
   Refrescar slider después de cerrar
 
-  Pasar a una sola función la creación de elementos en la mochila con su función de eliminado
-  Cambios en la mochila
-
->>> Misiones
-
+> Misiones
 > Change boolean #CotND (22., From file:///e%3A/nodejs/game.js#54)
 > Colores Tileset (24., From file:///e%3A/nodejs/game.js#89)
 > Develop in battles modal (buttons===keys) (17., From file:///e%3A/nodejs/game.js#43)
 > Personalize character #CataclysmDDA + playerIcon "duplicado": imagemagick (25., From file:///e%3A/nodejs/game.js#101)
-> Spawn con lng correction (23., From file:///e%3A/nodejs/game.js#88)
+> Rest of spawns con lng correction (23., From file:///e%3A/nodejs/game.js#88)
 > Start in player's location (locatePlayer in assets) (8., From file:///e%3A/nodejs/game.js#26)
 > Thirst, hunger (27., From file:///e%3A/nodejs/game.js#116)
 > Traders objectives (16., From file:///e%3A/nodejs/game.js#40)
