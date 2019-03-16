@@ -1,3 +1,5 @@
+const lngCorrector = require('../data/lngCorrector');
+const lngCorrectionArr = lngCorrector();
 const createIcon = require('../style/createIcon');
 const createBattlerIcon = require('../style/createBattlerIcon');
 const cercania = 30; // 70 online
@@ -7,15 +9,16 @@ const cercania = 30; // 70 online
  * @param {L.icon} enemyIcon 
  */
 function spawnEnemy(name, enemyIcon) {
+    const lngCorrection = lngCorrectionArr[Math.round(lat)];
     do {
         latRnd = (Math.random()-0.5)/cercania;
-    } while (Math.abs(latRnd) < 0.0004);
+    } while (Math.abs(latRnd) < 0.0004*lngCorrection);
     do {
         longRnd = (Math.random()-0.5)/cercania;
     } while (Math.abs(longRnd) < 0.0004);
 
     return L.marker(
-        [lat+latRnd, long+longRnd],
+        [lat+latRnd*lngCorrection, long+longRnd],
         {title: name + ' (Enemigo)', attribution: name, icon: enemyIcon}
     )
     //.bindPopup('<color="red"><b>Enemigo</b></color>')

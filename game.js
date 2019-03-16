@@ -1,21 +1,16 @@
 //#region Imports
 const enemyMover = require('./assets/enemyMover');
 const keyHandler = require("./assets/keyHandler");
-// TODO Duplicated mH.fcalcDist array on the inside because of async
-// TODO Make attack handler different for all player attack position disruption cases
 const loadPlaceModal = require('./assets/loadPlaceModal');
 const mH = require('./assets/moveHandlers');
-// TODO Not always take out enemy (after battles, it may stay)
 const pushCharacters = require('./assets/pushCharacters');
-const spawnEnemies = require('./assets/spawnEnemies'); // TODO Enemies properties + battler hearths
+const spawnEnemies = require('./assets/spawnEnemies');
 // const spawnMissionPeople = require('./assets/spawnMissionPeople');
 const spawnObjectives = require('./assets/spawnObjectives');
 const createPlacesIcons = require('./style/createPlacesIcons');
 const spawnTransports = require('./assets/spawnTransports');
 const getKeymap = require('./data/keymap');
 global.keymap = getKeymap();
-// TODO Arreglar que se pueda clicar o usar teclado (id. unico a eventos)
-// TODO Recover > < keys but for open/close doors
 const spawnRegionsAustria = require('./data/regionsAustria');
 const regionsAustria = spawnRegionsAustria();
 const spawnSites = require('./data/sites');
@@ -23,25 +18,11 @@ const initialCoords = spawnSites.getInitialCoords()["Mirasierra.Offline"]; // Es
 const sites = spawnSites.getSites(initialCoords);
 const places = spawnSites.getPlaces();
 const nPlaces = places.length;
-// TODO > Start in player's location (locatePlayer in assets)
 // document.getElementById('hiddenHandlerPos').innerText.split(",")[0]/[1] + redis
 const createBaseLayerAndAddMore = require('./providers/createBaseLayerAndAddMore');
 const createLargeIcon = require('./style/createLargeIcon');
 // const createBattlerIcon = require('./style/createBattlerIcon');
 const geoJsonStylers = require('./style/geoJsonStylers');
-// TODO @ Risk
-
-// TODO #Patrician When collide
-// TODO > Transports change velocity & zoom
-// TODO Objectives
-// TODO Trading materials
-// TODO Misiones, traders
-// TODO > Traders objectives
-// TODO >>> Trade contents and limitations
-// TODO > Develop in battles modal (buttons===keys): resumeGame after closing but only with button
-// TODO #CataclysmDDA
-// TODO #RimWorld
-// TODO #CotND
 
 // const fs = require('fs');
 const L = require('leaflet');
@@ -49,9 +30,7 @@ global.L = L;
 
 var cryptOfTheNecromancerMode =  'true';
 const velocity = 1/33; // Dµº / ms , 80km/h | 12x
-// TODO Velocity within ingame options so anyone can handle and keyHandler is not dependant
 var refreshRate, defaultMovementLength;
-// TODO > Change boolean #CotND
 if (cryptOfTheNecromancerMode === "true") { refreshRate = 460; }
 // 500 asume <5ms delays! // 500 w/ 120 BPM music
 else { refreshRate = 33; } // 30+ FPS
@@ -94,7 +73,6 @@ global.artisticMap = L.
 ).addTo(global.map);
 const baseLayers = createBaseLayerAndAddMore(global.artisticMap, L);
 // L.control.scale({imperial:false}).addTo(global.map); // Only in online
-// TODO > Spawn con lng correction
 // TODO > Colores Tileset
 // Blanco: mover 1x;
 // si no, reducir multiplicador de velocidad y:
@@ -107,7 +85,6 @@ const baseLayers = createBaseLayerAndAddMore(global.artisticMap, L);
 //#endregion
 
 //#region Create Characters and sitesMarkersLayers
-// TODO > Personalize character #CataclysmDDA + playerIcon "duplicado": imagemagick
 const nAvailableAvatars = 39;
 // const files = fs.readdirSync('./sprites/player');
 // alert(files[Math.ceil(nAvailableAvatars*Math.random())]);
@@ -121,10 +98,9 @@ const player = L.marker([lat, long], {icon: playerIcon}).bindPopup(
     '<b>Tú ('+document.getElementById('playerName').innerText+' rookie, lvl. 1)</b>'
 );
 global.player = player;
-// TODO @ Multiplayer on Redis
 
 spawnEnemies(L, lat, long);
-spawnObjectives(L, lat, long); // TODO > Thirst, hunger
+spawnObjectives(L, lat, long);
 // spawnMissionPeople(L, lat, long);
 spawnTransports(L, lat, long);
 global.mCharacters = [];
@@ -152,7 +128,7 @@ const layers = L.layerGroup(
 
 //#endregion
 
-//#region TODO >>>>> Daemonizers
+//#region Daemonizers
 // let counter = 1;
 // Moving with mouse or keypad
 if (navigator.userAgent.match('Android|X11') !== null){ // X11 es mi redmi note 3
@@ -177,9 +153,9 @@ if (navigator.userAgent.match('Android|X11') !== null){ // X11 es mi redmi note 
 }//*/
 // let moveDaemonizer;
 setInterval(function() {
-    // TODO @ Daemonizer in legend for weather; on add: timeLegend();
     gameTimeStamp += 36000;
     timeLegend();
+    // TODO > Change boolean #CotND (22., From file:///e%3A/nodejs/game.js#54)
     /*if (cryptOfTheNecromancerMode !== document.getElementById('hiddenHandlerModeCotND').innerText) {
         cryptOfTheNecromancerMode = document.getElementById('hiddenHandlerModeCotND').innerText;
         if (typeof(cryptOfTheNecromancerMode) === 'string') {clearInterval(moveDaemonizer);}
@@ -204,11 +180,8 @@ function keyListener(refreshRate,defaultMovementLength) { // milliseconds, m
         }
         if (!pause) { enemyMover(defaultMovementLength); } // else { pauseSound.start(); }
         if (document.getElementById('openModal').innerText === 'false') {
-            // TODO keyHandler out of scope for third party layer group
             if (global.keymap["open"].includes(document.getElementById('hiddenHandlerKeys').innerText)) {
                 loadPlaceModal(sites, markers, function(updateMarker){
-                    // TODO tradeRange min depending on how much user has
-                    // TODO Vendedor con mas cosas en el index (bajo tradeModal) y que lo ponga el modal
                     markers[updateMarker].setIcon(L.icon({
                         iconUrl: 'style/places/barrier.png',
                         shadowUrl: 'style/shadow.png',
@@ -237,14 +210,12 @@ keyListener(
 //#endregion
 
 //#region Move handlers
-// TODO Own music
 // TODO > Añadir series taylor; correcciones angulares al habilitar ratón
 // (x - (x^3 / 6 )) aproxs sin(x) max 7% err
 // (1 - x^2 / 2) aproxs cos(x) hasta 60ª
 // (1 - x^2 / 2 + x^4 / 24) aproxs cos(x) de 60 a 85º
 // 0 aproxs cos(x) from 85 to 90º
 
-// TODO Migrate onMapClick
 function onMapClick(e) {
     if (mouseMoved !== true) {
         const mouseClickDaemonizer = setInterval(function() {
@@ -376,7 +347,7 @@ function formatDate(date) {
     return year + '/' + monthNames[monthIndex] + '/' + day + ' ' + hours + ':' + mins;
 }
 function timeLegend(){
-    const labels = [formatDate(gameTimeStamp)]; // TODO Weather and region dependencies in legend?
+    const labels = [formatDate(gameTimeStamp)];
 }
 legend.addTo(global.map);
 // TODO Virtual assistant in help / how to play

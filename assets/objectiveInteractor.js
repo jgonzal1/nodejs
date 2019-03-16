@@ -51,7 +51,6 @@ function pickOrSearchNearest() {
             ) {
                 // alert(document.getElementById('room').innerHTML+" "+document.getElementById('availableRoom').innerHTML);
                 itemStorageHandler('objectives',objectives[nearestObjectiveIndex]);
-                // ToDo volume
                 if (
                     document.getElementById('storageMethod').innerHTML == "Bare hands" ||
                     parseFloat(document.getElementById('room').innerHTML) >= 7

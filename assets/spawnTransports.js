@@ -1,3 +1,5 @@
+const lngCorrector = require('../data/lngCorrector');
+const lngCorrectionArr = lngCorrector();
 const createIcon = require('../style/createIcon');
 const cercania = 5; // 20 online
 
@@ -14,7 +16,10 @@ function spawnTransports() {
 
     function spawnTransport(transportIcon) {
         return L.marker(
-            [lat+(Math.random()-0.5)/cercania, long+(Math.random()-0.5)/cercania],
+            [
+                lat+(Math.random()-0.5)*lngCorrectionArr[Math.round(lat)]/cercania,
+                long+(Math.random()-0.5)/cercania
+            ],
             {icon: transportIcon}
         ).bindPopup(
             '<color="gray"><b>Transport</b></color>'

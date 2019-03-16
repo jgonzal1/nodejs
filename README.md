@@ -12,9 +12,10 @@ tradeCurrentQuantity.js (+ index.html, loadPlaceModal.js):
 > Misiones
 > Change boolean #CotND (22., From file:///e%3A/nodejs/game.js#54)
 > Colores Tileset (24., From file:///e%3A/nodejs/game.js#89)
-> Develop in battles modal (buttons===keys) (17., From file:///e%3A/nodejs/game.js#43)
+> Enemies properties + battler hearths
 > Personalize character #CataclysmDDA + playerIcon "duplicado": imagemagick (25., From file:///e%3A/nodejs/game.js#101)
 > Rest of spawns con lng correction (23., From file:///e%3A/nodejs/game.js#88)
+> Sites lat correction (forzado a Madrid) (From file:///e%3A/nodejs/data/sites.js#97)
 > Start in player's location (locatePlayer in assets) (8., From file:///e%3A/nodejs/game.js#26)
 > Thirst, hunger (27., From file:///e%3A/nodejs/game.js#116)
 > Traders objectives (16., From file:///e%3A/nodejs/game.js#40)
@@ -22,7 +23,7 @@ tradeCurrentQuantity.js (+ index.html, loadPlaceModal.js):
 > Teclas o clicks tmb para telefono
 
 @ Daemonizer in legend for weather; on add: timeLegend(); (28., From file:///e%3A/nodejs/game.js#168)
-@ Multiplayer MongoDB or Redis (26., From file:///e%3A/nodejs/game.js#113)
+@ Multiplayer on Redis (26., From file:///e%3A/nodejs/game.js#113)
 @ Risk (9., From file:///e%3A/nodejs/game.js#32)
 
 #CataclysmDDA (18., From file:///e%3A/nodejs/game.js#42)
@@ -31,6 +32,8 @@ tradeCurrentQuantity.js (+ index.html, loadPlaceModal.js):
 #RimWorld (19., From file:///e%3A/nodejs/game.js#43)
 
 Arreglar que se pueda clicar o usar teclado (id. unico a eventos) (6., From file:///e%3A/nodejs/game.js#17)
+Daemonizers
+Develop in battles modal (buttons===keys) (17., From file:///e%3A/nodejs/game.js#43)
 Duplicated mH.fcalcDist array on the inside because of async (1., From file:///e%3A/nodejs/game.js#4)
 Enemies properties + battler hearths (4., From file:///e%3A/nodejs/game.js#10)
 keyHandler out of scope for third party layer group (29., From file:///e%3A/nodejs/game.js#195)

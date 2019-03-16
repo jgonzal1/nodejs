@@ -1,3 +1,5 @@
+const lngCorrector = require('../data/lngCorrector');
+const lngCorrectionArr = lngCorrector();
 const createIcon = require('../style/createIcon');
 const cercania = 60; // 100 para tests, 40 normal
 
@@ -24,7 +26,9 @@ function spawnObjectives() {
      */
     function spawnObjective(name, enemyIcon) {
         return L.marker(
-            [lat+(Math.random()-0.5)/cercania, long+(Math.random()-0.5)/cercania],
+            [
+                lat+(Math.random()-0.5)*lngCorrectionArr[Math.round(lat)]/cercania,
+                long+(Math.random()-0.5)/cercania],
             {title: name + ' (Objetivo)', icon: enemyIcon}
         )
         //.bindPopup( '<color="green"><b>Objetivo</b></color>')

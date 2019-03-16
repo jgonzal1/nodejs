@@ -1,3 +1,5 @@
+const lngCorrector = require('../data/lngCorrector');
+const lngCorrectionArr = lngCorrector();
 const createLargeIcon = require('../style/createLargeIcon');
 const cercania = 10;
 
@@ -22,7 +24,10 @@ function spawnMissionPeople() {
      */
     function spawnObjective(name, personIcon) {
         return L.marker(
-            [lat+(Math.random()-0.5)/cercania, long+(Math.random()-0.5)/cercania],
+            [
+                lat+(Math.random()-0.5)*lngCorrectionArr[Math.round(lat)]/cercania,
+                long+(Math.random()-0.5)/cercania
+            ],
             {title: name + ' (Mission assigner)', icon: personIcon}
         )
         //.bindPopup( '<color="green"><b>Person</b></color>')
