@@ -1,0 +1,40 @@
+@startuml
+'title use\ncase
+'scale 2
+'left to right direction
+'skinparam packageStyle rect
+'actor customer
+'actor "another customer" as ac
+'actor clerk
+'rectangle checkout {
+'    ac -- (checkout)
+'    (checkout) .> (payment): include
+'    (helpest).>(checkout): extend
+'    (checkout)-- clerk
+'}
+'newpage
+'title conditional\nflow
+'start
+'partition Sample_Partition
+':Open "ABCD" download file;
+':In Load Sample images;
+'while (Some available for help?)
+':Read the complaint;
+'if (need a reply?) then (yes)
+':Add reason in File;
+'else (no)
+'if(need to be included?) then (yes)
+':Add reason in file;
+'endif
+'endif
+':update pdf with proper stamping;
+'endwhile
+'stop
+'newpage
+title sequence\ndiagram
+Alice -> Bob : message 1
+'legend
+'    Q: Pregunta
+'    A: Respuesta
+'end legend
+@enduml
