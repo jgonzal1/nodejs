@@ -88,7 +88,7 @@ function restockSuccess() {
 }
 
 const checkAvailability = (itemName, distributorName) => {
-  console.log(`Checking availability of ${itemName} at ${distributorName}...`);
+  console.log(`Checking availability of ${itemName} at ${distributorName} ...`);
   return new Promise((resolve, reject) => {
       setTimeout(() => {
           if (restockSuccess()) {

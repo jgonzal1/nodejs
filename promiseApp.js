@@ -1,5 +1,5 @@
 console.log("This is the first line code in app.js.");
-const {checkInventory, processPayment, shipOrder} = require('./promiseStoreLibrary.js');
+const {checkInventory, processPayment, shipOrder, checkAvailability} = require('./promiseStoreLibrary.js');
 
 const inventory = {
   sunglasses: 1900,
