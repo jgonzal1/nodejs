@@ -1,4 +1,4 @@
-random = require("random")
+random = require("random");
 
 // High order function
 function makeAdjectifier(adjective) {
