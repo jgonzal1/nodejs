@@ -1,0 +1,50 @@
+```plantuml
+@startuml
+'condicional
+skinparam ActivityDiamondBackgroundColor #CAD500
+skinparam ActivityDiamondBorderColor #004D71
+'resto
+skinparam shadowing false
+skinparam ActivityArrowColor #004D71
+skinparam ActivityBackgroundColor #CAD500
+skinparam ActivityBorderColor #004D71
+
+title Diagrama de flujos para el chatbot de Enagas\n
+start
+while (pm2 start enagasChatbotApp.js)
+  split
+    :npm start
+    (ejecuta index.html)]
+    note right
+      Es un HTML que, obviamente,
+      siempre puede ser accesible
+      (simpre que esté levantado
+      beefy:browserify de node),
+      pero depende de la API que
+      crea enagasChatbotApp para
+      tener respuestas por cada
+      consulta de usuario
+    end note
+  split again
+    :dev.private.js]
+    detach  
+  split again
+    while (enagasChatbotApp.js)
+      :front-end/iecisaFrontEnd.js]
+        :providers/iasApiClientes.js]
+          :providers/microsoft-resources/luisGetIntent.js]
+          if (¿Usar integración con Remedy?) then (sí)
+          :assets/soapClientRemedy.js]
+          else (no)
+          endif
+          if (API REST response) then (¿Consumo directo?)
+          stop
+          endif
+    endwhile
+  end split
+  ':respuesta en el front-end;
+endwhile
+:front-end response;
+stop
+@enduml
+```
